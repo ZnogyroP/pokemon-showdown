@@ -7,6 +7,30 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	// Sw/Sh Singles
 	///////////////////////////////////////////////////////////////////
 
+  {
+		section: "Duo's Formats",
+	},
+
+  {
+		name: "Duomod",
+		desc: `A metagame made up Duo's Pok&eacute;mon with some added changes.`,
+		threads: [
+			`<a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons</a>`,
+		],
+
+		mod: 'duomod',
+		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
+		banlist: ['All Pokemon'],
+		unbanlist: [
+			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Cliety', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Robit', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch',
+		],
+
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+
+		},
+	},
+
 	{
 		section: "Sw/Sh Singles",
 	},
