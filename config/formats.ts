@@ -1,4 +1,4 @@
-// Note: This is the list of formats
+﻿// Note: This is the list of formats
 // The rules that formats use are stored in data/rulesets.js
 import {Utils} from './../lib/utils';
 
