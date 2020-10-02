@@ -21447,11 +21447,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Special",
 		desc: "Deals either 1%, 10%, or 33% of the target's max HP. Has a 100% chance to either paralyze, badly poison, or burn the target, as well as set a random terrain and weather.",
 		shortDesc: "Has several effects at once.",
-		name: "Roulette Spin",
+		name: "Roulette Wheel",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onTryMove(target, source) {
+		onModifyHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				target.trySetStatus('brn', source);
@@ -21461,7 +21461,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				target.trySetStatus('tox', source);
 			}
 		},
-		onModifyHit(target, source) {
+		onTryMove(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
