@@ -21381,12 +21381,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onHit: function(source) {
-			this.useMove("Teleport", source);
-		},  
 		onHit(target, source) {
-			source.addVolatile('lockon', target);
-			this.add('-activate', source, 'move: Lock-On', '[of] ' + target);
+				if (target.hp) {
+					if (!this.canSwitch(target.side)) return;
+					for (const pokemon of this.getAllActive()) {
+						if (pokemon.switchFlag === true) return;
+						source.addVolatile('lockon', target);
+						this.add('-activate', source, 'move: Lock-On', '[of] ' + target);
+					}
+					if (target.useItem()) target.switchFlag = true;
+				}
 		},
 		secondary: null,
 		target: "normal",
