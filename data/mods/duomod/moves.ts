@@ -21447,7 +21447,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Special",
 		desc: "Deals either 1%, 10%, or 33% of the target's max HP. Has a 100% chance to either paralyze, badly poison, or burn the target, as well as set a random terrain and weather.",
 		shortDesc: "Has several effects at once.",
-		name: "Magic Dust",
+		name: "Roulette Spin",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
@@ -21460,8 +21460,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else {
 				target.trySetStatus('tox', source);
 			}
-		},
-		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
@@ -21470,8 +21468,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else {
 				this.field.setTerrain('mistyterrain');
 			}
-		},
-		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setWeather('sunnyday');
@@ -21480,8 +21476,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else {
 				this.field.setWeather('sandstorm');
 			}
-		},
-		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.damage(target.baseMaxhp / 100, target, target);
