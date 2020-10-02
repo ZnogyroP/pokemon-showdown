@@ -21344,7 +21344,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) this.damage(pokemon.baseMaxhp, pokemon, pokemon, move);
-
 		},
 		secondary: null,
 		target: "normal",
@@ -21484,5 +21483,25 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Fairy",
 		contestType: "Beautiful",
+	},
+	corecannon: {
+		num: 1014.1,
+		accuracy: 90,
+		basePower: 150,
+		category: "Special",
+		desc: "If this move is successful and the opponent does not faint, the user must recharge on the following turn and cannot select a move.",
+		shortDesc: "User cannot move next turn.",
+		name: "Hyper Beam",
+		pp: 5,
+		priority: 0,
+		flags: {recharge: 1, protect: 1, mirror: 1},
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (!target || target.fainted || target.hp <= 0)
+		this.volatileStatus: 'mustrecharge',
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
 	},
 };
