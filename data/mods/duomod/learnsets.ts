@@ -96,6 +96,7 @@ baloon: {learnset: {
 	waterspout: ["7L1"],
 }},
 bismage: {learnset: {
+	corecannon: ["7L1"],
 	destructiveblow: ["7L1"],
 	doomdesire: ["7L1"],
 	earthpower: ["7L1"],
