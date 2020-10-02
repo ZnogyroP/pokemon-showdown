@@ -21461,7 +21461,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				target.trySetStatus('tox', source);
 			}
 		},
-		onHit(target, source) {
+		onHit(field) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
@@ -21471,7 +21471,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.field.setTerrain('mistyterrain');
 			}
 		},
-		onHit(target, source) {
+		onHit(field) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setWeather('sunnyday');
