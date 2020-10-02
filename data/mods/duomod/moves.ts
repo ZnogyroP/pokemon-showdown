@@ -21454,6 +21454,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
+				this.damage(target.baseMaxhp / 100, target, target);
+			} else if (result === 1) {
+				this.damage(target.baseMaxhp / 10, target, target);
+			} else {
+				this.damage(target.baseMaxhp / 3, target, target);
+			}
+		},
+		onStart(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
 				target.trySetStatus('brn', source);
 			} else if (result === 1) {
 				target.trySetStatus('par', source);
@@ -21461,7 +21471,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				target.trySetStatus('tox', source);
 			}
 		},
-		onHit(field) {
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
@@ -21471,7 +21481,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.field.setTerrain('mistyterrain');
 			}
 		},
-		onHit(field) {
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setWeather('sunnyday');
@@ -21479,16 +21489,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.field.setWeather('raindance');
 			} else {
 				this.field.setWeather('sandstorm');
-			}
-		},
-		onHit(target, source) {
-			const result = this.random(3);
-			if (result === 0) {
-				this.damage(target.baseMaxhp / 100, target, target);
-			} else if (result === 1) {
-				this.damage(target.baseMaxhp / 10, target, target);
-			} else {
-				this.damage(target.baseMaxhp / 3, target, target);
 			}
 		},
 		target: "normal",
