@@ -21176,11 +21176,21 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onStart(side) {
 				this.add('-sidestart', side, 'move: Dewy Flowers');
 			},
+			onSwitchIn(pokemon) {
+				if (pokemon.isGrounded()) return false;
+				if (pokemon.hasItem('heavydutyboots')) return;
+				this.add('-sidestart', side, 'Dewy Flowers');
+			}},
+		volatileStatus: 'dewyflowers',
+		condition: {
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Dewy Flowers');
+			},
 			onResidualOrder: 6,
 			onResidual(pokemon) {
-				if (pokemon.hasItem('heavydutyboots')) return;
 				this.heal(pokemon.baseMaxhp / 16);
-			}},
+			},
+		},
 		secondary: null,
 		target: "allySide",
 		type: "Grass",
