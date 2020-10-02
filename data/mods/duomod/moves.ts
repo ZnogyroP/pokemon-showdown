@@ -21498,7 +21498,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		volatileStatus: 'mustrecharge',
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) return null;
-				this.add('-start', pokemon, 'mustrecharge');
 		},
 		secondary: null,
 		target: "normal",
