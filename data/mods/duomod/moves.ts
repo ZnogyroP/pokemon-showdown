@@ -21491,13 +21491,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Special",
 		desc: "If this move is successful and the opponent does not faint, the user must recharge on the following turn and cannot select a move.",
 		shortDesc: "User cannot move next turn.",
-		name: "Hyper Beam",
+		name: "Core Cannon",
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
+		self: {
+			volatileStatus: 'mustrecharge',
+		},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0)
-		this.volatileStatus: 'mustrecharge',
+			if (target.hp > 0) this.add('-end', pokemon, 'mustrecharge');
 		},
 		secondary: null,
 		target: "normal",
