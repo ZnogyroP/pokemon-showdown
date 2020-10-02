@@ -21495,7 +21495,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		volatileStatus: 'mustrecharge',
+		self: {volatileStatus: 'mustrecharge'},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) return null;
 		},
