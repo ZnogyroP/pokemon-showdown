@@ -21176,8 +21176,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-sidestart', side, 'Dewy Flowers');
 			},
 			onResidualOrder: 6,
-			onSwitchIn(target, source, effect) {
-				if (target.isGrounded()) return false;
+			onWeather(target, source, effect) {
+				if (!target.isGrounded()) return;
 				if (target.hasItem('heavydutyboots')) return;
 				this.heal(target.baseMaxhp / 16);
 			},
