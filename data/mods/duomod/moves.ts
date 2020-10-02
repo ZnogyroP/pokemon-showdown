@@ -21461,7 +21461,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.damage(target.baseMaxhp / 3, target, target);
 			}
 		},
-		onHit(target, source) {
+		onModifyMove(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				target.trySetStatus('brn', source);
@@ -21481,7 +21481,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.field.setTerrain('mistyterrain');
 			}
 		},
-		onModifyMove(target, source) {
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setWeather('sunnyday');
