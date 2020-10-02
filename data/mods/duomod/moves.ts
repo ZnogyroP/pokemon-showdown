@@ -21371,4 +21371,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cool",
 	},
+	flashhandoff: {
+		num: 1010.1,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		shortDesc: "User switches out after damaging the target, switchin cannot miss in the next turn",
+		name: "Flash Handoff",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		selfSwitch: true,
+		onHit(target, source) {
+			source.addVolatile('lockon', target);
+			this.add('-activate', source, 'move: Lock-On', '[of] ' + target);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+	},
 };
