@@ -171,6 +171,7 @@ blaydge: {learnset: {
 }},
 cadbunny: {learnset: {
 	agility: ["7L1"],
+	chocolategift: ["7L1"],
 	flashhandoff: ["7L1"],
 	dewyflowers: ["7L1"],
 	hypervoice: ["7L1"],
