@@ -21451,17 +21451,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyHit(target, source) {
-			const result = this.random(3);
-			if (result === 0) {
-				this.damage(target.baseMaxhp / 100, target, target);
-			} else if (result === 1) {
-				this.damage(target.baseMaxhp / 10, target, target);
-			} else {
-				this.damage(target.baseMaxhp / 3, target, target);
-			}
-		},
-		onHit(target, source) {
+		onTryMove(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				target.trySetStatus('brn', source);
@@ -21471,7 +21461,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				target.trySetStatus('tox', source);
 			}
 		},
-		onTryMove(target, source) {
+		onModifyHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
