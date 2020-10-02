@@ -21179,7 +21179,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onWeather(target, source, effect) {
 				if (target.isGrounded()) return false;
 				if (target.hasItem('heavydutyboots')) return;
-				this.heal(target.baseMaxhp / 16, target, target);
+				this.heal(source.baseMaxhp / 16);
 			},
 		},
 		secondary: null,
