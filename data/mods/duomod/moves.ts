@@ -21172,22 +21172,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {},
 		sideCondition: 'Dewy Flowers',
 		condition: {
-			// this is a side condition
 			onStart(side) {
-				this.add('-sidestart', side, 'move: Dewy Flowers');
-			},
-			onSwitchIn(pokemon) {
-				if (pokemon.isGrounded()) return false;
-				if (pokemon.hasItem('heavydutyboots')) return;
-				this.add('-sidestart', side, 'Dewy Flowers');
-			}},
-		volatileStatus: 'dewyflowers',
-		condition: {
-			onStart(pokemon) {
-				this.add('-start', pokemon, 'Dewy Flowers');
+				this.add('-sidestart', pokemon, 'Dewy Flowers');
 			},
 			onResidualOrder: 6,
 			onResidual(pokemon) {
+				if (pokemon.isGrounded()) return false;
+				if (pokemon.hasItem('heavydutyboots')) return;
 				this.heal(pokemon.baseMaxhp / 16);
 			},
 		},
