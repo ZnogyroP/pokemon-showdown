@@ -21451,7 +21451,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onHit(target, source) {
+		onTryHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.damage(target.baseMaxhp / 100, target, target);
@@ -21459,7 +21459,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.damage(target.baseMaxhp / 10, target, target);
 			} else {
 				this.damage(target.baseMaxhp / 3, target, target);
-			};
+			}
+		},
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				target.trySetStatus('brn', source);
@@ -21467,7 +21469,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				target.trySetStatus('par', source);
 			} else {
 				target.trySetStatus('tox', source);
-			};
+			}
+		},
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
@@ -21475,7 +21479,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.field.setTerrain('electricterrain');
 			} else {
 				this.field.setTerrain('mistyterrain');
-			};
+			}
+		},
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setWeather('sunnyday');
