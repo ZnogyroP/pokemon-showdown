@@ -21176,10 +21176,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-sidestart', side, 'Dewy Flowers');
 			},
 			onResidualOrder: 6,
-			onResidual(pokemon) {
-				if (pokemon.isGrounded()) return false;
-				if (pokemon.hasItem('heavydutyboots')) return;
-				this.heal(pokemon.baseMaxhp / 16);
+			onWeather(target, source, effect) {
+				if (target.isGrounded()) return false;
+				if (target.hasItem('heavydutyboots')) return;
+				this.heal(target.baseMaxhp / 16, target, target);
 			},
 		},
 		secondary: null,
