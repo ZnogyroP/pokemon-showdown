@@ -21383,13 +21383,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onHit(target, source) {
 				if (target.hp) {
-					if (!this.canSwitch(target.side)) return;
-					for (const pokemon of this.getAllActive()) {
-						if (pokemon.switchFlag === true) return;
-						source.addVolatile('lockon', target);
-						this.add('-activate', source, 'move: Lock-On', '[of] ' + target);
-					}
-					if (target.useItem()) target.switchFlag = true;
+					this (source.switchFlag = true)
 				}
 		},
 		secondary: null,
