@@ -21178,7 +21178,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(pokemon) {
-				if (pokemon.hasType('Flying')) return false;
 				if (pokemon.hasItem('heavydutyboots')) return;
 				this.heal(pokemon.baseMaxhp / 16);
 			}},
