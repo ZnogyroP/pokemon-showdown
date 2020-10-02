@@ -21178,7 +21178,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(pokemon) {
-				if (!pokemon.isGrounded()) return;
+			if (!target.runImmunity('Ground')) return;
 				if (pokemon.hasItem('heavydutyboots')) return;
 				this.heal(pokemon.baseMaxhp / 16);
 			}},
