@@ -21176,9 +21176,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onStart(side) {
 				this.add('-sidestart', side, 'move: Dewy Flowers');
 			},
+				if (pokemon.hasType('Flying')) return;
 			onResidualOrder: 6,
 			onResidual(pokemon) {
-				if (pokemon.hasType('Flying')) return;
 				if (pokemon.hasItem('heavydutyboots')) return;
 				this.heal(pokemon.baseMaxhp / 16);
 			}},
