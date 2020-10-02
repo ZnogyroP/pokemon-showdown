@@ -21497,7 +21497,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {recharge: 1, protect: 1, mirror: 1},
 		self: {volatileStatus: 'mustrecharge'},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0);
+			if (!target || target.fainted || target.hp <= 0)
 				delete pokemon.volatiles['mustrecharge'];
 		},
 		secondary: null,
