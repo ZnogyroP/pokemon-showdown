@@ -21376,18 +21376,123 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		shortDesc: "User switches out after damaging the target, switchin cannot miss in the next turn",
+		shortDesc: "User switches out after damaging the target.",
 		name: "Flash Handoff",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		onHit(target, source) {
-				if (target.hp) {
-					this (source.switchFlag = true)
-				}
-		},
+		flags: {protect: 1, mirror: 1},
+		selfSwitch: true,
 		secondary: null,
 		target: "normal",
 		type: "Normal",
+	},
+	inferiorityburst: {
+		num: 1011.1,
+		accuracy: 100,
+		basePower: 75,
+		basePowerCallback(pokemon, target) {
+			let power = 75 + 75 * target.positiveBoosts();
+			if (power > 150) power = 150;
+			return power;
+		},
+		category: "Special",
+		shortDesc: "Doubles damage if target has boosts.",
+		name: "Inferiority Burst",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {basePower: 160},
+		maxMove: {basePower: 130},
+		contestType: "Cool",
+	},
+	crsytalsurge: {
+		num: 1012.1,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		desc: "If the attack lands, the user becomes immune to Ground-type attacks for 5 turns.",
+		shortDesc: "For 5 turns, the user has immunity to Ground.",
+		name: "Crystal Surge",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		volatileStatus: 'crystalsurge',
+		condition: {
+			duration: 5,
+			onStart(target) {
+				if (target.volatiles['smackdown'] || target.volatiles['ingrain']) return false;
+				this.add('-start', target, 'Crystal Surge');
+			},
+			onImmunity(type) {
+				if (type === 'Ground') return false;
+			},
+			onResidualOrder: 15,
+			onEnd(target) {
+				this.add('-end', target, 'Crystal Surge');
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Electric",
+		zMove: {boost: {evasion: 1}},
+		contestType: "Clever",
+	},
+	roulettewheel: {
+		num: 1013.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Special",
+		desc: "Deals either 1%, 10%, or 33% of the target's max HP. Has a 100% chance to either paralyze, badly poison, or burn the target, as well as set a random terrain and weather.",
+		shortDesc: "Has several effects at once.",
+		name: "Magic Dust",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				target.trySetStatus('brn', source);
+			} else if (result === 1) {
+				target.trySetStatus('par', source);
+			} else {
+				target.trySetStatus('tox', source);
+			}
+		},
+		onHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.field.setTerrain('grassyterrain');
+			} else if (result === 1) {
+				this.field.setTerrain('electricterrain');
+			} else {
+				this.field.setTerrain('mistyterrain');
+			}
+		},
+		onHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.field.setWeather('sunnyday');
+			} else if (result === 1) {
+				this.field.setWeather('raindance');
+			} else {
+				this.field.setWeather('sandstorm');
+			}
+		},
+		onHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.damage(target.baseMaxhp / 100, target, target);
+			} else if (result === 1) {
+				this.damage(target.baseMaxhp / 10, target, target);
+			} else {
+				this.damage(target.baseMaxhp / 3, target, target);
+			}
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Beautiful",
 	},
 };

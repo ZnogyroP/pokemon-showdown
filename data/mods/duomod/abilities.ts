@@ -346,7 +346,7 @@ disappearance: {
 	roulettespin: {
 		shortDesc: "On switchin, this Pokemon uses Metronome.",
 			onStart: function(source) {
-			this.useMove("metronome", source);
+			this.useMove("roulettewheel", source);
 		  },  
     name: "Roulette Spin",
     rating: 2.5,
