@@ -21505,4 +21505,48 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Cool",
 	},
+	snipereader: {
+		num: 1015.1,
+		accuracy: 87,
+		basePower: 113,
+		category: "Special",
+		desc: "If this attack does not miss, the effects of Reflect, Light Screen, and Aurora Veil end for the target's side of the field before damage is calculated.",
+		shortDesc: "Destroys screens, unless the target is immune.",
+		name: "Snipe Reader",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTryHit(pokemon) {
+			// will shatter screens through sub, before you hit
+			if (pokemon.runImmunity('Steel')) {
+				pokemon.side.removeSideCondition('reflect');
+				pokemon.side.removeSideCondition('lightscreen');
+				pokemon.side.removeSideCondition('auroraveil');
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
+	chocolategift: {
+		num: 1016.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Heals the opponent by 30% of their max HP, but heals the user by 70%.",
+		shortDesc: "Heals user by 70%, target by 30%.",
+		name: "Chocolate Gift",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove(move, pokemon, target) {
+			move.heal = [3, 10];
+		},
+		secondary: null,
+		heal: [7, 10],
+		target: "normal",
+		type: "Normal",
+		contestType: "Cute",
+	},
 };
