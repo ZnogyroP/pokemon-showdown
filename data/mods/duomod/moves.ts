@@ -21460,6 +21460,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else {
 				target.trySetStatus('tox', source);
 			}
+		},
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setTerrain('grassyterrain');
@@ -21468,6 +21470,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else {
 				this.field.setTerrain('mistyterrain');
 			}
+		},
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.field.setWeather('sunnyday');
@@ -21476,6 +21480,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else {
 				this.field.setWeather('sandstorm');
 			}
+		},
+		onHit(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				this.damage(target.baseMaxhp / 100, target, target);
