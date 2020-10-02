@@ -21173,7 +21173,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		sideCondition: 'Dewy Flowers',
 		condition: {
 			onStart(side) {
-				this.add('-sidestart', pokemon, 'Dewy Flowers');
+				this.add('-sidestart', side, 'Dewy Flowers');
 			},
 			onResidualOrder: 6,
 			onResidual(pokemon) {
