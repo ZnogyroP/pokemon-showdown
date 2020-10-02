@@ -21497,7 +21497,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {recharge: 1, protect: 1, mirror: 1},
 		volatileStatus: 'mustrecharge',
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) return;
+			if (!target || target.fainted || target.hp <= 0) return null;
 				this.add('-start', pokemon, 'mustrecharge');
 		},
 		secondary: null,
