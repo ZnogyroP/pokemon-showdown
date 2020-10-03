@@ -21982,15 +21982,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 90,
 		basePower: 100,
 		category: "Physical",
-		desc: "This move's type depends on the user's secondary type.",
-		shortDesc: "Type varies based on the user's secondary type.",
+		desc: "This move's type depends on the user's first moveslot.",
+		shortDesc: "Type varies based on the user's first moveslot.",
 		name: "Adaptive Claw",
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1},
 		onModifyType(move, pokemon) {
-			let type = pokemon.types[2];
-			if (type === "Bird") type = "???";
+			const type = this.dex.getMove(target.moveSlots[0].id).type;
 			move.type = type;
 		},
 		secondary: null,
