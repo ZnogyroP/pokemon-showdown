@@ -21836,14 +21836,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		desc: "If the current weather is Rain, this move has its priority increased by 1.",
-		shortDesc: "User on Rain: +1 priority.",
+		desc: "If the target is Poisoned, this move has its priority increased by 1.",
+		shortDesc: "Target if Poisoned: +1 priority.",
 		name: "Rancid Rush",
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mystery: 1},
 		onModifyPriority(priority, source, target, move) {
-			if (target.status == 'tox') {
+			if (target.status === 'psn' || target.status === 'tox') {
 				return priority + 1;
 			}
 		},
