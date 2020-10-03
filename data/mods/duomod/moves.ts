@@ -21813,7 +21813,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-singleturn', pokemon, 'move: Ancient Script');
 			},
 			onHit(pokemon, source, move) {
-				if (move.category !== 'Status' && move.type !== 'Grass') {
+				if (move.category !== 'Status') {
 
 				},
 			},
