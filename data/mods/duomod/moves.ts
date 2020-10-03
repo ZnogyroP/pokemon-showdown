@@ -21799,21 +21799,21 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: -3,
 		flags: {contact: 1, protect: 1, punch: 1},
 		beforeTurnCallback(pokemon) {
-			pokemon.addVolatile('ancientscript');
+			pokemon.addVolatile('focuspunch');
 		},
 		beforeMoveCallback(pokemon) {
-			if (pokemon.volatiles['ancientscript'] && pokemon.volatiles['ancientscript'].lostFocus) {
-				this.add('cant', pokemon, 'ancientscript', 'Ancient Script');
+			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
+				this.add('cant', pokemon, 'focuspunch', 'Focus Punch');
 				return true;
 			}
 		},
 		condition: {
 			duration: 1,
 			onStart(pokemon) {
-				this.add('-singleturn', pokemon, 'move: Ancient Script');
+				this.add('-singleturn', pokemon, 'move: Focus Punch');
 			},
 			onHit(pokemon, source, move) {
-				if (move.category !== 'Status') {
+				if (move.category !== 'Status' && move.type !== 'Grass') {
 
 				},
 			},
