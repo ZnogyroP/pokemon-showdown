@@ -378,6 +378,7 @@ deliriophage: {learnset: {
 	flashcannon: ["7L1"],
 	gearup: ["7L1"],
 	inferiorityburst: ["7L1"],
+	injection: ["7L1"],
 	kinesis: ["7L1"],
 	knockoff: ["7L1"],
 	rapidspin: ["7L1"],
