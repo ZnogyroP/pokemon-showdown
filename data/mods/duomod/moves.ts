@@ -21966,6 +21966,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'desolateland':
 			case 'sandstorm':
 				return this.chainModify(2);
+			this.hint("It worked.");
 				break;
 			}
 		},
