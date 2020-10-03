@@ -21578,7 +21578,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBasePower(basePower, pokemon) {
-			if (pokemon.status !=='tox') {
+			if (pokemon.status !== 'tox') {
 				return false;
 			}
 		},
