@@ -22101,7 +22101,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {basePower: 120},
 		maxMove: {basePower: 140},
 	},
-	pursuit: {
+	nothingpersonnel: {
 		num: 1036.1,
 		accuracy: 100,
 		basePower: 80,
