@@ -21570,7 +21570,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	toxictantrum: {
 		num: 1018.1,
 		accuracy: 100,
-		basePower: 140,
+		basePower: 120,
 		category: "Special",
 		shortDesc: "Only works if the user is badly poisoned.",
 		name: "Toxic Tantrum",
@@ -21843,7 +21843,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mystery: 1},
 		onModifyPriority(priority, source, target, move) {
-			if (target.status !=='tox') {
+			if (target.status =='tox') {
 				return priority + 1;
 			}
 		},
