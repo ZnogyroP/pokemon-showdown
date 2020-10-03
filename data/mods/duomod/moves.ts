@@ -21821,7 +21821,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					spa: 2,
 					spd: 2,
 					spe: 2,
-				},
+				}},
 				}
 			},
 		},
