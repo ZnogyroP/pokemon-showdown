@@ -21964,20 +21964,38 @@ export const Moves: {[moveid: string]: MoveData} = {
 			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 				return this.chainModify(2);
-				this.hint("It worked.");
 				break;
 			case 'desolateland':
 				return this.chainModify(2);
-				this.hint("It worked.");
 				break;
 			case 'sandstorm':
 				return this.chainModify(2);
-				this.hint("It worked.");
 				break;
 			}
 		},
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
+	},
+	adaptiveclaw: {
+		num: 1031.1,
+		accuracy: 90,
+		basePower: 100,
+		category: "Physical",
+		desc: "This move's type depends on the user's secondary type.",
+		shortDesc: "Type varies based on the user's secondary type.",
+		name: "Adaptive Claw",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		onModifyType(move, pokemon) {
+			let type = pokemon.types[1];
+			if (type === "Bird") type = "???";
+			move.type = type;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		contestType: "Beautiful",
 	},
 };
