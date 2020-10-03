@@ -22324,7 +22324,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness(typeMod, target, type) {
 			if (type === 'Water') return 1;
-					this.hint("YOU JUST GOT BAITED, IDIOT!");
+			if (type === 'Water') this.hint("YOU JUST GOT BAITED IDIOT LMAOOOOOOOOOOOOOOOOOO");
 		},
 		target: "normal",
 		type: "Ground",
@@ -22363,46 +22363,37 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {spa: 1}},
 		contestType: "Cute",
 	},
-	reassemble: {
+	yolkblast: {
 		num: 1045.1,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		shortDesc: "User changes form; clears terrain and hazards on both sides.",
-		name: "Reassemble",
-		pp: 15,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode, this move fails, and receiving the effect through Baton Pass ends the effect immediately.",
+		shortDesc: "Nullifies the target's Ability.",
+		name: "Yolk Blast",
+		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, authentic: 1},
-		onHit(target, source, move) {
-			if (pokemon.species.name !=== 'Egg-Cracked') {
-				this.add('-fail', pokemon, 'move: Reassemble', '[forme]');},
-			let success = false;
-			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
-			const removeAll = [
-				'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge', 'dewyflowers',
+		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
+		volatileStatus: 'gastroacid',
+		onTryHit(pokemon) {
+			const bannedAbilities = [
+				'battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'zenmode', 'fragile',
 			];
-			for (const targetCondition of removeTarget) {
-				if (target.side.removeSideCondition(targetCondition)) {
-					if (!removeAll.includes(targetCondition)) continue;
-					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Reassemble', '[of] ' + source);
-					success = true;
-				}
-			},
-			for (const sideCondition of removeAll) {
-				if (source.side.removeSideCondition(sideCondition)) {
-					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Reassemble', '[of] ' + source);
-					success = true;
-				}
-			},
-			if (success === true) {
-				const speciesid = pokemon.species.id === 'egg';
-				pokemon.formeChange(speciesid, this.effect, true);
+			if (bannedAbilities.includes(pokemon.ability)) {
+				return false;
+			}
+		},
+		condition: {
+			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
+			onStart(pokemon) {
+				this.add('-endability', pokemon);
+				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'yolkblast');
 			},
 		},
 		secondary: null,
-		target: "allySide",
+		target: "normal",
 		type: "Normal",
-		zMove: {boost: {accuracy: 1}},
-		contestType: "Cool",
+		zMove: {boost: {spe: 1}},
+		contestType: "Tough",
 	},
 };

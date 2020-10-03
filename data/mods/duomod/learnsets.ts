@@ -462,11 +462,11 @@ egg: {learnset: {
 	hydropump: ["7L1"],
 	hypervoice: ["7L1"],
 	lastresort: ["7L1"],
-	reassemble: ["7L1"],
 	shellsmash: ["7L1"],
 	surf: ["7L1"],
 	taunt: ["7L1"],
 	waterfall: ["7L1"],
+	yolkblast: ["7L1"],
 }},
 falkick: {learnset: {
 	aircutter: ["7L1"],
