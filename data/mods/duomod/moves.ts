@@ -22386,13 +22386,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (!removeAll.includes(targetCondition)) continue;
 					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Reassemble', '[of] ' + source);
 					success = true;
-				}
+				};
 			}
 			for (const sideCondition of removeAll) {
 				if (source.side.removeSideCondition(sideCondition)) {
 					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Reassemble', '[of] ' + source);
 					success = true;
-				}
+				};
 			}
 			if (success === true) {
 				const speciesid = pokemon.species.id === 'egg';
