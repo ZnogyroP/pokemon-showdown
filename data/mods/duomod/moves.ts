@@ -21989,7 +21989,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1},
 		onModifyType(move, pokemon) {
-			let type = newType;
+			let type = pokemon.types[2];
 			if (type === "Bird") type = "???";
 			move.type = type;
 		},
