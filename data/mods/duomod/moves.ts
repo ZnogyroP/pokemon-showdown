@@ -22042,4 +22042,39 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Beautiful",
 	},
+	justiceslash: {
+		num: 1034.1,
+		accuracy: 100,
+		basePower: 150,
+		category: "Physical",
+		shortDesc: "The user only attacks the target if attacked on that turn.",
+		name: "Justice Slash",
+		pp: 20,
+		priority: -3,
+		flags: {contact: 1, protect: 1, punch: 1},
+		beforeTurnCallback(pokemon) {
+			pokemon.addVolatile('focuspunch');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
+				this.add('cant', pokemon, 'Focus Punch', 'Focus Punch');
+				return true;
+			}
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Focus Punch');
+			},
+			onHit(pokemon, source, move) {
+				if (move.category !== 'Status') {
+					pokemon.volatiles['focuspunch'].lostFocus = false;
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Tough",
+	},
 };

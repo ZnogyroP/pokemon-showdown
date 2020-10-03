@@ -863,6 +863,7 @@ valianch: {learnset: {
 	gigadrain: ["7L1"],
 	grassyglide: ["7L1"],
 	dewyflowers: ["7L1"],
+	justiceslash: ["7L1"],
 	knockoff: ["7L1"],
 	reducingpunch: ["7L1"],
 	leafage: ["7L1"],
