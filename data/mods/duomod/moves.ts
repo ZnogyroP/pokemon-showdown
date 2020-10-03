@@ -21799,11 +21799,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: -3,
 		flags: {contact: 1, protect: 1, punch: 1},
 		beforeTurnCallback(pokemon) {
-			pokemon.addVolatile('focuspunch');
+			pokemon.addVolatile('ancientscript');
 		},
 		beforeMoveCallback(pokemon) {
-			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
-				this.add('cant', pokemon, 'Focus Punch', 'Focus Punch');
+			if (pokemon.volatiles['ancientscript'] && pokemon.volatiles['ancientscript'].lostFocus) {
+				this.add('cant', pokemon, 'Ancient Script', 'Ancient Script');
 				return true;
 			}
 		},
