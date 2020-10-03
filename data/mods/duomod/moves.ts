@@ -22375,7 +22375,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, authentic: 1},
 		onHit(target, source, move) {
 			if (pokemon.species.name !=== 'Egg-Cracked') {
-				this.add('-fail', pokemon, 'move: Reassemble', '[forme]');}
+				this.add('-fail', pokemon, 'move: Reassemble', '[forme]');},
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
 			const removeAll = [
@@ -22386,14 +22386,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (!removeAll.includes(targetCondition)) continue;
 					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Reassemble', '[of] ' + source);
 					success = true;
-				};
-			}
+				}
+			},
 			for (const sideCondition of removeAll) {
 				if (source.side.removeSideCondition(sideCondition)) {
 					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Reassemble', '[of] ' + source);
 					success = true;
-				};
-			}
+				}
+			},
 			if (success === true) {
 				const speciesid = pokemon.species.id === 'egg';
 				pokemon.formeChange(speciesid, this.effect, true);
