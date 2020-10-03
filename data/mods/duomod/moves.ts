@@ -21578,7 +21578,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBasePower(basePower, pokemon) {
-			if (pokmemon.status !=='tox') {
+			if (pokemon.status !=='tox') {
 				return false;
 			}
 		},
@@ -21843,7 +21843,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mystery: 1},
 		onModifyPriority(priority, source, target, move) {
-			if (this.field.isWeather('rain')) {
+			if (target.status !=='tox') {
 				return priority + 1;
 			}
 		},
