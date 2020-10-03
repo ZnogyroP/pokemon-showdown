@@ -21804,7 +21804,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		beforeMoveCallback(pokemon) {
 			if (pokemon.volatiles['ancientscript'] && pokemon.volatiles['ancientscript'].lostFocus) {
 				this.add('cant', pokemon, 'Ancient Script', 'Ancient Script');
-				return true;
+				return false;
 			}
 		},
 		condition: {
