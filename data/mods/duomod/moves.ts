@@ -21544,7 +21544,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			move.heal = [3, 10];
 		},
 		secondary: null,
-		heal: [7, 10],
+		self: {
+		heal: [7, 10] },
 		target: "normal",
 		type: "Normal",
 		contestType: "Cute",
