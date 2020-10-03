@@ -22068,7 +22068,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				pokemon.volatiles['justiceslash'].lostFocus = false;
 			},
 			onHit(pokemon, source, move) {
-				if (move.category !== 'Status'){
+				if (move.category == 'Status'){
 					pokemon.volatiles['justiceslash'].lostFocus = true;
 				}
 			},
