@@ -21997,4 +21997,49 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		contestType: "Beautiful",
 	},
+	sharkpunch: {
+		num: 1032.1,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		desc: "Has a 30% chance to confuse the target.",
+		shortDesc: "30% chance to confuse the target.",
+		name: "Shark Punch",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+		secondary: {
+			chance: 30,
+			volatileStatus: 'confusion',
+		},
+		target: "normal",
+		type: "Water",
+		contestType: "Cool",
+	},
+	clearbeam: {
+		num: 1033.1,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		shortDesc: "Does not factor type effectiveness.",
+		name: "Clear Beam",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Normal') return 1;
+			if (type === 'Grass') return 1;
+			if (type === 'Fire') return 1;
+			if (type === 'Water') return 1;
+			if (type === 'Electric') return 1;
+			if (type === 'Flying') return 1;
+			if (type === 'Ground') return 1;
+			if (type === 'Dragon') return 1;
+			if (type === 'Fairy') return 1;
+			if (type === 'Steel') return 1;
+		},
+		target: "normal",
+		type: "Steel",
+		contestType: "Beautiful",
+	},
 };

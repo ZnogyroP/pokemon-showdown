@@ -794,6 +794,7 @@ sharmpedo: {learnset: {
 }},
 spirox: {learnset: {
 	calmmind: ["7L1"],
+	clearbeam: ["7L1"],
 	dazzlinggleam: ["7L1"],
 	destructiveblow: ["7L1"],
 	flashcannon: ["7L1"],
