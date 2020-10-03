@@ -535,6 +535,7 @@ flamepion: {learnset: {
 	zenheadbutt: ["7L1"],
 }},
 floundrawn: {learnset: {
+	ancientscript: ["7L1"],
 	bubblebeam: ["7L1"],
 	bulldoze: ["7L1"],
 	calmmind: ["7L1"],
@@ -543,7 +544,7 @@ floundrawn: {learnset: {
 	hydropump: ["7L1"],
 	icebeam: ["7L1"],
 	recover: ["7L1"],
-  refresh: ["7L1"],
+  	refresh: ["7L1"],
 	scald: ["7L1"],
 	scorchingsands: ["7L1"],
 	stealthrock: ["7L1"],

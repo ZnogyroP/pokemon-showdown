@@ -18526,7 +18526,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: null,
 		target: "normal",
-		type: "Dark",
+		type: "Normal",
 		contestType: "Clever",
 	},
 	sunnyday: {
@@ -19101,7 +19101,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: null,
 		target: "normal",
-		type: "Dark",
+		type: "Normal",
 		zMove: {boost: {atk: 1}},
 		contestType: "Clever",
 	},
@@ -21658,5 +21658,176 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		zMove: {effect: 'heal'},
 		contestType: "Clever",
+	},
+	wrapshock: {
+		num: 1022.1,
+		accuracy: 94,
+		basePower: 54,
+		category: "Physical",
+		desc: "For its next 3 turns, the target is forced to repeat its last move used. If the affected move runs out of PP, the effect ends. Fails if the target is already under this effect, if it has not made a move, if the move has 0 PP, if the move is Assist, Copycat, Encore, Me First, Metronome, Mimic, Mirror Move, Nature Power, Sketch, Sleep Talk, Struggle, or Transform, or if the target is Dynamaxed.",
+		shortDesc: "Target repeats its last move for its next 3 turns.",
+		name: "Wrap Shock",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'encore',
+		condition: {
+			duration: 3,
+			noCopy: true, // doesn't get copied by Z-Baton Pass
+			onStart(target) {
+				const noEncore = [
+					'assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform',
+				];
+				let move: Move | ActiveMove | null = target.lastMove;
+				if (!move || target.volatiles['dynamax']) return false;
+
+				if (move.isMax && move.baseMove) move = this.dex.getMove(move.baseMove);
+				const moveIndex = target.moves.indexOf(move.id);
+				if (move.isZ || noEncore.includes(move.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
+					// it failed
+					return false;
+				}
+				this.effectData.move = move.id;
+				this.add('-start', target, 'Encore');
+				if (!this.queue.willMove(target)) {
+					this.effectData.duration++;
+				}
+			},
+			onOverrideAction(pokemon, target, move) {
+				if (move.id !== this.effectData.move) return this.effectData.move;
+			},
+			onResidualOrder: 13,
+			onResidual(target) {
+				if (target.moves.includes(this.effectData.move) &&
+					target.moveSlots[target.moves.indexOf(this.effectData.move)].pp <= 0) {
+					// early termination if you run out of PP
+					target.removeVolatile('encore');
+				}
+			},
+			onEnd(target) {
+				this.add('-end', target, 'Encore');
+			},
+			onDisableMove(pokemon) {
+				if (!this.effectData.move || !pokemon.hasMove(this.effectData.move)) {
+					return;
+				}
+				for (const moveSlot of pokemon.moveSlots) {
+					if (moveSlot.id !== this.effectData.move) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		zMove: {boost: {spe: 1}},
+		contestType: "Cute",
+	},
+	spinningblades: {
+		num: 1023.1,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		shortDesc: "Switches the user out and starts Tailwind for 4 turns.",
+		name: "Spinning Blades",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1},
+		sideCondition: 'tailwind',
+		condition: {
+			duration: 4,
+			durationCallback(target, source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 6;
+				}
+				return 4;
+			},
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Tailwind');
+			},
+			onModifySpe(spe, pokemon) {
+				return this.chainModify(2);
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 4,
+			onEnd(side) {
+				this.add('-sideend', side, 'move: Tailwind');
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Flying",
+		zMove: {effect: 'crit2'},
+		contestType: "Cool",
+	},
+	grassypalm: {
+		num: 1024.1,
+		accuracy: 100,
+		basePower: 86,
+		category: "Physical",
+		desc: "Fails if the target did not select a physical attack, special attack, or Me First for use this turn, or if the target moves before the user.",
+		shortDesc: "Usually goes first. Fails if target is not attacking.",
+		name: "Grassy Palm",
+		pp: 5,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTry(source, target) {
+			const action = this.queue.willMove(target);
+			const move = action?.choice === 'move' ? action.move : null;
+			if (!move || (move.category === 'Status' && move.id !== 'mefirst') || target.volatiles.mustrecharge) {
+				this.add('-fail', source);
+				this.attrLastMove('[still]');
+				return null;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Clever",
+	},
+	ancientscript: {
+		num: 1025.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user tightens its focus. If the opponent attacks the user with a Grass-type move on that turn, the user will gain +2 in all stats.",
+		shortDesc: "If target hits user with Grass-move while focusing, the user gains +2 in all stats.",
+		name: "Ancient Script",
+		pp: 20,
+		priority: -3,
+		flags: {contact: 1, protect: 1, punch: 1},
+		beforeTurnCallback(pokemon) {
+			pokemon.addVolatile('ancientscript');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.volatiles['ancientscript'] && pokemon.volatiles['ancientscript'].lostFocus) {
+				this.add('cant', pokemon, 'ancientscript', 'Ancient Script');
+				return true;
+			}
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Ancient Script');
+			},
+			onHit(pokemon, source, move) {
+				if (move.category !== 'Status' && move.type !== 'Grass') {
+					pokemon.volatiles['focuspunch'].lostFocus = true;
+					else {boosts: {
+					atk: 2,
+					def: 2,
+					spa: 2,
+					spd: 2,
+					spe: 2,
+				},
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Ground",
+		contestType: "Tough",
 	},
 };
