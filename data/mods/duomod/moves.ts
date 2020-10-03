@@ -22065,11 +22065,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 			duration: 1,
 			onStart(pokemon) {
 				this.add('-singleturn', pokemon, 'move: Focus Punch');
-				pokemon.volatiles['justiceslash'].lostFocus = false;
+				pokemon.volatiles['justiceslash'].lostFocus = true;
 			},
 			onHit(pokemon, source, move) {
-				if (move.category == 'Status'){
-					pokemon.volatiles['justiceslash'].lostFocus = true;
+				if (move.category !== 'Status'){
+					pokemon.volatiles['justiceslash'].lostFocus = false;
 				}
 			},
 		},
