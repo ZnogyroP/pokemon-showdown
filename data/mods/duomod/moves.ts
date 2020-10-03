@@ -22078,4 +22078,33 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Grass",
 		contestType: "Tough",
 	},
+	flavorblast: {
+		num: 1035.1,
+		accuracy: 100,
+		basePower: 25,
+		onModifyType(move, pokemon) {
+			if (move.hit === 1)
+				move.type = 'Normal';
+			if (move.hit === 2)
+				move.type = 'Grass';
+			if (move.hit === 3)
+				move.type = 'Ground';
+			if (move.hit === 4)
+				move.type = 'Water';
+		},
+		category: "Special",
+		desc: "Hits 4 times. The first hit is Normal-type, the second is Grass-type, the third is Ground-type, and the fourth is Water-type.",
+		shortDesc: "Hits 4 times. Each hit has a different type.",
+		name: "Flavor Blast",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 4,
+		multiaccuracy: true,
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {basePower: 120},
+		maxMove: {basePower: 140},
+	},
 };

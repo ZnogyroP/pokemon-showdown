@@ -14,6 +14,7 @@ arachwich: {learnset: {
 	aircutter: ["7L1"],
 	bulldoze: ["7L1"],
 	earthpower: ["7L1"],
+	flavorblast: ["7L1"],
 	gigadrain: ["7L1"],
 	grassyglide: ["7L1"],
 	dewyflowers: ["7L1"],
