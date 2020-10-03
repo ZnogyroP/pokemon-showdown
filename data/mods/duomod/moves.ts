@@ -22083,11 +22083,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 25,
 		onModifyType(move, pokemon) {
-			if (move.hit === 1) {
+			if (hitcount === 1) {
 				move.type = 'Normal';}
-			else if (move.hit === 2) {
+			else if (hitcount === 2) {
 				move.type = 'Grass';}
-			else if (move.hit === 3) {
+			else if (hitcount === 3) {
 				move.type = 'Ground';}
 			else {
 				move.type = 'Water';}
