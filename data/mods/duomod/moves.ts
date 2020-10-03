@@ -22082,29 +22082,90 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 1035.1,
 		accuracy: 100,
 		basePower: 25,
-		onModifyType(move, pokemon) {
-			if (hitcount === 1) {
-				move.type = 'Normal';}
-			else if (hitcount === 2) {
-				move.type = 'Grass';}
-			else if (hitcount === 3) {
-				move.type = 'Ground';}
-			else {
-				move.type = 'Water';}
-		},
 		category: "Special",
-		desc: "Hits 4 times. The first hit is Normal-type, the second is Grass-type, the third is Ground-type, and the fourth is Water-type.",
-		shortDesc: "Hits 4 times. Each hit has a different type.",
+		desc: "Hits 4 times. Raises the target's Defense by 1 and lowers their Speed by 1.",
+		shortDesc: "Hits 4 times. +1 Def, -1 Speed.",
 		name: "Flavor Blast",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		multihit: 4,
 		multiaccuracy: true,
+		boosts: {
+			def: 1,
+			spe: -1,
+		},
 		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Grass",
 		zMove: {basePower: 120},
 		maxMove: {basePower: 140},
+	},
+	pursuit: {
+		num: 1036.1,
+		accuracy: 100,
+		basePower: 80,
+		basePowerCallback(pokemon, target, move) {
+			// You can't get here unless the pursuit succeeds
+			if (target.beingCalledBack) {
+				this.debug('Nothing Personnel damage boost');
+				return move.basePower * 1;
+			}
+			return move.basePower;
+		},
+		category: "Physical",
+		shortDesc: "psssh...nothin personnel...kid...",
+		name: "Nothing Personnel",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		beforeTurnCallback(pokemon) {
+			for (const side of this.sides) {
+				if (side === pokemon.side) continue;
+				side.addSideCondition('nothingpersonnel', pokemon);
+				const data = side.getSideConditionData('nothingpersonnel');
+				if (!data.sources) {
+					data.sources = [];
+				}
+				data.sources.push(pokemon);
+			}
+		},
+		onModifyMove(move, source, target) {
+			if (target?.beingCalledBack) move.accuracy = true;
+		},
+		onTryHit(target, pokemon) {
+			target.side.removeSideCondition('nothingpersonnel');
+		},
+		condition: {
+			duration: 1,
+			onBeforeSwitchOut(pokemon) {
+				this.debug('Nothing Personnel start');
+				let alreadyAdded = false;
+				pokemon.removeVolatile('destinybond');
+				for (const source of this.effectData.sources) {
+					if (!this.queue.cancelMove(source) || !source.hp) continue;
+					if (!alreadyAdded) {
+						this.add('-activate', pokemon, 'move: Nothing Personnel');
+						alreadyAdded = true;
+					}
+					// Run through each action in queue to check if the Pursuit user is supposed to Mega Evolve this turn.
+					// If it is, then Mega Evolve before moving.
+					if (source.canMegaEvo || source.canUltraBurst) {
+						for (const [actionIndex, action] of this.queue.entries()) {
+							if (action.pokemon === source && action.choice === 'megaEvo') {
+								this.runMegaEvo(source);
+								this.queue.list.splice(actionIndex, 1);
+								break;
+							}
+						}
+					}
+					this.runMove('nothingpersonnel', source, this.getTargetLoc(pokemon, source));
+				}
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		contestType: "Clever",
 	},
 };

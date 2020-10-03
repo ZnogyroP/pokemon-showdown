@@ -162,6 +162,7 @@ blaydge: {learnset: {
 	grasspledge: ["7L1"],
 	heatedblade: ["7L1"],
 	leafblade: ["7L1"],
+	nothingpersonnel: ["7L1"],
 	precipiceblades: ["7L1"],
 	sacredsword: ["7L1"],
 	secretsword: ["7L1"],
