@@ -21820,8 +21820,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 					def: 2,
 					spa: 2,
 					spd: 2,
-					spe: 2,
-				}}
+					spe: 2
+				},},
 				},
 			},
 		},
