@@ -21989,7 +21989,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1},
 		onModifyType(move, pokemon) {
-			const type = this.dex.getMove(target.moveSlots[0].id).type;
+			const type = this.dex.getMove(pokemon.moveSlots[0].id).type;
 			move.type = type;
 		},
 		secondary: null,
