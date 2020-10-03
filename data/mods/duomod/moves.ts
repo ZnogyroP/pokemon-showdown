@@ -21836,15 +21836,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		desc: "If the target is Poisoned, this move has its priority increased by 1.",
-		shortDesc: "Target if Poisoned: +1 priority.",
+		desc: "Power doubles if the target is poisoned.",
+		shortDesc: "Power doubles if the target is poisoned.",
 		name: "Rancid Rush",
-		pp: 20,
+		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mystery: 1},
-		onModifyPriority(priority, source, target, move) {
+		flags: {protect: 1, mirror: 1},
+		onBasePower(basePower, pokemon, target) {
 			if (target.status === 'psn' || target.status === 'tox') {
-				return priority + 1;
+				return this.chainModify(2);
 			}
 		},
 		secondary: null,
@@ -21852,5 +21852,125 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Water",
 		contestType: "Cool",
 	},
-
+	suckerchop: {
+		num: 1027.1,
+		accuracy: 85,
+		basePower: 75,
+		category: "Physical",
+		desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a major status condition nor confusion. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power has a 30% chance to lower Special Attack by 1 stage. Fails if the current terrain is Misty Terrain.",
+		shortDesc: "5 turns. Can't status,-Dragon power vs grounded.",
+		name: "Sucker Chop",
+		pp: 10,
+		priority: 0,
+		flags: {nonsky: 1},
+		terrain: 'mistyterrain',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasItem('terrainextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onSetStatus(status, target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (effect && ((effect as Move).status || effect.id === 'yawn')) {
+					this.add('-activate', target, 'move: Misty Terrain');
+				}
+				return false;
+			},
+			onTryAddVolatile(status, target, source, effect) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (status.id === 'confusion') {
+					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Misty Terrain');
+					return null;
+				}
+			},
+			onBasePowerPriority: 6,
+			onBasePower(basePower, attacker, defender, move) {
+				if (move.type === 'Dragon' && defender.isGrounded() && !defender.isSemiInvulnerable()) {
+					this.debug('misty terrain weaken');
+					return this.chainModify(0.5);
+				}
+			},
+			onStart(battle, source, effect) {
+				if (effect?.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Misty Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Misty Terrain');
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd(side) {
+				this.add('-fieldend', 'Misty Terrain');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Normal",
+		zMove: {boost: {spd: 1}},
+		contestType: "Beautiful",
+	},
+	voltattack: {
+		num: 1028.1,
+		accuracy: 100,
+		basePower: 108,
+		category: "Physical",
+		desc: "Has a 50% chance to lower the target's Defense by 1 stage.",
+		shortDesc: "50% chance to lower the target's Defense by 1.",
+		name: "Volt Attack",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 50,
+			boosts: {
+				def: -1,
+			},
+		},
+		target: "normal",
+		type: "Electric",
+		contestType: "Cute",
+	},
+	spiritsteal: {
+		num: 1029.1,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		desc: "The user recovers 3/4 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User recovers 75% of the damage dealt.",
+		name: "Spirit Steal",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		drain: [3, 4],
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		contestType: "Cute",
+	},
+	stratusshock: {
+		num: 1030.1,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		shortDesc: "Doubles damage if any weather but Rain is active.",
+		name: "Stratus Shock",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyPower(move, pokemon, target) {
+			switch (target.effectiveWeather()) {
+			case 'sunnyday':
+			case 'desolateland':
+			case 'sandstorm':
+				return this.chainModify(2);
+				break;
+			}
+		},
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
 };
