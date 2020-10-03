@@ -22053,11 +22053,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: -3,
 		flags: {contact: 1, protect: 1, punch: 1},
 		beforeTurnCallback(pokemon) {
-			pokemon.addVolatile('ancientscript');
+			pokemon.addVolatile('justiceslash');
 		},
 		beforeMoveCallback(pokemon) {
-			if (pokemon.volatiles['ancientscript'] && pokemon.volatiles['ancientscript'].lostFocus) {
-				this.add('cant', pokemon, 'Ancient Script', 'Ancient Script');
+			if (pokemon.volatiles['justiceslash'] && pokemon.volatiles['justiceslash'].lostFocus) {
+				this.add('cant', pokemon, 'Justice Slash', 'Justice Slash');
 				return true;
 			}
 		},
@@ -22065,11 +22065,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 			duration: 1,
 			onStart(pokemon) {
 				this.add('-singleturn', pokemon, 'move: Focus Punch');
-				pokemon.volatiles['ancientscript'].lostFocus = true;
+				pokemon.volatiles['justiceslash'].lostFocus = false;
 			},
 			onHit(pokemon, source, move) {
-				if (move.category == 'Status'){
-					pokemon.volatiles['ancientscript'].lostFocus = false;
+				if (move.category !== 'Status'){
+					pokemon.volatiles['justiceslash'].lostFocus = true;
 				}
 			},
 		},
