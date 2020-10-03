@@ -21450,7 +21450,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyHit(target, source) {
+		onStart(target, source) {
 			const result = this.random(3);
 			if (result === 0) {
 				target.trySetStatus('brn', source);
