@@ -21961,7 +21961,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onModifyPower(move, pokemon, target) {
-			switch (target.effectiveWeather()) {
+			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 				return this.chainModify(2);
 				this.hint("It worked.");
