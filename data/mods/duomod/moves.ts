@@ -17581,12 +17581,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.effectData.layers = 1;
 			},
 			onRestart(side) {
-				if (this.effectData.layers >= 3) return false;
+				if (this.effectData.layers >= 1) return false;
 				this.add('-sidestart', side, 'Spikes');
 				this.effectData.layers++;
 			},
 			onSwitchIn(pokemon) {
-				if (!pokemon.isGrounded()) return;
 				if (pokemon.hasItem('heavydutyboots')) return;
 				const damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4
 				this.damage(damageAmounts[this.effectData.layers] * pokemon.maxhp / 24);
@@ -17594,7 +17593,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: null,
 		target: "foeSide",
-		type: "Ground",
+		type: "Normal",
 		zMove: {boost: {def: 1}},
 		contestType: "Clever",
 	},
@@ -22334,7 +22333,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 1044.1,
 		accuracy: 100,
 		basePower: 110,
-		category: "Physical",
+		category: "Special",
 		desc: "Causes the target's Ability to become Lightningrod. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant, Zen Mode, or Fragile.",
 		shortDesc: "The target's Ability becomes Lightningrod.",
 		name: "Outburst",
