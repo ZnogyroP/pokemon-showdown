@@ -21757,7 +21757,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 		},
 		secondary: null,
-		target: "allySide",
+		target: "normal",
 		type: "Flying",
 		zMove: {effect: 'crit2'},
 		contestType: "Cool",
@@ -21787,47 +21787,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Grass",
 		contestType: "Clever",
 	},
-	ancientscript: {
-		num: 1025.1,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		desc: "The user tightens its focus. If the opponent attacks the user with a Grass-type move on that turn, the user will gain +2 in all stats.",
-		shortDesc: "If target hits user with Grass-move while focusing, the user gains +2 in all stats.",
-		name: "Ancient Script",
-		pp: 20,
-		priority: -3,
-		flags: {contact: 1, protect: 1, punch: 1},
-		beforeTurnCallback(pokemon) {
-			pokemon.addVolatile('focuspunch');
-		},
-		beforeMoveCallback(pokemon) {
-			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
-				this.add('cant', pokemon, 'focuspunch', 'Focus Punch');
-				return true;
-			}
-		},
-		condition: {
-			duration: 1,
-			onStart(pokemon) {
-				this.add('-singleturn', pokemon, 'move: Focus Punch');
-			},
-			onHit(pokemon, source, move) {
-				if (move.category !== 'Status' && move.type !== 'Grass') {
 
-				},
-			},
-		},
-		secondary: null,
-		target: "self",
-		boosts: {
-			atk: 2,
-			def: 2,
-			spa: 2,
-			spd: 2,
-			spe: 2
-		},
-		type: "Ground",
-		contestType: "Tough",
-	},
 };
