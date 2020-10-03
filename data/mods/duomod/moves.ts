@@ -21843,7 +21843,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mystery: 1},
 		onModifyPriority(priority, source, target, move) {
-			if (target.status =='tox') {
+			if (target.status == 'tox') {
 				return priority + 1;
 			}
 		},
