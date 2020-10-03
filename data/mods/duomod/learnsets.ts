@@ -742,6 +742,7 @@ mortemoth: {learnset: {
 	taunt: ["7L1"],
 }},
 pterrost: {learnset: {
+	adaptiveclaw: ["7L1"],
 	aircutter: ["7L1"],
 	defog: ["7L1"],
 	hyperspeed: ["7L1"],
