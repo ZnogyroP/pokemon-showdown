@@ -22083,14 +22083,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 25,
 		onModifyType(move, pokemon) {
-			if (move.hit === 1)
-				move.type = 'Normal';
-			if (move.hit === 2)
-				move.type = 'Grass';
-			if (move.hit === 3)
-				move.type = 'Ground';
-			if (move.hit === 4)
-				move.type = 'Water';
+			if (move.hit === 1) {
+				move.type = 'Normal';}
+			else if (move.hit === 2) {
+				move.type = 'Grass';}
+			else if (move.hit === 3) {
+				move.type = 'Ground';}
+			else {
+				move.type = 'Water';}
 		},
 		category: "Special",
 		desc: "Hits 4 times. The first hit is Normal-type, the second is Grass-type, the third is Ground-type, and the fourth is Water-type.",
