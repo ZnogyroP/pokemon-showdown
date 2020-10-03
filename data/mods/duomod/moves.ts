@@ -21813,7 +21813,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-singleturn', pokemon, 'move: Focus Punch');
 			},
 			onHit(pokemon, source, move) {
-				if (move.type !== 'Grass' && move.category !== 'Status') {
+				if (move.type !== 'Grass' || move.category !== 'Status') {
 					pokemon.volatiles['ancientscript'].lostFocus = true;
 				}
 			},
@@ -21826,7 +21826,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			spd: 2,
 			spe: 2
 		},
-		target: "normal",
+		target: "self",
 		type: "Ground",
 		contestType: "Tough",
 	},
