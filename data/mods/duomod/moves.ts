@@ -21550,4 +21550,113 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		contestType: "Cute",
 	},
+	frenzyweb: {
+		num: 1017.1,
+		accuracy: 100,
+		basePower: 59,
+		category: "Physical",
+		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User recovers 50% of the damage dealt.",
+		name: "Frenzy Web",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, heal: 1},
+		drain: [1, 2],
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Clever",
+	},
+	toxictantrum: {
+		num: 1018.1,
+		accuracy: 100,
+		basePower: 140,
+		category: "Special",
+		shortDesc: "Only works if the user is badly poisoned.",
+		name: "Toxic Tantrum",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onBasePower(basePower, pokemon) {
+			if (pokmemon.status !=='tox') {
+				return false;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Cute",
+	},
+	mattantrum: {
+		num: 1019.1,
+		accuracy: 100,
+		basePower: 101,
+		category: "Physical",
+		desc: "If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+		shortDesc: "User is hurt by 50% of its max HP if it misses.",
+		name: "Mat Tantrum",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1},
+		hasCrashDamage: true,
+		onMoveFail(target, source, move) {
+			this.damage(source.baseMaxhp / 2, source, source, this.dex.getEffect('Mat Tantrum'));
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	rocksplosion: {
+		num: 1020.1,
+		accuracy: 100,
+		basePower: 250,
+		category: "Special",
+		desc: "The user sets Stealth Rock faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+		shortDesc: "Hits adjacent Pokemon and sets Stealth Rock. The user faints.",
+		name: "Rocksplosion",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		sideCondition: 'stealthrock',
+		condition: {
+			// this is a side condition
+			onStart(side) {
+				this.add('-sidestart', side, 'move: Stealth Rock');
+			},
+			onSwitchIn(pokemon) {
+				if (!pokemon.isGrounded()) return;
+				if (pokemon.hasItem('heavydutyboots')) return;
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthrock')), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		selfdestruct: "always",
+		secondary: null,
+		target: "allAdjacent",
+		type: "Normal",
+		contestType: "Beautiful",
+	},
+	injection: {
+		num: 1021.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The target transforms into the user. The target's current stats, stat stages, types, moves, Ability, weight, gender, and sprite are copied. The user's level and HP remain the same and each copied move receives only 5 PP, with a maximum of 5 PP each. This move fails if it hits a substitute, if either the user or the target is already transformed, or if either is behind an Illusion.",
+		shortDesc: "Target copies user's stats, moves, types, and Ability.",
+		name: "Injection",
+		pp: 10,
+		priority: -6,
+		flags: {mystery: 1},
+		onHit(target, pokemon) {
+			if (!target.transformInto(pokemon)) {
+				return false;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {effect: 'heal'},
+		contestType: "Clever",
+	},
 };
