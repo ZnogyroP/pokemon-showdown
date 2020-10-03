@@ -22027,16 +22027,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness(typeMod, target, type) {
-			if (type === 'Normal') return 1;
-			if (type === 'Grass') return 1;
-			if (type === 'Fire') return 1;
-			if (type === 'Water') return 1;
-			if (type === 'Electric') return 1;
-			if (type === 'Flying') return 1;
-			if (type === 'Ground') return 1;
-			if (type === 'Dragon') return 1;
-			if (type === 'Fairy') return 1;
-			if (type === 'Steel') return 1;
+			if (type === 'Normal') return 0;
+			if (type === 'Grass') return 0;
+			if (type === 'Fire') return 0;
+			if (type === 'Water') return 0;
+			if (type === 'Electric') return 0;
+			if (type === 'Flying') return 0;
+			if (type === 'Ground') return 0;
+			if (type === 'Dragon') return 0;
+			if (type === 'Fairy') return 0;
+			if (type === 'Steel') return 0;
 		},
 		target: "normal",
 		type: "Steel",
