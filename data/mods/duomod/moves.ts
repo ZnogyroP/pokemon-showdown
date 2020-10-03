@@ -21814,19 +21814,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onHit(pokemon, source, move) {
 				if (move.category !== 'Status' && move.type !== 'Grass') {
-					pokemon.volatiles['focuspunch'].lostFocus = true;
-					else {boosts: {
-					atk: 2,
-					def: 2,
-					spa: 2,
-					spd: 2,
-					spe: 2
-				},},
+
 				},
 			},
 		},
 		secondary: null,
 		target: "self",
+		boosts: {
+			atk: 2,
+			def: 2,
+			spa: 2,
+			spd: 2,
+			spe: 2
+		},
 		type: "Ground",
 		contestType: "Tough",
 	},
