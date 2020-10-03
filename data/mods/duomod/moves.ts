@@ -21963,10 +21963,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onModifyPower(move, pokemon, target) {
 			switch (target.effectiveWeather()) {
 			case 'sunnyday':
+				return this.chainModify(2);
+				this.hint("It worked.");
+				break;
 			case 'desolateland':
+				return this.chainModify(2);
+				this.hint("It worked.");
+				break;
 			case 'sandstorm':
 				return this.chainModify(2);
-			this.hint("It worked.");
+				this.hint("It worked.");
 				break;
 			}
 		},
