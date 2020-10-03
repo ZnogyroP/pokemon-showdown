@@ -9197,7 +9197,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return;
 			}
 			this.hint("Only a Pokemon whose form is Hoopa Unbound can use this move.");
-			if (pokemon.species.name === 'Hoopa') {
+			if (pokemon.species.name !=== 'Hoopa') {
 				this.add('-fail', pokemon, 'move: Hyperspace Fury', '[forme]');
 				return null;
 			}
@@ -16460,7 +16460,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		desc: "Causes the target's Ability to become Simple. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant, or Zen Mode.",
+		desc: "Causes the target's Ability to become Simple. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant, Zen Mode, or Fragile.",
 		shortDesc: "The target's Ability becomes Simple.",
 		name: "Simple Beam",
 		pp: 15,
@@ -22167,5 +22167,242 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Electric",
 		contestType: "Clever",
+	},
+	foamclaws: {
+		num: 1037.1,
+		accuracy: 99,
+		basePower: 45,
+		category: "Physical",
+		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
+		shortDesc: "Hits 2 times in one turn.",
+		name: "Foam Claws",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		multihit: 2,
+		secondary: null,
+		target: "normal",
+		type: "Water",
+		zMove: {basePower: 180},
+		maxMove: {basePower: 130},
+		contestType: "Clever",
+	},
+	causticfluid: {
+		num: 1038.1,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		desc: "Has a 30% chance to badly poison the target.",
+		shortDesc: "30% chance to badly poison the target.",
+		name: "Caustic Fluid",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 30,
+			status: 'tox',
+		},
+		target: "normal",
+		type: "Steel",
+		contestType: "Tough",
+	},
+	breakingstone: {
+		num: 1039.1,
+		accuracy: 100,
+		basePower: 50,
+		category: "Physical",
+		desc: "Has a 100% chance to lower the target's Sp.Atk by 1 stage.",
+		shortDesc: "100% chance to lower the target's Sp.Atk by 1.",
+		name: "Rock Tomb",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			boosts: {
+				spa: -1,
+			},
+		},
+		target: "normal",
+		type: "Ground",
+		contestType: "Clever",
+	},
+	starstrike: {
+		num: 1040.1,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		desc: "If the current weather is Sun, this move has its priority increased by 1.",
+		shortDesc: "+1 priority in Sun.",
+		name: "Starstrike",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mystery: 1},
+		onModifyPriority(priority, source, target, move) {
+			if (this.field.isWeather('sunnyday')) {
+				return priority + 1;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},
+	soulslash: {
+		num: 1041.1,
+		accuracy: 80,
+		basePower: 110,
+		category: "Physical",
+		desc: "Power is multiplied by 8 if the target has less than or equal to a third of its maximum HP remaining.",
+		shortDesc: "Power multiplies by 8 if the target's HP is 33% or less.",
+		name: "Soul Slash",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1 protect: 1, mirror: 1},
+		onBasePower(basePower, pokemon, target) {
+			if (target.hp * 3 <= target.maxhp) {
+				return this.chainModify(8);
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		contestType: "Tough",
+	},
+	chargegem: {
+		num: 106,
+		accuracy: 100,
+		basePower: 40,
+		category: "Special",
+		desc: "Raises the user's Defense by 1 stage.",
+		shortDesc: "Raises the user's Defense by 1.",
+		name: "Charge Gem",
+		pp: 40,
+		priority: 0,
+		flags: {protect: 1},
+		boosts: {
+			def: 1,
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		zMove: {boost: {def: 1}},
+		contestType: "Tough",
+	},
+	shadowswipe: {
+		num: 1042.1,
+		accuracy: 100,
+		basePower: 89,
+		category: "Physical",
+		desc: "If the user has not fainted, the target is cured of its burn.",
+		shortDesc: "The target is cured of its burn.",
+		name: "Shadow Swipe",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		secondary: {
+			dustproof: true,
+			chance: 100,
+			onHit(target) {
+				if (target.status === 'brn') target.cureStatus();
+			},
+		},
+		target: "allAdjacent",
+		type: "Flying",
+		contestType: "Tough",
+	},
+	getbaitedidiot: {
+		num: 1043.1,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		desc: "This move's type effectiveness against Water is changed to be super effective no matter what this move's type is.",
+		shortDesc: "10% chance to freeze. Super effective on Water.",
+		name: "GET BAITED IDIOT",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Water') return 1;
+					this.hint("YOU JUST GOT BAITED, IDIOT!");
+		},
+		target: "normal",
+		type: "Ground",
+		contestType: "Beautiful",
+	},
+	outburst: {
+		num: 1044.1,
+		accuracy: 100,
+		basePower: 110,
+		category: "Physical",
+		desc: "Causes the target's Ability to become Lightningrod. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant, Zen Mode, or Fragile.",
+		shortDesc: "The target's Ability becomes Lightningrod.",
+		name: "Outburst",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		onTryHit(pokemon) {
+			const bannedAbilities = [
+				'battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'simple', 'stancechange', 'truant', 'zenmode', 'fragile',
+			];
+			if (bannedAbilities.includes(pokemon.ability)) {
+				return false;
+			}
+		},
+		onHit(pokemon) {
+			const oldAbility = pokemon.setAbility('lightningrod');
+			if (oldAbility) {
+				this.add('-ability', pokemon, 'Lightningrod', '[from] move: Outburst');
+				return;
+			}
+			return false;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		zMove: {boost: {spa: 1}},
+		contestType: "Cute",
+	},
+	reassemble: {
+		num: 1045.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "User changes form; clears terrain and hazards on both sides.",
+		name: "Reassemble",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, authentic: 1},
+		onHit(target, source, move) {
+			if (pokemon.species.name !=== 'Egg-Cracked') {
+				this.add('-fail', pokemon, 'move: Reassemble', '[forme]');}
+			let success = false;
+			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
+			const removeAll = [
+				'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge', 'dewyflowers',
+			];
+			for (const targetCondition of removeTarget) {
+				if (target.side.removeSideCondition(targetCondition)) {
+					if (!removeAll.includes(targetCondition)) continue;
+					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Reassemble', '[of] ' + source);
+					success = true;
+				}
+			}
+			for (const sideCondition of removeAll) {
+				if (source.side.removeSideCondition(sideCondition)) {
+					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Reassemble', '[of] ' + source);
+					success = true;
+				}
+			}
+			if (success === true) {
+				const speciesid = pokemon.species.id === 'egg';
+				pokemon.formeChange(speciesid, this.effect, true);
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Normal",
+		zMove: {boost: {accuracy: 1}},
+		contestType: "Cool",
 	},
 };
