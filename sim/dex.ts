@@ -28,6 +28,19 @@
  * @license MIT license
  */
 
+// eslint-disable-next-line no-extend-native
+Object.defineProperty(Array.prototype, 'flatMap', {
+	value<T, U, W>(this: T[], callback: (this: W, item: T, index: number, array: T[]) => U[], thisArg: W): U[] {
+		const newArray = [];
+		for (let i = 0; i < this.length; i++) {
+			newArray.push(...callback.call(thisArg, this[i], i, this));
+		}
+		return newArray;
+	},
+	configurable: true,
+	writable: true,
+});
+
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -39,8 +52,7 @@ const BASE_MOD = 'gen8' as ID;
 const DEFAULT_MOD = BASE_MOD;
 const DATA_DIR = path.resolve(__dirname, '../.data-dist');
 const MODS_DIR = path.resolve(__dirname, '../.data-dist/mods');
-const MAIN_FORMATS = path.resolve(__dirname, '../.config-dist/formats');
-const CUSTOM_FORMATS = path.resolve(__dirname, '../.config-dist/custom-formats');
+const FORMATS = path.resolve(__dirname, '../.config-dist/formats');
 
 const dexes: {[mod: string]: ModdedDex} = Object.create(null);
 
@@ -90,12 +102,6 @@ interface DexTableData {
 	Conditions: DexTable<EffectData>;
 	TypeChart: DexTable<TypeData>;
 }
-interface TextTableData {
-	Abilities: AnyObject;
-	Items: AnyObject;
-	Moves: AnyObject;
-	Pokedex: AnyObject;
-}
 
 const Natures: {[k: string]: Nature} = {
 	adamant: {name: "Adamant", plus: 'atk', minus: 'spa'},
@@ -126,62 +132,6 @@ const Natures: {[k: string]: Nature} = {
 };
 export const toID = Data.toID;
 
-// function for merging the two lists
-function mergeFormats(main: FormatList, custom: FormatList | undefined): FormatList {
-	// interface for the builder.
-	interface FormatSection {
-		section: string;
-		column?: number;
-		formats: FormatData[];
-	}
-
-	// result that is return and makes the actual list for formats.
-	const result: FormatList = [];
-
-	// used as a intermediary to build the final list.
-	const build: FormatSection[] = [];
-
-	// used to track current section to keep formats under their sections.
-	let current: FormatSection | undefined = {section: "", formats: []};
-
-	// populates the original sections and formats easily
-	// there should be no repeat sections at this point.
-	for (const element of main) {
-		if (element.section) {
-			current = {section: element.section, column: element.column, formats: []};
-			build.push(current);
-		} else if ((element as FormatData).name) {
-			current.formats.push((element as FormatData));
-		}
-	}
-
-	// merges the second list the hard way. Accounts for repeats.
-	if (custom !== undefined) {
-		for (const element of custom) {
-			// finds the section and makes it if it doesn't exist.
-			if (element.section) {
-				current = build.find(e => e.section === element.section);
-
-				// if it's new it makes a new entry.
-				if (current === undefined) {
-					current = {section: element.section, column: element.column, formats: []};
-					build.push(current);
-				}
-			} else if ((element as FormatData).name) { // otherwise, adds the element to its section.
-				current.formats.push(element as FormatData);
-			}
-		}
-	}
-
-	// builds the final result.
-	for (const element of build) {
-		// adds the section to the list.
-		result.push({section: element.section, column: element.column}, ...element.formats);
-	}
-
-	return result;
-}
-
 export class ModdedDex {
 	readonly Data: typeof Data;
 	readonly ModdedDex: typeof ModdedDex;
@@ -205,7 +155,6 @@ export class ModdedDex {
 	modsLoaded: boolean;
 
 	dataCache: DexTableData | null;
-	textCache: TextTableData | null;
 	formatsCache: DexTable<Format> | null;
 
 	deepClone = Utils.deepClone;
@@ -233,7 +182,6 @@ export class ModdedDex {
 		this.modsLoaded = false;
 
 		this.dataCache = null;
-		this.textCache = null;
 		this.formatsCache = null;
 
 		if (!isOriginal) {
@@ -524,35 +472,6 @@ export class ModdedDex {
 		return learnsetData;
 	}
 
-	getDescs(table: keyof TextTableData, id: ID, dataEntry: AnyObject) {
-		if (dataEntry.shortDesc) {
-			return {
-				desc: dataEntry.desc,
-				shortDesc: dataEntry.shortDesc,
-			};
-		}
-		const entry = this.loadTextData()[table][id];
-		if (!entry) return null;
-		const descs = {
-			desc: '',
-			shortDesc: '',
-		};
-		for (let i = this.gen; i < dexes['base'].gen; i++) {
-			const curDesc = entry[`descGen${i}`];
-			const curShortDesc = entry[`shortDescGen${i}`];
-			if (!descs.desc && curDesc) {
-				descs.desc = curDesc;
-			}
-			if (!descs.shortDesc && curShortDesc) {
-				descs.shortDesc = curShortDesc;
-			}
-			if (descs.desc && descs.shortDesc) break;
-		}
-		if (!descs.shortDesc) descs.shortDesc = entry.shortDesc || '';
-		if (!descs.desc) descs.desc = entry.desc || descs.shortDesc;
-		return descs;
-	}
-
 	getMove(name?: string | Move): Move {
 		if (name && typeof name !== 'string') return name;
 
@@ -571,9 +490,7 @@ export class ModdedDex {
 			id = /([a-z]*)([0-9]*)/.exec(id)![1] as ID;
 		}
 		if (id && this.data.Moves.hasOwnProperty(id)) {
-			const moveData = this.data.Moves[id];
-			const moveTextData = this.getDescs('Moves', id, moveData);
-			move = new Data.Move({name}, moveData, moveTextData);
+			move = new Data.Move({name}, this.data.Moves[id]);
 			if (move.gen > this.gen) {
 				(move as any).isNonstandard = 'Future';
 			}
@@ -623,7 +540,8 @@ export class ModdedDex {
 		}
 		if (effect) {
 			this.effectCache.set(id, effect);
-			return effect as Condition;
+			// @ts-ignore
+			return effect;
 		}
 		return this.getEffectByID(id, effect);
 	}
@@ -737,9 +655,7 @@ export class ModdedDex {
 			return item;
 		}
 		if (id && this.data.Items.hasOwnProperty(id)) {
-			const itemData = this.data.Items[id];
-			const itemTextData = this.getDescs('Items', id, itemData);
-			item = new Data.Item({name}, itemData, itemTextData);
+			item = new Data.Item({name}, this.data.Items[id]);
 			if (item.gen > this.gen) {
 				(item as any).isNonstandard = 'Future';
 			}
@@ -769,9 +685,7 @@ export class ModdedDex {
 			return ability;
 		}
 		if (id && this.data.Abilities.hasOwnProperty(id)) {
-			const abilityData = this.data.Abilities[id];
-			const abilityTextData = this.getDescs('Abilities', id, abilityData);
-			ability = new Data.Ability({name}, abilityData, abilityTextData);
+			ability = new Data.Ability({name}, this.data.Abilities[id]);
 			if (ability.gen > this.gen) {
 				(ability as any).isNonstandard = 'Future';
 			}
@@ -826,6 +740,17 @@ export class ModdedDex {
 		if (!nature.gen) nature.gen = 3;
 
 		return nature;
+	}
+
+	getAwakeningValues(set: PokemonSet, statName?: string) {
+		if (typeof statName === 'string') statName = toID(statName);
+		const avs: StatsTable = {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0};
+		let ev: keyof StatsTable;
+		for (ev in set.evs) {
+			avs[ev] = set.evs[ev];
+		}
+		if (typeof statName === 'string' && statName in avs) return avs[statName as keyof StatsTable];
+		return avs;
 	}
 
 	/** Given a table of base stats and a pokemon set, return the actual stats. */
@@ -1145,6 +1070,7 @@ export class ModdedDex {
 	}
 
 	getTeamGenerator(format: Format | string, seed: PRNG | PRNGSeed | null = null) {
+		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const TeamGenerator = require(dexes['base'].forFormat(format).dataDir + '/random-teams').default;
 		return new TeamGenerator(format, seed);
 	}
@@ -1430,31 +1356,27 @@ export class ModdedDex {
 	/**
 	* Use instead of Dex.packTeam to generate more human-readable team output.
 	*/
-	stringifyTeam(team: PokemonSet[], nicknames?: string[], hideStats?: boolean) {
+	stringifyTeam(team: PokemonSet[], nicknames?: string[]) {
 		let output = '';
 		for (const [i, mon] of team.entries()) {
 			const species = Dex.getSpecies(mon.species);
-			const nickname = nicknames?.[i];
-			output += nickname && nickname !== species.name ? `${nickname} (${species.name})` : species.name;
-			output += mon.item ? ` @ ${Dex.getItem(mon.item).name}<br />` : `<br />`;
-			output += `Ability: ${Dex.getAbility(mon.ability).name}<br />`;
-			if (typeof mon.happiness === 'number' && mon.happiness !== 255) output += `Happiness: ${mon.happiness}<br />`;
-			if (mon.gigantamax) output += `Gigantamax: Yes<br />`;
-			if (!hideStats) {
-				const evs = [];
-				for (const stat in mon.evs) {
-					if (mon.evs[stat as StatName]) evs.push(`${mon.evs[stat as StatName]} ${stat}`);
-				}
-				if (evs.length) output += `EVs: ${evs.join(' / ')}<br />`;
-				if (mon.nature) output += `${this.getNature(mon.nature).name} Nature<br />`;
-				const ivs = [];
-				for (const stat in mon.ivs) {
-					if (mon.ivs[stat as StatName] !== 31) ivs.push(`${mon.ivs[stat as StatName]} ${stat}`);
-				}
-				if (ivs.length) output += `IVs: ${ivs.join(' / ')}<br />`;
+			output += nicknames ? `${nicknames?.[i]} (${species.name})` : species.name;
+			output += ` @ ${Dex.getItem(mon.item).name}<br/>`;
+			output += `Ability: ${Dex.getAbility(mon.ability).name}<br/>`;
+			if (typeof mon.happiness === 'number' && mon.happiness !== 255) output += `Happiness: ${mon.happiness}<br/>`;
+			const evs = [];
+			for (const stat in mon.evs) {
+				if (mon.evs[stat as StatName]) evs.push(`${mon.evs[stat as StatName]} ${stat}`);
 			}
-			output += mon.moves.map(move => `- ${Dex.getMove(move).name}<br />`).join('');
-			output += '<br />';
+			if (evs.length) output += `EVs: ${evs.join(' / ')}<br/>`;
+			if (mon.nature) output += `${this.getNature(mon.nature).name} Nature<br/>`;
+			const ivs = [];
+			for (const stat in mon.ivs) {
+				if (mon.ivs[stat as StatName] !== 31) ivs.push(`${mon.ivs[stat as StatName]} ${stat}`);
+			}
+			if (ivs.length) output += `IVs: ${ivs.join(' / ')}<br/>`;
+			output += mon.moves.map(move => `- ${Dex.getMove(move).name}<br/>`).join('');
+			output += '<br/>';
 		}
 		return output;
 	}
@@ -1462,6 +1384,7 @@ export class ModdedDex {
 	loadDataFile(basePath: string, dataType: DataType | 'Aliases'): AnyObject {
 		try {
 			const filePath = basePath + DATA_FILES[dataType];
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const dataObject = require(filePath);
 			if (!dataObject || typeof dataObject !== 'object') {
 				throw new TypeError(`${filePath}, if it exists, must export a non-null object`);
@@ -1476,10 +1399,6 @@ export class ModdedDex {
 			}
 		}
 		return {};
-	}
-
-	loadTextFile(name: string, exportName: string): AnyObject {
-		return require(`${DATA_DIR}/text/${name}`)[exportName];
 	}
 
 	includeMods(): ModdedDex {
@@ -1504,17 +1423,6 @@ export class ModdedDex {
 	includeData(): ModdedDex {
 		this.loadData();
 		return this;
-	}
-
-	loadTextData() {
-		if (dexes['base'].textCache) return dexes['base'].textCache;
-		dexes['base'].textCache = {
-			Pokedex: this.loadTextFile('pokedex', 'PokedexText'),
-			Moves: this.loadTextFile('moves', 'MovesText'),
-			Abilities: this.loadTextFile('abilities', 'AbilitiesText'),
-			Items: this.loadTextFile('items', 'ItemsText'),
-		};
-		return dexes['base'].textCache;
 	}
 
 	loadData(): DexTableData {
@@ -1601,17 +1509,9 @@ export class ModdedDex {
 		if (!this.formatsCache) this.formatsCache = {};
 
 		// Load formats
-		let Formats: any;
-		let customFormats;
+		let Formats;
 		try {
-			customFormats = require(CUSTOM_FORMATS).Formats;
-		} catch (e) {
-			if (e.code !== 'MODULE_NOT_FOUND' && e.code !== 'ENOENT') {
-				throw e;
-			}
-		}
-		try {
-			Formats = mergeFormats(require(MAIN_FORMATS).Formats, customFormats);
+			Formats = require(FORMATS).Formats;
 		} catch (e) {
 			if (e.code !== 'MODULE_NOT_FOUND' && e.code !== 'ENOENT') {
 				throw e;

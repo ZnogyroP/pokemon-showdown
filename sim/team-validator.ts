@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Team Validator
  * Pokemon Showdown - http://pokemonshowdown.com/
  *

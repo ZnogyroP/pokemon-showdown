@@ -4,8 +4,7 @@
  *
  * @license MIT
  */
-import {Dex} from './dex';
-global.toID = Dex.getId;
+import {Dex, toID} from './dex';
 import * as Data from './dex-data';
 import {Field} from './field';
 import {Pokemon, EffectState, RESTORATIVE_BERRIES} from './pokemon';
@@ -14,10 +13,6 @@ import {Side} from './side';
 import {State} from './state';
 import {BattleQueue, Action} from './battle-queue';
 import {Utils} from '../lib/utils';
-
-//#region TrashChannel
-import {BattleFormats} from '../.data-dist/rulesets';
-//#endregion
 
 /** A Pokemon that has fainted. */
 interface FaintedPokemon {
@@ -143,8 +138,11 @@ export class Battle {
 
 	trunc: (num: number, bits?: number) => number;
 	clampIntRange: (num: any, min?: number, max?: number) => number;
-
+	toID = toID;
 	constructor(options: BattleOptions) {
+		this.log = [];
+		this.add('t:', Math.floor(Date.now() / 1000));
+
 		const format = options.format || Dex.getFormat(options.formatid, true);
 		this.format = format;
 		this.dex = Dex.forFormat(format);
@@ -178,7 +176,6 @@ export class Battle {
 		this.queue = new BattleQueue(this);
 		this.faintQueue = [];
 
-		this.log = [];
 		this.inputLog = [];
 		this.messageLog = [];
 		this.sentLogPos = 0;
@@ -237,8 +234,6 @@ export class Battle {
 		}
 		this.inputLog.push(`>start ` + JSON.stringify(inputOptions));
 
-		// FIXME: May not be necessary anymore
-		//for (const rule of this.getRuleTable(format).keys()) {
 		for (const rule of this.ruleTable.keys()) {
 			if (rule.startsWith('+') || rule.startsWith('-') || rule.startsWith('!')) continue;
 			const subFormat = this.dex.getFormat(rule);
@@ -248,16 +243,6 @@ export class Battle {
 				);
 				if (hasEventHandler) this.field.addPseudoWeather(rule);
 			}
-
-			//#region TrashChannel
-			const eventRule = BattleFormats[rule];
-			if(eventRule) {
-				const hasEventHandler = Object.keys(eventRule).some(val =>
-					val.startsWith('on') && !['onBegin', 'onValidateTeam', 'onChangeSet', 'onValidateSet'].includes(val)
-				);
-				if (hasEventHandler) this.field.addPseudoWeather(rule);
-			}
-			//#endregion
 		}
 		const sides: SideID[] = ['p1', 'p2', 'p3', 'p4'];
 		for (const side of sides) {
@@ -500,12 +485,6 @@ export class Battle {
 		this.effect = parentEffect;
 		this.effectData = parentEffectData;
 		this.event = parentEvent;
-
-		//#region TrashChannel
-		// 20/07/23: For Live and Learn
-		//if (effect) console.log( 'runsingle: effectType：' +　effect.effectType + ', id: ' + effect.id + ', sourceEffect: ' + effect.sourceEffect );
-		if (this.doOnRunSingleEvent) this.doOnRunSingleEvent(eventid, effect, effectData, target, source, sourceEffect, relayVar);
-		//#endregion
 
 		return returnVal === undefined ? relayVar : returnVal;
 	}
@@ -773,11 +752,6 @@ export class Battle {
 					args[0] = relayVar;
 				}
 			}
-
-			//#region TrashChannel
-			// 20/07/23: For Live and Learn
-			if (this.doOnRunEvent) this.doOnRunEvent(eventid, target, source, sourceEffect, relayVar, onEffect, fastExit);
-			//#endregion
 		}
 
 		this.eventDepth--;
@@ -1459,6 +1433,7 @@ export class Battle {
 				}
 				this.runEvent('DisableMove', pokemon);
 				if (!pokemon.ateBerry) pokemon.disableMove('belch');
+				if (!pokemon.getItem().isBerry) pokemon.disableMove('stuffcheeks');
 
 				// If it was an illusion, it's not any more
 				if (pokemon.getLastAttackedBy() && this.gen >= 7) pokemon.knownType = true;
@@ -1524,9 +1499,8 @@ export class Battle {
 				if (pokemon.fainted) continue;
 
 				sideTrapped = sideTrapped && pokemon.trapped;
-				if (pokemon.staleness) {
-					sideStaleness = sideStaleness === 'external' ? sideStaleness : pokemon.staleness;
-				}
+				const staleness = pokemon.volatileStaleness || pokemon.staleness;
+				if (staleness) sideStaleness = sideStaleness === 'external' ? sideStaleness : staleness;
 				pokemon.activeTurns++;
 			}
 			trappedBySide.push(sideTrapped);
@@ -1581,7 +1555,7 @@ export class Battle {
 			const side = this.sides[i];
 
 			for (const pokemon of side.pokemon) {
-				if (!pokemon.fainted && !pokemon.staleness) {
+				if (!pokemon.fainted && !(pokemon.volatileStaleness || pokemon.staleness)) {
 					canSwitch[i] = true;
 					break;
 				}
@@ -2241,7 +2215,7 @@ export class Battle {
 		// Final modifier. Modifiers that modify damage after min damage check, such as Life Orb.
 		baseDamage = this.runEvent('ModifyDamage', pokemon, target, move, baseDamage);
 
-		if ((move.isZOrMaxPowered || move.isZOrMaxPowered) && target.getMoveHitData(move).zBrokeProtect) {
+		if (move.isZOrMaxPowered && target.getMoveHitData(move).zBrokeProtect) {
 			baseDamage = this.modify(baseDamage, 0.25);
 			this.add('-zbroken', target);
 		}
@@ -2447,32 +2421,6 @@ export class Battle {
 			team1PokemonLeft = this.sides.reduce((total, side) => total + (side.n % 2 === 0 ? side.pokemonLeft : 0), 0);
 			team2PokemonLeft = this.sides.reduce((total, side) => total + (side.n % 2 === 1 ? side.pokemonLeft : 0), 0);
 		}
-		//#region TrashChannel
-		const format = Dex.getFormat(this.format, true);
-		let ruleTable = this.dex.getRuleTable(format);
-		if(ruleTable.has('suicidecupbattleeffects')) {
-			if (!team1PokemonLeft && !team2PokemonLeft && !team3PokemonLeft && !team4PokemonLeft) {
-				this.win(faintData ? faintData.target.side.foe : null);
-				return true;
-			}
-			if (!team2PokemonLeft && !team3PokemonLeft && !team4PokemonLeft) {
-				this.win(this.sides[0].foe);
-				return true;
-			}
-			if (!team1PokemonLeft && !team3PokemonLeft && !team4PokemonLeft) {
-				this.win(this.sides[1].foe);
-				return true;
-			}
-			if (!team1PokemonLeft && !team2PokemonLeft && !team4PokemonLeft) {
-				this.win(this.sides[2].foe);
-				return true;
-			}
-			if (!team1PokemonLeft && !team2PokemonLeft && !team3PokemonLeft) {
-				this.win(this.sides[3].foe);
-				return true;
-			}
-		}
-		//#endregion
 		if (!team1PokemonLeft && !team2PokemonLeft && !team3PokemonLeft && !team4PokemonLeft) {
 			this.win(faintData && this.gen > 4 ? faintData.target.side : null);
 			return true;
@@ -2754,6 +2702,7 @@ export class Battle {
 
 	go() {
 		this.add('');
+		this.add('t:', Math.floor(Date.now() / 1000));
 		if (this.requestState) this.requestState = '';
 
 		if (!this.midTurn) {
@@ -2882,27 +2831,6 @@ export class Battle {
 	}
 
 	add(...parts: (Part | (() => {side: SideID, secret: string, shared: string}))[]) {
-		//#region TrashChannel
-		// 20/07/23: For Live and Learn
-		//console.log("Adding: " + parts.toString());
-		if (this.doOnShowAbility) {
-			for (const part of parts) {
-				if (typeof part === 'string') {
-					//console.log("part: " + part);
-					const abilityPrefix = '[from] ability: ';
-					if (part.startsWith(abilityPrefix)) {
-						const abilityName = part.slice(abilityPrefix.length);
-						//console.log("abilityName: " + abilityName);
-						this.doOnShowAbility(abilityName);
-					}
-					else {
-						this.doOnShowAbility(part);
-					}
-				}
-			}
-		}
-		//#endregion
-
 		if (!parts.some(part => typeof part === 'function')) {
 			this.log.push(`|${parts.join('|')}`);
 			return;
@@ -3307,7 +3235,7 @@ export class Battle {
 			}
 		}
 		for (const action of this.queue.list) {
-			delete action.pokemon;
+			delete (action as any).pokemon;
 		}
 
 		this.queue.battle = null!;
