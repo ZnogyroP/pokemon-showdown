@@ -1856,7 +1856,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 75,
 		category: "Special",
-		shortDesc: "Lowers the target's SpDef by 1.",
+		shortDesc: "Lowers the target's Speed by 1.",
 		name: "Bubble Beam",
 		pp: 20,
 		priority: 0,
@@ -1864,7 +1864,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		secondary: {
 			chance: 100,
 			boosts: {
-				spd: -1,
+				spe: -1,
 			},
 		},
 		target: "normal",
@@ -22397,4 +22397,35 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {spe: 1}},
 		contestType: "Tough",
 	},    
+	falconpunch: {
+		num: 1046.1,
+		accuracy: 100,
+		basePower: 180,
+		category: "Physical",
+		desc: "Has a 30% chance to flinch the target and a higher chance for a critical hit. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges, then hits turn 2. 30% flinch. High crit.",
+		name: "Falcon Punch",
+		pp: 1,
+		priority: 0,
+		flags: {charge: 1, protect: 1, mirror: 1, distance: 1},
+		critRatio: 2,
+		onTryMove(attacker, defender, move) {
+			if (attacker.removeVolatile(move.id)) {
+				return;
+			}
+			this.add('-prepare', attacker, move.name);
+			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+				return;
+			}
+			attacker.addVolatile('twoturnmove', defender);
+			return null;
+		},
+		secondary: {
+			chance: 30,
+			volatileStatus: 'flinch',
+		},
+		target: "any",
+		type: "Fire",
+		contestType: "Cool",
+	},
 };

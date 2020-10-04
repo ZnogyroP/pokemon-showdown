@@ -379,7 +379,7 @@ disappearance: {
 	},   
 
 	fragile: {
-		shortDesc: "The user is immune to status and takes 0 damage until it gets hit, when it changes form.",
+		shortDesc: "The user, Egg, transforms when hit.",
 		onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
       if (
@@ -423,5 +423,52 @@ disappearance: {
 		rating: 3.5,
 		num: 23.1,
 	},
-
+	bagoftricks: {
+		shortDesc: "The user and target swap items when the user is sent out.",
+		onTryImmunity(target) {
+			return !target.hasAbility('stickyhold');
+		},
+		onHit(target, source, move) {
+			const yourItem = target.takeItem(source);
+			const myItem = source.takeItem();
+			if (target.item || source.item || (!yourItem && !myItem)) {
+				if (yourItem) target.item = yourItem.id;
+				if (myItem) source.item = myItem.id;
+				return false;
+			}
+			if (
+				(myItem && !this.singleEvent('TakeItem', myItem, source.itemData, target, source, move, myItem)) ||
+				(yourItem && !this.singleEvent('TakeItem', yourItem, target.itemData, source, target, move, yourItem))
+			) {
+				if (yourItem) target.item = yourItem.id;
+				if (myItem) source.item = myItem.id;
+				return false;
+			}
+			this.add('-activate', source, 'move: Trick', '[of] ' + target);
+			if (myItem) {
+				target.setItem(myItem);
+				this.add('-item', target, myItem, '[from] move: Trick');
+			} else {
+				this.add('-enditem', target, yourItem, '[silent]', '[from] move: Trick');
+			}
+			if (yourItem) {
+				source.setItem(yourItem);
+				this.add('-item', source, yourItem, '[from] move: Trick');
+			} else {
+				this.add('-enditem', source, myItem, '[silent]', '[from] move: Trick');
+			}
+		},
+		name: "Bag of Tricks",
+		rating: 3.5,
+		num: 24.1,
+	},
+	slightofhand: {
+		shortDesc: "This Pokemon's punch moves have their priority increased by 1.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.flags['punch']) return priority + 1;
+		},
+		name: "Slight of Hand",
+		rating: 3.5,
+		num: 25.1,
+	},
 };

@@ -403,6 +403,7 @@ exports.autolockdown = true;
  */
 exports.customavatars = {
 	// 'userid': 'customavatar.png'
+	// 'duom2': '88889.png'
 };
 
 /**
