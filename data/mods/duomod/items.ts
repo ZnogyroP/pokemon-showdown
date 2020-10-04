@@ -169,7 +169,7 @@
 		onDamagingHit(damage, target, source, move) {
 			if (target !== source && move.category !== 'Status') {
 				if (target.hasType('Dragon')) {
-					this.boost(atk: 1, spa: 1);
+					this.boost({atk: 1, spa: 1});
 				}
 			}
 		},
@@ -195,7 +195,7 @@
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff' || this.activeMove.id === 'corrosivegas') {
 				this.add('-activate', pokemon, 'item: Bright Jewel');
 				return false;
-				this.damage(source.baseMaxhp / 6, source, target);
+				this.damage(source.baseMaxhp / 6, pokemon, target);
 			}
 			}
 		},
