@@ -430,6 +430,7 @@ disappearance: {
 		},
 		onStart(target, source, move) {
 			const yourItem = target.takeItem(source);
+			if (target === undefined) return;
 			const myItem = source.takeItem();
 			if (target.item || source.item || (!yourItem && !myItem)) {
 				if (yourItem) target.item = yourItem.id;
