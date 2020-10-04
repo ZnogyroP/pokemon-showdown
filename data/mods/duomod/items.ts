@@ -105,7 +105,7 @@
 			basePower: 10,
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (source.hasType('Water')) {
+			if (target.hasType('Water')) {
       if (target.getMoveHitData(move).typeMod < 0) {
 				this.debug('Water Bucket debuff');
 				return this.chainModify(0.5);}
