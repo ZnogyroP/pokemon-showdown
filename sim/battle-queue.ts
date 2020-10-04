@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Simulator Battle Action Queue
  * Pokemon Showdown - http://pokemonshowdown.com/
  *

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Simulator Side
  * Pokemon Showdown - http://pokemonshowdown.com/
  *
@@ -7,7 +7,6 @@
 import {RequestState} from './battle';
 import {Pokemon, EffectState} from './pokemon';
 import {State} from './state';
-import {toID} from './dex';
 
 /** A single action that can be chosen. */
 export interface ChosenAction {
@@ -185,7 +184,7 @@ export class Side {
 	}
 
 	addSideCondition(
-		status: string | Condition, source: Pokemon | 'debug' | null = null, sourceEffect: Effect | null = null
+		status: string | PureEffect, source: Pokemon | 'debug' | null = null, sourceEffect: Effect | null = null
 	): boolean {
 		if (this.n >= 2 && this.battle.gameType === 'multi') {
 			return this.battle.sides[this.n % 2].addSideCondition(status, source, sourceEffect);
@@ -246,7 +245,7 @@ export class Side {
 	}
 
 	addSlotCondition(
-		target: Pokemon | number, status: string | Condition, source: Pokemon | 'debug' | null = null,
+		target: Pokemon | number, status: string | PureEffect, source: Pokemon | 'debug' | null = null,
 		sourceEffect: Effect | null = null
 	) {
 		if (!source && this.battle.event && this.battle.event.target) source = this.battle.event.target;
@@ -509,8 +508,10 @@ export class Side {
 		if (mega && !pokemon.canMegaEvo) {
 			return this.emitChoiceError(`Can't move: ${pokemon.name} can't mega evolve`);
 		}
-		if (mega && this.choice.mega) {
-			return this.emitChoiceError(`Can't move: You can only mega-evolve once per battle`);
+		if ('mixandmega' !== this.battle.currentMod) { // 19/05/06 TrashChannel: Exception for multiple megaevos in single turn for MnM Doubles formats
+			if (mega && this.choice.mega) {
+				return this.emitChoiceError(`Can't move: You can only mega-evolve once per battle`);
+			}
 		}
 		const ultra = (megaDynaOrZ === 'ultra');
 		if (ultra && !pokemon.canUltraBurst) {

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Dex
  * Pokemon Showdown - http://pokemonshowdown.com/
  *
@@ -57,11 +57,11 @@ const FORMATS = path.resolve(__dirname, '../.config-dist/formats');
 const dexes: {[mod: string]: ModdedDex} = Object.create(null);
 
 type DataType =
-	'Abilities' | 'Formats' | 'FormatsData' | 'Items' | 'Learnsets' | 'Moves' |
-	'Natures' | 'Pokedex' | 'Scripts' | 'Conditions' | 'TypeChart';
+	'Abilities' | 'Formats' | 'FormatsData' | 'Items' | 'Learnsets' | 'Movedex' |
+	'Natures' | 'Pokedex' | 'Scripts' | 'Statuses' | 'TypeChart';
 const DATA_TYPES: (DataType | 'Aliases')[] = [
-	'Abilities', 'Formats', 'FormatsData', 'Items', 'Learnsets', 'Moves',
-	'Natures', 'Pokedex', 'Scripts', 'Conditions', 'TypeChart',
+	'Abilities', 'Formats', 'FormatsData', 'Items', 'Learnsets', 'Movedex',
+	'Natures', 'Pokedex', 'Scripts', 'Statuses', 'TypeChart',
 ];
 
 const DATA_FILES = {
@@ -71,15 +71,15 @@ const DATA_FILES = {
 	FormatsData: 'formats-data',
 	Items: 'items',
 	Learnsets: 'learnsets',
-	Moves: 'moves',
+	Movedex: 'moves',
 	Natures: 'natures',
 	Pokedex: 'pokedex',
 	Scripts: 'scripts',
-	Conditions: 'conditions',
+	Statuses: 'statuses',
 	TypeChart: 'typechart',
 };
 
-const nullEffect: Condition = new Data.Condition({name: '', exists: false});
+const nullEffect: PureEffect = new Data.PureEffect({name: '', exists: false});
 
 export interface Nature {
 	name: string;
@@ -95,15 +95,15 @@ interface DexTableData {
 	FormatsData: DexTable<ModdedSpeciesFormatsData>;
 	Items: DexTable<Item>;
 	Learnsets: DexTable<LearnsetData>;
-	Moves: DexTable<Move>;
+	Movedex: DexTable<Move>;
 	Natures: DexTable<Nature>;
 	Pokedex: DexTable<Species>;
 	Scripts: DexTable<AnyObject>;
-	Conditions: DexTable<EffectData>;
+	Statuses: DexTable<EffectData>;
 	TypeChart: DexTable<TypeData>;
 }
 
-const Natures: {[k: string]: Nature} = {
+const BattleNatures: {[k: string]: Nature} = {
 	adamant: {name: "Adamant", plus: 'atk', minus: 'spa'},
 	bashful: {name: "Bashful"},
 	bold: {name: "Bold", plus: 'def', minus: 'atk'},
@@ -130,7 +130,8 @@ const Natures: {[k: string]: Nature} = {
 	serious: {name: "Serious"},
 	timid: {name: "Timid", plus: 'spe', minus: 'atk'},
 };
-export const toID = Data.toID;
+
+const toID = Data.Tools.getId;
 
 export class ModdedDex {
 	readonly Data: typeof Data;
@@ -140,7 +141,8 @@ export class ModdedDex {
 	readonly isBase: boolean;
 	readonly currentMod: string;
 
-	readonly toID: (text: any) => ID;
+	readonly getId: (text: any) => ID;
+	readonly getString: (str: any) => string;
 
 	readonly abilityCache: Map<ID, Ability>;
 	readonly effectCache: Map<ID, Effect | Move>;
@@ -157,8 +159,6 @@ export class ModdedDex {
 	dataCache: DexTableData | null;
 	formatsCache: DexTable<Format> | null;
 
-	deepClone = Utils.deepClone;
-
 	constructor(mod = 'base', isOriginal = false) {
 		this.ModdedDex = ModdedDex;
 		this.Data = Data;
@@ -167,7 +167,8 @@ export class ModdedDex {
 		this.isBase = (mod === 'base');
 		this.currentMod = mod;
 
-		this.toID = toID;
+		this.getId = Data.Tools.getId;
+		this.getString = Data.Tools.getString;
 
 		this.abilityCache = new Map();
 		this.effectCache = new Map();
@@ -239,7 +240,7 @@ export class ModdedDex {
 	modData(dataType: DataType, id: string) {
 		if (this.isBase) return this.data[dataType][id];
 		if (this.data[dataType][id] !== dexes[this.parentMod].data[dataType][id]) return this.data[dataType][id];
-		return (this.data[dataType][id] = Utils.deepClone(this.data[dataType][id]));
+		return (this.data[dataType][id] = this.deepClone(this.data[dataType][id]));
 	}
 
 	effectToString() {
@@ -379,6 +380,7 @@ export class ModdedDex {
 			const formeNames: {[k: string]: string[]} = {
 				alola: ['a', 'alola', 'alolan'],
 				galar: ['g', 'galar', 'galarian'],
+				gmax: ['gigantamax', 'gmax'],
 				mega: ['m', 'mega'],
 				primal: ['p', 'primal'],
 			};
@@ -408,7 +410,7 @@ export class ModdedDex {
 		if (id && this.data.Pokedex.hasOwnProperty(id)) {
 			species = new Data.Species({name}, this.data.Pokedex[id], this.data.FormatsData[id]);
 			// Inherit any statuses from the base species (Arceus, Silvally).
-			const baseSpeciesStatuses = this.data.Conditions[toID(species.baseSpecies)];
+			const baseSpeciesStatuses = this.data.Statuses[toID(species.baseSpecies)];
 			if (baseSpeciesStatuses !== undefined) {
 				let key: keyof EffectData;
 				for (key in baseSpeciesStatuses) {
@@ -449,9 +451,6 @@ export class ModdedDex {
 				if (!isLetsGo) species.isNonstandard = 'Past';
 			}
 			species.nfe = species.evos.length && this.getSpecies(species.evos[0]).gen <= this.gen;
-			species.canHatch = species.canHatch ||
-				(!['Ditto', 'Undiscovered'].includes(species.eggGroups[0]) && !species.prevo && species.name !== 'Manaphy');
-			if (this.gen === 1) species.bst -= species.baseStats.spd;
 		} else {
 			species = new Data.Species({
 				id, name, exists: false, tier: 'Illegal', doublesTier: 'Illegal', isNonstandard: 'Custom',
@@ -489,8 +488,8 @@ export class ModdedDex {
 		if (id.substr(0, 11) === 'hiddenpower') {
 			id = /([a-z]*)([0-9]*)/.exec(id)![1] as ID;
 		}
-		if (id && this.data.Moves.hasOwnProperty(id)) {
-			move = new Data.Move({name}, this.data.Moves[id]);
+		if (id && this.data.Movedex.hasOwnProperty(id)) {
+			move = new Data.Move({name}, this.data.Movedex[id]);
 			if (move.gen > this.gen) {
 				(move as any).isNonstandard = 'Future';
 			}
@@ -522,13 +521,25 @@ export class ModdedDex {
 	 * While this function can technically return any kind of effect at
 	 * all, that's not a feature TypeScript needs to know about.
 	 */
-	getEffect(name?: string | Effect | null): Condition {
+	getEffect(name?: string | Effect | null, recursiveCall: boolean = false): PureEffect {
+		//#region TrashChannel
+		// 20/03/11 TrashChannel: Testing reimplementation of GetEffect override mods
+		if(!recursiveCall) {
+			const basePath = this.dataDir + '/';
+			const BattleScripts = this.loadDataFile(basePath, 'Scripts');
+
+			if (BattleScripts.getEffect) {
+				return BattleScripts.getEffect.call(this, name);
+			}
+		}
+		//#endregion
+
 		if (!name) return nullEffect;
-		if (typeof name !== 'string') return name as Condition;
+		if (typeof name !== 'string') return name as PureEffect;
 
 		const id = toID(name);
 		let effect = this.effectCache.get(id);
-		if (effect) return effect as Condition;
+		if (effect) return effect as PureEffect;
 
 		if (name.startsWith('move:')) {
 			effect = this.getMove(name.slice(5));
@@ -546,33 +557,31 @@ export class ModdedDex {
 		return this.getEffectByID(id, effect);
 	}
 
-	getEffectByID(id: ID, effect?: Effect | Move): Condition {
+	getEffectByID(id: ID, effect?: Effect | Move): PureEffect {
 		if (!id) return nullEffect;
 
 		if (!effect) effect = this.effectCache.get(id);
-		if (effect) return effect as Condition;
+		if (effect) return effect as PureEffect;
 
 		let found;
 		if (this.data.Formats.hasOwnProperty(id)) {
 			effect = new Data.Format({name: id}, this.data.Formats[id]);
-		} else if (this.data.Conditions.hasOwnProperty(id)) {
-			effect = new Data.Condition({name: id}, this.data.Conditions[id]);
-		} else if (
-			(this.data.Moves.hasOwnProperty(id) && (found = this.data.Moves[id]).condition) ||
-			(this.data.Abilities.hasOwnProperty(id) && (found = this.data.Abilities[id]).condition) ||
-			(this.data.Items.hasOwnProperty(id) && (found = this.data.Items[id]).condition)
-		) {
-			effect = new Data.Condition({name: found.name || id}, found.condition!);
+		} else if (this.data.Statuses.hasOwnProperty(id)) {
+			effect = new Data.PureEffect({name: id}, this.data.Statuses[id]);
+		} else if ((this.data.Movedex.hasOwnProperty(id) && (found = this.data.Movedex[id]).effect) ||
+							 (this.data.Abilities.hasOwnProperty(id) && (found = this.data.Abilities[id]).effect) ||
+							 (this.data.Items.hasOwnProperty(id) && (found = this.data.Items[id]).effect)) {
+			effect = new Data.PureEffect({name: found.name || id}, found.effect!);
 		} else if (id === 'recoil') {
-			effect = new Data.Condition({id, name: 'Recoil', effectType: 'Recoil'});
+			effect = new Data.PureEffect({id, name: 'Recoil', effectType: 'Recoil'});
 		} else if (id === 'drain') {
-			effect = new Data.Condition({id, name: 'Drain', effectType: 'Drain'});
+			effect = new Data.PureEffect({id, name: 'Drain', effectType: 'Drain'});
 		} else {
-			effect = new Data.Condition({id, name: id, exists: false});
+			effect = new Data.PureEffect({id, name: id, exists: false});
 		}
 
 		this.effectCache.set(id, effect);
-		return effect as Condition;
+		return effect as PureEffect;
 	}
 
 	/**
@@ -1013,7 +1022,16 @@ export class ModdedDex {
 			let table;
 			switch (matchType) {
 			case 'pokemon': table = this.data.Pokedex; break;
-			case 'move': table = this.data.Moves; break;
+			case 'move':
+				//#region TrashChannel
+				// 18/11/24 TrashChannel: Needed to avoid dupes from Pokemon names used as moves in Beast Mode
+				const species: Species = this.getSpecies(id) as Species;
+				if(undefined !== species) {
+					if(species.exists) continue;
+				}
+				table = this.data.Movedex;
+				//#endregion
+				break;
 			case 'item': table = this.data.Items; break;
 			case 'ability': table = this.data.Abilities; break;
 			case 'pokemontag':
@@ -1082,13 +1100,13 @@ export class ModdedDex {
 	dataSearch(target: string, searchIn?: DataType[] | null, isInexact?: boolean): AnyObject[] | false {
 		if (!target) return false;
 
-		searchIn = searchIn || ['Pokedex', 'Moves', 'Abilities', 'Items', 'Natures'];
+		searchIn = searchIn || ['Pokedex', 'Movedex', 'Abilities', 'Items', 'Natures'];
 
 		const searchFunctions = {
-			Pokedex: 'getSpecies', Moves: 'getMove', Abilities: 'getAbility', Items: 'getItem', Natures: 'getNature',
+			Pokedex: 'getSpecies', Movedex: 'getMove', Abilities: 'getAbility', Items: 'getItem', Natures: 'getNature',
 		};
 		const searchTypes: {[k in DataType]?: string} = {
-			Pokedex: 'pokemon', Moves: 'move', Abilities: 'ability', Items: 'item', Natures: 'nature',
+			Pokedex: 'pokemon', Movedex: 'move', Abilities: 'ability', Items: 'item', Natures: 'nature',
 		};
 		let searchResults: AnyObject[] | false = [];
 		for (const table of searchIn) {
@@ -1215,10 +1233,9 @@ export class ModdedDex {
 				buf += '|';
 			}
 
-			if (set.pokeball || set.hpType || set.gigantamax) {
+			if (set.pokeball || set.hpType) {
 				buf += ',' + set.hpType;
 				buf += ',' + toID(set.pokeball);
-				buf += ',' + (set.gigantamax ? 'G' : '');
 			}
 		}
 
@@ -1336,15 +1353,14 @@ export class ModdedDex {
 			j = buf.indexOf(']', i);
 			let misc;
 			if (j < 0) {
-				if (i < buf.length) misc = buf.substring(i).split(',', 4);
+				if (i < buf.length) misc = buf.substring(i).split(',', 3);
 			} else {
-				if (i !== j) misc = buf.substring(i, j).split(',', 4);
+				if (i !== j) misc = buf.substring(i, j).split(',', 3);
 			}
 			if (misc) {
 				set.happiness = (misc[0] ? Number(misc[0]) : 255);
 				set.hpType = misc[1];
 				set.pokeball = misc[2];
-				set.gigantamax = !!misc[3];
 			}
 			if (j < 0) break;
 			i = j + 1;
@@ -1353,32 +1369,14 @@ export class ModdedDex {
 		return team;
 	}
 
-	/**
-	* Use instead of Dex.packTeam to generate more human-readable team output.
-	*/
-	stringifyTeam(team: PokemonSet[], nicknames?: string[]) {
-		let output = '';
-		for (const [i, mon] of team.entries()) {
-			const species = Dex.getSpecies(mon.species);
-			output += nicknames ? `${nicknames?.[i]} (${species.name})` : species.name;
-			output += ` @ ${Dex.getItem(mon.item).name}<br/>`;
-			output += `Ability: ${Dex.getAbility(mon.ability).name}<br/>`;
-			if (typeof mon.happiness === 'number' && mon.happiness !== 255) output += `Happiness: ${mon.happiness}<br/>`;
-			const evs = [];
-			for (const stat in mon.evs) {
-				if (mon.evs[stat as StatName]) evs.push(`${mon.evs[stat as StatName]} ${stat}`);
-			}
-			if (evs.length) output += `EVs: ${evs.join(' / ')}<br/>`;
-			if (mon.nature) output += `${this.getNature(mon.nature).name} Nature<br/>`;
-			const ivs = [];
-			for (const stat in mon.ivs) {
-				if (mon.ivs[stat as StatName] !== 31) ivs.push(`${mon.ivs[stat as StatName]} ${stat}`);
-			}
-			if (ivs.length) output += `IVs: ${ivs.join(' / ')}<br/>`;
-			output += mon.moves.map(move => `- ${Dex.getMove(move).name}<br/>`).join('');
-			output += '<br/>';
+	deepClone(obj: any): any {
+		if (obj === null || typeof obj !== 'object') return obj;
+		if (Array.isArray(obj)) return obj.map(prop => this.deepClone(prop));
+		const clone = Object.create(Object.getPrototypeOf(obj));
+		for (const key of Object.keys(obj)) {
+			clone[key] = this.deepClone(obj[key]);
 		}
-		return output;
+		return clone;
 	}
 
 	loadDataFile(basePath: string, dataType: DataType | 'Aliases'): AnyObject {
@@ -1386,13 +1384,14 @@ export class ModdedDex {
 			const filePath = basePath + DATA_FILES[dataType];
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const dataObject = require(filePath);
+			const key = `Battle${dataType}`;
 			if (!dataObject || typeof dataObject !== 'object') {
 				throw new TypeError(`${filePath}, if it exists, must export a non-null object`);
 			}
-			if (dataObject[dataType]?.constructor?.name !== 'Object') {
-				throw new TypeError(`${filePath}, if it exists, must export an object whose '${dataType}' property is an Object`);
+			if (dataObject[key]?.constructor?.name !== 'Object') {
+				throw new TypeError(`${filePath}, if it exists, must export an object whose '${key}' property is an Object`);
 			}
-			return dataObject[dataType];
+			return dataObject[key];
 		} catch (e) {
 			if (e.code !== 'MODULE_NOT_FOUND' && e.code !== 'ENOENT') {
 				throw e;
@@ -1432,8 +1431,8 @@ export class ModdedDex {
 
 		const basePath = this.dataDir + '/';
 
-		const Scripts = this.loadDataFile(basePath, 'Scripts');
-		this.parentMod = this.isBase ? '' : (Scripts.inherit || 'base');
+		const BattleScripts = this.loadDataFile(basePath, 'Scripts');
+		this.parentMod = this.isBase ? '' : (BattleScripts.inherit || 'base');
 
 		let parentDex;
 		if (this.parentMod) {
@@ -1447,7 +1446,7 @@ export class ModdedDex {
 
 		for (const dataType of DATA_TYPES.concat('Aliases')) {
 			if (dataType === 'Natures' && this.isBase) {
-				dataCache[dataType] = Natures;
+				dataCache[dataType] = BattleNatures;
 				continue;
 			}
 			const BattleData = this.loadDataFile(basePath, dataType);
@@ -1496,7 +1495,7 @@ export class ModdedDex {
 		this.dataCache = dataCache as DexTableData;
 
 		// Execute initialization script.
-		if (Scripts.init) Scripts.init.call(this);
+		if (BattleScripts.init) BattleScripts.init.call(this);
 
 		return this.dataCache;
 	}
@@ -1545,6 +1544,107 @@ export class ModdedDex {
 
 		return this;
 	}
+
+	installFormat(id: string, format: Format) {
+		dexes['base'].includeFormats();
+		dexes['base'].formatsCache![id] = format;
+		if (this.dataCache) this.dataCache.Formats[id] = format;
+		if (!this.isBase) {
+			if (dexes['base'].dataCache) dexes['base'].dataCache.Formats[id] = format;
+		}
+	}
+
+// #region TrashChannel
+	calcBST(stats: StatsTable): number {
+		/**@type {number} */
+		let bst = 0;
+        Object.values(stats).forEach(stat => {
+        	bst += stat;
+        });
+		return bst;
+	}
+
+	public static isVowel(character: string): boolean {
+		switch(character) {
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'o':
+			case 'u':
+				return true;
+		}
+
+		return false;
+	}
+
+	generateMegaStoneName(pokemonName: string): string {
+		let baseName = pokemonName;
+		let species = this.getSpecies(pokemonName);
+		if(!species.exists) return '???';
+		
+		/** @type {string | null} */
+		let stoneName = null;
+		baseName = species.name;
+		let baseSpecies = this.getSpecies(species.baseSpecies);
+		for(let item in this.data.Items) {
+			if( this.data.Items[item].megaEvolves === baseSpecies.name ) {
+				if(species.isMega) {
+					stoneName = 'Mega ' + this.data.Items[item].name;
+					let lastLetter = species.name.substr( species.name.length-2, species.name.length-1 );
+					if('a' !== lastLetter) { // X/Y split mega case
+						stoneName += ' ' + lastLetter;
+					}
+					return stoneName;
+				}
+				else {
+					return this.data.Items[item].name;
+				}
+			}
+		}
+
+		if(species.isPrimal) {
+			stoneName = 'Primal ' + baseSpecies.name; 
+		}
+
+		if(null === stoneName) {
+			stoneName = baseName;
+		}
+
+		// @ts-ignore
+		let lastLetter = stoneName.substr( stoneName.length-2, stoneName.length-1 );
+		let lastLetterIsVowel = ModdedDex.isVowel(lastLetter);
+		// @ts-ignore
+		let penultimateLetter = stoneName.substr( stoneName.length-3, stoneName.length-2 );
+		let penultimateLetterIsVowel = ModdedDex.isVowel(penultimateLetter);
+
+		// Decide and concatenate name
+		if(!lastLetterIsVowel) {
+			// @ts-ignore
+			return stoneName + 'ite';
+		}
+		if(!penultimateLetterIsVowel) {
+			// @ts-ignore
+			return stoneName.substr( 0, stoneName.length-2 ) + 'nite';
+		}
+		// @ts-ignore
+		return stoneName.substr( 0, stoneName.length-3 ) + 'ite';
+	}
+
+	calcActiveAbilitySlot(speciesName: string | Species, ability: string): string {
+		let id = toID(speciesName || '');
+		let species = this.getSpecies(id);
+		let abilityId = toID(ability || '');
+		let abilitySlot = '0'; // Fallback to standard ability slot if we're in a meta that allows illegal abilities
+		for (let abilityItr in species.abilities) {
+			//console.log("Ability slot: "+ abilityItr.toString() +" instance: "+this.ability.toString()+" species: "+toID(oSpecies.abilities[abilityItr]).toString());
+			// @ts-ignore
+			if(abilityId !== toID(species.abilities[abilityItr])) continue;
+			abilitySlot = abilityItr;
+			break;
+		}
+		return abilitySlot;
+	}
+// #endregion
 }
 
 dexes['base'] = new ModdedDex(undefined, true);
