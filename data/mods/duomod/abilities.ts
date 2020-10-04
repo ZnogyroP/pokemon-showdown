@@ -428,7 +428,7 @@ disappearance: {
 		onTryImmunity(target) {
 			return !target.hasAbility('stickyhold');
 		},
-		onHit(target, source, move) {
+		onStart(target, source, move) {
 			const yourItem = target.takeItem(source);
 			const myItem = source.takeItem();
 			if (target.item || source.item || (!yourItem && !myItem)) {
