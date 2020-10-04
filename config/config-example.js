@@ -402,7 +402,7 @@ exports.autolockdown = true;
  * @type {{[userid: string]: string}}
  */
 exports.customavatars = {
-	// 'userid': 'customavatar.png'
+	// 'userid': 'customavatar.png',
 	// 'duom2': '1234.png'
 };
 
