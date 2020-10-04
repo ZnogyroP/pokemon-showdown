@@ -168,7 +168,7 @@
 		},
 		onDamagingHit(damage, target, source, move) {
 			if (target !== source && move.category !== 'Status') {
-				if (target.hasType('Dragon')) {
+				if (source.hasType('Dragon')) {
 					this.boost(atk: 1, spa: 1);
 				}
 			}
