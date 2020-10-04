@@ -194,8 +194,8 @@
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff' || this.activeMove.id === 'corrosivegas') {
 				this.add('-activate', pokemon, 'item: Bright Jewel');
+				this.damage(source.baseMaxhp / 6, source, target);
 				return false;
-				this.damage(source.baseMaxhp / 6, target, target);
 			}
 			}
 		},
