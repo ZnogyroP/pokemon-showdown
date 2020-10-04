@@ -189,11 +189,13 @@
 		name: "Bright Jewel",
 		spritenum: 141,
 		onHit(target, source, move) {
-   		   if (source.hasType('Ground')) {
-			if (this.suppressingAttackEvents(pokemon) || !pokemon.hp) return;        
+		      if (source.hasType('Ground')) {
+			if (this.suppressingAttackEvents(pokemon) || !pokemon.hp || pokemon.item === 'stickybarb') return;        
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff' || this.activeMove.id === 'corrosivegas') {
-				this.damage(source.baseMaxhp / 6, source, target);
+				this.add('-activate', pokemon, 'item: Bright Jewel');
+				this.damage(source.baseMaxhp / 6, source, source);
+				return false;
 			}
 			}
 		},
@@ -202,6 +204,7 @@
 		onTakeItem: false,
 		desc: "Holder's item cannot be removed. If attempted, damages foe.",
 	},
+
 	grayscarf: {
 		name: "Gray Scarf",
 		spritenum: 179,
