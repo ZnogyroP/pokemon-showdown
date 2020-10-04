@@ -1375,7 +1375,6 @@ interface ModdedBattlePokemon {
 		this: Pokemon, statName: StatNameExceptHP, unboosted?: boolean, unmodified?: boolean, fastReturn?: boolean
 	) => number;
 	getWeight?: (this: Pokemon) => number;
-	hasAbility?: (this: Pokemon, ability: string | string[]) => boolean;
 	isGrounded?: (this: Pokemon, negateImmunity: boolean | undefined) => boolean | null;
 	modifyStat?: (this: Pokemon, statName: StatNameExceptHP, modifier: number) => void;
 	moveUsed?: (this: Pokemon, move: ActiveMove, targetLoc?: number) => void;
@@ -1420,7 +1419,6 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 		this: Battle, pokemon: Pokemon, target: Pokemon, move: string | number | ActiveMove, suppressMessages: boolean
 	) => number | undefined | null | false;
 	getActionSpeed?: (this: Battle, action: AnyObject) => void;
-	getEffect?: (this: Battle, name: string | Effect | null) => Effect;
 	init?: (this: ModdedDex) => void;
 	modifyDamage?: (
 		this: Battle, baseDamage: number, pokemon: Pokemon, target: Pokemon, move: ActiveMove, suppressMessages?: boolean
@@ -1431,7 +1429,6 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 		zMove?: string, externalMove?: boolean, maxMove?: string, originalTarget?: Pokemon
 	) => void;
 	spreadModify?: (this: Battle, baseStats: StatsTable, set: PokemonSet) => StatsTable;
-	suppressingWeather?: (this: Battle) => boolean;
 	trunc?: (n: number) => number;
 
 	// oms
