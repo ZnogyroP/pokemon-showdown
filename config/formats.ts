@@ -38,7 +38,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		onSwitchIn(pokemon) {
 			// @ts-ignore
 			if (pokemon.m.innates) pokemon.m.innates.forEach(innate => pokemon.addVolatile("ability:" + innate, pokemon));
-			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
 	},
 
