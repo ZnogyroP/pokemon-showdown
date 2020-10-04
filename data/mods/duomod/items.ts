@@ -168,7 +168,7 @@
 		},
 		onDamagingHit(damage, target, source, move) {
 			if (target !== source && move.category !== 'Status') {
-				if (source.hasType('Dragon')) {
+				if (target.hasType('Dragon')) {
 					this.boost(atk: 1, spa: 1);
 				}
 			}
@@ -183,6 +183,97 @@
 		num: 1506.1,
 		gen: 2,
 		desc: "If the holder is Dragon-type, they cannot use Status moves. However, they gain +1 Atk. and Sp.Atk whenever hit.",
+	},
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	brightjewel: {
+		name: "Bright Jewel",
+		spritenum: 141,
+		onTakeItem(item, pokemon, source) {
+			if (source.hasType('Ground')) {
+			if (this.suppressingAttackEvents(pokemon) || !pokemon.hp || pokemon.item === 'stickybarb') return;
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff' || this.activeMove.id === 'corrosivegas') {
+				this.add('-activate', pokemon, 'item: Bright Jewel');
+				return false;
+				this.damage(source.baseMaxhp / 6, source, target);
+			}
+			}
+		},
+		num: 1509.1,
+		gen: 5,
+		desc: "Holder's item cannot be removed. If attempted, damages foe.",
+	},
+	grayscarf: {
+		name: "Gray Scarf",
+		spritenum: 179,
+		fling: {
+			basePower: 90,
+		},
+		onModifyPriority(priority, pokemon, target, move) {
+			if (source.hasType('Normal')) {
+				if (move?.type === 'Normal' && pokemon.hp === pokemon.maxhp) return priority + 1;
+			}
+		},
+		num: 1510.1,
+		gen: 4,
+		desc: "Holder's Normal-type moves have +1 priority.",
+	},
+	sereneballoon: {
+		name: "Serene Balloon",
+		spritenum: 6,
+		fling: {
+			basePower: 30,
+		},
+		onModifyDef(def, pokemon) {
+			if (pokemon.hasType('Fairy')) {
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpD(spd, pokemon) {
+			if (pokemon.hasType('Fairy')) {
+				return this.chainModify(1.2);
+			}
+		},
+		onModifySpe(spe, pokemon) {
+			if (pokemon.hasType('Fairy')) {
+				return this.chainModify(1.2);
+			}
+		},
+		onDisableMove(pokemon) {
+			for (const moveSlot of pokemon.moveSlots) {
+				if (this.dex.getMove(moveSlot.move).category !=== 'Status') {
+					pokemon.disableMove(moveSlot.id);
+				}
+			}
+		},	
+		num: 1511.1,
+		gen: 2,
+		desc: "If the holder is a Steel-type, they gain 1.2x in Speed and both defensive stats, but cannot use attacking moves.",
+		shortDesc: "Holder Fairy-type gains 1.2x Def, Sp.Def, Speed; cannot attack.",
+	},
+	9voltbattery: {
+		name: "9-Volt Battery",
+		spritenum: 60,
+		fling: {
+			basePower: 30,
+		},
+		onStart(pokemon) {
+			if (pokemon.hasType('Electric')) {
+				this.boost({spe: 1}, pokemon);
+			}
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.hasType('Electric')) {
+				if (pokemon.activeTurns) {
+					this.boost({spe: -12});
+				}
+			}
+		},
+		num: 1512.1,
+		gen: 5,
+		desc: "Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.",
 	},
 
 };

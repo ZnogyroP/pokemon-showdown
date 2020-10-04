@@ -21444,7 +21444,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		num: 1013.1,
 		accuracy: true,
 		basePower: 0,
-		category: "Special",
+		category: "Status",
 		desc: "Deals either 1%, 10%, or 33% of the target's max HP. Has a 100% chance to either paralyze, badly poison, or burn the target, as well as set a random terrain and weather.",
 		shortDesc: "Has several effects at once.",
 		name: "Roulette Wheel",
