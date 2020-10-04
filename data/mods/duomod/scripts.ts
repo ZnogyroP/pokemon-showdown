@@ -7,6 +7,18 @@ export const BattleScripts: ModdedBattleScriptsData = {
 		if (id.startsWith('ability:')) return Object.assign(Object.create(this.getAbility(id.slice(8))), {id});
 		return Object.getPrototypeOf(this).getEffect.call(this, name, true);
 	},
+	suppressingWeather() {
+		let pokemon;
+		for (let i = 0; i < this.sides.length; i++) {
+			for (let j = 0; j < this.sides[i].active.length; j++) {
+				pokemon = this.sides[i].active[j];
+				if (pokemon && !pokemon.ignoringAbility() && pokemon.hasAbility('Cloud Nine')) {
+					return true;
+				}
+			}
+		}
+		return false;
+	},
 	pokemon: {
 		hasAbility(ability) {
 			if (this.ignoringAbility()) return false;
