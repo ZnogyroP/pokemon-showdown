@@ -105,12 +105,88 @@
 			basePower: 10,
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (target.getMoveHitData(move).typeMod < 0) {
+			if (pokemon.hasType('Water')) {
+      if (target.getMoveHitData(move).typeMod < 0) {
 				this.debug('Water Bucket debuff');
 				return this.chainModify(0.5);}
+      }
 		},
 		num: 1503.1,
 		gen: 3,
 		desc: "If the holder is Water-type, they take half damage from resisted moves and double damage from super-effective moves.",
 	},
+
+	lightfeather: {
+		name: "Light Feather",
+		spritenum: 535,
+		basePowerCallback(pokemon, target, move) {
+			if (pokemon.hasType('Flying')) {
+			if (this.queue.willMove(target)) {
+				this.debug('Light Feather damage boost');
+				return move.basePower * 1.2;
+			}
+			this.debug('Light Feather NOT boosted');
+			return move.basePower;
+		}},
+		num: 1504.1,
+		gen: 3,
+		desc: "Boosts the power of a Flying-type holder by 1.2x if they move first.",
+	},
+	powergenerator: {
+		name: "Power Generator",
+		spritenum: 118,
+		fling: {
+			basePower: 30,
+		},
+		onStart(pokemon) {
+			if (pokemon.hasType('Electric')) {
+			pokemon.addVolatile('generating');
+      }
+    },
+		onEnd(pokemon) {
+			delete pokemon.volatiles['generating'];
+			this.add('-end', pokemon, 'generating', '[silent]');
+		},
+		condition: {
+			duration: 5,
+			onStart(target) {
+				this.add('-start', target, 'item: Power Generator');
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, pokemon) {
+				return this.chainModify(1);
+			},
+			onEnd(target) {
+				this.boost(atk: 1, def: 1, spa: 1, spd: 1, spe: 1);
+      },
+		},
+		num: 1505.1,
+		gen: 5,
+		desc: "If an Electric-type holder stays on the field for 5 turns, it gains a +1 boost in all stats.",
+	},
+  oddscale: {
+		name: "Odd Scale",
+		spritenum: 108,
+		fling: {
+			basePower: 30,
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (target !== source && move.category !== 'Status') {
+				if (source.hasType('Dragon')) {
+					this.boost(atk: 1, spa: 1);
+				}
+			}
+		},
+		onDisableMove(pokemon) {
+			for (const moveSlot of pokemon.moveSlots) {
+				if (this.dex.getMove(moveSlot.move).category === 'Status') {
+					pokemon.disableMove(moveSlot.id);
+				}
+			}
+		},	
+		num: 1506.1,
+		gen: 2,
+		desc: "If the holder is Dragon-type, they cannot use Status moves. However, they gain +1 Atk. and Sp.Atk whenever hit.",
+	},
+
 };
