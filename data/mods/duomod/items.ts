@@ -116,7 +116,7 @@
 		desc: "If the holder is Water-type, they take half damage from resisted moves and double damage from super-effective moves.",
 	},
 
-	lightfeather {
+	lightfeather: {
 		name: "Light Feather",
 		spritenum: 535,
 		basePowerCallback(pokemon, target, move) {
