@@ -462,12 +462,12 @@ disappearance: {
 		rating: 3.5,
 		num: 24.1,
 	},
-	slightofhand: {
+	sleightofhand: {
 		shortDesc: "This Pokemon's punch moves have their priority increased by 1.",
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move?.flags['punch']) return priority + 1;
 		},
-		name: "Slight of Hand",
+		name: "Sleight of Hand",
 		rating: 3.5,
 		num: 25.1,
 	},
