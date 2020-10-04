@@ -316,7 +316,7 @@ magicida: {
 	types: ["Fairy"],
 	gender: "N",
 	baseStats: {hp: 94, atk: 114, def: 72, spa: 144, spd: 44, spe: 61},
-	abilities: {0: "Torrent", 1: "Disappearance", H: "Slight of Hand"},
+	abilities: {0: "Bag of Tricks", 1: "Disappearance", H: "Slight of Hand"},
 	height: 1,
 	weightkg: 1,
 	eggGroups: ["Undiscovered"],
