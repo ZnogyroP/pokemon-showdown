@@ -428,14 +428,8 @@ disappearance: {
 		onTryImmunity(target) {
 			return !target.hasAbility('stickyhold');
 		},
-		onStart(pokemon) {
-			if (pokemon.side.foe.active.some(
-				foeActive => foeActive && this.isAdjacent(pokemon, foeActive) && foeActive.ability === 'noability'
-			)) {
-				this.effectData.gaveUp = true;
-			}
-		},
-		onUpdate(target, source, move) {
+		onHit(target, source, move) {
+			if (target.getMoveHitData(move).typeMod > 0) {
 			const yourItem = target.takeItem(source);
 			const myItem = source.takeItem();
 			if (target.item || source.item || (!yourItem && !myItem)) {
@@ -463,6 +457,7 @@ disappearance: {
 				this.add('-item', source, yourItem, '[from] move: Trick');
 			} else {
 				this.add('-enditem', source, myItem, '[silent]', '[from] move: Trick');
+			}
 			}
 		},
 		name: "Bag of Tricks",
