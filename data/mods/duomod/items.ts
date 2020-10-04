@@ -188,7 +188,7 @@
 	brightjewel: {
 		name: "Bright Jewel",
 		spritenum: 141,
-		onHit(target, source, move) {
+		onTakeItem(item, pokemon, source) {
 		      if (source.hasType('Ground')) {
 			if (this.suppressingAttackEvents(pokemon) || !pokemon.hp || pokemon.item === 'stickybarb') return;        
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");
