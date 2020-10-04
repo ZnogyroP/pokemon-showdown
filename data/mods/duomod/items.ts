@@ -83,4 +83,19 @@
 		gen: 4,
 		desc: "Switches the user out if they deal less than 10% with an attacking move.",
 	},
+  freshherb: {
+		name: "Fresh Herb",
+		spritenum: 475,
+		fling: {
+			basePower: 30,
+		},
+		onSwitchOut(pokemon) {
+			if (pokemon.hasType('Grass')) {
+				pokemon.heal(pokemon.baseMaxhp / 4);
+			}
+		},
+		num: 1501.1,
+		gen: 4,
+		desc: "If the user is a Grass-type, it regains 1/4th of its max HP upon switching out.",
+	},
 };
