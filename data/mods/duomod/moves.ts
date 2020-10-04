@@ -6297,37 +6297,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Clever",
 	},
 	gastroacid: {
-		num: 380,
-		accuracy: 100,
-		basePower: 0,
-		category: "Status",
-		desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, or Zen Mode, this move fails, and receiving the effect through Baton Pass ends the effect immediately.",
-		shortDesc: "Nullifies the target's Ability.",
-		name: "Gastro Acid",
-		pp: 10,
-		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
-		volatileStatus: 'gastroacid',
-		onTryHit(pokemon) {
-			const bannedAbilities = [
-				'battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'zenmode',
-			];
-			if (bannedAbilities.includes(pokemon.ability)) {
-				return false;
-			}
-		},
-		condition: {
+		inherit: true,
+		effect: {
 			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
-				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
+				this.singleEvent('End', this.dex.getAbility(pokemon.ability), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
+				// @ts-ignore
+				if (pokemon.m.innates) pokemon.m.innates.forEach(innate => pokemon.removeVolatile("ability:" + innate));
 			},
 		},
-		secondary: null,
-		target: "normal",
-		type: "Poison",
-		zMove: {boost: {spe: 1}},
-		contestType: "Tough",
 	},
 	geargrind: {
 		num: 544,
