@@ -79,6 +79,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Ground",
 		contestType: "Cool",
 	},
+  
 	acid: {
 		num: 51,
 		accuracy: 100,
@@ -5060,7 +5061,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) this.damage(pokemon.baseMaxhp, pokemon, pokemon, move);
+			if (!target || target.fainted || target.hp <= 0) this.boost({atk: 3}, pokemon, pokemon, move);
 		},
 		secondary: null,
 		target: "normal",
@@ -9197,7 +9198,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return;
 			}
 			this.hint("Only a Pokemon whose form is Hoopa Unbound can use this move.");
-			if (pokemon.species.name !=== 'Hoopa') {
+			if (pokemon.species.name === 'Hoopa') {
 				this.add('-fail', pokemon, 'move: Hyperspace Fury', '[forme]');
 				return null;
 			}
@@ -16460,7 +16461,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		desc: "Causes the target's Ability to become Simple. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant, Zen Mode, or Fragile.",
+		desc: "Causes the target's Ability to become Simple. Fails if the target's Ability is Battle Bond, Comatose, Disguise, Multitype, Power Construct, RKS System, Schooling, Shields Down, Simple, Stance Change, Truant, or Zen Mode.",
 		shortDesc: "The target's Ability becomes Simple.",
 		name: "Simple Beam",
 		pp: 15,
@@ -17586,6 +17587,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.effectData.layers++;
 			},
 			onSwitchIn(pokemon) {
+				if (!pokemon.isGrounded()) return;
 				if (pokemon.hasItem('heavydutyboots')) return;
 				const damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4
 				this.damage(damageAmounts[this.effectData.layers] * pokemon.maxhp / 24);
@@ -18525,7 +18527,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Dark",
 		contestType: "Clever",
 	},
 	sunnyday: {
@@ -22247,17 +22249,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Fire",
 		contestType: "Cool",
 	},
-	soulslash: {
+ 	soulslash: {
 		num: 1041.1,
 		accuracy: 80,
 		basePower: 110,
 		category: "Physical",
-		desc: "Power is multiplied by 8 if the target has less than or equal to a third of its maximum HP remaining.",
-		shortDesc: "Power multiplies by 8 if the target's HP is 33% or less.",
+		desc: "Power multiplies by 8 if the target has less than or equal to a third of its maximum HP remaining.",
+		shortDesc: "Power doubles if the target's HP is 33% or less.",
 		name: "Soul Slash",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1 protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		onBasePower(basePower, pokemon, target) {
 			if (target.hp * 3 <= target.maxhp) {
 				return this.chainModify(8);
@@ -22394,5 +22396,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		zMove: {boost: {spe: 1}},
 		contestType: "Tough",
-	},
+	},    
 };
