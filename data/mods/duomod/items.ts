@@ -6,7 +6,7 @@
 			basePower: 30,
 		},
 		onTryHit(target, source, move) {
-			if (pokemon.hasType('Fire')) {
+			if (source.hasType('Fire')) {
 			if (target !== source && move.type === 'Fire') {
 				move.accuracy = true;
 				if (!target.addVolatile('drytorch')) {
