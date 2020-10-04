@@ -241,7 +241,7 @@
 		},
 		onDisableMove(pokemon) {
 			for (const moveSlot of pokemon.moveSlots) {
-				if (this.dex.getMove(moveSlot.move).category !=== 'Status') {
+				if (this.dex.getMove(moveSlot.move).category !== 'Status') {
 					pokemon.disableMove(moveSlot.id);
 				}
 			}
@@ -251,8 +251,8 @@
 		desc: "If the holder is a Steel-type, they gain 1.2x in Speed and both defensive stats, but cannot use attacking moves.",
 		shortDesc: "Holder Fairy-type gains 1.2x Def, Sp.Def, Speed; cannot attack.",
 	},
-	9voltbattery: {
-		name: "9-Volt Battery",
+	ninevoltbattery: {
+		name: "Nine-Volt Battery",
 		spritenum: 60,
 		fling: {
 			basePower: 30,
