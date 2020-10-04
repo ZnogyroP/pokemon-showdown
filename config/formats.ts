@@ -44,8 +44,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability:')).forEach(innate => pokemon.removeVolatile(innate));
 			pokemon.m.innates = undefined;
 		},
-		onSwitchIn(pokemon) {
-		},
 	},
 
 
