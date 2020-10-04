@@ -188,8 +188,14 @@
 	brightjewel: {
 		name: "Bright Jewel",
 		spritenum: 141,
-		onTakeItem(item, pokemon, source) {
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === 'Move' && this.activeMove.id === 'knockoff' || this.activeMove.id === 'corrosivegas' && this.activeMove.id === 'trick' || this.activeMove.id === 'switcheroo') {
+				this.damage(source.baseMaxhp / 6, source, target);
+				return false;
+			}
 		},
+
 		num: 1509.1,
 		gen: 5,
 		onTakeItem: false,
