@@ -195,7 +195,7 @@
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff' || this.activeMove.id === 'corrosivegas') {
 				this.add('-activate', pokemon, 'item: Bright Jewel');
 				return false;
-				this.damage(source.baseMaxhp / 6, pokemon, target);
+				this.damage(source.baseMaxhp / 6, target, target);
 			}
 			}
 		},
