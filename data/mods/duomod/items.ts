@@ -210,8 +210,8 @@
 			basePower: 90,
 		},
 		onModifyPriority(priority, pokemon, target, move) {
-			if (source.hasType('Normal')) {
-				if (move?.type === 'Normal' && pokemon.hp === pokemon.maxhp) return priority + 1;
+			if (pokemon.hasType('Normal')) {
+				if (move?.type === 'Normal') return priority + 1;
 			}
 		},
 		num: 1510.1,
