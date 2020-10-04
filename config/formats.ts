@@ -12,7 +12,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	},
 
   {
-		name: "Duomod",
+		name: "[Gen 8] Duomod",
 		desc: `A metagame made up Duo's Pok&eacute;mon with some added changes.`,
 		threads: [
 			`<a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons</a>`,
@@ -24,12 +24,30 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		unbanlist: [
 			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Cliety', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Robit', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch',
 		],
-
+		onBegin() {
+			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (let pokemon of allPokemon) {
+				if (pokemon.ability === toID(pokemon.species.abilities['S'])) {
+					continue;
+				}
+				// @ts-ignore
+				pokemon.m.innates = Object.keys(pokemon.species.abilities).filter(key => key !== 'S' && (key !== 'H' || !pokemon.species.unreleasedHidden)).map(key => toID(pokemon.species.abilities[key])).filter(ability => ability !== pokemon.ability);
+			}
+		},
+		onSwitchInPriority: 2,
 		onSwitchIn(pokemon) {
+			// @ts-ignore
 			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-
+			if (pokemon.m.innates) pokemon.m.innates.forEach(innate => pokemon.addVolatile("ability:" + innate, pokemon));
+		},
+		onAfterMega(pokemon) {
+			Object.keys(pokemon.volatiles).filter(innate => innate.startsWith('ability:')).forEach(innate => pokemon.removeVolatile(innate));
+			pokemon.m.innates = undefined;
+		},
+		onSwitchIn(pokemon) {
 		},
 	},
+
 
 	{
 		section: "Sw/Sh Singles",
