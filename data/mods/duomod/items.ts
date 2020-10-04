@@ -98,4 +98,19 @@
 		gen: 4,
 		desc: "If the user is a Grass-type, it regains 1/4th of its max HP upon switching out.",
 	},
+  waterbucket: {
+		name: "Water Bucket",
+		spritenum: 430,
+		fling: {
+			basePower: 10,
+		},
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod < 0) {
+				this.debug('Water Bucket debuff');
+				return this.chainModify(0.5);}
+		},
+		num: 1503.1,
+		gen: 3,
+		desc: "If the holder is Water-type, they take half damage from resisted moves and double damage from super-effective moves.",
+	},
 };
