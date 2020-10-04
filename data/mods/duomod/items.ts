@@ -11,7 +11,6 @@
 				move.accuracy = true;
 				if (!target.addVolatile('drytorch')) {
 				}
-				return null;
 			}}
 		},
 		onEnd(pokemon) {
