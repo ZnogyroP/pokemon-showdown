@@ -77,8 +77,8 @@
 			basePower: 80,
 		},
 		onAfterMoveSecondary(target, source, move) {
-			if (move.totalDamage >= target.maxhp / 10)
-				source.switchFlag = true;
+			if (move.totalDamage <= target.maxhp / 10)
+				target.switchFlag = true;
 		},
 		num: 1508.1,
 		gen: 4,
