@@ -105,7 +105,7 @@
 			basePower: 10,
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (pokemon.hasType('Water')) {
+			if (source.hasType('Water')) {
       if (target.getMoveHitData(move).typeMod < 0) {
 				this.debug('Water Bucket debuff');
 				return this.chainModify(0.5);}
@@ -143,10 +143,6 @@
 			pokemon.addVolatile('generating');
       }
     },
-		onEnd(pokemon) {
-			delete pokemon.volatiles['generating'];
-			this.add('-end', pokemon, 'generating', '[silent]');
-		},
 		condition: {
 			duration: 5,
 			onStart(target) {
@@ -172,7 +168,7 @@
 		},
 		onDamagingHit(damage, target, source, move) {
 			if (target !== source && move.category !== 'Status') {
-				if (source.hasType('Dragon')) {
+				if (target.hasType('Dragon')) {
 					this.boost(atk: 1, spa: 1);
 				}
 			}
