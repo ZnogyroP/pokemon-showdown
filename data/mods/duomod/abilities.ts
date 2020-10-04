@@ -428,9 +428,15 @@ disappearance: {
 		onTryImmunity(target) {
 			return !target.hasAbility('stickyhold');
 		},
-		onStart(target, source, move) {
+		onStart(pokemon) {
+			if (pokemon.side.foe.active.some(
+				foeActive => foeActive && this.isAdjacent(pokemon, foeActive) && foeActive.ability === 'noability'
+			)) {
+				this.effectData.gaveUp = true;
+			}
+		},
+		onUpdate(target, source, move) {
 			const yourItem = target.takeItem(source);
-			if (target === undefined) return;
 			const myItem = source.takeItem();
 			if (target.item || source.item || (!yourItem && !myItem)) {
 				if (yourItem) target.item = yourItem.id;
