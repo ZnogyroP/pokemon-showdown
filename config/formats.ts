@@ -20,10 +20,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 		mod: 'duomod',
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
-		banlist: ['All Pokemon'],
-		unbanlist: [
-			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Cliety', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Robit', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch',
-		],
 		onBegin() {
 			let allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
 			for (let pokemon of allPokemon) {
