@@ -1552,7 +1552,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	///////////////////////////////////////////////////////////////////
 
   {
-		section: "Duo's Formats",
+		section: "Custom Formats",
 		column: 3,
 	},
 
@@ -1581,7 +1581,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
 		],
 
-		mod: 'gen8',
+		mod: 'oktoberfest',
 		gameType: 'doubles',
 		forcedLevel: 50,
 		teamLength: {
@@ -1589,9 +1589,10 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			battle: 4,
 		},
 		ruleset: ['Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Cancel Mod', 'VGC Timer'],
+		banlist: ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude']
 		minSourceGen: 8,
 		onValidateTeam(team) {
-			const RESTRICTED_LEGENDS = [
+			const restricted = [
 				'Venusaur', 'Gyarados',
 				'Porygon2',
 				'Torkoal',
@@ -1600,13 +1601,18 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 				'Incineroar', 'Mimikyu',
 				'Rillaboom', 'Cinderace', 'Indeedee', 'Dragapult',
 			];
-			let restrictedCount = 0;
+			let n = 0;
 			for (const set of team) {
-				const species = this.dex.getSpecies(set.species);
-				if (RESTRICTED_LEGENDS.includes(species.baseSpecies)) restrictedCount++;
+				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
+				if (restricted.includes(baseSpecies)) n++;
+				if (n > 1) return [`You can only one restricted Pok\u00E9mon.`];
 			}
-			if (restrictedCount > 1) {
-				return [`You are limited to one restricted Pokemon.`, `(You have ${restrictedCount} restricted Pokemon.)`];
+			const legends = ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'];
+			let n = 0;
+			for (const set of team) {
+				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
+				if (legends.includes(baseSpecies)) n++;
+				if (n > 0) return [`You may not use any legendary Pok\u00E9mon banned by standard VGC rulesets.`];
 			}
 		},
 	},
