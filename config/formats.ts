@@ -1607,7 +1607,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 	},
 	{
-		name: "[Gen 8 Pet Mod] Roulettemons",
+		name: "[Gen 8] Roulettemons",
 		desc: `A metagame made up of brand new Pok&eacute;mon that have randomly generated moves, stats, abilities, and types.`,
 		threads: [
 			`<a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons</a>`,
