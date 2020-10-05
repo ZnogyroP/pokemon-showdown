@@ -1575,46 +1575,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 	},
 
-	{
-		name: "[Gen 8] Oktoberfest 2020 Doubles",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
-		],
-		mod: 'oktoberfest',
-		gameType: 'doubles',
-		forcedLevel: 50,
-		teamLength: {
-			validate: [4, 6],
-			battle: 4,
-		},
-		ruleset: ['Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Cancel Mod', 'VGC Timer'],
-		banlist: ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'],
-		minSourceGen: 8,
-		onValidateTeam(team) {
-			const restricted = [
-				'Venusaur', 'Gyarados',
-				'Porygon2',
-				'Torkoal',
-				'Hyppowdon', 'Magnezone', 'Togekiss',
-				'Excadrill', 'Whimsicott',
-				'Incineroar', 'Mimikyu',
-				'Rillaboom', 'Cinderace', 'Indeedee', 'Dragapult',
-			];
-			let n = 0;
-			for (const set of team) {
-				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
-				if (restricted.includes(baseSpecies)) n++;
-				if (n > 1) return [`You can only one restricted Pok\u00E9mon.`];
-			}
-			const legends = ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'];
-			let n = 0;
-			for (const set of team) {
-				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
-				if (legends.includes(baseSpecies)) n++;
-				if (n > 0) return [`You may not use any legendary Pok\u00E9mon banned by standard VGC rulesets.`];
-			}
-		},
-	},
 
 
 	// RoA Spotlight
