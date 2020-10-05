@@ -1605,7 +1605,8 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
 				if (restricted.includes(baseSpecies)) n++;
 				if (n > 1) return [`You can only one restricted Pok\u00E9mon.`];
-			}			const legends = ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'];
+			}
+			const legends = ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'];
 			let n = 0;
 			for (const set of team) {
 				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
