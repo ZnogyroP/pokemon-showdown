@@ -3387,7 +3387,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (!source || !effect || target.side === source.side) return;
 				if (effect.effectType === 'Move' && !effect.isFutureMove) {
 					if (source.volatiles['dynamax']) {
-						this.add('-hint', "Dynamaxed Pokémon are immune to Destiny Bond.");
+						this.add('-hint', "Dynamaxed Pokwmon are immune to Destiny Bond.");
 						return;
 					}
 					this.add('-activate', target, 'move: Destiny Bond');
@@ -14166,7 +14166,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (!target.isGrounded()) {
 					const baseMove = this.dex.getMove(effect.id);
 					if (baseMove.priority > 0) {
-						this.hint("Psychic Terrain doesn't affect Pokémon immune to Ground.");
+						this.hint("Psychic Terrain doesn't affect Pokemon immune to Ground.");
 					}
 					return;
 				}
@@ -16570,6 +16570,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		shortDesc: "The user and the target trade Abilities.",
 		name: "Skill Swap",
 		pp: 10,
+
 		priority: 0,
 		flags: {protect: 1, mirror: 1, authentic: 1, mystery: 1},
 		onTryHit(target, source) {

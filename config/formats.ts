@@ -4,31 +4,7 @@ import {Utils} from './../lib/utils';
 
 export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
-	// Sw/Sh Singles
-	///////////////////////////////////////////////////////////////////
 
-  {
-		section: "Duo's Formats",
-	},
-
-  {
-		name: "[Gen 8] Duomod",
-		desc: `A metagame made up Duo's Pok&eacute;mon with some added changes.`,
-		threads: [
-			`<a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons</a>`,
-		],
-
-		mod: 'duomod',
-		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
-		banlist: ['All Pokemon'],
-		unbanlist: [
-			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Cliety', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Robit', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch',
-		],
-		onSwitchIn(pokemon) {
-			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-		},
-
-	},
 
 
 	{
@@ -1572,12 +1548,74 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		ruleset: ['Obtainable', 'HP Percentage Mod', 'Cancel Mod'],
 	},
 
+	// Sw/Sh Singles
+	///////////////////////////////////////////////////////////////////
+
+  {
+		section: "Duo's Formats",
+		column: 3,
+	},
+
+  {
+		name: "[Gen 8] Duomod",
+		desc: `A metagame made up Duo's Pok&eacute;mon with some added changes.`,
+		threads: [
+			`<a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons</a>`,
+		],
+
+		mod: 'duomod',
+		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
+		banlist: ['All Pokemon'],
+		unbanlist: [
+			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Cliety', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Robit', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch',
+		],
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+		},
+
+	},
+
+	{
+		name: "[Gen 8] Oktoberfest 2020 Doubles",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
+		],
+
+		mod: 'gen8',
+		gameType: 'doubles',
+		forcedLevel: 50,
+		teamLength: {
+			validate: [4, 6],
+			battle: 4,
+		},
+		ruleset: ['Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Cancel Mod', 'VGC Timer'],
+		minSourceGen: 8,
+		onValidateTeam(team) {
+			const RESTRICTED_LEGENDS = [
+				'Venusaur', 'Gyarados',
+				'Porygon2',
+				'Torkoal',
+				'Hyppowdon', 'Magnezone', 'Togekiss',
+				'Excadrill', 'Whimsicott',
+				'Incineroar', 'Mimikyu',
+				'Rillaboom', 'Cinderace', 'Indeedee', 'Dragapult',
+			];
+			let restrictedCount = 0;
+			for (const set of team) {
+				const species = this.dex.getSpecies(set.species);
+				if (RESTRICTED_LEGENDS.includes(species.baseSpecies)) restrictedCount++;
+			}
+			if (restrictedCount > 1) {
+				return [`You are limited to one restricted Pokemon.`, `(You have ${restrictedCount} restricted Pokemon.)`];
+			}
+		},
+	},
+
 	// RoA Spotlight
 	///////////////////////////////////////////////////////////////////
 
 	{
 		section: "RoA Spotlight",
-		column: 3,
 	},
 	{
 		name: "[Gen 4] Ubers",
