@@ -1580,7 +1580,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
 		],
-
 		mod: 'oktoberfest',
 		gameType: 'doubles',
 		forcedLevel: 50,
@@ -1589,7 +1588,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			battle: 4,
 		},
 		ruleset: ['Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Cancel Mod', 'VGC Timer'],
-		banlist: ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude']
+		banlist: ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'],
 		minSourceGen: 8,
 		onValidateTeam(team) {
 			const restricted = [
@@ -1616,6 +1615,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			}
 		},
 	},
+
 
 	// RoA Spotlight
 	///////////////////////////////////////////////////////////////////
