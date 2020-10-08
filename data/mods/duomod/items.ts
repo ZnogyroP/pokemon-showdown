@@ -76,7 +76,7 @@
 			basePower: 80,
 		},
 		onSourceAfterHit(target, source, move) {
-			if (move.totalDamage <= target.maxhp / 10 && damage !== 0) {
+			if (move.totalDamage <= target.maxhp / 10 && damage !== 0 || source !== target ) {
 			source.switchFlag = true;
 			}	
 		},
