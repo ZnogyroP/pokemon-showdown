@@ -81,7 +81,6 @@
 			},
 		},
 		num: 1508.1,
-		gen: 4,		num: 1508.1,
 		gen: 4,
 		desc: "Switches the user out if they deal less than 10% with an attacking move.",
 	},
