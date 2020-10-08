@@ -75,17 +75,13 @@
 		fling: {
 			basePower: 80,
 		},
-		volatileStatus: 'dangersiren',
-		condition: {
-			onStart(pokemon) {
-				this.add('-start', pokemon, 'Danger Siren');
-			},
-			onAfterMoveSecondary(target, source, move) {
+		onAfterMoveSecondary(target, source, move) {
 			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0 && move.category !== 'Status')
 				source.switchFlag = true;
 			},
 		},
 		num: 1508.1,
+		gen: 4,		num: 1508.1,
 		gen: 4,
 		desc: "Switches the user out if they deal less than 10% with an attacking move.",
 	},
