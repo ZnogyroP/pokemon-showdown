@@ -76,7 +76,8 @@
 			basePower: 80,
 		},
 		onSourceHit(target, source, move) {
-			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0) {
+			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+			if (damage <= target.maxhp / 10 && damage !== 0) {
 			source.switchFlag = true;
 			}	
 		},
