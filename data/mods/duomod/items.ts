@@ -75,9 +75,8 @@
 		fling: {
 			basePower: 80,
 		},
-		onModifyMove(move, source, target) {
-			const target = source.side.foe;
-			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0) {
+		onAfterMoveSecondary(target, source, move) {
+			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0 && move.id !=== 'fakeout') {
 			source.switchFlag = true;
 			}	
 		},
