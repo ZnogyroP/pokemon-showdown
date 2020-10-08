@@ -76,6 +76,7 @@
 			basePower: 80,
 		},
 		onModifyMove(move, source, target) {
+			const targetSide = source.side.foe;
 			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0) {
 			source.switchFlag = true;
 			}	
