@@ -75,7 +75,7 @@
 		fling: {
 			basePower: 80,
 		},
-		onAfterHit(target, source, move) {
+		onSourceAfterHit(target, source, move) {
 			if (move.totalDamage <= target.maxhp / 10 && damage !== 0) {
 			source.switchFlag = true;
 			}	
