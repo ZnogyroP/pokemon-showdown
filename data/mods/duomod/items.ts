@@ -75,9 +75,9 @@
 		fling: {
 			basePower: 80,
 		},
-		onModifyMove(move, attacker, target) {
+		onModifyMove(move, source, target) {
 			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0) {
-			attacker.switchFlag = true;
+			source.switchFlag = true;
 			}	
 		},
 		num: 1508.1,
