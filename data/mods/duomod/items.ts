@@ -76,7 +76,7 @@
 			basePower: 80,
 		},
 		onAfterMoveSecondary(target, source, move) {
-			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0 && move.category !== 'Status') {
+			if (move.totalDamage <= target.maxhp / 10 && move.totalDamage !== 0) {
 			source.switchFlag = true;
 			}	
 		},
