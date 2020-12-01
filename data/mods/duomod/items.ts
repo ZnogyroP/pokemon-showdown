@@ -77,7 +77,7 @@
 		},
 		onSourceAfterHit(target, source, move) {
 			totalDamage = true;
-			if (move.totalDamage <= source.maxhp / 10 && damage !== 0 || source !== target ) {
+			if (move.totalDamage <= target.maxhp / 10 && damage !== 0 || source !== target ) {
 			target.switchFlag = true;
 			}	
 		},
