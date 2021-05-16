@@ -1921,7 +1921,7 @@ disappearance: {
 		rating: 5,
 		num: 73073,
 	},
-	set: {
+	inscubaset: {
 		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
 	onTryHitPriority: 1,
 		onTryHit(target, source, move) {
