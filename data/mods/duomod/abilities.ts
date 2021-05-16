@@ -1951,25 +1951,25 @@ disappearance: {
 			const r = this.random(100);
 			let newType;
 			if (r < 11) {
-				let newType = 'Normal';
+				newType = 'Normal';
 			} else if (r < 21) {
-				let newType = 'Grass';
+				newType = 'Grass';
 			} else if (r < 31) {
-				let newType = 'Fire';
+				newType = 'Fire';
 			} else if (r < 41) {
-				let newType = 'Water';
+				newType = 'Water';
 			} else if (r < 51) {
-				let newType = 'Electric';
+				newType = 'Electric';
 			} else if (r < 61) {
-				let newType = 'Ground';
+				newType = 'Ground';
 			} else if (r < 71) {
-				let newType = 'Flying';
+				newType = 'Flying';
 			} else if (r < 81) {
-				let newType = 'Steel';
+				newType = 'Steel';
 			} else if (r < 91) {
-				let newType = 'Fairy';
+				newType = 'Fairy';
 			} else if (r < 101) {
-				let newType = 'Dragon';
+				newType = 'Dragon';
 			}
 			this.add('-start', pokemon, 'typechange', newType);
 		},
