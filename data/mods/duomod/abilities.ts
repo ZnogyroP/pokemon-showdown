@@ -1948,6 +1948,7 @@ disappearance: {
 			duration: 1,
 		},
 		onStart(pokemon) {
+			let newType;
 			if (this.randomChance(1, 10)) {
 				let newType = 'Normal';
 			}
