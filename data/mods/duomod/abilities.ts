@@ -1948,35 +1948,27 @@ disappearance: {
 			duration: 1,
 		},
 		onStart(pokemon) {
+			const r = this.random(100);
 			let newType;
-			if (this.randomChance(1, 10)) {
+			if (r < 11) {
 				let newType = 'Normal';
-			}
-			else if (this.randomChance(1, 9)) {
+			} else if (r < 21) {
 				let newType = 'Grass';
-			}
-			else if (this.randomChance(1, 8)) {
+			} else if (r < 31) {
 				let newType = 'Fire';
-			}
-			else if (this.randomChance(1, 7)) {
+			} else if (r < 41) {
 				let newType = 'Water';
-			}
-			else if (this.randomChance(1, 6)) {
+			} else if (r < 51) {
 				let newType = 'Electric';
-			}
-			else if (this.randomChance(1, 5)) {
+			} else if (r < 61) {
 				let newType = 'Ground';
-			}
-			else if (this.randomChance(1, 4)) {
+			} else if (r < 71) {
 				let newType = 'Flying';
-			}
-			else if (this.randomChance(1, 3)) {
+			} else if (r < 81) {
 				let newType = 'Steel';
-			}
-			else if (this.randomChance(1, 2)) {
+			} else if (r < 91) {
 				let newType = 'Fairy';
-			}
-			else {
+			} else if (r < 101) {
 				let newType = 'Dragon';
 			}
 			this.add('-start', pokemon, 'typechange', newType);
