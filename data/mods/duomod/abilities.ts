@@ -1972,10 +1972,9 @@ disappearance: {
 			} else if (r < 101) {
 				newType = 'Fairy';
 			}
-			pokemon.types[0] = newType;
-			pokemon.types[1] = '???';
-			this.add('-start', pokemon, 'typechange', tempType, '[silent]');
+			pokemon.Attack = 20;
 			this.add('-start', pokemon, 'typechange', newType);
+			this.add('-start', pokemon, 'typechange', tempType, '[silent]');
 		},
 		onModifyType(move, pokemon) {
 			const noModifyType = [
