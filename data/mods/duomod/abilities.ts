@@ -1643,7 +1643,7 @@ disappearance: {
 					this.boost({atk: -1}, target, pokemon, null, true);
 				}
 			}
-    },
+   		},
 		name: "Pterrost Set",
 		rating: 5,
 		num: 73073,
@@ -1950,7 +1950,6 @@ disappearance: {
 		onStart(pokemon) {
 			const r = this.random(100);
 			let newType;
-			let tempType = '???';
 			if (r < 11) {
 				newType = 'Normal';
 			} else if (r < 21) {
@@ -1972,9 +1971,9 @@ disappearance: {
 			} else if (r < 101) {
 				newType = 'Fairy';
 			}
-			pokemon.spa = '20';
+			if (pokemon.hasType(newType) || !pokemon.setType(newType)) return false;
 			this.add('-start', pokemon, 'typechange', newType);
-			this.add('-start', pokemon, 'typechange', tempType, '[silent]');
+			this.add('-start', pokemon, 'typeadd', newType, '[from] ability: Adaptation');
 		},
 		onModifyType(move, pokemon) {
 			const noModifyType = [
