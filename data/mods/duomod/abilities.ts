@@ -1968,9 +1968,9 @@ disappearance: {
 			} else if (r < 81) {
 				newType = 'Steel';
 			} else if (r < 91) {
-				newType = 'Fairy';
-			} else if (r < 101) {
 				newType = 'Dragon';
+			} else if (r < 101) {
+				newType = 'Fairy';
 			}
 			pokemon.types[0] = newType;
 			pokemon.types[1] = newType;
