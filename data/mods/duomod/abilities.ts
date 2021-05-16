@@ -1971,8 +1971,9 @@ disappearance: {
 			} else if (r < 101) {
 				newType = 'Dragon';
 			}
+			pokemon.types[0] = newType;
+			pokemon.types[1] = newType;
 			this.add('-start', pokemon, 'typechange', newType);
-			this.add('-start', pokemon, 'typeadd', newType);
 		},
 		onModifyType(move, pokemon) {
 			const noModifyType = [
