@@ -1950,7 +1950,7 @@ disappearance: {
 		onStart(pokemon) {
 			const r = this.random(100);
 			let newType;
-			let tempType = ???;
+			let tempType = '???';
 			if (r < 11) {
 				newType = 'Normal';
 			} else if (r < 21) {
