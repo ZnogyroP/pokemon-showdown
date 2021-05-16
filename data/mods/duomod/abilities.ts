@@ -1950,6 +1950,7 @@ disappearance: {
 		onStart(pokemon) {
 			const r = this.random(100);
 			let newType;
+			let tempType = ???;
 			if (r < 11) {
 				newType = 'Normal';
 			} else if (r < 21) {
@@ -1973,6 +1974,7 @@ disappearance: {
 			}
 			pokemon.types[0] = newType;
 			pokemon.types[1] = newType;
+			this.add('-start', pokemon, 'typechange', tempType, 'silent');
 			this.add('-start', pokemon, 'typechange', newType);
 		},
 		onModifyType(move, pokemon) {
