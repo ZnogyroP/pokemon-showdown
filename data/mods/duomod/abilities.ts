@@ -1973,7 +1973,8 @@ disappearance: {
 				newType = 'Fairy';
 			}
 			pokemon.types[0] = newType;
-			this.add('-start', pokemon, 'typechange', tempType, 'silent');
+			pokemon.types[1] = null;
+			this.add('-start', pokemon, 'typechange', tempType, '[silent]');
 			this.add('-start', pokemon, 'typechange', newType);
 		},
 		onModifyType(move, pokemon) {
