@@ -1185,40 +1185,10 @@ disappearance: {
 				return this.chainModify(1.5);
 			}
 		},
-		onTryHit(target, source, move) {
-			if (target !== source && move.type === 'Fire') {
-				move.accuracy = true;
-				if (!target.addVolatile('flashfire')) {
-					this.add('-immune', target, '[from] ability: Flash Fire');
-				}
-				return null;
+		onAllyModifyMove(move) {
+			if (typeof move.accuracy === 'number') {
+				move.accuracy *= 1.2;
 			}
-		},
-		onEnd(pokemon) {
-			pokemon.removeVolatile('flashfire');
-		},
-		condition: {
-			noCopy: true, // doesn't get copied by Baton Pass
-			onStart(target) {
-				this.add('-start', target, 'ability: Flash Fire');
-			},
-			onModifyAtkPriority: 5,
-			onModifyAtk(atk, attacker, defender, move) {
-				if (move.type === 'Fire') {
-					this.debug('Flash Fire boost');
-					return this.chainModify(1.5);
-				}
-			},
-			onModifySpAPriority: 5,
-			onModifySpA(atk, attacker, defender, move) {
-				if (move.type === 'Fire') {
-					this.debug('Flash Fire boost');
-					return this.chainModify(1.5);
-				}
-			},
-			onEnd(target) {
-				this.add('-end', target, 'ability: Flash Fire', '[silent]');
-			},
 		},
 		onStart(source) {
 			if (['sunnyday'].includes(source.effectiveWeather())) {
@@ -1752,14 +1722,14 @@ disappearance: {
 		onModifyAtk(atk, attacker, defender, move) {
 			if (attacker.moveSlots.length < 3) {
 				this.debug('Power of Two boost');
-				return this.chainModify(1.5);
+				return this.chainModify(1.3);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(atk, attacker, defender, move) {
 			if (attacker.moveSlots.length < 3) {
 				this.debug('Power of Two boost');
-        return this.chainModify(1.5);
+    				return this.chainModify(1.3);
 			}
 		},
 		name: "Spirox Set",
@@ -1834,6 +1804,448 @@ disappearance: {
 			}
 		},
 		name: "Valianch Set",
+		rating: 5,
+		num: 73073,
+	},
+	joulibranchset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onStart(source) {
+			this.field.setTerrain('electricterrain');
+		},
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Electric') {
+				if (!this.boost({spa: 1})) {
+					this.add('-immune', target, '[from] ability: Lightning Rod');
+				}
+				return null;
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status === 'psn' || pokemon.status === 'tox' || pokemon.status ==='brn' || pokemon.status === 'par' || pokemon.status === 'frz' || pokemon.status === 'slp') {
+				this.add('-activate', pokemon, 'ability: Slime Armor');
+				pokemon.cureStatus();
+			}
+		},
+		name: "Joulibranch Set",
+		rating: 5,
+		num: 73073,
+	},
+	digidoseset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onUpdate(pokemon) {
+			if (pokemon.status === 'frz') {
+				this.add('-activate', pokemon, 'ability: Magma Armor');
+				pokemon.cureStatus();
+			}
+		},
+		onImmunity(type, pokemon) {
+			if (type === 'frz') return false;
+		},
+		onModifyDef(pokemon) {
+			if (this.field.isTerrain('grassyterrain')) return this.chainModify(1.5);
+		},
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Water') {
+				if (!this.heal(target.baseMaxhp / 4)) {
+					this.add('-immune', target, '[from] ability: Water Absorb');
+				}
+				return null;
+			}
+		},
+		name: "Digidose Set",
+		rating: 5,
+		num: 73073,
+	},
+	castaruptset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+			this.damage(source.baseMaxhp / 8, source, target);
+				if (this.randomChance(3, 10)) {
+					source.trySetStatus('brn', target);
+				}
+			}
+			if (move.category === 'Physical') {
+				this.boost({def: -1, spe: 2}, target, target);
+			}
+		},
+		name: "Castarupt Set",
+		rating: 5,
+		num: 73073,
+	},
+	nectranceset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+				this.damage(source.baseMaxhp / 8, source, target);
+			}
+			if (move.category === 'Specical') {
+				this.add('-ability', target, 'Nectar Veil');
+				this.boost({spe: -1}, source, target, null, true);
+			}
+		},
+		onStart: function(source) {
+			this.useMove("luckychant", source);
+		}, 
+		name: "Nectrance Set",
+		rating: 5,
+		num: 73073,
+	},
+	batravoltset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Ground') {
+					this.add('-immune', target, '[from] ability: Levitate');
+				}
+				return null;
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (!target.hp) {
+				source.trySetStatus('tox', target);
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status === 'tox') {
+				this.add('-activate', pokemon, 'ability: Toxic Skin');
+				pokemon.cureStatus();
+			}
+		},
+		onSwitchOut(pokemon) {
+			if (!pokemon.hp) return;
+			for (const target of pokemon.side.foe.active) {
+				if (!target || !target.hp) continue;
+				this.damage(target.baseMaxhp / 10, target, pokemon);
+			}
+		},
+		name: "Batravolt Set",
+		rating: 5,
+		num: 73073,
+	},
+	set: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+	onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			const newMove = this.dex.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, target, source);
+			return null;
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			const newMove = this.dex.getActiveMove(move.id);
+			newMove.hasBounced = true;
+			newMove.pranksterBoosted = false;
+			this.useMove(newMove, this.effectData.target, source);
+			return null;
+		},
+		condition: {
+			duration: 1,
+		},
+		onStart(pokemon) {
+			if (this.randomChance(1, 10)) {
+				let newType = 'Normal';
+			}
+			else if (this.randomChance(1, 9)) {
+				let newType = 'Grass';
+			}
+			else if (this.randomChance(1, 8)) {
+				let newType = 'Fire';
+			}
+			else if (this.randomChance(1, 7)) {
+				let newType = 'Water';
+			}
+			else if (this.randomChance(1, 6)) {
+				let newType = 'Electric';
+			}
+			else if (this.randomChance(1, 5)) {
+				let newType = 'Ground';
+			}
+			else if (this.randomChance(1, 4)) {
+				let newType = 'Flying';
+			}
+			else if (this.randomChance(1, 3)) {
+				let newType = 'Steel';
+			}
+			else if (this.randomChance(1, 2)) {
+				let newType = 'Fairy';
+			}
+			else {
+				let newType = 'Dragon';
+			}
+			this.add('-start', target, 'typechange', newType);
+		},
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Water' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				let type = pokemon.types[0];
+				move.type = type;
+			}
+		},
+		name: "Inscuba Set",
+		rating: 5,
+		num: 73073,
+	},
+	smorkeset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['contact']) {
+				if (this.randomChance(3, 10)) {
+					source.trySetStatus('brn', target);
+				}
+			}
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns) {
+				this.heal(pokemon.baseMaxhp / 16);
+			}
+		},
+		onSourceModifyDamage(damage, source, target, move) {
+			let mod = 1;
+			if (move.type === 'Water') {
+				mod *= 7;
+				mod /= 8;
+			}
+			return this.chainModify(mod);
+		},
+		name: "Smorke Set",
+		rating: 5,
+		num: 73073,
+	},
+	lemoticset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onTakeItem(item, pokemon, source) {
+			if (this.suppressingAttackEvents(pokemon) || !pokemon.hp || pokemon.item === 'stickybarb') return;
+			if (!this.activeMove) throw new Error("Battle.activeMove is null");
+			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
+				this.add('-activate', pokemon, 'ability: Sticky Hold');
+				return false;
+			}
+		},
+		onEatItem(item, pokemon) {
+			this.heal(pokemon.baseMaxhp / 3);
+		},
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual(pokemon) {
+			if (this.field.isWeather(['sunnyday', 'desolateland']) || this.randomChance(1, 2)) {
+				if (pokemon.hp && !pokemon.item && this.dex.getItem(pokemon.lastItem).isBerry) {
+					pokemon.setItem(pokemon.lastItem);
+					pokemon.lastItem = '';
+					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Harvest');
+				}
+			}
+		},
+		name: "Lemotic Set",
+		rating: 5,
+		num: 73073,
+	},
+	electritarset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onPreStart(pokemon) {
+			this.add('-ability', pokemon, 'Unnerve', pokemon.side.foe);
+		},
+		onModifyMove(move) {
+			if (!move || !move.flags['contact'] || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 30,
+				status: 'psn',
+				ability: this.dex.getAbility('poisontouch'),
+			});
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status === 'psn' || pokemon.status === 'tox' || pokemon.status ==='slp' || pokemon.status === 'par') {
+				this.add('-activate', pokemon, 'ability: Slime Armor');
+				pokemon.cureStatus();
+			}
+		},
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			if (move.flags['powder'] && target !== source && this.dex.getImmunity('powder', target)) {
+				this.add('-immune', target, '[from] ability: Overcoat');
+				return null;
+			}
+		},
+		onFoeTryEatItem: false,
+		name: "Electritar Set",
+		rating: 5,
+		num: 73073,
+	},
+	chimidaset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Water') {
+				if (!this.boost({spa: 1})) {
+					this.add('-immune', target, '[from] ability: Storm Drain');
+				}
+				return null;
+			}
+			if (target !== source && move.type === 'Ground') {
+				this.add('-immune', target, '[from] ability: Storm Drain');
+				return null;
+			}
+		},
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Normal' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Flying';
+				move.aerilateBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.aerilateBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		onAnyRedirectTarget(target, source, source2, move) {
+			if (move.type !== 'Water' || ['firepledge', 'grasspledge', 'waterpledge'].includes(move.id)) return;
+			const redirectTarget = ['randomNormal', 'adjacentFoe'].includes(move.target) ? 'normal' : move.target;
+			if (this.validTarget(this.effectData.target, source, redirectTarget)) {
+				if (move.smartTarget) move.smartTarget = false;
+				if (this.effectData.target !== target) {
+					this.add('-activate', this.effectData.target, 'ability: Storm Drain');
+				}
+				return this.effectData.target;
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status === 'psn' || pokemon.status === 'tox') {
+				this.add('-activate', pokemon, 'ability: Immunity');
+				pokemon.cureStatus();
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (status.id !== 'psn' && status.id !== 'tox') return;
+			if ((effect as Move)?.status) {
+				this.add('-immune', target, '[from] ability: Cleanliness');
+			}
+			return false;
+		},
+		name: "Chimida Set",
+		rating: 5,
+		num: 73073,
+	},
+	fluxtapeset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Fire') {
+				move.accuracy = true;
+				if (!target.addVolatile('flashfire')) {
+					this.add('-immune', target, '[from] ability: Flash Fire');
+				}
+				return null;
+			}
+		},
+		onEnd(pokemon) {
+			pokemon.removeVolatile('flashfire');
+		},
+		condition: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			onStart(target) {
+				this.add('-start', target, 'ability: Flash Fire');
+			},
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onModifySpAPriority: 5,
+			onModifySpA(atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			},
+			onEnd(target) {
+				this.add('-end', target, 'ability: Flash Fire', '[silent]');
+			},
+		},
+		onAfterEachBoost(boost, target, source, effect) {
+			if (!source || target.side === source.side) {
+				if (effect.id === 'stickyweb') {
+					this.hint("Court Change Sticky Web counts as lowering your own Speed, and Competitive only affects stats lowered by foes.", true, source.side);
+				}
+				return;
+			}
+			let statsLowered = false;
+			let i: BoostName;
+			for (i in boost) {
+				if (boost[i]! < 0) {
+					statsLowered = true;
+				}
+			}
+			if (statsLowered) {
+				this.add('-ability', target, 'Competitive');
+				this.boost({spa: 2}, target, target, null, true);
+			}
+		},
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			if (move.flags['sound'] && !pokemon.volatiles.dynamax) { // hardcode
+				move.type = 'Fire';
+				move.aerilateBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.aerilateBoosted) return this.chainModify([0x1333, 0x1000]);
+		},
+		name: "Fluxtape Set",
+		rating: 5,
+		num: 73073,
+	},
+	abysseilset: {
+		shortDesc: "A combination of three abilities. Check the spreadsheet to see which.",
+		onUpdate(pokemon) {
+			if (pokemon.status === 'brn') {
+				this.add('-activate', pokemon, 'ability: Water Veil');
+				pokemon.cureStatus();
+			}
+		},
+		onSetStatus(status, target, source, effect) {
+			if (status.id !== 'brn') return;
+			if ((effect as Move)?.status) {
+				this.add('-immune', target, '[from] ability: Water Veil');
+			}
+			return false;
+		},
+		onTryHitPriority: 1,
+		onTryHit(target, source, move) {
+			if (target !== source && move.type === 'Grass') {
+				if (!this.boost({atk: 1})) {
+					this.add('-immune', target, '[from] ability: Sap Sipper');
+				}
+				return null;
+			}
+		},
+		onAllyTryHitSide(target, source, move) {
+			if (target === this.effectData.target || target.side !== source.side) return;
+			if (move.type === 'Grass') {
+				this.boost({atk: 1}, this.effectData.target);
+			}
+		},
+		onSourceModifyDamage(damage, source, target, move) {
+			let mod = 9;
+			mod /= 10;
+			return this.chainModify(mod);
+		},
+		name: "Abysseil Set",
 		rating: 5,
 		num: 73073,
 	},
