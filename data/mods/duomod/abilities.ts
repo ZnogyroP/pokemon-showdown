@@ -1971,7 +1971,7 @@ disappearance: {
 			} else if (r < 101) {
 				newType = 'Dragon';
 			}
-			this.add('-start', pokemon, 'typechange', newType);
+			this.add('-start', pokemon, 'typechange', newType, '[from] ability: Inscuba Set');
 		},
 		onModifyType(move, pokemon) {
 			const noModifyType = [
