@@ -1972,7 +1972,7 @@ disappearance: {
 			} else if (r < 101) {
 				newType = 'Fairy';
 			}
-			pokemon.spa: 20;
+			pokemon.spa = '20';
 			this.add('-start', pokemon, 'typechange', newType);
 			this.add('-start', pokemon, 'typechange', tempType, '[silent]');
 		},
