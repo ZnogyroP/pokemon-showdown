@@ -1973,7 +1973,6 @@ disappearance: {
 			}
 			if (pokemon.hasType(newType) || !pokemon.setType(newType)) return false;
 			this.add('-start', pokemon, 'typechange', newType);
-			this.add('-start', pokemon, 'typeadd', newType, '[from] ability: Adaptation');
 		},
 		onModifyType(move, pokemon) {
 			const noModifyType = [
