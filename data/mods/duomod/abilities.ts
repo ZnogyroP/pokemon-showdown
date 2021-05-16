@@ -1978,7 +1978,7 @@ disappearance: {
 			else {
 				let newType = 'Dragon';
 			}
-			this.add('-start', target, 'typechange', newType);
+			this.add('-start', pokemon, 'typechange', newType);
 		},
 		onModifyType(move, pokemon) {
 			const noModifyType = [
