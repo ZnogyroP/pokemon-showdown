@@ -192,7 +192,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 		mod: 'gen8',
 		ruleset: ['[Gen 8] OU', '+CAP'],
-		banlist: ['Clefable', 'Crucibelle-Mega'],
+		banlist: ['Crucibelle-Mega'],
 	},
 	{
 		name: "[Gen 8] Battle Stadium Singles",
@@ -1588,7 +1588,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			}
 		},
 	},
-  {
+	{
 		name: "[Gen 8] Duomod",
 		desc: `A metagame made up Duo's Pok&eacute;mon with some added changes.`,
 		threads: [
@@ -1599,12 +1599,23 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
 		banlist: ['All Pokemon'],
 		unbanlist: [
-			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Cliety', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Robit', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch', 'Joulibranch', 'Digidose', 'Castarupt', 'Nectrance', 'Batravolt', 'Smorke', 'Inscuba', 'Lemotic', 'Electritar', 'Chimida', 'Fluxtape', 'Abysseil'
+			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Chollunge', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Fluxtape-Stereo', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch', 'Joulibranch', 'Draglow', 'Castarupt', 'Nectrance', 'Batravolt', 'Smorke', 'Inscuba', 'Lemotic', 'Electritar', 'Chimida', 'Fluxtape', 'Abysseil'
 		],
 		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
+	},
+	{
+		name: "[Gen 8] Smogoff CAP",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3656824/">CAP Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3662655/">CAP Sample Teams</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3658514/">CAP Viability Rankings</a>`,
+		],
 
+		mod: 'gen8',
+		ruleset: ['[Gen 8] OU', '+CAP'],
+		banlist: ['Crucibelle-Mega', 'Bramble'],
 	},
 
 	// RoA Spotlight
