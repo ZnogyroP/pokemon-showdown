@@ -837,5 +837,54 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cute",
 	},
+	recover: {
+		num: 105,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP.",
+		name: "Recover",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		heal: [1, 2],
+		secondary: null,
+		target: "self",
+		type: "Electric",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Clever",
+	},
+	wish: {
+		num: 273,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "At the end of the next turn, the Pokemon at the user's position has 1/2 of the user's maximum HP restored to it, rounded half up. Fails if this move is already in effect for the user's position.",
+		shortDesc: "Next turn, 50% of the user's max HP is restored.",
+		name: "Wish",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		slotCondition: 'Wish',
+		condition: {
+			duration: 2,
+			onStart(pokemon, source) {
+				this.effectData.hp = source.maxhp / 2;
+			},
+			onResidualOrder: 4,
+			onEnd(target) {
+				if (target && !target.fainted) {
+					const damage = this.heal(this.effectData.hp, target, target);
+					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectData.source.name);
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Fairy",
+		zMove: {boost: {spd: 1}},
+		contestType: "Cute",
+	},
 
 };
