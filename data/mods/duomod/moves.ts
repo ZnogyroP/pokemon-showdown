@@ -591,4 +591,74 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Beautiful",
 	},
+	roulettewheel: {
+		num: 1013.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "A signature move of the Roulettemons. Try it out!",
+		shortDesc: "Use it yourself.",
+		name: "Roulette Wheel",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				target.trySetStatus('brn', source);
+			} else if (result === 1) {
+				target.trySetStatus('par', source);
+			} else {
+				target.trySetStatus('tox', source);
+			}
+		},
+		onTryMove(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.field.setTerrain('grassyterrain');
+			} else if (result === 1) {
+				this.field.setTerrain('electricterrain');
+			} else {
+				this.field.setTerrain('mistyterrain');
+			}
+		},
+		onTryHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.field.setWeather('sunnyday');
+			} else if (result === 1) {
+				this.field.setWeather('raindance');
+			} else {
+				this.field.setWeather('sandstorm');
+			}
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Beautiful",
+	},
+	rancidrush: {
+		num: 1026.1,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		desc: "Power doubles if the target is poisoned.",
+		shortDesc: "Power doubles if the target is poisoned.",
+		name: "Rancid Rush",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
+				return false;
+			}
+		onBasePower(basePower, pokemon, target) {
+			if (target.status === 'psn' || target.status === 'tox') {
+				return this.chainModify(2);
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		contestType: "Cool",
+	},
+
 };
