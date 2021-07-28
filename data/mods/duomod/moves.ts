@@ -263,13 +263,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 2,
 			onStart(pokemon, source) {
-					const damage = source.maxhp / 4;
+				this.effectData.hp = source.maxhp / 4;
 			},
 			onResidualOrder: 4,
 			onEnd(target) {
 				if (target && !target.fainted) {
+					const damage = this.heal(this.effectData.hp, target, target);
+					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectData.source.name);
 					target.cureStatus();
-					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Vibrant Light', '[wisher] ' + this.effectData.source.name);
 				}
 			},
 		},
