@@ -443,7 +443,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onSwitchIn(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
-				if (target.hasType('Ground')) return;
+				if (pokemon.hasType('Ground')) return;
 				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('chargedstone')), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 10);
 			},
