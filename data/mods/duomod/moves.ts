@@ -494,19 +494,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		desc: "Prevents the target from using Spinning Web or Defog.",
-		shortDesc: "Target can't use Defog.",
+		shortDesc: "Target can't remove hazards.",
 		name: "De-Defog",
 		pp: 40,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		volatileStatus: 'dedefog',
 		condition: {
-			noCopy: true,
 			onStart(pokemon) {
 				this.add('-start', pokemon, 'Dedefog');
 			},
-			onEnd(pokemon) {
-				this.add('-end', pokemon, 'Dedefog);
+			onDisableMove(pokemon) {
+				if (move.id === 'defog' || move.id === 'spinningweb') {
+					pokemon.disableMove(move.id);
+				}
 			},
 		},
 		secondary: null,
