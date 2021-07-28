@@ -591,50 +591,51 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Beautiful",
 	},
-	roulettewheel: {
-		num: 1013.1,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		desc: "A signature move of the Roulettemons. Try it out!",
-		shortDesc: "Use it yourself.",
-		name: "Roulette Wheel",
-		pp: 5,
+
+	spinningweb: {
+		num: 3009,
+		accuracy: 100,
+		basePower: 20,
+		category: "Physical",
+		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
+		shortDesc: "Free user from hazards/bind/Leech Seed.",
+		name: "Spinning Web",
+		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onHit(target, source) {
-			const result = this.random(3);
-			if (result === 0) {
-				target.trySetStatus('brn', source);
-			} else if (result === 1) {
-				target.trySetStatus('par', source);
-			} else {
-				target.trySetStatus('tox', source);
+		onTryHit(target) {
+			if (target.hasType('Fire')) return false;					}
+		onAfterHit(target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Spinning Web', '[of] ' + pokemon);
+			}
+			const sideConditions = ['dewyflowers', 'chargedstone', 'jewelshards'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
 			}
 		},
-		onTryMove(target, source) {
-			const result = this.random(3);
-			if (result === 0) {
-				this.field.setTerrain('grassyterrain');
-			} else if (result === 1) {
-				this.field.setTerrain('electricterrain');
-			} else {
-				this.field.setTerrain('mistyterrain');
+		onAfterSubDamage(damage, target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
 			}
-		},
-		onTryHit(target, source) {
-			const result = this.random(3);
-			if (result === 0) {
-				this.field.setWeather('sunnyday');
-			} else if (result === 1) {
-				this.field.setWeather('raindance');
-			} else {
-				this.field.setWeather('sandstorm');
+			const sideConditions = ['dewyflowers', 'chargedstone', 'jewelshards'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
 			}
 		},
 		target: "normal",
-		type: "Fairy",
-		contestType: "Beautiful",
+		type: "Bug",
+		contestType: "Cool",
 	},
 	rancidrush: {
 		num: 1026.1,
