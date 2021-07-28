@@ -21753,7 +21753,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Spinning Web",
 		pp: 20,
 		priority: 0,
-		flags: protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		onTryHit(target) {
 			if (target.hasType('Fire')) return false;					}
 		onAfterHit(target, pokemon) {
