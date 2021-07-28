@@ -294,19 +294,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const removeTarget = [
 				'dewyflowers',
 			];
-			const removeAll = [
-				'dewyflowers',
-			];
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
 					if (!removeAll.includes(targetCondition)) continue;
 					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Nibble Away', '[of] ' + source);
-					success = true;
-				}
-			}
-			for (const sideCondition of removeAll) {
-				if (source.side.removeSideCondition(sideCondition)) {
-					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Nibble Away', '[of] ' + source);
 					success = true;
 				}
 			}
@@ -512,14 +503,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			noCopy: true,
 			onStart(pokemon) {
-				this.add('-start', pokemon, 'Torment');
+				this.add('-start', pokemon, 'De-defog');
 			},
 			onEnd(pokemon) {
-				this.add('-end', pokemon, 'Torment');
+				this.add('-end', pokemon, 'De-defog);
 			},
 			onDisableMove(pokemon) {
-				if (moveSlot.id === 'defog' || moveSlot.id === 'spinningweb') {
-					pokemon.disableMove(moveSlot.id);
+				if (move.id === 'defog' || move.id === 'spinningweb') {
+					pokemon.disableMove(move.id);
 				}
 			},
 		},
