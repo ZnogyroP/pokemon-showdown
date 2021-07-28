@@ -239,13 +239,10 @@ adaptation: {
 			this.add('-start', pokemon, 'typeadd', type, '[from] ability: Adaptation');
 			for (const target of pokemon.side.foe.active) {
 				if (!target || !this.isAdjacent(target, pokemon)) continue;
-				if (!activated) {
-					this.add('-ability', pokemon, 'Adaptation', 'boost');
-					activated = true;
-				}
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
-				} else {
+				} 
+				else {
 					this.boost({atk: -1}, target, pokemon, null, true);
 				}
 			}
