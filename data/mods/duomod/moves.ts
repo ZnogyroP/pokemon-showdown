@@ -493,7 +493,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		desc: "Prevents the target from using Defog.",
+		desc: "Prevents the target from using Spinning Web or Defog.",
 		shortDesc: "Target can't use Defog.",
 		name: "De-Defog",
 		pp: 40,
@@ -509,7 +509,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-end', pokemon, 'Dedefog);
 			},
 			onDisableMove(pokemon) {
-				if (move.id === 'defog' || move.id === 'spinningweb') {
+				if (move.id === 'defog') {
 					pokemon.disableMove(move.id);
 				}
 			},
