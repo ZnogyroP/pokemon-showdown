@@ -673,12 +673,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyPriority(priority, source, target, move) {
-			for (const oppside of pokemon.side.foe.active) {
-				if (oppside.status === 'psn' || oppside.status === 'tox') {
+		onModifyPriority(priority, source, move) {
+			for (const target of pokemon.side.foe.active) {
+				if (pokemon.side.foe.active === 'psn' || pokemon.side.foe.active === 'tox') {
 					return priority + 1;
 				}
-			},
+			}
+		},
 		secondary: null,
 		target: "normal",
 		type: "Poison",
