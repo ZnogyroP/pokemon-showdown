@@ -488,38 +488,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {def: 1}},
 		contestType: "Clever",
 	},
-	dedefog: {
-		num: 3008,
-		accuracy: 100,
-		basePower: 0,
-		category: "Status",
-		desc: "Prevents the target from using Spinning Web or Defog.",
-		shortDesc: "Target can't use Defog.",
-		name: "De-Defog",
-		pp: 40,
-		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
-		volatileStatus: 'dedefog',
-		condition: {
-			noCopy: true,
-			onStart(pokemon) {
-				this.add('-start', pokemon, 'Dedefog');
-			},
-			onEnd(pokemon) {
-				this.add('-end', pokemon, 'Dedefog);
-			},
-			onDisableMove(pokemon) {
-				if (move.id === 'defog') {
-					pokemon.disableMove(move.id);
-				}
-			},
-		},
-		secondary: null,
-		target: "normal",
-		type: "Flying",
-		zMove: {boost: {atk: 1}},
-		contestType: "Clever",
-	},
 	piercingshot: {
 		num: 2006,
 		accuracy: 100,
