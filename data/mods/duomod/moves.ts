@@ -1,4 +1,5 @@
 /*
+i'm sorry it looks disgusting i made a lot of this a long time ago
 
 List of flags and their descriptions:
 
@@ -27,34 +28,6 @@ sound: Has no effect on Pokemon with the Soundproof Ability.
 */
 
 export const Moves: {[moveid: string]: MoveData} = {
-	dewyflowers: {
-		num: 1001.1,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		shortDesc: "Heals the user's side every turn, entry hazard.",
-		name: "Dewy Flowers",
-		pp: 20,
-		priority: 0,
-		flags: {},
-		sideCondition: 'Dewy Flowers',
-		condition: {
-			onStart(side) {
-				this.add('-sidestart', side, 'Dewy Flowers');
-			},
-			onResidualOrder: 6,
-			onWeather(target, source, effect) {
-				if (!target.isGrounded()) return;
-				if (target.hasItem('heavydutyboots')) return;
-				this.heal(target.baseMaxhp / 16);
-			},
-		},
-		secondary: null,
-		target: "allySide",
-		type: "Grass",
-		zMove: {boost: {def: 1}},
-		contestType: "Cute",
-	},
 	reductivebash: {
 		num: 1000.1,
 		accuracy: 100,
@@ -95,6 +68,34 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {basePower: 160},
 		maxMove: {basePower: 130},
 		contestType: "Tough",
+	},
+	dewyflowers: {
+		num: 1001.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "Heals the user's side every turn, entry hazard.",
+		name: "Dewy Flowers",
+		pp: 20,
+		priority: 0,
+		flags: {},
+		sideCondition: 'Dewy Flowers',
+		condition: {
+			onStart(side) {
+				this.add('-sidestart', side, 'Dewy Flowers');
+			},
+			onResidualOrder: 6,
+			onWeather(target, source, effect) {
+				if (!target.isGrounded()) return;
+				if (target.hasItem('heavydutyboots')) return;
+				this.heal(target.baseMaxhp / 16);
+			},
+		},
+		secondary: null,
+		target: "allySide",
+		type: "Grass",
+		zMove: {boost: {def: 1}},
+		contestType: "Cute",
 	},
 	heatedblade: {
 		num: 1002.1,
