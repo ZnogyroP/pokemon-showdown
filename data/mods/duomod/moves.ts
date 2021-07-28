@@ -285,7 +285,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Physical",
 		shortDesc: "Removes Dewy Flowers from opponent's side.",
-		name: "Defog",
+		name: "Nibble Away",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, authentic: 1},
@@ -508,31 +508,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 40,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
-		volatileStatus: 'taunt',
+		volatileStatus: 'dedefog',
 		condition: {
-			onStart(target) {
-				if (target.activeTurns && !this.queue.willMove(target)) {
-					this.effectData.duration++;
-				}
-				this.add('-start', target, 'move: De-defog');
+			noCopy: true,
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Torment');
 			},
-			onResidualOrder: 12,
-			onEnd(target) {
-				this.add('-end', target, 'move: De-defog');
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Torment');
 			},
 			onDisableMove(pokemon) {
-				for (const moveSlot of pokemon.moveSlots) {
-					const move = this.dex.getMove(moveSlot.id);
-					if (move.id == 'Defog' || move.id == 'Spinning Web') {
-						pokemon.disableMove(moveSlot.id);
-					}
-				}
-			},
-			onBeforeMovePriority: 5,
-			onBeforeMove(attacker, defender, move) {
-				if (move.id == 'Defog' || move.id == 'Spinning Web') {
-					this.add('cant', attacker, 'move: De-defog', move);
-					return false;
+				if (moveSlot.id === 'defog' || moveSlot.id === 'spinningweb') {
+					pokemon.disableMove(moveSlot.id);
 				}
 			},
 		},
@@ -1274,5 +1261,47 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "self",
 		type: "Fairy",
 		contestType: "Beautiful",
+	},
+	defog: {
+		num: 432,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Lowers the target's evasiveness by 1 stage. If this move is successful and whether or not the target's evasiveness was affected, the effects of Reflect, Light Screen, Aurora Veil, Safeguard, Mist, Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the target's side, and the effects of Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the user's side. Ignores a target's substitute, although a substitute will still block the lowering of evasiveness. If there is a terrain active and this move is successful, the terrain will be cleared.",
+		shortDesc: "-1 evasion; clears terrain and hazards on both sides.",
+		name: "Defog",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		onHit(target, source, move) {
+			let success = false;
+			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
+			const removeTarget = [
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'dewyflowers', 'chargedstone', 'jewelshards',
+			];
+			const removeAll = [
+				'dewyflowers', 'chargedstone', 'jewelshards',
+			];
+			for (const targetCondition of removeTarget) {
+				if (target.side.removeSideCondition(targetCondition)) {
+					if (!removeAll.includes(targetCondition)) continue;
+					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Defog', '[of] ' + source);
+					success = true;
+				}
+			}
+			for (const sideCondition of removeAll) {
+				if (source.side.removeSideCondition(sideCondition)) {
+					this.add('-sideend', source.side, this.dex.getEffect(sideCondition).name, '[from] move: Defog', '[of] ' + source);
+					success = true;
+				}
+			}
+			this.field.clearTerrain();
+			return success;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		zMove: {boost: {accuracy: 1}},
+		contestType: "Cool",
 	},
 };
