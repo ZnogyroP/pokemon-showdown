@@ -663,24 +663,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 
 	rancidrush: {
 		num: 1026.1,
-		accuracy: 100,
-		basePower: 60,
-		category: "Special",
-		shortDesc: "Doubles the user's Speed if target is poisoned.",
+		accuracy: 80,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "+1 Priority; badly poisons.",
 		name: "Rancid Rush",
 		pp: 10,
 		priority: 1,
 		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			onHit(target) {
-				if (target.status === 'psn' || target.status === 'tox') {
-					boosts: {
-						spe: 2,
-					},
-				},
-			},
-		},
+		status: 'tox',
 		target: "normal",
 		type: "Poison",
 		contestType: "Cool",
