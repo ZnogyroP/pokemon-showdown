@@ -1590,11 +1590,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	},
 	{
 		name: "[Gen 8] Duomod",
-		desc: `A metagame made up Duo's Pok&eacute;mon with some added changes.`,
-		threads: [
-			`<a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons</a>`,
-		],
-
+		desc: `A DuoM2 Solomod, not much more to it.`,
 		mod: 'duomod',
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
 		banlist: ['All Pokemon'],

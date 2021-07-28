@@ -1,9 +1,9 @@
 export const FormatsData: {[k: string]: SpeciesFormatsData} = {
-	abysseil: {
+	annelait: {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
-	annelait: {
+	abysseil: {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
