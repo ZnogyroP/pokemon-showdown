@@ -263,13 +263,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 2,
 			onStart(pokemon, source) {
-				this.effectData.hp = source.maxhp / 4;
 			},
 			onResidualOrder: 4,
 			onEnd(target) {
 				if (target && !target.fainted) {
 					target.cureStatus();
-					const damage = this.heal(this.effectData.hp, target, target);
+					const damage = source.maxhp / -4;
 					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Vibrant Light', '[wisher] ' + this.effectData.source.name);
 				}
 			},
@@ -667,18 +666,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 60,
 		category: "Special",
-		desc: "Power doubles if the target is poisoned.",
-		shortDesc: "Power doubles if the target is poisoned.",
+		shortDesc: "Doubles the user's Speed if target is poisoned.",
 		name: "Rancid Rush",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onModifyPriority(priority, source, move) {
-			for (const target of source.side.foe.active) {
-				if (source.side.foe.active === 'psn' || source.side.foe.active === 'tox') {
-					return priority + 1;
-				}
-			}
+		secondary: {
+			chance: 100,
+			onHit(target) {
+				if (target.status === 'psn' || target.status === 'tox') {
+					boosts: {
+						spe: 2,
+					},
+				},
+			},
 		},
 		secondary: null,
 		target: "normal",
