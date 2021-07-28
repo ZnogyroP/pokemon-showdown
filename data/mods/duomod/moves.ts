@@ -1129,10 +1129,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 	frustration: {
 		num: 218,
 		accuracy: 100,
-		basePower: 102
+		basePower: 0,
+		basePowerCallback(pokemon) {
+			return Math.floor(((255 - pokemon.happiness) * 10) / 25) || 1;
+		},
 		category: "Physical",
-		desc: "Power is equal to 102.",
-		shortDesc: "102 Power regardless of Happiness.",
+		desc: "Power is equal to the greater of ((255 - user's Happiness) * 2/5), rounded down, or 1.",
+		shortDesc: "Max 102 power at minimum Happiness.",
+		isNonstandard: "Past",
 		name: "Frustration",
 		pp: 20,
 		priority: 0,
@@ -1160,5 +1164,115 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Dark",
 		contestType: "Tough",
+	},
+	octolock: {
+		num: 753,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Prevents the target from switching out. At the end of each turn during effect, the target's Defense and Special Defense are lowered by 1 stage. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement will remain trapped. The effect ends if the user leaves the field.",
+		shortDesc: "Traps target, lowers Def and SpD by 1 each turn.",
+		name: "Octolock",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryImmunity(target) {
+			return this.dex.getImmunity('trapped', target);
+		},
+		volatileStatus: 'octolock',
+		condition: {
+			onStart(pokemon, source) {
+				this.add('-start', pokemon, 'move: Octolock', '[of] ' + source);
+			},
+			onResidualOrder: 11,
+			onResidual(pokemon) {
+				const source = this.effectData.source;
+				if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns)) {
+					delete pokemon.volatiles['octolock'];
+					this.add('-end', pokemon, 'Octolock', '[partiallytrapped]', '[silent]');
+					return;
+				}
+				this.boost({def: -1, spd: -1}, pokemon, source, this.dex.getActiveMove('octolock'));
+			},
+			onTrapPokemon(pokemon) {
+				if (this.effectData.source && this.effectData.source.isActive) pokemon.tryTrap();
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Water",
+	},
+	trickroom: {
+		num: 433,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the Speed of every Pokemon is recalculated for the purposes of determining turn order. During the effect, each Pokemon's Speed is considered to be (10000 - its normal Speed), and if this value is greater than 8191, 8192 is subtracted from it. If this move is used during the effect, the effect ends.",
+		shortDesc: "Goes last. For 5 turns, turn order is reversed.",
+		name: "Trick Room",
+		pp: 5,
+		priority: -7,
+		flags: {mirror: 1},
+		pseudoWeather: 'trickroom',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', effect);
+					return 7;
+				}
+				return 5;
+			},
+			onStart(target, source) {
+				this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('trickroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onResidualOrder: 23,
+			onEnd() {
+				this.add('-fieldend', 'move: Trick Room');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Fairy",
+		zMove: {boost: {accuracy: 1}},
+		contestType: "Clever",
+	},
+	healingwish: {
+		num: 361,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user faints and the next injured or statused Pokemon brought in has its HP fully restored along with having any major status condition cured. The healing happens before hazards take effect. Is not consumed if the Pokemon sent out is not injured or statused. Fails if the user is the last unfainted Pokemon in its party.",
+		shortDesc: "User faints. Next hurt Pokemon is fully healed.",
+		name: "Healing Wish",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		onTryHit(pokemon, target, move) {
+			if (!this.canSwitch(pokemon.side)) {
+				delete move.selfdestruct;
+				return false;
+			}
+		},
+		selfdestruct: "ifHit",
+		slotCondition: 'healingwish',
+		condition: {
+			onSwap(target) {
+				if (!target.fainted && (target.hp < target.maxhp || target.status)) {
+					target.heal(target.maxhp);
+					target.setStatus('');
+					this.add('-heal', target, target.getHealth, '[from] move: Healing Wish');
+					target.side.removeSlotCondition(target, 'healingwish');
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Fairy",
+		contestType: "Beautiful",
 	},
 };
