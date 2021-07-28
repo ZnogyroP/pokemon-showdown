@@ -296,7 +296,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			];
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
-					if (!removeAll.includes(targetCondition)) continue;
 					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Nibble Away', '[of] ' + source);
 					success = true;
 				}
