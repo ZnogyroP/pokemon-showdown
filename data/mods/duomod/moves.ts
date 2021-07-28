@@ -503,10 +503,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			noCopy: true,
 			onStart(pokemon) {
-				this.add('-start', pokemon, 'De-defog');
+				this.add('-start', pokemon, 'Dedefog');
 			},
 			onEnd(pokemon) {
-				this.add('-end', pokemon, 'De-defog);
+				this.add('-end', pokemon, 'Dedefog);
 			},
 			onDisableMove(pokemon) {
 				if (move.id === 'defog' || move.id === 'spinningweb') {
