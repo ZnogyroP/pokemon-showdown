@@ -575,7 +575,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		desc: "A signature move of the Roulettemons. Try it out!",
-		shortDesc: "Use it yourself.",
+		shortDesc: "Try it a few times.",
 		name: "Roulette Wheel",
 		pp: 5,
 		priority: 0,
@@ -669,7 +669,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		shortDesc: "Doubles the user's Speed if target is poisoned.",
 		name: "Rancid Rush",
 		pp: 10,
-		priority: 0,
+		priority: 1,
 		flags: {protect: 1, mirror: 1},
 		secondary: {
 			chance: 100,
@@ -677,11 +677,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (target.status === 'psn' || target.status === 'tox') {
 					boosts: {
 						spe: 2,
-					}
-				}
+					},
+				},
 			},
 		},
-		secondary: null,
 		target: "normal",
 		type: "Poison",
 		contestType: "Cool",
