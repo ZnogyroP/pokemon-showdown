@@ -973,5 +973,72 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {def: 1}},
 		contestType: "Clever",
 	},
-
+	healbell: {
+		num: 215,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Every Pokemon in the user's party is cured of its major status condition. Active Pokemon with the Soundproof Ability are not cured, unless they are the user.",
+		shortDesc: "Cures the user's party of all status conditions.",
+		name: "Heal Bell",
+		pp: 5,
+		priority: 0,
+		flags: {snatch: 1, sound: 1, distance: 1, authentic: 1},
+		onHit(pokemon, source) {
+			this.add('-activate', source, 'move: Heal Bell');
+			const side = pokemon.side;
+			let success = false;
+			for (const ally of side.pokemon) {
+				if (ally !== source && ally.hasAbility('soundproof')) continue;
+				if (ally.cureStatus()) success = true;
+			}
+			return success;
+		},
+		target: "allyTeam",
+		type: "Steel",
+		zMove: {effect: 'heal'},
+		contestType: "Beautiful",
+	},
+	calmmind: {
+		num: 347,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Special Attack and Special Defense by 1 stage.",
+		shortDesc: "Raises the user's Sp. Atk and Sp. Def by 1.",
+		name: "Calm Mind",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			spa: 1,
+			spd: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Fairy",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Clever",
+	},
+	bulkup: {
+		num: 339,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack and Defense by 1 stage.",
+		shortDesc: "Raises the user's Attack and Defense by 1.",
+		name: "Bulk Up",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 1,
+			def: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Dark",
+		zMove: {boost: {atk: 1}},
+		contestType: "Cool",
+	},
 };
