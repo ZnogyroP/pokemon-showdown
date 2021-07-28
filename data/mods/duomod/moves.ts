@@ -647,11 +647,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onTryHit(target) {
-			if (target.hasType('Fire')) {
-				return false;
-			}
-		}
 		onAfterHit(target, pokemon) {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Spinning Web', '[of] ' + pokemon);
@@ -684,6 +679,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Bug",
 		contestType: "Cool",
 	},
+
 	rancidrush: {
 		num: 1026.1,
 		accuracy: 100,
