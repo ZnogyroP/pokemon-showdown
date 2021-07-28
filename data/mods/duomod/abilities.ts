@@ -526,15 +526,7 @@ disappearance: {
 		rating: 3.5,
 		num: 23.1,
 	},
-	sleightofhand: {
-		shortDesc: "This Pokemon's punch moves have their priority increased by 1.",
-		onModifyPriority(priority, pokemon, target, move) {
-			if (move?.flags['punch']) return priority + 1;
-		},
-		name: "Sleight of Hand",
-		rating: 3.5,
-		num: 25.1,
-	},
+
 	bagoftricks: {
 		shortDesc: "The user and target swap items when the user is sent out.",
 		onTryImmunity(target) {
@@ -575,5 +567,14 @@ disappearance: {
 		name: "Bag of Tricks",
 		rating: 3.5,
 		num: 24.1,
+	},
+	sleightofhand: {
+		shortDesc: "This Pokemon's punch moves have their priority increased by 1.",
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.flags['punch']) return priority + 1;
+		},
+		name: "Sleight of Hand",
+		rating: 3.5,
+		num: 25.1,
 	},
 };
