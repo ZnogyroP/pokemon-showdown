@@ -1590,31 +1590,22 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	},
 	{
 		name: "[Gen 8] Duomod",
-		desc: `A DuoM2 Solomod, not much more to it.`,
+		desc: `<b>Duomod</b>: DuoM2's solomod, which cuts 6 of the 18 types and only allows the use of certain Fakemon.`,
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons on Smogon Forums</a>`,
+			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1EOA1m7JXTq7Zz0ViVI4n6lBppFjVBa4S1GqhAwkPTZQ/edit?usp=sharing">Spreadsheet</a>`,
+			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1J5ZMVzTAfJ48KQWVE7jt1S6fm7Y8DQX1tFX0-iENWiw/edit?usp=sharing">Bonus Random Team Generator</a>`,
 		],
+
 		mod: 'duomod',
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
 		banlist: ['All Pokemon'],
 		unbanlist: [
-			'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Chollunge', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draxplosion', 'Egg', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Grievenge', 'Hyperoach', 'Komodith', 'Magicida', 'Monstratus', 'Mortemoth', 'Pterrost', 'Fluxtape-Stereo', 'Sharmpedo', 'Spirox', 'Treemu', 'Valianch', 'Joulibranch', 'Draglow', 'Castarupt', 'Nectrance', 'Batravolt', 'Smorke', 'Inscuba', 'Lemotic', 'Electritar', 'Chimida', 'Fluxtape', 'Abysseil',
+			'Abysseil', 'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Batravolt', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Castarupt', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Chimida', 'Chollunge', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draglow', 'Draxplosion', 'Egg', 'Electritar', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Fluxtape', 'Fluxtape-Stereo', 'Grievenge', 'Hyperoach', 'Inscuba', 'Joulibranch', 'Lemotic', 'Modolith', 'Monstratus', 'Mortemoth', 'Nectrance', 'Pterrost', 'Sharmpedo', 'Smorke', 'Spirox', 'Treemu', 'Valianch', 
 		],
 		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
-	},
-	{
-		name: "[Gen 8] Smogoff CAP",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3656824/">CAP Metagame Discussion</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3662655/">CAP Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3658514/">CAP Viability Rankings</a>`,
-		],
-
-		mod: 'gen8',
-		ruleset: ['[Gen 8] OU', '+CAP'],
-		banlist: ['Crucibelle-Mega'],
 	},
 
 	// RoA Spotlight
