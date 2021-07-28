@@ -505,10 +505,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-start', pokemon, 'Dedefog');
 			},
 			onDisableMove(pokemon) {
-				if (move.id === 'defog' || move.id === 'spinningweb') {
-					pokemon.disableMove(move.id);
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.getMove(moveSlot.id);
+					if (moveSlot.id === 'defog' || moveSlot.id === 'spinningweb') {
+						pokemon.disableMove(moveSlot.id);
+					}
 				}
 			},
+				
 		},
 		secondary: null,
 		target: "normal",
