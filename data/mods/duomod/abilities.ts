@@ -496,7 +496,7 @@ disappearance: {
 		},
 		onCriticalHit(target, source, move) {
 			if (!target) return;
-			if (!['eggg', 'egggcracked'].includes(target.species.id) || target.transformed) {
+			if (!['eggg', 'eggg-cracked'].includes(target.species.id) || target.transformed) {
 				return;
 			}
 			const hitSub = target.volatiles['substitute'] && !move.flags['authentic'] && !(move.infiltrates && this.gen >= 6);
@@ -507,7 +507,7 @@ disappearance: {
 		},
 		onEffectiveness(typeMod, target, type, move) {
 			if (!target) return;
-			if (!['eggg', 'egggcracked'].includes(target.species.id) || target.transformed) {
+			if (!['eggg', 'eggg-cracked'].includes(target.species.id) || target.transformed) {
 				return;
 			}
 			const hitSub = target.volatiles['substitute'] && !move.flags['authentic'] && !(move.infiltrates && this.gen >= 6);
@@ -518,7 +518,7 @@ disappearance: {
 		},
 		onUpdate(pokemon) {
 			if (['eggg'].includes(pokemon.species.id) && this.effectData.busted) {
-				const speciesid = pokemon.species.id === 'egggcracked';
+				const speciesid = pokemon.species.id === 'eggg-cracked';
 				pokemon.formeChange(speciesid, this.effect, true);
 			}
 		},
