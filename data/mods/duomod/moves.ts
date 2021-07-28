@@ -677,8 +677,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (target.status === 'psn' || target.status === 'tox') {
 					boosts: {
 						spe: 2,
-					},
-				},
+					}
+				}
 			},
 		},
 		secondary: null,
