@@ -497,4 +497,119 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {def: 1}},
 		contestType: "Clever",
 	},
+	roulettewheel: {
+		num: 1013.1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "A signature move of the Roulettemons. Try it out!",
+		shortDesc: "Use it yourself.",
+		name: "Roulette Wheel",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				target.trySetStatus('brn', source);
+			} else if (result === 1) {
+				target.trySetStatus('par', source);
+			} else {
+				target.trySetStatus('tox', source);
+			}
+		},
+		onTryMove(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.field.setTerrain('grassyterrain');
+			} else if (result === 1) {
+				this.field.setTerrain('electricterrain');
+			} else {
+				this.field.setTerrain('mistyterrain');
+			}
+		},
+		onTryHit(target, source) {
+			const result = this.random(3);
+			if (result === 0) {
+				this.field.setWeather('sunnyday');
+			} else if (result === 1) {
+				this.field.setWeather('raindance');
+			} else {
+				this.field.setWeather('sandstorm');
+			}
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Beautiful",
+	},
+	spinningweb: {
+		num: 3009,
+		accuracy: 100,
+		basePower: 20,
+		category: "Physical",
+		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
+		shortDesc: "Free user from hazards/bind/Leech Seed.",
+		name: "Spinning Web",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryHit(target) {
+			if (target.hasType('Fire')) return false;					}
+		onAfterHit(target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Spinning Web', '[of] ' + pokemon);
+			}
+			const sideConditions = ['dewyflowers', 'chargedstone', 'jewelshards'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		onAfterSubDamage(damage, target, pokemon) {
+			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
+			}
+			const sideConditions = ['dewyflowers', 'chargedstone', 'jewelshards'];
+			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
+				}
+			}
+			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				pokemon.removeVolatile('partiallytrapped');
+			}
+		},
+		target: "normal",
+		type: "Bug",
+		contestType: "Cool",
+	},
+	rancidrush: {
+		num: 1026.1,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		desc: "Power doubles if the target is poisoned.",
+		shortDesc: "Power doubles if the target is poisoned.",
+		name: "Rancid Rush",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
+				return false;
+			}
+		onBasePower(basePower, pokemon, target) {
+			if (target.status === 'psn' || target.status === 'tox') {
+				return this.chainModify(2);
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		contestType: "Cool",
+	},
+
 };
