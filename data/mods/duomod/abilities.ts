@@ -487,7 +487,7 @@ disappearance: {
 		onDamage(damage, target, source, effect) {
       if (
 				effect && effect.effectType === 'Move' &&
-				['egg'].includes(target.species.id) && !target.transformed
+				['eggg'].includes(target.species.id) && !target.transformed
 			) {
 				this.add('-activate', target, 'ability: Fragile');
         this.effectData.busted = true;
@@ -496,7 +496,7 @@ disappearance: {
 		},
 		onCriticalHit(target, source, move) {
 			if (!target) return;
-			if (!['egg', 'eggcracked'].includes(target.species.id) || target.transformed) {
+			if (!['eggg', 'egggcracked'].includes(target.species.id) || target.transformed) {
 				return;
 			}
 			const hitSub = target.volatiles['substitute'] && !move.flags['authentic'] && !(move.infiltrates && this.gen >= 6);
@@ -507,7 +507,7 @@ disappearance: {
 		},
 		onEffectiveness(typeMod, target, type, move) {
 			if (!target) return;
-			if (!['egg', 'eggcracked'].includes(target.species.id) || target.transformed) {
+			if (!['eggg', 'egggcracked'].includes(target.species.id) || target.transformed) {
 				return;
 			}
 			const hitSub = target.volatiles['substitute'] && !move.flags['authentic'] && !(move.infiltrates && this.gen >= 6);
@@ -517,8 +517,8 @@ disappearance: {
 			return 0;
 		},
 		onUpdate(pokemon) {
-			if (['egg'].includes(pokemon.species.id) && this.effectData.busted) {
-				const speciesid = pokemon.species.id === 'eggcracked';
+			if (['eggg'].includes(pokemon.species.id) && this.effectData.busted) {
+				const speciesid = pokemon.species.id === 'egggcracked';
 				pokemon.formeChange(speciesid, this.effect, true);
 			}
 		},
