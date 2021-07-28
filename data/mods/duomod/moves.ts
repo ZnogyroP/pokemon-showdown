@@ -675,7 +675,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		onModifyPriority(priority, source, move) {
 			for (const target of pokemon.side.foe.active) {
-				if (pokemon.side.foe.active === 'psn' || pokemon.side.foe.active === 'tox') {
+				if (source.side.foe.active === 'psn' || source.side.foe.active === 'tox') {
 					return priority + 1;
 				}
 			}
