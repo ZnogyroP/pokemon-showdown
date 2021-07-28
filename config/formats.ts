@@ -1591,6 +1591,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	{
 		name: "[Gen 8] Duomod",
 		desc: `A DuoM2 Solomod, not much more to it.`,
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
+		],
 		mod: 'duomod',
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
 		banlist: ['All Pokemon'],
