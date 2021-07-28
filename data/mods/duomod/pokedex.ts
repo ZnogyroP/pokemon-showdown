@@ -319,9 +319,9 @@ fluidrake: {
 	weightkg: 5,
 	eggGroups: ["Undiscovered"],
 },
-egg: {
+eggg: {
 	num: 24.5,
-	species: "Egg",
+	species: "Eggg",
 	types: ["Poison"],
 	gender: "N",
 	baseStats: {hp: 55, atk: 25, def: 120, spa: 25, spd: 120, spe: 55},
@@ -329,11 +329,11 @@ egg: {
 	height: 5,
 	weightkg: 5,
 	eggGroups: ["Undiscovered"],
-	otherFormes: ["Egg-Cracked"],
+	otherFormes: ["Eggg-Cracked"],
 },
-eggcracked: {
+egggcracked: {
 	num: 24.5,
-	species: "Egg-Cracked",
+	species: "Eggg-Cracked",
 	types: ["Poison"],
 	gender: "N",
 	baseStats: {hp: 55, atk: 110, def: 25, spa: 110, spd: 25, spe: 75},

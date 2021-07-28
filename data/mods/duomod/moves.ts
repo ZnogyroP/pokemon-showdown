@@ -153,7 +153,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {snatch: 1},
 		sideCondition: 'stormcloud',
 		condition: {
-			duration: 5,
+			duration: 10,
       onWeather(target, source, effect) {
 			if (effect.id === 'raindance') {
   			if (target.hasType('Ground') || target.hasType('Electric')) return;
@@ -222,7 +222,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		category: "Physical",
 		desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
 		shortDesc: "Has 33% recoil.",
-		name: "Flare Blitz",
+		name: "Dragon Crash",
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
@@ -264,13 +264,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 			duration: 2,
 			onStart(pokemon, source) {
 				this.effectData.hp = source.maxhp / 4;
-				pokemon.cureStatus();
 			},
 			onResidualOrder: 4,
 			onEnd(target) {
 				if (target && !target.fainted) {
+					target.cureStatus();
 					const damage = this.heal(this.effectData.hp, target, target);
-					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectData.source.name);
+					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Vibrant Light', '[wisher] ' + this.effectData.source.name);
 				}
 			},
 		},
@@ -387,14 +387,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Grass",
 		contestType: "Cute",
 	},
-	wildfire: {
+	scorch: {
 		num: 3004,
 		accuracy: 100,
 		basePower: 20,
 		category: "Special",
 		desc: "Has a 100% chance to burn the target.",
 		shortDesc: "100% chance to burn the target.",
-		name: "Wildfire",
+		name: "Scorch",
 		pp: 30,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
@@ -673,12 +673,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, target) {
+		onModifyPriority(priority, source, target, move) {
 			if (target.status === 'psn' || target.status === 'tox') {
-				return this.chainModify(2);
-			}
-			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
-				return false;
+				return priority + 1;
 			}
 		},
 		secondary: null,

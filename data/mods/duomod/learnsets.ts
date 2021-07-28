@@ -149,7 +149,7 @@ baloon: {learnset: {
 	volttackle: ["8L1"],
 	washout: ["8L1"],
 	waterspout: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 }},
 batravolt: {learnset: {
 	aquajet: ["8L1"],
@@ -307,7 +307,7 @@ castarupt: {learnset: {
 	thief: ["8L1"],
 	toxic: ["8L1"],
 	vibrantlight: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 }},
 catelax: {learnset: {
 	assurance: ["8L1"],
@@ -356,7 +356,7 @@ cephalopire: {learnset: {
 	toxic: ["8L1"],
 	vibrantlight: ["8L1"],
 	waterfall: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 	wish: ["8L1"],
 }},
 chemiclysm: {learnset: {
@@ -628,9 +628,9 @@ draxplosion: {learnset: {
 	toxic: ["8L1"],
 	uturn: ["8L1"],
 	vibrantlight: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 }},
-egg: {learnset: {
+eggg: {learnset: {
 	aquajet: ["8L1"],
 	assurance: ["8L1"],
 	cleansingwaters: ["8L1"],
@@ -659,7 +659,7 @@ egg: {learnset: {
 	toxic: ["8L1"],
 	washout: ["8L1"],
 }},
-eggcracked: {learnset: {
+egggcracked: {learnset: {
 	aquajet: ["8L1"],
 	assurance: ["8L1"],
 	cleansingwaters: ["8L1"],
@@ -710,7 +710,7 @@ fluxtape: {learnset: {
 	toxic: ["8L1"],
 	uturn: ["8L1"],
 	vibrantlight: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 }},
 fluxtapestereo: {learnset: {
 	assurance: ["8L1"],
@@ -733,7 +733,7 @@ fluxtapestereo: {learnset: {
 	toxic: ["8L1"],
 	vibrantlight: ["8L1"],
 	wildcharge: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 }},
 electritar: {learnset: {
 	appletree: ["8L1"],
@@ -788,7 +788,7 @@ falkick: {learnset: {
 	thief: ["8L1"],
 	toxic: ["8L1"],
 	uturn: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 }},
 fantom: {learnset: {
 	airslash: ["8L1"],
@@ -950,7 +950,7 @@ hyperoach: {learnset: {
 	topsyturvy: ["8L1"],
 	toxic: ["8L1"],
 	washout: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 	wish: ["8L1"],
 	xscissor: ["8L1"],
 }},
@@ -1042,7 +1042,7 @@ lemotic: {learnset: {
 	toxic: ["8L1"],
 	vibrantlight: ["8L1"],
 	washout: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 	wish: ["8L1"],
 }},
 modolith: {learnset: {
@@ -1222,7 +1222,7 @@ smorke: {learnset: {
 	thunderbolt: ["8L1"],
 	toxic: ["8L1"],
 	vibrantlight: ["8L1"],
-	wildfire: ["8L1"],
+	scorch: ["8L1"],
 	willowisp: ["8L1"],
 	wish: ["8L1"],
 }},
@@ -1312,5 +1312,7 @@ valianch: {learnset: {
 	xscissor: ["8L1"],
 }},
 };
+
+
 
 
