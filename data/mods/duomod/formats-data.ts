@@ -183,11 +183,11 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
-	treemu: {
+	valianch: {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
-	valianch: {
+	treemu: {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
