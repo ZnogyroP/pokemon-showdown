@@ -1607,6 +1607,19 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
 	},
+	{
+		name: "[Gen 8] Smogoff CAP",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3656824/">CAP Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3662655/">CAP Sample Teams</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3658514/">CAP Viability Rankings</a>`,
+		],
+
+		mod: 'smogoffcap',
+		ruleset: ['[Gen 8] OU', '+CAP'],
+		banlist: ['Crucibelle-Mega'],
+		unbanlist: ['Bramble'],
+	},
 
 	// RoA Spotlight
 	///////////////////////////////////////////////////////////////////
