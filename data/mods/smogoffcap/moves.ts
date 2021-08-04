@@ -33,33 +33,33 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		contestType: "Tough",
 	},
-//	anthrax: {
-//		num: 1001,
-//		accuracy: 90,
-//		basePower: 0,
-//		category: "Status",
-//		desc: "Badly poisons the target, but lowers the user's Defense and Sp. Def by 1.",
-//		shortDesc: "Badly poisons foe, user's Defenses drop.",
-//		name: "Anthrax",
-//		pp: 30,
-//		priority: 0,
-//		flags: {protect: 1, reflectable: 1, mirror: 1},
-//		onHit(target, source) {
-//			if (!ignoreImmunities && status.id &&
-//				!(source?.hasAbility('normalize') && ['tox', 'psn'].includes(status.id))) {
-//				if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
-//					this.battle.debug('immune to status');
-//					if ((sourceEffect as Move)?.status) {
-//						this.battle.add('-immune', this);
-//					}
-//					return false;
-//				}
-//			},
-//		},
-//		secondary: null,
-//		target: "allAdjacentFoes",
-//		type: "Normal",
-//		zMove: {boost: {atk: 1}},
-//		contestType: "Cool",
-//	},	
+	anthrax: {
+		num: 1001,
+		accuracy: 90,
+		basePower: 0,
+		category: "Status",
+		desc: "Badly poisons the target, but lowers the user's Defense and Sp. Def by 1.",
+		shortDesc: "Badly poisons foe, user's Defenses drop.",
+		name: "Anthrax",
+		pp: 30,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onHit(target, source) {
+			if (!ignoreImmunities && status.id &&
+				!(source?.hasAbility('normalize') && ['tox', 'psn'].includes(status.id))) {
+				if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
+					this.battle.debug('immune to status');
+					if ((sourceEffect as Move)?.status) {
+						this.battle.add('-immune', this);
+					}
+					return false;
+				}
+			},
+		},
+		secondary: null,
+		target: "allAdjacentFoes",
+		type: "Normal",
+		zMove: {boost: {atk: 1}},
+		contestType: "Cool",
+	},	
 };
