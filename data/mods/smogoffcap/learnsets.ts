@@ -18,6 +18,6 @@ export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 			rest: ["8M"],
 			stompingtantrum: ["8M"],
 			substitute: ["8M"],
-		}
+		},
 	},
 };
