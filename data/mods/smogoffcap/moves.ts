@@ -52,15 +52,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 						this.battle.add('-immune', this);
 					}
 					return false;
-				}
+				},
 				self: {
 					boosts: {
 						def: -1,
 						spd: -1,
 					},
-				}
+       				},
 			},
-		}
+		},
 		secondary: null,
 		target: "allAdjacentFoes",
 		type: "Normal",
