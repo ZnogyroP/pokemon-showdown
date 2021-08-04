@@ -46,18 +46,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, reflectable: 1, mirror: 1},
 		onHit(target, source) {
 			if (!ignoreImmunities && status.id && ['tox', 'psn'].includes(status.id))) {
-			if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
-				this.battle.debug('immune to status');
-				if ((sourceEffect as Move)?.status) {
-					this.battle.add('-immune', this);
+				if (!this.runStatusImmunity(status.id === 'tox' ? 'psn' : status.id)) {
+					this.battle.debug('immune to status');
+					if ((sourceEffect as Move)?.status) {
+						this.battle.add('-immune', this);
+					}
+					return false;
 				}
-				return false;
-			}
-			self: {
-				boosts: {
-					def: -1,
-					spd: -1,
-				},
+				self: {
+					boosts: {
+						def: -1,
+						spd: -1,
+					},
+				}
 			},
 		}
 		secondary: null,
