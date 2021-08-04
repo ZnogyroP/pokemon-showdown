@@ -1617,7 +1617,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 		mod: 'smogoffcap',
 		ruleset: ['[Gen 8] OU', '+CAP'],
-		unbanlist: ['Bramble',],
+		unbanlist: ['Bramble'],
 	},
 
 	// RoA Spotlight
