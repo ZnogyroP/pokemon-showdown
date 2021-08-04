@@ -341,6 +341,8 @@ egggcracked: {
 	height: 5,
 	weightkg: 5,
 	eggGroups: ["Undiscovered"],
+	requiredAbility: "Fragile",
+	battleOnly: "Eggg",
 },
 fluxtape: {
 	num: 32.5,
