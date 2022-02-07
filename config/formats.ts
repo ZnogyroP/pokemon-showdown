@@ -1613,7 +1613,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		threads: [
             `&bullet; <a href="https://www.smogon.com/forums/threads/rby-cap-cap-1-stats.3695740/">RBY CAP on Smogon Forums</a>`,
             `&bullet; <a href="https://docs.google.com/spreadsheets/d/1twipN48WDYX018Wg8QIEmM65agXuO50RZRrPa8QxdfE/edit?usp=sharing">Spreadsheet</a>`,
-        ],
+        	],
 
 	        mod: 'rbycap',
        		ruleset: ['Standard'],
@@ -1623,7 +1623,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         	],
         	onSwitchIn(pokemon) {
         		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-        	},
+        	}
 	},
 	// RoA Spotlight
 	///////////////////////////////////////////////////////////////////
