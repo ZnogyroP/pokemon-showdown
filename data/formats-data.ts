@@ -1,5 +1,4 @@
-export const FormatsData: {[k: string]: SpeciesFormatsData} = {
-	bulbasaur: {
+export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {	bulbasaur: {
 		tier: "LC",
 	},
 	ivysaur: {

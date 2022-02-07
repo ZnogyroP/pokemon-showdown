@@ -1,5 +1,4 @@
-export const Pokedex: {[speciesid: string]: SpeciesData} = {
-	bulbasaur: {
+export const Pokedex: {[k: string]: ModdedSpeciesData} = {		bulbasaur: {
 		num: 1,
 		name: "Bulbasaur",
 		types: ["Grass", "Poison"],

@@ -1,7 +1,4 @@
-/* eslint-disable max-len */
-
-export const Learnsets: {[speciesid: string]: LearnsetData} = {
-	missingno: {
+export const Learnsets: {[speciesid: string]: LearnsetData} = {		missingno: {
 		learnset: {
 			blizzard: ["3L1"],
 			bubblebeam: ["3L1"],
