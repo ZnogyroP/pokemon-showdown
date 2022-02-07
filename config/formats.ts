@@ -1555,58 +1555,8 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		section: "Custom Formats",
 		column: 3,
 	},
-	{
-		name: "[Gen 8] Oktoberfest 2020 Doubles",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3671265/">Battle of Legends</a>`,
-		],
-		mod: 'oktoberfest',
-		gameType: 'doubles',
-		forcedLevel: 50,
-		teamLength: {
-			validate: [4, 6],
-			battle: 4,
-		},
-		ruleset: ['Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Cancel Mod', 'VGC Timer'],
-		banlist: ['Mewtwo', 'Mew', 'Lugia', 'Ho-Oh', 'Celebi', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Dialga', 'Palkia', 'Giratina', 'Darkrai', 'Shaymin', 'Arceus', 'Reshiram', 'Zekrom', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zeraora', 'Zacian', 'Zamazenta', 'Eternatus', 'Zarude'],
-		minSourceGen: 8,
-		onValidateTeam(team) {
-			const restricted = [
-				'Venusaur', 'Gyarados',
-				'Porygon2',
-				'Torkoal',
-				'Hyppowdon', 'Magnezone', 'Togekiss',
-				'Excadrill', 'Whimsicott',
-				'Incineroar', 'Mimikyu',
-				'Rillaboom', 'Cinderace', 'Indeedee', 'Dragapult',
-			];
-			let n = 0;
-			for (const set of team) {
-				const baseSpecies = this.dex.getSpecies(set.species).baseSpecies;
-				if (restricted.includes(baseSpecies)) n++;
-				if (n > 1) return [`You can only one restricted Pok\u00E9mon.`];
-			}
-		},
-	},
-	{
-		name: "[Gen 8] Duomod",
-		desc: `<b>Duomod</b>: DuoM2's solomod, which cuts 6 of the 18 types and only allows the use of certain Fakemon.`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3649106/">Roulettemons on Smogon Forums</a>`,
-			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1EOA1m7JXTq7Zz0ViVI4n6lBppFjVBa4S1GqhAwkPTZQ/edit?usp=sharing">Spreadsheet</a>`,
-			`&bullet; <a href="https://docs.google.com/spreadsheets/d/1J5ZMVzTAfJ48KQWVE7jt1S6fm7Y8DQX1tFX0-iENWiw/edit?usp=sharing">Bonus Random Team Generator</a>`,
-		],
-
-		mod: 'duomod',
-		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
-		banlist: ['All Pokemon'],
-		unbanlist: [
-			'Abysseil', 'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Batravolt', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Castarupt', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Chimida', 'Chollunge', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draglow', 'Draxplosion', 'Eggg', 'Eggg-Cracked', 'Electritar', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Fluxtape', 'Fluxtape-Stereo', 'Grievenge', 'Hyperoach', 'Inscuba', 'Joulibranch', 'Lemotic', 'Modolith', 'Monstratus', 'Mortemoth', 'Nectrance', 'Pterrost', 'Sharmpedo', 'Smorke', 'Spirox', 'Treemu', 'Valianch', 
-		],
-		onSwitchIn(pokemon) {
-			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-		},
-	},
+	
+	
 	{
         	name: "[Gen 1] RBY CAP Testing",
         	desc: `<b>RBY CAP</b>: A metagame meant to explore unique concepts for new Pokemon in Gen 1 OU.`,
@@ -1625,6 +1575,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         	}
 	},
+
 	// RoA Spotlight
 	///////////////////////////////////////////////////////////////////
 
