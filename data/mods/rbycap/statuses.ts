@@ -1,13 +1,3 @@
-/**
- * Statuses worked way different.
- * Sleep lasted longer, had no reset on switch and took a whole turn to wake up.
- * Frozen only thaws when hit by fire or Haze.
- *
- * Secondary effects to status (-speed, -atk) worked differently, so they are
- * separated as volatile statuses that are applied on switch in, removed
- * under certain conditions and re-applied under other conditions.
- */
-
 export const Statuses: {[k: string]: ModdedPureEffectData} = {
 	brn: {
 		name: 'brn',

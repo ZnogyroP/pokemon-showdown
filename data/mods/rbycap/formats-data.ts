@@ -774,7 +774,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	missingno: {
 		isNonstandard: "Unobtainable",
-		tier: Uber",
+		tier: "Uber",
 	},
 	cap1aydon: {
 		tier: "OU",
