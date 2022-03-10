@@ -1,6 +1,6 @@
 export const Scripts: ModdedBattleScriptsData = {
     
-    onRouletteWheel: function() {
+    onRouletteWheel () {
 	this.hint("Time for the Roulette Wheel!");
         result = this.random(40);
         if (result === 0) {
