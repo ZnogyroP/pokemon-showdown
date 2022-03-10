@@ -1575,7 +1575,8 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         },	
 	onResidual(pokemon) {
 		this.hint("Time for the Roulette Wheel!");
-	        int result = this.random(6);
+	        var result: number;
+		result = this.random(6);
 	        if (result === 0) {
 		this.hint("Roulette Wheel Result: 1");
 	            for (const pokemon of this.getAllActive()) {
