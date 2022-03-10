@@ -1,6 +1,6 @@
 export const Scripts: ModdedBattleScriptsData = {
     
-    onResidual(t) {
+    rouletteWheel() {
         result = this.random(40);
         if (result === 0) {
             for (const pokemon of this.getAllActive()) {
