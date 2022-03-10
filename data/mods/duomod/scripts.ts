@@ -1,4 +1,4 @@
-export const Scripts: ModdedBattleScriptsData = {
+/* export const Scripts: ModdedBattleScriptsData = {
     
     onRouletteWheel () {
 	this.hint("Time for the Roulette Wheel!");
@@ -236,4 +236,4 @@ export const Scripts: ModdedBattleScriptsData = {
 	    }
 	}
     },
-};
+}; */
