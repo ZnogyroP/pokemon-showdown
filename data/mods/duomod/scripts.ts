@@ -1,14 +1,17 @@
 export const Scripts: ModdedBattleScriptsData = {
     
-    rouletteWheel() {
+    onRouletteWheel: function() {
+	this.hint("Time for the Roulette Wheel!");
         result = this.random(40);
         if (result === 0) {
+	this.hint("Roulette Wheel Result: 1");
             for (const pokemon of this.getAllActive()) {
                 this.heal(pokemon.maxhp, pokemon);
                 pokemon.cureStatus();
             }
         } 
         else if (result === 1) {
+	this.hint("Roulette Wheel Result: 2");
             for (const pokemon of this.getAllActive()) {
                 let statName = 'atk';
                 let bestStat = 0;
