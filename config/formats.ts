@@ -1572,11 +1572,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         ],
         onSwitchIn(pokemon) {
             this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-        },
-	onResidualOrder: 26;
-	onResidual(pokemon) {
-	    rouletteWheel();
-	},	
+        },	
     },
 
 
