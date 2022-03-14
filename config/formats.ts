@@ -1602,14 +1602,14 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        else if (result === 2) {
 		this.hint("Roulette Wheel Result: 3");
 	            for (const pokemon of this.getAllActive()) {
-			const target = this.randomActive();
+			const target = pokemon.randomActive();
 	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target);
 	            }
 	        } 
 	        else if (result === 3) {
 		this.hint("Roulette Wheel Result: 4");
 	            for (const pokemon of this.getAllActive()) {
-			const target = this.randomActive();
+			const target = pokemon.randomActive();
 	                this.directDamage(pokemon.hp - 1, target);
 	            }
 	        }
