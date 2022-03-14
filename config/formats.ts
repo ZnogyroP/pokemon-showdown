@@ -1575,7 +1575,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         	this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         },	
 
-	onResidual(pokemon) {
+	onResidual(pokemon) { //balls lmao
 	        var sideChoice: number;
 		sideChoice = this.random(2); // pokemon.storedStats.spe
 		if (sideChoice === 0) {
