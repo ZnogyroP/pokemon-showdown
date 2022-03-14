@@ -1576,15 +1576,8 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         },	
 
 	onResidual(pokemon) {
-	        var result: number;
-		result = this.random(2); //pokemon.storedStats.spe
-
-		if (result === 0) {
-			const target = this.sides[1];
-		}
-		else {
-			const target = this.sides[0];
-		}
+	        var sideChoice: number;
+		sideChoice = this.random(2); //pokemon.storedStats.spe
 
 		this.hint("Time for the Roulette Wheel!");
 		result = this.random(6);
@@ -1612,13 +1605,13 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        } 
 	        else if (result === 2) {
 		this.hint("Roulette Wheel Result: 3");
-	            for (const pokemon of this.getAllActive()) {
+	            for (const target of this.sides[sideChoice]) {
 	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target);
 	            }
 	        } 
 	        else if (result === 3) {
 		this.hint("Roulette Wheel Result: 4");
-	            for (const pokemon of this.getAllActive()) {
+	            for (const target of this.sides[sideChoice]) {
 	                this.directDamage(pokemon.hp - 1, target);
 	            }
 	        }
