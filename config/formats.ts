@@ -1994,7 +1994,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 36");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
-					this.useMove("Reflect Type, target);
+					this.useMove("Reflect Type", target);
 				}
 			}
 			else if (pickSide === 1) {
@@ -2007,7 +2007,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		else if (result === 36) {
 			this.hint("Roulette Wheel Result: 37");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Sheer Cold", target);
+				this.useMove("Sheer Cold", pokemon);
 			}
 		}
 
@@ -2021,16 +2021,17 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		else if (result === 38) {
 			this.hint("Roulette Wheel Result: 39");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Metronome", target);
+				this.useMove("Metronome", pokemon);
 			}
 		}
 
 		else {
 			this.hint("Roulette Wheel Result: 40");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Ultranome", target);
+				this.useMove("Ultranome", pokemon);
 			}
 		}
+
 
 
 	}
