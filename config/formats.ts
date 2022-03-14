@@ -1577,11 +1577,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 	onResidual(pokemon) {
 	        var result: number;
-		result = this.random(2);
-
-		if (userSide.storedStats.spe > foeSide.storedStats.spe) {
-			return;
-		}
+		result = this.random(2); //pokemon.storedStats.spe
 
 		if (result === 0) {
 			const target = this.sides[1];
