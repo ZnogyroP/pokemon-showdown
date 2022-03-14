@@ -597,4 +597,107 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1}},
 		contestType: "Cute",
 	},	
+	deeznutsjoke: {
+		num: 669,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "Does stuff.",
+		name: "Deez Nuts Joke",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'deeznutsjoke',
+		condition: {
+			duration: 3,
+			onStart(target) {
+				if (target.activeTurns && !this.queue.willMove(target)) {
+					this.effectData.duration++;
+				}
+				this.add('-start', target, 'move: Deez Nuts Joke');
+			},
+			onResidualOrder: 12,
+			onEnd(target) {
+				this.add('-end', target, 'move: Deez Nuts Joke');
+			},
+			onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.getMove(moveSlot.id);
+					if (move.category === 'Status' && move.id !== 'mefirst') {
+						pokemon.disableMove(moveSlot.id);
+					}
+					if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
+				}
+			},
+			onBeforeMovePriority: 5,
+			onBeforeMove(attacker, defender, move) {
+				if (!move.isZ && !move.isMax && move.category === 'Status' && move.id !== 'mefirst') {
+					this.add('cant', attacker, 'move: Deez Nuts Joke', move);
+					return false;
+				}
+			},
+		},
+		boosts: {
+			atk: 3,
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		zMove: {boost: {atk: 1}},
+		contestType: "Clever",
+	},
+	dundaboat: {
+		num: 3001,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		shortDesc: "Paralyzes target or user; can't use if statused.",
+		name: "Dundaboat",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTry(pokemon) {
+			if (pokemon.status) {
+				return null;
+			}
+		},
+		onHit(target, source, move) {
+			const result = this.random(2);
+			if (result === 0) {
+				target.trySetStatus('par', source);
+			}
+			else {
+				if (source.hasType('Electric')) {
+					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
+					this.add('-start', source, 'typechange', source.types.join('/'), '[from] move: Dundaboat');
+				}
+				source.trySetStatus('par', source);
+			}
+		}
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
+	extremebeam: {
+		num: 3002,
+		accuracy: 100,
+		basePower: 300,
+		category: "Special",
+		desc: "If this move is successful, the user must recharge on the following two turns and cannot select a move.",
+		shortDesc: "User cannot move next two turns.",
+		name: "EXTREME BEAM",
+		pp: 5,
+		priority: 0,
+		flags: {recharge: 1, protect: 1, mirror: 1},
+		self: {
+			volatileStatus: 'mustrecharge',
+			duration: 2,
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
+
+	
 };
