@@ -1570,24 +1570,24 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         unbanlist: [
             'Abysseil', 'Annelait', 'Arachwich', 'Azurolt', 'Baloon', 'Batravolt', 'Bismage', 'Blastora', 'Blaydge', 'Cadbunny', 'Castarupt', 'Catelax', 'Cephalopire', 'Chemiclysm', 'Chimida', 'Chollunge', 'Crazefly', 'Crypterid', 'Debring', 'Deliriophage', 'Detonuke', 'Draglow', 'Draxplosion', 'Eggg', 'Eggg-Cracked', 'Electritar', 'Falkick', 'Fantom', 'Flamepion', 'Floundrawn', 'Fluidrake', 'Fluxtape', 'Fluxtape-Stereo', 'Grievenge', 'Hyperoach', 'Inscuba', 'Joulibranch', 'Lemotic', 'Modolith', 'Monstratus', 'Mortemoth', 'Nectrance', 'Pterrost', 'Sharmpedo', 'Smorke', 'Spirox', 'Treemu', 'Valianch', 
         ],
-        onSwitchIn(pokemon) {
-            this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+			
+	onSwitchIn(pokemon) {
+        	this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         },	
+
 	onResidual(pokemon) {
 	        var result: number;
-		result = this.random(2); //might not work lmao	
-		const userSide = pokemon.side;
-		const foeSide = pokemon.side.foe;
-
-		if (result === 0) {
-			const target = userSide;
-		}
-		else {
-			const target = foeSide;
-		}
+		result = this.random(2);
 
 		if (userSide.storedStats.spe > foeSide.storedStats.spe) {
 			return;
+		}
+
+		if (result === 0) {
+			const target = this.sides[1];
+		}
+		else {
+			const target = this.sides[0];
 		}
 
 		this.hint("Time for the Roulette Wheel!");
