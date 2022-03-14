@@ -1609,12 +1609,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 3");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, pokemon, null, true);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, pokemon, null, true);
+				}
 				}
 			}
 	        } 
@@ -1622,7 +1626,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 4");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.directDamage(pokemon.hp - 1, pokemon);
+				}
 				}
 			}
 			else if (pickSide === 1) {
@@ -1649,20 +1655,46 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		else if (result === 6) {
 			this.hint("Roulette Wheel Result: 7");
 			const result2 = this.random(3);
-			if (result2 === 0) {
-				this.field.setTerrain('grassyterrain');
-			} else if (result2 === 1) {
-				this.field.setTerrain('electricterrain');
-			} else {
-				this.field.setTerrain('mistyterrain');
-			}
 			const result3 = this.random(3);
-			if (result3 === 0) {
-				this.field.setWeather('sunnyday');
-			} else if (result3 === 1) {
-				this.field.setWeather('raindance');
-			} else {
-				this.field.setWeather('sandstorm');
+			if (pickSide === 0) {
+				for (const target of this.sides[0].pokemon) {
+					if (target.isActive) {
+					if (result2 === 0) {
+						this.useMove("Grassy Terrain", pokemon);
+					} else if (result2 === 1) {
+						this.useMove("Electric Terrain", pokemon);
+					} else {
+						this.useMove("Misty Terrain", pokemon);
+					}
+					if (result3 === 0) {
+						this.useMove("Sunny Day", pokemon);
+					} else if (result3 === 1) {
+						this.useMove("Rain Dance", pokemon);
+					} else {
+						this.useMove("Sandstorm", pokemon);
+					}
+					}
+				}
+			}
+			else if (pickSide === 1) {
+				for (const target of this.sides[1].pokemon) {
+					if (target.isActive) {
+					if (result2 === 0) {
+						this.useMove("Grassy Terrain", pokemon);
+					} else if (result2 === 1) {
+						this.useMove("Electric Terrain", pokemon);
+					} else {
+						this.useMove("Misty Terrain", pokemon);
+					}
+					if (result3 === 0) {
+						this.useMove("Sunny Day", pokemon);
+					} else if (result3 === 1) {
+						this.useMove("Rain Dance", pokemon);
+					} else {
+						this.useMove("Sandstorm", pokemon);
+					}
+					}
+				}
 			}
 		}
 
@@ -1670,12 +1702,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 8");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.directDamage(1, pokemon);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.directDamage(1, pokemon);
+				}
 				}
 			}
 	        }
@@ -1684,12 +1720,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 9");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.boost({atk: -12, def: -12, spa: -12, spd: -12, spe: -12}, target, pokemon, null, true);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.boost({atk: -12, def: -12, spa: -12, spd: -12, spe: -12}, target, pokemon, null, true);
+				}
 				}
 			}
 	        } 
@@ -1712,12 +1752,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 12");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Transform", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Transform", target);
+				}
 				}
 			}
 			
@@ -1727,15 +1771,18 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 13");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Heart Swap", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Heart Swap", target);
 				}
+				}
 			}
-			
 		}
 
 		else if (result === 13) {
@@ -1763,12 +1810,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 17");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Court Change", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Court Change", target);
+				}
 				}
 			}	
 		}
@@ -1792,12 +1843,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 20");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Skill Swap", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Skill Swap", target);
+				}
 				}
 			}	
 		}
@@ -1806,12 +1861,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 21");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Celebrate", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Celebrate", target);
+				}
 				}
 			}	
 		}
@@ -1820,12 +1879,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 22");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Trick Room", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Trick Room", target);
+				}
 				}
 			}	
 		}
@@ -1834,16 +1897,20 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 23");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					pokemon.addVolatile('confusion');
 					this.boost({accuracy: -12}, pokemon);	
 					const oldAbility = pokemon.setAbility('truant');
 				}
+				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					pokemon.addVolatile('confusion');
 					this.boost({accuracy: -12}, pokemon);	
 					const oldAbility = pokemon.setAbility('truant');
+				}
 				}
 			}	
 		}
@@ -1852,12 +1919,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 24");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Haze", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Haze", target);
+				}
 				}
 			}	
 		}
@@ -1866,12 +1937,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 25");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Magic Room", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Magic Room", target);
+				}
 				}
 			}	
 		}
@@ -1880,12 +1955,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 26");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Wonder Room", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Wonder Room", target);
+				}
 				}
 			}	
 		}
@@ -1894,12 +1973,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 27");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Pain Split", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Pain Split", target);
+				}
 				}
 			}	
 		}
@@ -1915,14 +1998,18 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 29");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Reflect", target);
 					this.useMove("Light Screen", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Reflect", target);
 					this.useMove("Light Screen", target);
+				}
 				}
 			}	
 		}			
@@ -1938,12 +2025,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 31");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Neutral Air", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Neutral Air", target);
+				}
 				}
 			}	
 		}
@@ -1959,12 +2050,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 33");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					target.forceSwitchFlag = true;
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					target.forceSwitchFlag = true;
+				}
 				}
 			}	
 		}
@@ -1980,12 +2075,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 35");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Defog", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Defog", target);
+				}
 				}
 			}
 		}
@@ -1994,12 +2093,16 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 36");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
 					this.useMove("Reflect Type", target);
+				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.useMove("Reflect Type", target);
+				}
 				}
 			}
 		}
