@@ -1606,25 +1606,11 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        } 
 	        else if (result === 2) {
 			this.hint("Roulette Wheel Result: 3");
-			if (sideChoice === 0) {
-				this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, this.sides[0]);
-			}
-			else if (sideChoice === 1) {
-				this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, this.sides[1]);
-			}
+			this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, this.sides[0]);
 	        } 
 	        else if (result === 3) {
-			this.hint("Roulette Wheel Result: 3");
-			if (sideChoice === 0) {
-				for (const target = this.side[0]) {
-					this.directDamage(target.hp - 1, target);
-				}
-			}
-			else if (sideChoice === 1) {
-				for (const target = this.side[1]) {
-					this.directDamage(target.hp - 1, target);
-				}
-			}
+			this.hint("Roulette Wheel Result: 4");
+			this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, this.sides[0]);
 	        }
 	        else if (result === 4) {
 		this.hint("Roulette Wheel Result: 5");
