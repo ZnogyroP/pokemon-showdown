@@ -1575,7 +1575,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         },	
 	onResidual(pokemon) {
 	        var result: number;
-		result = this.random(2);		
+		result = this.random(2); //might not work lmao	
+		userSide = pokemon.side.active[0];
+		foeSide = pokemon.side.foe.active[0];
 
 		if (result === 0) {
 			const target = pokemon.side.foe.active[0];
@@ -1586,14 +1588,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 		if (userSide.storedStats.spe > foeSide.storedStats.spe) {
 			return;
-		}
-		if (userSide.storedStats.spe === foeSide.storedStats.spe) {
-			if (result === 0) {
-				const target = pokemon.side.foe.active[0];
-			}
-			else {
-				const target = pokemon.side.active[0];
-			}
 		}
 
 		this.hint("Time for the Roulette Wheel!");
