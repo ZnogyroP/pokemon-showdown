@@ -1627,13 +1627,13 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
-					this.directDamage(pokemon.hp - 1, pokemon);
+					this.directDamage(target.hp - 1, target);
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
-					this.directDamage(pokemon.hp - 1, pokemon);
+					this.directDamage(target.hp - 1, target);
 				}
 			}
 	        }
@@ -1898,18 +1898,14 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
-					pokemon.addVolatile('confusion');
-					this.boost({accuracy: -12}, pokemon);	
-					const oldAbility = pokemon.setAbility('truant');
+					this.boost({accuracy: -1}, pokemon);	
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
-					pokemon.addVolatile('confusion');
-					this.boost({accuracy: -12}, pokemon);	
-					const oldAbility = pokemon.setAbility('truant');
+					this.boost({accuracy: -1}, pokemon);	
 				}
 				}
 			}	
