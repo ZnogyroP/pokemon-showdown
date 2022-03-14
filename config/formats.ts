@@ -1576,14 +1576,14 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	onResidual(pokemon) {
 	        var result: number;
 		result = this.random(2); //might not work lmao	
-		userSide = pokemon.side.active[0];
-		foeSide = pokemon.side.foe.active[0];
+		const userSide of pokemon.side;
+		const foeSide of pokemon.side.foe;
 
 		if (result === 0) {
-			const target = pokemon.side.foe.active[0];
+			const target = userSide;
 		}
 		else {
-			const target = pokemon.side.active[0];
+			const target = foeSide;
 		}
 
 		if (userSide.storedStats.spe > foeSide.storedStats.spe) {
