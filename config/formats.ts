@@ -1609,12 +1609,12 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        else if (result === 2) {
 			this.hint("Roulette Wheel Result: 3");
 			if (pickSide === 0) {
-				for (const target of this.sides[0]) {
+				for (const target of this.sides[0].pokemon) {
 					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, pokemon, null, true);
 				}
 			}
 			else if (pickSide === 1) {
-				for (const target of this.sides[1]) {
+				for (const target of this.sides[1].pokemon) {
 					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, pokemon, null, true);
 				}
 			}
