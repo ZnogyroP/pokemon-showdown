@@ -1579,10 +1579,10 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        var sideChoice: number;
 		sideChoice = this.random(2); // pokemon.storedStats.spe
 		if (sideChoice === 0) {
-			const target = this.sides[0];
+			target = this.sides[0];
 		}
 		else {
-			const target = this.sides[1];
+			target = this.sides[1];
 		}
 
 		var result: number;
