@@ -1576,8 +1576,8 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	onResidual(pokemon) {
 	        var result: number;
 		result = this.random(2); //might not work lmao	
-		const userSide of pokemon.side;
-		const foeSide of pokemon.side.foe;
+		const userSide = pokemon.side;
+		const foeSide = pokemon.side.foe;
 
 		if (result === 0) {
 			const target = userSide;
