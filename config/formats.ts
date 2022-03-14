@@ -1647,8 +1647,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.hint("Roulette Wheel Result: 6");
 		    for (const pokemon of this.getAllActive()) {
 			this.useMove("Spikes", pokemon);
-			this.useMove("Spikes", pokemon);
-			this.useMove("Spikes", pokemon);
 			this.useMove("Charged Stone", pokemon);
 		    }
 		}
@@ -1703,14 +1701,14 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
-					this.directDamage(1, pokemon);
+					this.directDamage(1, target);
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
-					this.directDamage(1, pokemon);
+					this.directDamage(1, target);
 				}
 				}
 			}
@@ -1898,14 +1896,14 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
-					this.boost({accuracy: -1}, pokemon);	
+					this.boost({accuracy: -1}, target);	
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
-					this.boost({accuracy: -1}, pokemon);	
+					this.boost({accuracy: -1}, target);	
 				}
 				}
 			}	
