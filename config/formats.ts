@@ -1600,23 +1600,27 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	            }
 	        } 
 	        else if (result === 2) {
+		this.hint("Roulette Wheel Result: 3");
 	            for (const pokemon of this.getAllActive()) {
-			const target = this.getRandomTarget(pokemon);
+			const target = this.getRandomTarget(pokemon, this.dex.getMove('pound'));
 	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target);
 	            }
 	        } 
 	        else if (result === 3) {
+		this.hint("Roulette Wheel Result: 4");
 	            for (const pokemon of this.getAllActive()) {
-			const target = this.getRandomTarget(pokemon);
+			const target = this.getRandomTarget(pokemon, this.dex.getMove('pound'));
 	                this.directDamage(pokemon.hp - 1, pokemon);
 	            }
 	        }
 	        else if (result === 4) {
+		this.hint("Roulette Wheel Result: 5");
 	            for (const pokemon of this.getAllActive()) {
-			this.directDamage(pokemon.hp);
+			this.directDamage(pokemon.hp, pokemon);
 		    }
 		}
 		else if (result === 5) {
+		this.hint("Roulette Wheel Result: 6");
 		    for (const pokemon of this.getAllActive()) {
 			this.useMove("Spikes", pokemon);
 			this.useMove("Spikes", pokemon);
