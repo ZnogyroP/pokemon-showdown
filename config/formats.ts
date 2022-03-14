@@ -1660,18 +1660,18 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 				for (const target of this.sides[0].pokemon) {
 					if (target.isActive) {
 					if (result2 === 0) {
-						this.useMove("Grassy Terrain", pokemon);
+						this.useMove("Grassy Terrain", target);
 					} else if (result2 === 1) {
-						this.useMove("Electric Terrain", pokemon);
+						this.useMove("Electric Terrain", target);
 					} else {
-						this.useMove("Misty Terrain", pokemon);
+						this.useMove("Misty Terrain", target);
 					}
 					if (result3 === 0) {
-						this.useMove("Sunny Day", pokemon);
+						this.useMove("Sunny Day", target);
 					} else if (result3 === 1) {
-						this.useMove("Rain Dance", pokemon);
+						this.useMove("Rain Dance", target);
 					} else {
-						this.useMove("Sandstorm", pokemon);
+						this.useMove("Sandstorm", target);
 					}
 					}
 				}
@@ -1680,18 +1680,18 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 				for (const target of this.sides[1].pokemon) {
 					if (target.isActive) {
 					if (result2 === 0) {
-						this.useMove("Grassy Terrain", pokemon);
+						this.useMove("Grassy Terrain", target);
 					} else if (result2 === 1) {
-						this.useMove("Electric Terrain", pokemon);
+						this.useMove("Electric Terrain", target);
 					} else {
-						this.useMove("Misty Terrain", pokemon);
+						this.useMove("Misty Terrain", target);
 					}
 					if (result3 === 0) {
-						this.useMove("Sunny Day", pokemon);
+						this.useMove("Sunny Day", target);
 					} else if (result3 === 1) {
-						this.useMove("Rain Dance", pokemon);
+						this.useMove("Rain Dance", target);
 					} else {
-						this.useMove("Sandstorm", pokemon);
+						this.useMove("Sandstorm", target);
 					}
 					}
 				}
