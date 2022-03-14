@@ -1574,8 +1574,29 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
             this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         },	
 	onResidual(pokemon) {
-		this.hint("Time for the Roulette Wheel!");
 	        var result: number;
+		result = this.random(2);		
+
+		if (result === 0) {
+			const target = pokemon.side.foe.active[0];
+		}
+		else {
+			const target = pokemon.side.active[0];
+		}
+
+		if (userSide.storedStats.spe > foeSide.storedStats.spe) {
+			return;
+		}
+		if (userSide.storedStats.spe === foeSide.storedStats.spe) {
+			if (result === 0) {
+				const target = pokemon.side.foe.active[0];
+			}
+			else {
+				const target = pokemon.side.active[0];
+			}
+		}
+
+		this.hint("Time for the Roulette Wheel!");
 		result = this.random(6);
 	        if (result === 0) {
 		this.hint("Roulette Wheel Result: 1");
@@ -1602,14 +1623,12 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        else if (result === 2) {
 		this.hint("Roulette Wheel Result: 3");
 	            for (const pokemon of this.getAllActive()) {
-			const target = pokemon.side.active.randomActive();
 	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target);
 	            }
 	        } 
 	        else if (result === 3) {
 		this.hint("Roulette Wheel Result: 4");
 	            for (const pokemon of this.getAllActive()) {
-			const target = pokemon.side.active.randomActive();
 	                this.directDamage(pokemon.hp - 1, target);
 	            }
 	        }
