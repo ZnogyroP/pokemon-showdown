@@ -1600,12 +1600,12 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	            }
 	        } 
 	        else if (result === 2) {
-	            for (const pokemon of this.randomActive()) {
+	            for (const pokemon of this.getAllActive()) {
 	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon);
 	            }
 	        } 
 	        else if (result === 3) {
-	            for (const pokemon of this.randomActive()) {
+	            for (const pokemon of this.getAllActive()) {
 	                this.directDamage(pokemon.hp - 1);
 	            }
 	        }
