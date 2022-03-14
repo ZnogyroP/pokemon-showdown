@@ -1596,7 +1596,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	            }
 	        } 
 	        else if (result === 1) {
-		this.hint("Roulette Wheel Result: 2");
+			this.hint("Roulette Wheel Result: 2");
 	            for (const pokemon of this.getAllActive()) {
 	                let statName = 'atk';
 	                let bestStat = 0;
@@ -1611,16 +1611,12 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	            }
 	        } 
 	        else if (result === 2) {
-		this.hint("Roulette Wheel Result: 3");
-	            for (const target of this.sides[0]) {
+			this.hint("Roulette Wheel Result: 3");
 	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target);
-	            }
 	        } 
 	        else if (result === 3) {
-		this.hint("Roulette Wheel Result: 4");
-	            for (const target of this.sides[sideChoice]) {
+			this.hint("Roulette Wheel Result: 4");
 	                this.directDamage(pokemon.hp - 1, target);
-	            }
 	        }
 	        else if (result === 4) {
 		this.hint("Roulette Wheel Result: 5");
