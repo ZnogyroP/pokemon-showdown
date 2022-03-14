@@ -1972,7 +1972,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		else if (result === 33) {
 			this.hint("Roulette Wheel Result: 34");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Water Shield", target);
+				this.useMove("Water Shield", pokemon);
 			}
 		}
 
