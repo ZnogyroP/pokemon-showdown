@@ -1579,6 +1579,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        var sideChoice: number;
 		sideChoice = this.random(2); //pokemon.storedStats.spe
 
+		var result = number;
 		this.hint("Time for the Roulette Wheel!");
 		result = this.random(6);
 	        if (result === 0) {
