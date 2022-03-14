@@ -1590,23 +1590,25 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	                let statName = 'atk';
 	                let bestStat = 0;
 	                let s: StatNameExceptHP;
-	                for (s in source.storedStats) {
-	                    if (source.storedStats[s] > bestStat) {
+	                for (s in pokemon.storedStats) {
+	                    if (pokemon.storedStats[s] > bestStat) {
 	                        statName = s;
-	                        bestStat = source.storedStats[s];
+	                        bestStat = pokemon.storedStats[s];
 	                    }
 	                }
-	                this.boost({[statName]: 3}, source);
+	                this.boost({[statName]: 3}, pokemon);
 	            }
 	        } 
 	        else if (result === 2) {
 	            for (const pokemon of this.getAllActive()) {
-	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon);
+			const target = this.getRandomTarget(pokemon);
+	                this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target);
 	            }
 	        } 
 	        else if (result === 3) {
 	            for (const pokemon of this.getAllActive()) {
-	                this.directDamage(pokemon.hp - 1);
+			const target = this.getRandomTarget(pokemon);
+	                this.directDamage(pokemon.hp - 1, pokemon);
 	            }
 	        }
 	        else if (result === 4) {
