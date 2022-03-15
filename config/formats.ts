@@ -1582,7 +1582,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			if (allPokemon.hasAbility('obtrusive')) {
 				return;
 			}
-		}
+		} //deez
 		if (result === 0) {
 			this.hint("Roulette Wheel Result: 1");
 	            for (const pokemon of this.getAllActive()) {
