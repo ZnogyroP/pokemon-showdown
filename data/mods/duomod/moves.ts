@@ -38,7 +38,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					this.damage(source.baseMaxhp / 16, source, target);
 					this.effectData.layers--;
 				}
-				if (waterCount === 0) {
+				if (this.effectData.layers === 0) {
 					this.add('-sideend', side, 'Water Shield');
 				}
 			},
