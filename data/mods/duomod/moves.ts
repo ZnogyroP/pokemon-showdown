@@ -1674,7 +1674,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	destructiveblow: {
 		num: 1008.1,
 		accuracy: 100,
-		basePower: 130,
+		basePower: 140,
 		category: "Physical",
 		shortDesc: "If the target faints, the user faints.",
 		name: "Destructive Blow",
@@ -1736,9 +1736,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
-				for (const ally of target.side.active) {
-					if (ally.item === 'heavydutyboots' || !ally.isGrounded()) {
-						this.heal(ally.baseMaxhp / 16);
+				for (const ally of target.side) {
+					if (ally.isActive) {
+						if (ally.item === 'heavydutyboots' || !ally.isGrounded()) {
+							this.heal(ally.baseMaxhp / 16);
+						}
 					}
 				}
 			},
