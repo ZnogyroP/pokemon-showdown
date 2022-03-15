@@ -689,6 +689,37 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {basePower: 120},
 		maxMove: {basePower: 140},
 	},
-
+	dundaboat: {
+		num: 3001,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		shortDesc: "Paralyzes target or user; can't use if statused.",
+		name: "Dundaboat",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTry(pokemon) {
+			if (pokemon.status) {
+				return null;
+			}
+		}
+		onHit(target, source, move) {
+			const result = this.random(2);
+			if (result === 0) {
+				target.trySetStatus('par', source);
+			}
+			else {
+				if (source.hasType('Electric')) {
+					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
+					this.add('-start', source, 'typechange', source.types.join('/'), '[from] move: Dundaboat');
+				}
+				source.trySetStatus('par', source);
+			}
+		}
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
 	
 };
