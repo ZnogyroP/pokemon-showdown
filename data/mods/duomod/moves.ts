@@ -1,4 +1,21 @@
 export const Moves: {[moveid: string]: ModdedMoveData} = {
+	stupidcannon: {
+		num: 3010,
+		accuracy: 100,
+		basePower: 0,
+		damage: 10,
+		category: "Special",
+		shortDesc: "For your own sake, please don't use this.",
+		name: "Stupid Cannon",
+		pp: 10,
+		priority: 0,
+		flags: {bullet, protect: 1, mirror: 1},
+		multihit: 2,
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
 	watershield: {
 		num: 3011,
 		accuracy: true,
