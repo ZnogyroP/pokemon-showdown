@@ -820,7 +820,19 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-
+		onHit(pokemon) {
+			pokemon.addVolatile('recharge');
+		},
+		condition: {
+			duration: 2,
+			onFoeTrapPokemon(pokemon) {
+				const target = pokemon.side;
+				target.tryTrap(true);
+			}
+			onBeforeMove(pokemon) {
+				return false;
+			}
+		},
 		secondary: null,
 		target: "normal",
 		type: "Steel",
