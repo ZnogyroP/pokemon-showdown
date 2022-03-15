@@ -79,7 +79,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBasePower(basePower, pokemon, target, move) {
-			if (pokemon.lastMove.id === move.id) {
+			if (pokemon.lastMove && (pokemon.lastMove.id === move.id)) {
 				return this.chainModify(2);
 			}
 		},
@@ -236,14 +236,14 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
-					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, pokemon, null, true);
+					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, target, null, true);
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
-					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, pokemon, null, true);
+					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, target, target, null, true);
 				}
 				}
 			}
