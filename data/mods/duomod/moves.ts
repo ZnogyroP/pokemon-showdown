@@ -27,15 +27,16 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {snatch: 1},
 		sideCondition: 'watershield',
-		onStart(side) {
-			this.add('-sidestart', side, 'Water Shield');
-		},
 		condition: {
+			onStart(side) {
+				this.add('-sidestart', side, 'Water Shield');
+				this.effectData.layers = 8;
+			},
 			onDamagingHitOrder: 1,
 			onDamagingHit(damage, target, source, move) {
 				if (move.flags['contact']) {
 					this.damage(source.baseMaxhp / 16, source, target);
-					waterCount = waterCount - 1;
+					this.effectData.layers--;
 				}
 				if (waterCount === 0) {
 					this.add('-sideend', side, 'Water Shield');
