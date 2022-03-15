@@ -480,7 +480,6 @@ export const TypeChart: {[k: string]: ModdedTypeData} = {
 			Water: 2,
 			Bird: 3,
 		},
-		HPivs: {hp: 30, atk: 30, def: 30, spa: 30, spd: 30, spe: 30},
-		HPdvs: {atk: 11},
+		HPivs: {},
 	},
 };
