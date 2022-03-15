@@ -823,16 +823,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		onHit(pokemon) {
 			pokemon.addVolatile('extremebeam');
 		},
-		condition: {
-			duration: 2,
-			onFoeTrapPokemon(pokemon) {
-				const target = pokemon.side;
-				target.tryTrap(true);
-			}
-			onBeforeMove(pokemon) {
-				return false;
-			}
-		},
+
 		secondary: null,
 		target: "normal",
 		type: "Steel",
