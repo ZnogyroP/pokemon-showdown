@@ -646,38 +646,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {atk: 1}},
 		contestType: "Clever",
 	},
-	dundaboat: {
-		num: 3001,
-		accuracy: 100,
-		basePower: 90,
-		category: "Special",
-		shortDesc: "Paralyzes target or user; can't use if statused.",
-		name: "Dundaboat",
-		pp: 15,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onTry(pokemon) {
-			if (pokemon.status) {
-				return null;
-			}
-		},
-		onHit(target, source, move) {
-			const result = this.random(2);
-			if (result === 0) {
-				target.trySetStatus('par', source);
-			}
-			else {
-				if (source.hasType('Electric')) {
-					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
-					this.add('-start', source, 'typechange', source.types.join('/'), '[from] move: Dundaboat');
-				}
-				source.trySetStatus('par', source);
-			}
-		}
-		target: "normal",
-		type: "Electric",
-		contestType: "Cool",
-	},
+
 	extremebeam: {
 		num: 3002,
 		accuracy: 100,
@@ -699,7 +668,46 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Cool",
 	},
 
-
+	neutralair: {
+		num: 3005,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "For 5 turns, abilities become nullified.",
+		name: "Neutral Air",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		pseudoWeather: 'neutralair',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasItem('floatstone')) {
+					return 8;
+				}
+				return 5;
+			},
+			onStart(side, source) {
+				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
+				const (pokemon for getAllActive()) {
+					this.add('-endability', pokemon);
+					this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'neutralair');
+				}
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('neutralair');
+			},
+			onResidualOrder: 24,
+			onEnd() {
+				this.add('-fieldend', 'move: Neutral Air');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Flying",
+		zMove: {boost: {spe: 1}},
+		contestType: "Beautiful",
+	},
 	quadrupleaxel: {
 		num: 3006,
 		accuracy: 60,
