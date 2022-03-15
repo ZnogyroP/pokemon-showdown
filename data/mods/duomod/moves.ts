@@ -1738,12 +1738,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
-				for (const ally of target.side) {
-					if (ally.isActive) {
-						if (ally.item === 'heavydutyboots' || !ally.isGrounded()) {
-							this.heal(ally.baseMaxhp / 16);
-						}
-					}
+				if (target.item === 'heavydutyboots' || !target.isGrounded()) {
+					this.heal(target.baseMaxhp / 16);
 				}
 			},
 		},
