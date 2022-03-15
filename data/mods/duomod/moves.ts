@@ -1,4 +1,4 @@
-export const Moves: {[moveid: string]: MoveData} = {
+export const Moves: {[k: string]: ModdedMoveData} = {
 	roulettespin: {
 		accuracy: true,
 		basePower: 0,
