@@ -820,15 +820,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		onHit(pokemon) {
-			pokemon.addVolatile('extremebeam');
+		self: {
+			volatileStatus: 'mustrecharge',
 		},
 		condition: {
 			duration: 2,
-			onFoeTrapPokemon(pokemon) {
-				const target = pokemon.side;
-				target.tryTrap(true);
-			}
 		},
 		secondary: null,
 		target: "normal",
