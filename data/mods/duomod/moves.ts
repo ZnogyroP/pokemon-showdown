@@ -825,9 +825,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			volatileStatus: 'partialtrappinglock',
 		},
 		onHit(target, source) {
-			if (target.volatiles['partiallytrapped']) {
+			if (source.volatiles['partiallytrapped']) {
 				if (source.volatiles['partialtrappinglock'] && source.volatiles['partialtrappinglock'].duration > 1) {
-					target.volatiles['partiallytrapped'].duration = 2;
+					source.volatiles['partiallytrapped'].duration = 2;
 				}
 			}
 		},
@@ -1745,8 +1745,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			
 			onResidual(side) {
 				for (const pokemon of side.active) {
-					if (target.item === 'heavydutyboots') {
-						this.heal(target.baseMaxhp / 16);
+					if (pokemon.item === 'heavydutyboots') {
+						this.heal(pokemon.baseMaxhp / 16);
 					}
 				}
 			},
