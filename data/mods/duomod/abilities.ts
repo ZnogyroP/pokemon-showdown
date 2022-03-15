@@ -825,7 +825,7 @@ disappearance: {
 		name: "Tough Out",
 		rating: 4,
 		num: 3011,
-	}
+	},
 	tranquilizinggas: {
 		shortDesc: "Yawns both active Pokemon on switchin.",
 		volatileStatus: 'yawn',
