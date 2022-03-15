@@ -1,4 +1,4 @@
-export const Learnsets: {[k: string]: LearnsetData} = {
+export const Learnsets: {[speciesid: string]: LearnsetData} = {
 abysseil: {learnset: {
         agility: ["8L1"],
         assurance: ["8L1"],

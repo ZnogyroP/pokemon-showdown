@@ -1,4 +1,4 @@
-export const Abilities: {[k: string]: ModdedAbilityData} = {
+export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	angler: {
 		desc: "If the user is hit by a Water-type move, they take 0.25x damage from it and the opponent recieves recoil equal to the damage dealt.",
 		shortDesc: "The damage from Water-type attacks against this Pokemon is partially reflected.",
@@ -229,13 +229,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		name: "Obtrusive",
 		rating: 1,
 		num: 3007,
-	},
-	overflow: {
-		shortDesc: "Uses Roulette Wheel twice after most status moves.",
-
-		name: "Overflow",
-		rating: 1,
-		num: 3008,
 	},
 	patience: {
 		shortDesc: "This Pokemon moves last within priority bracket, but is 1.3x stronger.",
