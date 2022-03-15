@@ -28,7 +28,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {snatch: 1},
 		sideCondition: 'watershield',
 		onStart(side) {
-			this.add('-sidestart', side, 'Water Shield' + waterCount);
+			this.add('-sidestart', side, 'Water Shield');
 			let waterCount = 8;
 		},
 		condition: {
@@ -71,11 +71,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 70,
 		basePowerCallback(pokemon, target, move) {
-			if (!pokemon.volatiles.striketheearth || move.hit === 1) {
-				pokemon.addVolatile('striketheearth');
-			}
-			else {
-				return 140;
+			if (pokemon.lastMove.id === 'striketheearth') {
+				return this.chainModify(0.5);
 			}
 		},
 		category: "Physical",
@@ -1557,7 +1554,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		secondary: {
 			chance: 100,
 			boosts: {
-				def: -2,
+				def: -1,
 			},
 		},
 		multihit: 2,
@@ -1644,8 +1641,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			return !target.hasType('Fire');
 		},
 		onBasePower(basePower, pokemon, target) {
-			for (const condition of sideConditions) {
 			const sideConditions = ['watershield'];
+			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
 					return this.chainModify(3);
