@@ -688,17 +688,7 @@ disappearance: {
 		name: "Patience",
 		rating: -1,
 		num: 100,
-	},	
-	queenofroulette: {
-		shortDesc: "Spins the Roulette Wheel two additional times.",
-		onResidual (pokemon) {
-			this.useMove("Roulette Spin", source);
-			this.useMove("Roulette Spin", source);
-		}
-		name: "Queen of Roulette",
-		rating: 1,
-		num: 3009,
-	},	
+	},		
 	ragingbeast: {
 		shortDesc: "The user's highest stat rises under a ton of conditions.",
 		onResidual (pokemon) {
