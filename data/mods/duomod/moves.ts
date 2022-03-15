@@ -70,20 +70,12 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		num: 3009,
 		accuracy: 100,
 		basePower: 70,
-		basePowerCallback(pokemon, target, move) {
-			if (move === 'striketheearth') {
-				return this.chainModify(2);
-			}
-			else {
-				return this.chainModify(1);
-			}
-		},
 		category: "Physical",
 		shortDesc: "Power doubles if used last turn.",
 		name: "Strike the Earth",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1}, //ball
+		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
 		type: "Ground",
@@ -203,10 +195,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 40,
 		priority: 0,
 		flags: {},
-		onHit(target, source, move) {
+		onHit(source) {
 		var result: number;
 		var pickSide: number;
-		this.hint("Time for the Roulette Wheel!");
+		this.hint("Let's spin the Wheel!");
 		result = this.random(40);
 	        pickSide = this.random(2);
 		if (result === 0) {
