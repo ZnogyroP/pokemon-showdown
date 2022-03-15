@@ -1764,7 +1764,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
-				if (check) return;
 				if (target.hasItem('heavydutyboots')) return;
 				this.heal(target.baseMaxhp / 16);
 			},
