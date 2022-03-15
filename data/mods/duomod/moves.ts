@@ -1847,8 +1847,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {protect: 1, mirror: 1, defrost: 1, contact: 1},
 		self: {
 			onHit(pokemon) {
-				if (target.hasType('Fire')) return false;
-				if (!target.addType('Fire')) return false;
+				if (pokemon.hasType('Fire')) return false;
+				if (!pokemon.addType('Fire')) return false;
 				this.add('-start', pokemon, 'typeadd', 'Fire', '[from] move: Flame Runner');
 			},
 		},
