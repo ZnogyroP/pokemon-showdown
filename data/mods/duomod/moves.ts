@@ -10,7 +10,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {bullet, protect: 1, mirror: 1},
-		multihit: 2,
 		secondary: null,
 		target: "normal",
 		type: "Dark",
