@@ -1578,7 +1578,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	onResidual(pokemon) {
 	        var sideChoice: number;
 		const pickSide = this.random(2);
-		for (const allPokemon of this.getAllActive) {
+		for (const allPokemon of this.getAllActive()) {
 			if (allPokemon.hasAbility('obtrusive')) {
 				return;
 			}
