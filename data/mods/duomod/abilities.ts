@@ -813,5 +813,44 @@ disappearance: {
 		rating: 4,
 		num: 20,
 	},
+	toughout: {
+		shortDesc: "If the user has few moves and runs out of one, +1 all stats.",
+		onUpdate(pokemon) {
+			if (pokemon.moveSlots.some(move => move.pp === 0)) {
+				if (pokemon.moveSlots.length < 4) {
+					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon, pokemon, null, true);
+				}
+			}
+		},
+		name: "Tough Out",
+		rating: 4,
+		num: 3011,
+	}
+	tranquilizinggas: {
+		shortDesc: "Yawns both active Pokemon on switchin.",
+		volatileStatus: 'yawn',
+		onStart(pokemon) {
+			for (const target of this.getAllActive()) {
+				if (target.status || !target.runStatusImmunity('slp')) {
+					return false;
+				}
+			}
+		},
+		condition: {
+			noCopy: true, // doesn't get copied by Baton Pass
+			duration: 2,
+			onStart(target, source) {
+				this.add('-start', target, 'ability: Tranquilizing Gas', '[of] ' + source);
+			},
+			onResidualOrder: 19,
+			onEnd(target) {
+				this.add('-end', target, 'ability: Tranquilizing Gas', '[silent]');
+				target.trySetStatus('slp', this.effectData.source);
+			},
+		},
+		name: "Tranquilizing Gas",
+		rating: 4,
+		num: 3012,
+	},
 	
 };
