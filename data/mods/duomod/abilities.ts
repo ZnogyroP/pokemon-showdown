@@ -688,7 +688,67 @@ disappearance: {
 		name: "Patience",
 		rating: -1,
 		num: 100,
-	},
-
-
+	},	
+	queenofroulette: {
+		shortDesc: "Spins the Roulette Wheel two additional times.",
+		onResidual (pokemon) {
+			this.useMove("Roulette Spin", source);
+			this.useMove("Roulette Spin", source);
+		}
+		name: "Queen of Roulette",
+		rating: 1,
+		num: 3009,
+	},	
+	ragingbeast: {
+		shortDesc: "The user's highest stat rises under a ton of conditions.",
+		onResidual (pokemon) {
+			const result = this.random(5);
+			if (result === 0) {
+				let statName = 'atk';
+				let bestStat = 0;
+				let s: StatNameExceptHP;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, source);
+			}
+		},	
+		onAfterMoveSecondary(target, source, move) {
+			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			const lastAttackedBy = target.getLastAttackedBy();
+			if (!lastAttackedBy) return;
+			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+				let statName = 'atk';
+				let bestStat = 0;
+				let s: StatNameExceptHP;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, source);
+			}
+		},
+		onDamagingHit(damage, target, source, effect) {
+			let statName = 'atk';
+			let bestStat = 0;
+			let s: StatNameExceptHP;
+			for (s in source.storedStats) {
+				if (source.storedStats[s] > bestStat) {
+					statName = s;
+					bestStat = source.storedStats[s];
+				}
+			}
+			this.boost({[statName]: 1}, source);
+		},
+		name: "Raging Beast",
+		rating: 1,
+		num: 3010,
+	}
+	
 };
