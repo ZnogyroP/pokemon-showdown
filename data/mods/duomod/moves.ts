@@ -1763,7 +1763,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				this.add('-sidestart', side, 'Dewy Flowers');
 			},
 			onResidualOrder: 6,
-			const check = target.isGrounded();
 			onResidual(target, source, effect) {
 				if (check) return;
 				if (target.hasItem('heavydutyboots')) return;
