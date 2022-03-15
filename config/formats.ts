@@ -1575,9 +1575,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         	this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         },	
 
-	onResidual(pokemon) {
-
-	},
     },
 
 
