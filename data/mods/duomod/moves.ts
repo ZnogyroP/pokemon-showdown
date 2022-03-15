@@ -1,21 +1,37 @@
 export const Moves: {[moveid: string]: ModdedMoveData} = {
-	stupidcannon: {
-		num: 3010,
-		accuracy: 100,
+	watershield: {
+		num: 3011,
+		accuracy: true,
 		basePower: 0,
-		damage: 5,
-		category: "Special",
-		shortDesc: "For your own sake, please don't use this.",
-		name: "Stupid Cannon",
-		pp: 10,
+		category: "Status",
+		shortDesc: "The user gains armor that punishes contact.",
+		name: "Water Shield",
+		pp: 20,
 		priority: 0,
-		flags: {bullet, protect: 1, mirror: 1},
-		multihit: 22,
+		flags: {snatch: 1},
+		sideCondition: 'watershield',
+		onStart(side) {
+			this.add('-sidestart', side, 'Water Shield' + waterCount);
+			let waterCount = 8;
+		},
+		condition: {
+			onDamagingHitOrder: 1,
+			onDamagingHit(damage, target, source, move) {
+				if (move.flags['contact']) {
+					this.damage(source.baseMaxhp / 16, source, target);
+					waterCount = waterCount - 1;
+				}
+				if (waterCount === 0) {
+					this.add('-sideend', side, 'Water Shield');
+				}
+			},
+		},
 		secondary: null,
-		target: "normal",
-		type: "Dark",
-		contestType: "Cool",
-	},
+		target: "self",
+		type: "Water",
+		zMove: {boost: {def: 1}},
+		contestType: "Beautiful",
+	},		
 	skitterout: {
 		num: 3008,
 		accuracy: 100,
