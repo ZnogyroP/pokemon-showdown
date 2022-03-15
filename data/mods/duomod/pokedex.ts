@@ -1,3 +1,4 @@
+export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 abysseil: {
 	num: 1.5,
 	species: "Abysseil",
@@ -277,3 +278,4 @@ valianch: {
 	abilities: {0: "Patience"},
 	weightkg: 5,
 },
+};
