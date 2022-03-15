@@ -38,7 +38,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					this.damage(source.baseMaxhp / 16, source, target);
 					this.effectData.layers--;
 				}
-				if (this.effectData.layers <= 0) {
+				if (this.effectData.layers === 0) {
 					const side = target.side;
 					this.add('-sideend', side, 'Water Shield');
 				}
@@ -58,6 +58,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		shortDesc: "The user switches the target out, then switches out.",
 		name: "Skitter Out",
 		pp: 1,
+		noPPBoosts: true,
 		priority: -6,
 		flags: {protect: 1, mirror: 1},
 		forceSwitch: true,
@@ -77,6 +78,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
+		onBasePower(basePower, pokemon, target, move) {
+			if (pokemon.lastMove.id === move.id) {
+				return this.chainModify(2);
+			}
+		},
 		secondary: null,
 		target: "normal",
 		type: "Ground",
@@ -196,7 +202,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 40,
 		priority: 0,
 		flags: {},
-		onHit(source) {
+		onHit(pokemon) {
 		var result: number;
 		var pickSide: number;
 		this.hint("Let's spin the Wheel!");
@@ -1639,7 +1645,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Spinning Web', '[of] ' + pokemon);
 			}
-			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'watershield'];
+			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'stickyweb', 'stealthrock', 'toxic spikes'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
@@ -1653,7 +1659,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
 			}
-			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'watershield'];
+			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'stickyweb', 'stealthrock', 'toxic spikes'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
@@ -1964,4 +1970,96 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cute",
 	},	
+	ultranome: {
+		num: 118,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Ultranome",
+		pp: 1,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {},
+		noMetronome: [
+			"After You", "Apple Acid", "Assist", "Astral Barrage", "Aura Wheel", "Baneful Bunker", "Beak Blast", "Behemoth Bash", "Behemoth Blade", "Belch", "Bestow", "Body Press", "Branch Poke", "Breaking Swipe", "Celebrate", "Chatter", "Clangorous Soul", "Copycat", "Counter", "Covet", "Crafty Shield", "Decorate", "Destiny Bond", "Detect", "Diamond Storm", "Double Iron Bash", "Dragon Ascent", "Dragon Energy", "Drum Beating", "Dynamax Cannon", "Endure", "Eternabeam", "False Surrender", "Feint", "Fiery Wrath", "Fleur Cannon", "Focus Punch", "Follow Me", "Freeze Shock", "Freezing Glare", "Glacial Lance", "Grav Apple", "Helping Hand", "Hold Hands", "Hyperspace Fury", "Hyperspace Hole", "Ice Burn", "Instruct", "Jungle Healing", "King's Shield", "Life Dew", "Light of Ruin", "Mat Block", "Me First", "Meteor Assault", "Metronome", "Mimic", "Mind Blown", "Mirror Coat", "Mirror Move", "Moongeist Beam", "Nature Power", "Nature's Madness", "Obstruct", "Origin Pulse", "Overdrive", "Photon Geyser", "Plasma Fists", "Precipice Blades", "Protect", "Pyro Ball", "Quash", "Quick Guard", "Rage Powder", "Relic Song", "Secret Sword", "Shell Trap", "Sketch", "Sleep Talk", "Snap Trap", "Snarl", "Snatch", "Snore", "Spectral Thief", "Spiky Shield", "Spirit Break", "Spotlight", "Steam Eruption", "Steel Beam", "Strange Steam", "Struggle", "Sunsteel Strike", "Surging Strikes", "Switcheroo", "Techno Blast", "Thief", "Thousand Arrows", "Thousand Waves", "Thunder Cage", "Thunderous Kick", "Transform", "Trick", "V-create", "Wicked Blow", "Wide Guard",
+		],
+		onHit(target, source, effect) {
+			const moves: MoveData[] = [];
+			for (const id in Moves) {
+				const move = Moves[id];
+				if (move.realMove) continue;
+				if (move.isZ || move.isMax || move.isNonstandard) continue;
+				if (effect.noMetronome!.includes(move.name)) continue;
+				if (this.dex.getMove(id).gen > this.gen) continue;
+				moves.push(move);
+			}
+			let randomMove = '';
+			if (moves.length) {
+				moves.sort((a, b) => a.num! - b.num!);
+				randomMove = this.sample(moves).name;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
+			const moves: MoveData[] = [];
+			for (const id in Moves) {
+				const move = Moves[id];
+				if (move.realMove) continue;
+				if (move.isZ || move.isMax || move.isNonstandard) continue;
+				if (effect.noMetronome!.includes(move.name)) continue;
+				if (this.dex.getMove(id).gen > this.gen) continue;
+				moves.push(move);
+			}
+			let randomMove = '';
+			if (moves.length) {
+				moves.sort((a, b) => a.num! - b.num!);
+				randomMove = this.sample(moves).name;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
+			const moves: MoveData[] = [];
+			for (const id in Moves) {
+				const move = Moves[id];
+				if (move.realMove) continue;
+				if (move.isZ || move.isMax || move.isNonstandard) continue;
+				if (effect.noMetronome!.includes(move.name)) continue;
+				if (this.dex.getMove(id).gen > this.gen) continue;
+				moves.push(move);
+			}
+			let randomMove = '';
+			if (moves.length) {
+				moves.sort((a, b) => a.num! - b.num!);
+				randomMove = this.sample(moves).name;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		contestType: "Cute",
+	},
+	scald2: {
+		num: 503,
+		accuracy: 100,
+		basePower: 5,
+		category: "Special",
+		name: "Scald 2",
+		pp: 1,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, defrost: 1},
+		thawsTarget: true,
+		secondary: {
+			chance: 30,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Water",
+		contestType: "Tough",
+	},
 };
