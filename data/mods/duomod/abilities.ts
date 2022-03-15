@@ -674,7 +674,86 @@ disappearance: {
 		rating: 3,
 		num: 3004,
 	},
-
+	mentalnote: {
+		desc: "On switch-in, this Pokemon is alerted a random move known by an opposing Pokemon.",
+		shortDesc: "On switch-in, this Pokemon is alerted to a foes' move at random.",
+		onStart(pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				const moveSlot of target.moveSlots;
+				const result = this.random(3);
+				const move = this.dex.getMove(moveSlot.move);
+				if (result === 0) {
+					let warnMoveName = this.dex.getMove(moveSlot[0].move;
+				}
+				else if (result === 1) {
+					let warnMoveName = this.dex.getMove(moveSlot[1].move);
+				}
+				else if (result === 2) {
+					let warnMoveName = this.dex.getMove(moveSlot[2].move);
+				}
+				else {
+					let warnMoveName = this.dex.getMove(moveSlot[3].move);
+				}
+					
+			}
+			if (!warnMoves.length) return;
+			const [warnMoveName, warnTarget] = this.sample(warnMoves);
+			this.add('-activate', pokemon, 'ability: Mental Note', warnMoveName, '[of] ' + target);
+		},
+		name: "Mental Note",
+		rating: 0.5,
+		num: 3005,
+	},
+	mixitup: {
+		shortDesc: "If the user's attack doesn't match its last move, it's 1.3x stronger.",
+		onBasePower (basePower, pokemon, target, move) {
+			if (move !== pokemon.lastMove.id) {
+				return this.chainModify(1.3);
+			}
+		},
+		name: "Mix it Up",
+		rating: 0.5,
+		num: 3006,
+	}	
+	obtrusive: {
+		shortDesc: "Prevents the Roulette Wheel from being spun while active.",
+		onAnyTryMove(target, source, effect) {
+			if (['roulettespin'].includes(effect.id)) {
+				this.attrLastMove('[still]');
+				this.add('cant', this.effectData.target, 'ability: Obtrusive', effect, '[of] ' + target);
+				return false;
+			}
+		},
+		name: "Obtrusive",
+		rating: 1,
+		num: 3007,
+	},
+	overflow: {
+		shortDesc: "Uses Roulette Wheel twice after most status moves.",
+		onSourceHit(target, source, move) {
+			if (move.category == 'Status' && ['roulettespin', 'spikes', 'chargedstone', 'neutralair', 'watershield', 'safeguard', 'lightscreen', 'reflect', 'grassyterrain', 'mistyterrain', 'electricterrain', 'sunnyday', 'raindance', 'sandstorm', 'conversion2', 'transform', 'heartswap', 'courtchange', 'camouflage', 'skillswap', 'trickroom', 'haze', 'magicroom', 'wonderroom', 'defog', 'reflecttype', 'metronome', 'ultranome') {
+				this.useMove("Roulette Spin", source);
+			}
+		},
+		name: "Overflow",
+		rating: 1,
+		num: 3008,
+	},
+	patience: {
+		shortDesc: "This Pokemon moves last within priority bracket, but is 1.3x stronger.",
+		onFractionalPriority: -0.1,
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			return this.chainModify(1.3);
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			return this.chainModify(1.3);
+		},
+		name: "Patience",
+		rating: -1,
+		num: 100,
+	},
 	queenofroulette: {
 		shortDesc: "Spins the Roulette Wheel two additional times.",
 		onResidual (pokemon) {
@@ -812,72 +891,4 @@ disappearance: {
 		rating: 4,
 		num: 3011,
 	}
-	tranquilizinggas: {
-		shortDesc: "Yawns both active Pokemon on switchin.",
-		volatileStatus: 'yawn',
-		onStart(pokemon) {
-			for (const target of this.getAllActive()) {
-				if (target.status || !target.runStatusImmunity('slp')) {
-					return false;
-				}
-			}
-		},
-		condition: {
-			noCopy: true, // doesn't get copied by Baton Pass
-			duration: 2,
-			onStart(target, source) {
-				this.add('-start', target, 'ability: Tranquilizing Gas', '[of] ' + source);
-			},
-			onResidualOrder: 19,
-			onEnd(target) {
-				this.add('-end', target, 'ability: Tranquilizing Gas', '[silent]');
-				target.trySetStatus('slp', this.effectData.source);
-			},
-		},
-		name: "Tranquilizing Gas",
-		rating: 4,
-		num: 3012,
-	}
-	trashbeat: {
-		shortDesc: "User's Sound moves taunt targets.",
-		onModifyMove(move, pokemon) {
-			if (move.flags['sound']) {
-				for (const target of pokemon.side.foe.active) {
-					target.addVolatile('taunt');
-				}
-			}
-		},
-		volatileStatus: 'taunt',
-		condition: {
-			duration: 3,
-			onStart(target) {
-				if (target.activeTurns && !this.queue.willMove(target)) {
-					this.effectData.duration++;
-				}
-				this.add('-start', target, 'move: Taunt');
-			},
-			onResidualOrder: 12,
-			onEnd(target) {
-				this.add('-end', target, 'move: Taunt');
-			},
-			onDisableMove(pokemon) {
-				for (const moveSlot of pokemon.moveSlots) {
-					const move = this.dex.getMove(moveSlot.id);
-					if (move.category === 'Status' && move.id !== 'mefirst') {
-						pokemon.disableMove(moveSlot.id);
-					}
-				}
-			},
-			onBeforeMovePriority: 5,
-			onBeforeMove(attacker, defender, move) {
-				if (!move.isZ && !move.isMax && move.category === 'Status' && move.id !== 'mefirst') {
-					this.add('cant', attacker, 'move: Taunt', move);
-					return false;
-				}
-			},
-		},
-		name: "Trash Beat",
-		rating: 4,
-		num: 3013,
-	},
 };
