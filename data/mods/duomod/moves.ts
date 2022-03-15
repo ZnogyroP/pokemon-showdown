@@ -74,7 +74,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (!pokemon.volatiles.striketheearth || move.hit === 1) {
 				pokemon.addVolatile('striketheearth');
 			}
-			return this.clampIntRange(move.basePower * pokemon.volatiles.furycutter.multiplier, 1, 140);
+			else {
+				return 140;
+			}
 		},
 		category: "Physical",
 		shortDesc: "Power doubles if used last turn.",
