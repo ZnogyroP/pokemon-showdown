@@ -1582,7 +1582,13 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			if (allPokemon.hasAbility('obtrusive')) {
 				return;
 			}
-		} //deez
+		} 
+
+		
+		var result: number;
+		this.hint("Time for the Roulette Wheel!");
+		result = this.random(40);
+
 		if (result === 0) {
 			this.hint("Roulette Wheel Result: 1");
 	            for (const pokemon of this.getAllActive()) {
@@ -2128,13 +2134,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			for (const pokemon of this.getAllActive()) {
 				this.useMove("Ultranome", pokemon);
 			}
-		}
-		var result: number;
-		this.hint("Time for the Roulette Wheel!");
-		result = this.random(40);
-	       
-
-
+		}   
 
 	},
     },
