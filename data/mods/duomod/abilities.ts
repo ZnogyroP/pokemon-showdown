@@ -674,7 +674,36 @@ disappearance: {
 		rating: 3,
 		num: 3004,
 	},
-
+	mentalnote: {
+		desc: "On switch-in, this Pokemon is alerted a random move known by an opposing Pokemon.",
+		shortDesc: "On switch-in, this Pokemon is alerted to a foes' move at random.",
+		onStart(pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				const moveSlot of target.moveSlots;
+				const result = this.random(3);
+				const move = this.dex.getMove(moveSlot.move);
+				if (result === 0) {
+					let warnMoveName = this.dex.getMove(moveSlot[0].move);
+				}
+				else if (result === 1) {
+					let warnMoveName = this.dex.getMove(moveSlot[1].move);
+				}
+				else if (result === 2) {
+					let warnMoveName = this.dex.getMove(moveSlot[2].move);
+				}
+				else {
+					let warnMoveName = this.dex.getMove(moveSlot[3].move);
+				}
+					
+			}
+			if (!warnMoves.length) return;
+			const [warnMoveName, warnTarget] = this.sample(warnMoves);
+			this.add('-activate', pokemon, 'ability: Mental Note', warnMoveName, '[of] ' + target);
+		},
+		name: "Mental Note",
+		rating: 0.5,
+		num: 3005,
+	},
 
 
 
