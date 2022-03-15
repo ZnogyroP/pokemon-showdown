@@ -248,8 +248,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	queenofroulette: {
 		shortDesc: "Spins the Roulette Wheel two additional times.",
 		onResidual (pokemon) {
-			this.useMove("Roulette Spin", source);
-			this.useMove("Roulette Spin", source);
+			this.useMove("Roulette Spin", pokemon);
+			this.useMove("Roulette Spin", pokemon);
 		},
 		name: "Queen of Roulette",
 		rating: 1,

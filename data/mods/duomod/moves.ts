@@ -71,7 +71,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 70,
 		basePowerCallback(pokemon, target, move) {
-			if (pokemon.lastMove.id === 'striketheearth') {
+			if (move === 'striketheearth') {
 				return this.chainModify(2);
 			}
 			else {
@@ -84,18 +84,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		condition: {
-			duration: 2,
-			onStart() {
-				this.effectData.multiplier = 1;
-			},
-			onRestart() {
-				if (this.effectData.multiplier < 2) {
-					this.effectData.multiplier <<= 1;
-				}
-				this.effectData.duration = 2;
-			},
-		},
 		secondary: null,
 		target: "normal",
 		type: "Ground",

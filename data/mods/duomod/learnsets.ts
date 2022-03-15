@@ -218,7 +218,6 @@ catelax: {learnset: {
         toxic: ["8L1"],
         tropkick: ["8L1"],
         uturn: ["8L1"],
-        vibrantlight: ["8L1"],
         willowisp: ["8L1"],
         xscissor: ["8L1"],
 }},
