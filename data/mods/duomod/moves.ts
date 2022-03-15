@@ -1,4 +1,136 @@
 export const Moves: {[moveid: string]: ModdedMoveData} = {
+	skitterout: {
+		num: 3008,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "The user switches the target out, then switches out.",
+		name: "Skitter Out",
+		pp: 1,
+		priority: -6,
+		flags: {protect: 1, mirror: 1},
+		forceSwitch: true,
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Bug",
+		contestType: "Cute",
+	},
+	striketheearth: {
+		num: 3009,
+		accuracy: 100,
+		basePower: 70,
+		basePowerCallback(pokemon, target, move) {
+			if (!pokemon.volatiles.striketheearth || move.hit === 1) {
+				pokemon.addVolatile('striketheearth');
+			}
+			return this.clampIntRange(move.basePower * pokemon.volatiles.furycutter.multiplier, 1, 140);
+		},
+		category: "Physical",
+		shortDesc: "Power doubles if used last turn.",
+		name: "Strike the Earth",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		condition: {
+			duration: 2,
+			onStart() {
+				this.effectData.multiplier = 1;
+			},
+			onRestart() {
+				if (this.effectData.multiplier < 2) {
+					this.effectData.multiplier <<= 1;
+				}
+				this.effectData.duration = 2;
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Ground",
+		contestType: "Cool",
+	},
+	stupidcannon: {
+		num: 3010,
+		accuracy: 100,
+		basePower: 0,
+		damage: 5,
+		category: "Special",
+		shortDesc: "For your own sake, please don't use this.",
+		name: "Stupid Cannon",
+		pp: 10,
+		priority: 0,
+		flags: {bullet, protect: 1, mirror: 1},
+		multihit: 22,
+	secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
+	watershield: {
+		num: 3011,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "The user gains armor that punishes contact.",
+		name: "Water Shield",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		sideCondition: 'watershield',
+		onStart(side) {
+			this.add('-sidestart', side, 'Water Shield' + waterCount);
+			let waterCount = 8;
+		},
+		condition: {
+			onDamagingHitOrder: 1,
+			onDamagingHit(damage, target, source, move) {
+				if (move.flags['contact']) {
+					this.damage(source.baseMaxhp / 16, source, target);
+					waterCount = waterCount - 1;
+				}
+				if (waterCount === 0) {
+					this.add('-sideend', side, 'Water Shield');
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Water",
+		zMove: {boost: {def: 1}},
+		contestType: "Beautiful",
+	},
+	dedefog: {
+		num: 3008,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		desc: "Prevents the target from using Spinning Web or Defog.",
+		shortDesc: "Target can't remove hazards.",
+		name: "De-Defog",
+		pp: 40,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'dedefog',
+		condition: {
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Dedefog');
+			},
+			onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.getMove(moveSlot.id);
+					if (moveSlot.id === 'defog' || moveSlot.id === 'spinningweb') {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+				
+		},
+		secondary: null,
+		target: "normal",
+		type: "Flying",
+		zMove: {boost: {atk: 1}},
+		contestType: "Clever",
+	},
 	dundaboat: {
 		num: 3001,
 		accuracy: 100,
