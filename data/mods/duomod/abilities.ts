@@ -749,6 +749,69 @@ disappearance: {
 		name: "Raging Beast",
 		rating: 1,
 		num: 3010,
-	}
+	},
+	swagnetpull: {
+		shortDesc: "Prevents randomly-typed foes from choosing to switch.",
+		onFoeTrapPokemon(pokemon) {
+			const result = this.random(12);
+			if (result === 0) {
+				let currType = Dark;
+				this.hint("Dark-types are now being trapped.");
+			}
+			else if (result === 1) {
+				let currType = Grass;
+				this.hint("Grass-types are now being trapped.");
+			}
+			else if (result === 2) {
+				let currType = Fire;
+				this.hint("Fire-types are now being trapped.");
+			}
+			else if (result === 3) {
+				let currType = Water;
+				this.hint("Water-types are now being trapped.");
+			}
+			else if (result === 4) {
+				let currType = Electric;
+				this.hint("Electric-types are now being trapped.");
+			}
+			else if (result === 5) {
+				let currType = Ground;
+				this.hint("Ground-types are now being trapped.");
+			}
+			else if (result === 6) {
+				let currType = Flying;
+				this.hint("Flying-types are now being trapped.");
+			}
+			else if (result === 7) {
+				let currType = Dragon;
+				this.hint("Dragon-types are now being trapped.");
+			}
+			else if (result === 8) {
+				let currType = Fairy;
+				this.hint("Fairy-types are now being trapped.");
+			}
+			else if (result === 9) {
+				let currType = Steel;
+				this.hint("Steel-types are now being trapped.");
+			}
+			else if (result === 10) {
+				let currType = Bug;
+				this.hint("Bug-types are now being trapped.");
+			}
+			else {
+				let currType = Poison;
+				this.hint("Poison-types are now being trapped.");
+			}
+			if (pokemon.hasType('currType')) {
+				pokemon.tryTrap(true);
+			}
+		},
+		onFoeMaybeTrapPokemon(pokemon, source) {
+			pokemon.maybeTrapped = true;
+		},
+		name: "Swagnet Pull",
+		rating: 4,
+		num: 20,
+	},
 	
 };
