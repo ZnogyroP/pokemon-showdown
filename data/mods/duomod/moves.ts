@@ -205,9 +205,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {},
 		onHit(target, source, move) {
 		var result: number;
+		var pickSide: number;
 		this.hint("Time for the Roulette Wheel!");
 		result = this.random(40);
-	        if (result === 0) {
+	        pickSide = this.random(2);
+		if (result === 0) {
 			this.hint("Roulette Wheel Result: 1");
 	            for (const pokemon of this.getAllActive()) {
 	                this.heal(pokemon.maxhp, pokemon);
