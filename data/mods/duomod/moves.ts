@@ -86,7 +86,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		secondary: null,
 		target: "normal",
 		type: "Ground",
-		contestType: "Cool",
+		contestType: "Cool", //ball
 	},
 
 	dedefog: {
