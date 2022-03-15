@@ -106,7 +106,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				const numConsecutive = this.effectData.numConsecutive > 5 ? 5 : this.effectData.numConsecutive;
 				return this.chainModify([dmgMod[numConsecutive], 0x1000]);
 			},
-		},
+		}, //deez
 		secondary: null,
 		target: "normal",
 		type: "Ground",
