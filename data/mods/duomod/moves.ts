@@ -31,7 +31,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			this.add('-sidestart', side, 'Water Shield');
 		},
 		condition: {
-			let waterCount = 8;
 			onDamagingHitOrder: 1,
 			onDamagingHit(damage, target, source, move) {
 				if (move.flags['contact']) {
