@@ -1638,7 +1638,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.directDamage(target.hp - 1, target);
+				}
 				}
 			}
 	        }

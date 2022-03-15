@@ -251,15 +251,17 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	        else if (result === 3) {
 			this.hint("Roulette Wheel Result: 4");
 			if (pickSide === 0) {
-				for (const target of this.sides[0].pokemon.active) {
+				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
 					this.directDamage(target.hp - 1, target);
 				}
 				}
 			}
 			else if (pickSide === 1) {
-				for (const target of this.sides[1].pokemon.active) {
+				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
 					this.directDamage(target.hp - 1, target);
+				}
 				}
 			}
 	        }
