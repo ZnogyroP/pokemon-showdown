@@ -674,6 +674,11 @@ disappearance: {
 		rating: 3,
 		num: 3004,
 	},
+
+
+
+
+
 	patience: {
 		shortDesc: "This Pokemon moves last within priority bracket, but is 1.3x stronger.",
 		onFractionalPriority: -0.1,
@@ -852,5 +857,46 @@ disappearance: {
 		rating: 4,
 		num: 3012,
 	},
-	
+	trashbeat: {
+		shortDesc: "User's Sound moves taunt targets.",
+		onModifyMove(move, pokemon) {
+			if (move.flags['sound']) {
+				for (const target of pokemon.side.foe.active) {
+					target.addVolatile('taunt');
+				}
+			}
+		},
+		volatileStatus: 'taunt',
+		condition: {
+			duration: 3,
+			onStart(target) {
+				if (target.activeTurns && !this.queue.willMove(target)) {
+					this.effectData.duration++;
+				}
+				this.add('-start', target, 'move: Taunt');
+			},
+			onResidualOrder: 12,
+			onEnd(target) {
+				this.add('-end', target, 'move: Taunt');
+			},
+			onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.getMove(moveSlot.id);
+					if (move.category === 'Status' && move.id !== 'mefirst') {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+			onBeforeMovePriority: 5,
+			onBeforeMove(attacker, defender, move) {
+				if (!move.isZ && !move.isMax && move.category === 'Status' && move.id !== 'mefirst') {
+					this.add('cant', attacker, 'move: Taunt', move);
+					return false;
+				}
+			},
+		},
+		name: "Trash Beat",
+		rating: 4,
+		num: 3013,
+	},	
 };
