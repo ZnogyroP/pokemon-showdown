@@ -820,10 +820,18 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
+		onHit(pokemon, source) {
+			source.addVolatile('recharge');
+		},
+		condition: {
 			duration: 2,
-},
+			onStart(pokemon) {
+				pokemon.tryTrap(true);
+			}
+			onBeforeMove(pokemon) {
+				return false;
+			}
+		},
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -831,7 +839,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	},
 	quadrupleaxel: {
 		num: 3006,
-		accuracy: 60,
+		accuracy: 70,
 		basePower: 20,
 		basePowerCallback(pokemon, target, move) {
 			return 20 * move.hit;
