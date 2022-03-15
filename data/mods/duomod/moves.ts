@@ -1730,7 +1730,19 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {},
 		sideCondition: 'Dewy Flowers',
-
+		condition: {
+			onStart(side) {
+				this.add('-sidestart', side, 'Dewy Flowers');				
+			},
+			onResidualOrder: 6,
+			onResidual(target, source, effect) {
+				for (const ally of source.side.active) {
+					if (ally.item === 'heavydutyboots' || !ally.isGrounded()) {
+						this.heal(ally.baseMaxhp / 16);
+					}
+				}
+			},
+		},
 		secondary: null,
 		target: "allySide",
 		type: "Grass",
