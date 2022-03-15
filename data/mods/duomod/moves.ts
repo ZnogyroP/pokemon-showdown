@@ -638,7 +638,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 		},
 		boosts: {
-			atk: 3,
+			atk: 3
 		},
 		secondary: null,
 		target: "normal",
@@ -646,58 +646,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {atk: 1}},
 		contestType: "Clever",
 	},
-	dundaboat: {
-		num: 3001,
-		accuracy: 100,
-		basePower: 90,
-		category: "Special",
-		shortDesc: "Paralyzes target or user; can't use if statused.",
-		name: "Dundaboat",
-		pp: 15,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onTry(pokemon) {
-			if (pokemon.status) {
-				return null;
-			}
-		},
-		onHit(target, source, move) {
-			const result = this.random(2);
-			if (result === 0) {
-				target.trySetStatus('par', source);
-			}
-			else {
-				if (source.hasType('Electric')) {
-					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
-					this.add('-start', source, 'typechange', source.types.join('/'), '[from] move: Dundaboat');
-				}
-				source.trySetStatus('par', source);
-			}
-		}
-		target: "normal",
-		type: "Electric",
-		contestType: "Cool",
-	},
-	extremebeam: {
-		num: 3002,
-		accuracy: 100,
-		basePower: 300,
-		category: "Special",
-		desc: "If this move is successful, the user must recharge on the following two turns and cannot select a move.",
-		shortDesc: "User cannot move next two turns.",
-		name: "EXTREME BEAM",
-		pp: 5,
-		priority: 0,
-		flags: {recharge: 1, protect: 1, mirror: 1},
-		self: {
-			volatileStatus: 'mustrecharge',
-			duration: 2,
-		},
-		secondary: null,
-		target: "normal",
-		type: "Steel",
-		contestType: "Cool",
-	},
-
 	
 };
