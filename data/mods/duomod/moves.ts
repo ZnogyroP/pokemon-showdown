@@ -1970,7 +1970,26 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cute",
 	},	
-
+	ultranome: {
+		num: 118,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Ultranome",
+		pp: 1,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {},
+		onHit(pokemon) {
+			this.useMove("Metronome", pokemon);
+			this.useMove("Metronome", pokemon);
+			this.useMove("Metronome", pokemon);
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		contestType: "Cute",
+	},
 	scald2: {
 		num: 503,
 		accuracy: 100,
