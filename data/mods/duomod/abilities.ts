@@ -683,7 +683,7 @@ disappearance: {
 				const result = this.random(3);
 				const move = this.dex.getMove(moveSlot.move);
 				if (result === 0) {
-					let warnMoveName = this.dex.getMove(moveSlot[0].move;
+					let warnMoveName = this.dex.getMove(moveSlot[0].move);
 				}
 				else if (result === 1) {
 					let warnMoveName = this.dex.getMove(moveSlot[1].move);
@@ -703,5 +703,40 @@ disappearance: {
 		name: "Mental Note",
 		rating: 0.5,
 		num: 3005,
+	},
+	mixitup: {
+		shortDesc: "If the user's attack doesn't match its last move, it's 1.3x stronger.",
+		onBasePower (basePower, pokemon, target, move) {
+			if (move !== pokemon.lastMove.id) {
+				return this.chainModify(1.3);
+			}
+		},
+		name: "Mix it Up",
+		rating: 0.5,
+		num: 3006,
+	}	
+	obtrusive: {
+		shortDesc: "Prevents the Roulette Wheel from being spun while active.",
+		onAnyTryMove(target, source, effect) {
+			if (['roulettespin'].includes(effect.id)) {
+				this.attrLastMove('[still]');
+				this.add('cant', this.effectData.target, 'ability: Obtrusive', effect, '[of] ' + target);
+				return false;
+			}
+		},
+		name: "Obtrusive",
+		rating: 1,
+		num: 3007,
+	},
+	overflow: {
+		shortDesc: "Uses Roulette Wheel twice after most status moves.",
+		onSourceHit(target, source, move) {
+			if (move.category == 'Status' && ['roulettespin', 'spikes', 'chargedstone', 'neutralair', 'watershield', 'safeguard', 'lightscreen', 'reflect', 'grassyterrain', 'mistyterrain', 'electricterrain', 'sunnyday', 'raindance', 'sandstorm', 'conversion2', 'transform', 'heartswap', 'courtchange', 'camouflage', 'skillswap', 'trickroom', 'haze', 'magicroom', 'wonderroom', 'defog', 'reflecttype', 'metronome', 'ultranome') {
+				this.useMove("Roulette Spin", source);
+			}
+		},
+		name: "Overflow",
+		rating: 1,
+		num: 3008,
 	},
 };
