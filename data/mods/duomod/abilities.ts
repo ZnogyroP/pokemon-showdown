@@ -370,7 +370,7 @@ disappearance: {
 			}
 		},
 
-		name: "Death's Call",
+		name: "Deaths Call",
 		rating: 4,
 		num: 14.1,
   },
@@ -609,7 +609,8 @@ disappearance: {
 	birdup: {
 		shortdesc: "The user becomes Bird-type, all 12 types combined.",
 		onStart(pokemon) {
-			this.add('-start', pokemon, 'typechange', 'Bird');
+			newType = 'Bird';
+			this.add('-start', target, 'typechange', type);
 		},
 		name: "Bird Up",
 		rating: 4,

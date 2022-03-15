@@ -181,7 +181,7 @@ grievenge: {
 	types: ["Dark"],
 	gender: "N",
 	baseStats: {hp: 37, atk: 83, def: 37, spa: 37, spd: 37, spe: 136},
-	abilities: {0: "Death's Call"},
+	abilities: {0: "Deaths Call"},
 	heightm: 1,
 	weightkg: 5,
 },
