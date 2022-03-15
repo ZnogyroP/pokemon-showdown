@@ -29,9 +29,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		sideCondition: 'watershield',
 		onStart(side) {
 			this.add('-sidestart', side, 'Water Shield');
-			let waterCount = 8;
 		},
 		condition: {
+			let waterCount = 8;
 			onDamagingHitOrder: 1,
 			onDamagingHit(damage, target, source, move) {
 				if (move.flags['contact']) {
@@ -1634,7 +1634,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
 		shortDesc: "Free user from hazards/bind/Leech Seed.",
 		name: "Spinning Web",
-		pp: 50,
+		pp: 40,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onTryImmunity(target) {
