@@ -700,7 +700,9 @@ disappearance: {
 	},
 	overflow: {
 		shortDesc: "Uses Roulette Wheel twice after most status moves.",
-
+		const noRedo: [
+					'roulettespin', 'spikes', 'chargedstone', 'neutralair', 'watershield', 'safeguard', 'lightscreen', 'reflect', 'grassyterrain', 'mistyterrain', 'electricterrain', 'sunnyday', 'raindance', 'sandstorm', 'conversion2', 'transform', 'heartswap', 'courtchange', 'camouflage', 'skillswap', 'trickroom', 'haze', 'magicroom', 'wonderroom', 'defog', 'reflecttype', 'metronome', 'ultranome'
+		],
 		name: "Overflow",
 		rating: 1,
 		num: 3008,
