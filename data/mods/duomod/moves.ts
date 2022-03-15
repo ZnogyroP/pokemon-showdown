@@ -667,47 +667,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Cool",
 	},
-
-	neutralair: {
-		num: 3005,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		shortDesc: "For 5 turns, abilities become nullified.",
-		name: "Neutral Air",
-		pp: 5,
-		priority: 0,
-		flags: {},
-		pseudoWeather: 'neutralair',
-		condition: {
-			duration: 5,
-			durationCallback(source, effect) {
-				if (source?.hasItem('floatstone')) {
-					return 8;
-				}
-				return 5;
-			},
-			onStart(side, source) {
-				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
-				const (pokemon for getAllActive()) {
-					this.add('-endability', pokemon);
-					this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'neutralair');
-				}
-			},
-			onRestart(target, source) {
-				this.field.removePseudoWeather('neutralair');
-			},
-			onResidualOrder: 24,
-			onEnd() {
-				this.add('-fieldend', 'move: Neutral Air');
-			},
-		},
-		secondary: null,
-		target: "all",
-		type: "Flying",
-		zMove: {boost: {spe: 1}},
-		contestType: "Beautiful",
-	},
 	quadrupleaxel: {
 		num: 3006,
 		accuracy: 60,
