@@ -1579,7 +1579,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	        var sideChoice: number;
 		const pickSide = this.random(2);
 		for (const allPokemon of this.getAllActive) {
-			if (allPokemon.hasAbility('obtrusive') {
+			if (allPokemon.hasAbility('obtrusive')) {
 				return;
 			}
 		}
