@@ -743,9 +743,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onStart(side, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
-				(const target of this.getAllActive()) {
+				for (const target of this.getAllActive()) {
 					this.add('-endability', target);
-					this.singleEvent('End', target.getAbility(), target.abilityData, target, null, null);
+					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
 				}
 			},
 			onRestart(target, source) {
