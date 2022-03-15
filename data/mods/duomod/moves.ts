@@ -1634,7 +1634,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 20,
 		category: "Physical",
-		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
+		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field. Also removes Water Shield from the user's side, but triples the move's power.",
 		shortDesc: "Free user from hazards/bind/Leech Seed.",
 		name: "Spinning Web",
 		pp: 40,
@@ -1646,8 +1646,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		onBasePower(basePower, pokemon, target) {
 			const sideConditions = ['watershield'];
 			for (const condition of sideConditions) {
-				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
-					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
 					return this.chainModify(3);
 				}
 			}
@@ -1656,7 +1654,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Spinning Web', '[of] ' + pokemon);
 			}
-			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes'];
+			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'watershield'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
@@ -1670,7 +1668,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
 			}
-			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes'];
+			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'watershield'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
