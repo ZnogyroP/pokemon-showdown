@@ -38,7 +38,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					this.damage(source.baseMaxhp / 16, source, target);
 					this.effectData.layers--;
 				}
-				if (this.effectData.layers === 0) {
+				if (this.effectData.layers <= 0) {
+					const side = pokemon.side;
 					this.add('-sideend', side, 'Water Shield');
 				}
 			},
