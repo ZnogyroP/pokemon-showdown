@@ -1567,7 +1567,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
         banlist: ['All Pokemon'],
         unbanlist: [
-             'Pikachu',
+             'Pikachu'
 	],
 			
 	onSwitchIn(pokemon) {
