@@ -39,7 +39,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					this.effectData.layers--;
 				}
 				if (this.effectData.layers <= 0) {
-					const side = pokemon.side;
+					const side = target.side;
 					this.add('-sideend', side, 'Water Shield');
 				}
 			},
