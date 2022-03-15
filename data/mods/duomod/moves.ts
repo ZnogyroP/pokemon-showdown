@@ -825,7 +825,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		},
 		condition: {
 			duration: 2,
-			
+			onFoeTrapPokemon(pokemon) {
+				const target = pokemon.side;
+				target.tryTrap(true);
+			}
 		},
 		secondary: null,
 		target: "normal",
