@@ -52,7 +52,7 @@ baloonwater: {
 	types: ["Fairy", "Water"],
 	gender: "N",
 	baseStats: {hp: 137, atk: 102, def: 12, spa: 124, spd: 142, spe: 83},
-	abilities: {0: "Overflow"},
+	abilities: {0: "Contrary"},
 	weightkg: 5,
 		otherFormes: ["Baloon", "Baloon-Popped"],
 },
@@ -155,7 +155,7 @@ gorilax: {
 	types: ["Dark", "Fairy"],
 	gender: "N",
 	baseStats: {hp: 116, atk: 61, def: 91, spa: 93, spd: 117, spe: 122},
-	abilities: {0: "Mental Note"},
+	abilities: {0: "Forewarn"},
 	weightkg: 5,
 },
 grievenge: {
