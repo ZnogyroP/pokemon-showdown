@@ -8,6 +8,7 @@ abysseil: {
 	abilities: {0: "Sap Sipper"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 annelait: {
 	num: 2.5,
@@ -18,6 +19,7 @@ annelait: {
 	abilities: {0: "Angler"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 azurolt: {
 	num: 3.5,
@@ -28,6 +30,7 @@ azurolt: {
 	abilities: {0: "Electric Surge"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 baloon: {
 	num: 4.5,
@@ -39,6 +42,7 @@ baloon: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Baloon-Water", "Baloon-Popped"],
+	eggGroups: ["Undiscovered"],
 },
 baloonpopped: {
 	num: 4.5,
@@ -50,6 +54,7 @@ baloonpopped: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Baloon", "Baloon-Water"],
+	eggGroups: ["Undiscovered"],
 },
 baloonwater: {
 	num: 4.5,
@@ -61,6 +66,7 @@ baloonwater: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Baloon", "Baloon-Popped"],
+	eggGroups: ["Undiscovered"],
 },
 catelax: {
 	num: 7.5,
@@ -71,6 +77,7 @@ catelax: {
 	abilities: {0: "Tranquilizing Gas"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 crypterid: {
 	num: 8.5,
@@ -81,6 +88,7 @@ crypterid: {
 	abilities: {0: "Fortification"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 deliriophage: {
 	num: 9.5,
@@ -91,6 +99,7 @@ deliriophage: {
 	abilities: {0: "Unaware"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 detonuke: {
 	num: 10.5,
@@ -101,6 +110,7 @@ detonuke: {
 	abilities: {0: "Swagnet Pull"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 draglow: {
 	num: 11.5,
@@ -111,6 +121,7 @@ draglow: {
 	abilities: {0: "No Guard"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 draxplosion: {
 	num: 12.5,
@@ -121,6 +132,7 @@ draxplosion: {
 	abilities: {0: "Blaze"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 fluidrake: {
 	num: 13.5,
@@ -131,6 +143,7 @@ fluidrake: {
 	abilities: {0: "Sheer Force"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 fluxtape: {
 	num: 14.5,
@@ -142,6 +155,7 @@ fluxtape: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Fluxtape-Radio", "Fluxtape-Stereo"],
+	eggGroups: ["Undiscovered"],
 },
 fluxtaperadio: {
 	num: 14.5,
@@ -153,6 +167,7 @@ fluxtaperadio: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Fluxtape", "Fluxtape-Stereo"],
+	eggGroups: ["Undiscovered"],
 },
 fluxtapestereo: {
 	num: 14.5,
@@ -164,6 +179,7 @@ fluxtapestereo: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Fluxtape-Radio", "Fluxtape"],
+	eggGroups: ["Undiscovered"],
 },
 gorilax: {
 	num: 17.5,
@@ -174,6 +190,7 @@ gorilax: {
 	abilities: {0: "Forewarn"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 grievenge: {
 	num: 18.5,
@@ -184,6 +201,7 @@ grievenge: {
 	abilities: {0: "Deaths Call"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 hyperoach: {
 	num: 19.5,
@@ -194,6 +212,7 @@ hyperoach: {
 	abilities: {0: "Hype Overload"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 lemotic: {
 	num: 20.5,
@@ -204,6 +223,7 @@ lemotic: {
 	abilities: {0: "Bootleg Regen"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 lumineel: {
 	num: 21.5,
@@ -214,6 +234,7 @@ lumineel: {
 	abilities: {0: "Intimidate"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 modolith: {
 	num: 22.5,
@@ -224,6 +245,7 @@ modolith: {
 	abilities: {0: "Raging Beast"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 monstratus: {
 	num: 23.5,
@@ -234,6 +256,7 @@ monstratus: {
 	abilities: {0: "Drizzle"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 mortemoth: {
 	num: 24.5,
@@ -244,6 +267,7 @@ mortemoth: {
 	abilities: {0: "Deteriorate"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 pokat: {
 	num: 25.5,
@@ -254,6 +278,7 @@ pokat: {
 	abilities: {0: "Flash Fire"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 spirox: {
 	num: 26.5,
@@ -265,6 +290,7 @@ spirox: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Spirox-Ancient", "Spirox-Ripped"],
+	eggGroups: ["Undiscovered"],
 },
 spiroxancient: {
 	num: 26.5,
@@ -276,6 +302,7 @@ spiroxancient: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Spirox", "Spirox-Ripped"],
+	eggGroups: ["Undiscovered"],
 },
 spiroxripped: {
 	num: 26.5,
@@ -287,6 +314,7 @@ spiroxripped: {
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Spirox-Ancient", "Spirox"],
+	eggGroups: ["Undiscovered"],
 },
 treemu: {
 	num: 29.5,
@@ -297,6 +325,7 @@ treemu: {
 	abilities: {0: "Bird Up"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 valianch: {
 	num: 30.5,
@@ -307,5 +336,6 @@ valianch: {
 	abilities: {0: "Patience"},
 	heightm: 1,
 	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 };
