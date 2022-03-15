@@ -1576,7 +1576,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         },	
 
 
-	},
     },
 
 
