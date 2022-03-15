@@ -760,7 +760,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		contestType: "Cute",
 	},
 
-	deeznutsjoke: { //the best move
+	deeznutsjoke: { 
 		num: 669,
 		accuracy: 100,
 		basePower: 0,
