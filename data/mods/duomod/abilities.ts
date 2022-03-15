@@ -702,7 +702,7 @@ disappearance: {
 		shortDesc: "Uses Roulette Wheel twice after most status moves.",
 		onSourceHit(target, source, move) {
 		noRedo: [
-			"Roulette Spin", "Spikes", "Charged Stone", "Neutral Air", "Water Shield", "Safeguard", "Light Screen", "Reflect", "Grassy Terrain", "Electric Terrain", "Misty Terrain", "Sunny Day", "Rain Dance", "Sandstorm", "Conversion 2", "Transform", "Heart Swap", "Court Change", "Camouflage", "Skill Swap", "Trick Room", "Haze", "Magic Room", "Wonder Room", "Defog", "Reflect Type", "Metronome", "Ultranome"
+			"Roulette Spin", "Spikes", "Charged Stone", "Neutral Air", "Water Shield", "Safeguard", "Light Screen", "Reflect", "Grassy Terrain", "Electric Terrain", "Misty Terrain", "Sunny Day", "Rain Dance", "Sandstorm", "Conversion 2", "Transform", "Heart Swap", "Court Change", "Camouflage", "Skill Swap", "Trick Room", "Haze", "Magic Room", "Wonder Room", "Defog", "Reflect Type", "Metronome", "Ultranome",
 		],
 			if (move.category == 'Status' && (effect.noRedo!.includes(move.name)) {
 				this.useMove("Roulette Spin", source);
