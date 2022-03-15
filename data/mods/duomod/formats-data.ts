@@ -1,194 +1,122 @@
 export const FormatsData: {[k: string]: SpeciesFormatsData} = {
-	annelait: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
 	abysseil: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
-	arachwich: {
+	annelait: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	azurolt: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	baloon: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
-	batravolt: {
+	baloonpopped: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
-	bismage: {
+	baloonwater: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	blastora: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	blaydge: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	cadbunny: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	castarupt: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	catelax: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	cephalopire: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	chemiclysm: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	chimida: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	chollunge: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	crazefly: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	crypterid: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	debring: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	deliriophage: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	detonuke: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	draglow: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	draxplosion: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	egg: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	eggcracked: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	electritar: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	falkick: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	fantom: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	flamepion: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	floundrawn: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	fluidrake: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	fluxtape: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	fluxtaperadio: {
+		tier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	fluxtapestereo: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	gorilax: {
+		tier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	grievenge: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	hyperoach: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	inscuba: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	joulibranch: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	lemotic: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	lumineel: {
+		tier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	modolith: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	monstratus: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	mortemoth: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
-	nectrance: {
+	pokat: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	pterrost: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	sharmpedo: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
-	},
-	smorke: {
-		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	spirox: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
 	},
-	valianch: {
+	spiroxancient: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	spiroxripped: {
+		tier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 	treemu: {
 		tier: "Duomod",
-		doublesTier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	valianch: {
+		tier: "Duomod",
+		doublesTier: "DOUomod",
 	},
 };
