@@ -824,7 +824,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			volatileStatus: 'mustrecharge',
 		},
 		condition: {
-			duration: 2,
+			duration: 3,
 		},
 		secondary: null,
 		target: "normal",
@@ -1738,7 +1738,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
-				if (target.item === 'heavydutyboots' || !target.isGrounded()) {
+				if (target.item === 'heavydutyboots') {
 					this.heal(target.baseMaxhp / 16);
 				}
 			},
