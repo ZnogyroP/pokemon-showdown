@@ -703,7 +703,8 @@ disappearance: {
 		onSourceHit(target, source, move) {
 			
 
-			if (move.category === 'Status' && (effect.noRedo!.includes(move.name)) {
+			if (move.category === 'Status') {
+				if (noRedo.includes(moveid) continue;
 				this.useMove("Roulette Spin", source);
 			}
 		},
