@@ -1632,7 +1632,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	spinningweb: {
 		num: 3009,
 		accuracy: 100,
-		basePower: 20,
+		basePower: 50,
 		category: "Physical",
 		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field. Also removes Water Shield from the user's side, but triples the move's power.",
 		shortDesc: "Free user from hazards/bind/Leech Seed.",
@@ -1643,9 +1643,21 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		onTryImmunity(target) {
 			return !target.hasType('Fire');
 		},
+
+onBasePower(basePower, pokemon, target) {
+			for (const condition of sideConditions) {
+			const sideConditions = ['watershield'];
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
+					return this.chainModify(3);
+				}
+			}
+		},
 		onBasePower(basePower, pokemon, target) {
 			const sideConditions = ['watershield'];
 			for (const condition of sideConditions) {
+				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
 					return this.chainModify(3);
 				}
 			}
