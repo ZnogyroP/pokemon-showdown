@@ -1752,7 +1752,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "Heals the user's side every turn, entry hazard.",
+		shortDesc: "Heals the user's side every turn; entry hazard.",
 		name: "Dewy Flowers",
 		pp: 20,
 		priority: 0,
@@ -1765,9 +1765,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
 				if (!target || !target.hp) continue;
-				for (const pokemon of pokemon.side.active) {
-					if (pokemon.item === 'heavydutyboots' || !pokemon.isGrounded()) return;
-					this.heal(pokemon.baseMaxhp / 16);
+				for (const pokemon of source.side.active) {
+					if (pokemon.item === 'heavydutyboots' || !pokemon.isGrounded()) {
+						this.heal(pokemon.baseMaxhp / 16);
+					}
 				}
 			},
 		},
