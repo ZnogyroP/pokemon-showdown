@@ -1626,8 +1626,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			return !target.hasType('Fire');
 		},
 		onBasePower(basePower, pokemon, target) {
-			for (const condition of sideConditions) {
 			const sideConditions = ['watershield'];
+			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
 					return this.chainModify(3);
