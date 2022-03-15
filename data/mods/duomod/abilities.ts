@@ -698,10 +698,17 @@ disappearance: {
 		rating: 1,
 		num: 3007,
 	},
-
-
-
-
+	overflow: {
+		shortDesc: "Uses Roulette Wheel twice after most status moves.",
+		onSourceHit(target, source, move) {
+			if (move.category == 'Status' && ['roulettespin', 'spikes', 'chargedstone', 'neutralair', 'watershield', 'safeguard', 'lightscreen', 'reflect', 'grassyterrain', 'mistyterrain', 'electricterrain', 'sunnyday', 'raindance', 'sandstorm', 'conversion2', 'transform', 'heartswap', 'courtchange', 'camouflage', 'skillswap', 'trickroom', 'haze', 'magicroom', 'wonderroom', 'defog', 'reflecttype', 'metronome', 'ultranome') {
+				this.useMove("Roulette Spin", source);
+			}
+		},
+		name: "Overflow",
+		rating: 1,
+		num: 3008,
+	},
 	patience: {
 		shortDesc: "This Pokemon moves last within priority bracket, but is 1.3x stronger.",
 		onFractionalPriority: -0.1,
