@@ -78,15 +78,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, target, move) {
-			if (pokemon.lastMove.id === move.id) {
-				return this.chainModify(2);
-			}
-		},
+
 		secondary: null,
 		target: "normal",
 		type: "Ground",
-		contestType: "Cool", //ball
+		contestType: "Cool", 
 	},
 
 	dedefog: {
