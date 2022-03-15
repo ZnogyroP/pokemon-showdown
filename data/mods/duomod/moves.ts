@@ -829,41 +829,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Dark",
 		contestType: "Cool",
 	},
-	watershield: {
-		num: 3011,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		shortDesc: "The user gains armor that punishes contact.",
-		name: "Water Shield",
-		pp: 20,
-		priority: 0,
-		flags: {snatch: 1},
-		sideCondition: 'watershield',
-		condition: {
-			var waterCount: number;
-			onStart(side) {
-				this.add('-sidestart', side, 'Water Shield' + waterCount);
-				waterCount = 8;
-			},
-			onDamagingHitOrder: 1,
-			onDamagingHit(damage, target, source, move) {
-				if (move.flags['contact']) {
-					this.damage(source.baseMaxhp / 16, source, target);
-					waterCount = waterCount - 1;
-				}
-			}
-			onEnd(side) {
-				waterCount = 0;
-				this.add('-sideend', side, 'Water Shield');
-			},
-		},
-		secondary: null,
-		target: "self",
-		type: "Water",
-		zMove: {boost: {def: 1}},
-		contestType: "Beautiful",
-	},
 
 	
 };
