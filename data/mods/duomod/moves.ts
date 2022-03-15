@@ -823,7 +823,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		onHit(pokemon) {
 			pokemon.addVolatile('extremebeam');
 		},
-
+		condition: {
+			duration: 2,
+			
+		},
 		secondary: null,
 		target: "normal",
 		type: "Steel",
