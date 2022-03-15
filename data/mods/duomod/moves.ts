@@ -72,7 +72,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		basePower: 70,
 		basePowerCallback(pokemon, target, move) {
 			if (pokemon.lastMove.id === 'striketheearth') {
-				return this.chainModify(0.5);
+				return this.chainModify(2);
+			}
+			else {
+				return this.chainModify(1);
 			}
 		},
 		category: "Physical",
