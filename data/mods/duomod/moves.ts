@@ -1736,7 +1736,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
-				for (const ally of source.side.active) {
+				for (const ally of target.side.active) {
 					if (ally.item === 'heavydutyboots' || !ally.isGrounded()) {
 						this.heal(ally.baseMaxhp / 16);
 					}
