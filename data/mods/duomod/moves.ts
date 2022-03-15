@@ -703,7 +703,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (pokemon.status) {
 				return null;
 			}
-		}
+		},
 		onHit(target, source, move) {
 			const result = this.random(2);
 			if (result === 0) {
@@ -716,7 +716,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 				source.trySetStatus('par', source);
 			}
-		}
+		},
 		target: "normal",
 		type: "Electric",
 		contestType: "Cool",
