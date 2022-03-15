@@ -700,14 +700,7 @@ disappearance: {
 	},
 	overflow: {
 		shortDesc: "Uses Roulette Wheel twice after most status moves.",
-		onSourceHit(target, source, move) {
-			
 
-			if (move.category === 'Status') {
-				if (noRedo.includes(moveid) continue;
-				this.useMove("Roulette Spin", source);
-			}
-		},
 		name: "Overflow",
 		rating: 1,
 		num: 3008,
