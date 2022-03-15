@@ -1760,12 +1760,15 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		sideCondition: 'Dewy Flowers',
 		condition: {
 			onStart(side) {
-				this.add('-sidestart', side, 'Dewy Flowers');
+				this.add('-sidestart', side, 'Dewy Flowers');				
 			},
 			onResidualOrder: 6,
 			onResidual(target, source, effect) {
-				if (target.hasItem('heavydutyboots')) return;
-				this.heal(target.baseMaxhp / 16);
+				if (!target || !target.hp) continue;
+				for (const pokemon of pokemon.side.active) {
+					if (pokemon.item === 'heavydutyboots' || !pokemon.isGrounded()) return;
+					this.heal(pokemon.baseMaxhp / 16);
+				}
 			},
 		},
 		secondary: null,
