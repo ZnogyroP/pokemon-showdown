@@ -1,4 +1,76 @@
 export const Moves: {[moveid: string]: ModdedMoveData} = {
+	dundaboat: {
+		num: 3001,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		shortDesc: "Paralyzes target or user; can't use if statused.",
+		name: "Dundaboat",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTry(pokemon) {
+			if (pokemon.status) {
+				return null;
+			}
+		},
+		onHit(target, source, move) {
+			const result = this.random(2);
+			if (result === 0) {
+				target.trySetStatus('par', source);
+			}
+			else {
+				if (source.hasType('Electric')) {
+					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
+					this.add('-start', source, 'typechange', source.types.join('/'), '[from] move: Dundaboat');
+				}
+				source.trySetStatus('par', source);
+			}
+			},
+		target: "normal",
+		type: "Electric",
+		contestType: "Cool",
+	},
+	neutralair: {
+		num: 3005,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		shortDesc: "For 5 turns, abilities become nullified.",
+		name: "Neutral Air",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		pseudoWeather: 'neutralair',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasItem('floatstone')) {
+					return 8;
+				}
+				return 5;
+			},
+			onStart(side, source) {
+				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
+				for (const target of this.getAllActive()) {
+					this.add('-endability', target);
+					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
+				}
+			},
+			onRestart(target, source) {
+				this.field.removePseudoWeather('neutralair');
+			},
+			onResidualOrder: 24,
+			onEnd() {
+				this.add('-fieldend', 'move: Neutral Air');
+			},
+		},
+		secondary: null,
+		target: "all",
+		type: "Flying",
+		zMove: {boost: {spe: 1}},
+		contestType: "Beautiful",
+	},
 	roulettespin: {
 		accuracy: true,
 		basePower: 0,
