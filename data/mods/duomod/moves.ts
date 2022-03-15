@@ -821,7 +821,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
 		onHit(pokemon) {
-			pokemon.addVolatile('recharge');
+			pokemon.addVolatile('extremebeam');
 		},
 		condition: {
 			duration: 2,
