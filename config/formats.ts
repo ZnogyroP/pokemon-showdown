@@ -1568,8 +1568,8 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
         banlist: ['All Pokemon'],
         unbanlist: [
-             'Abysseil', 'Annelait', 'Azurolt', 'Baloon', 'Catelax', 'Crypterid', 'Deliriophage', 'Detonuke', 'Draglow', 'Draxplosion', 'Fluidrake', 'Fluxtape', 'Gorilax', 'Grievenge', 'Hyperoach', 'Lemotic', 'Lumineel', 'Modolith', 'Monstratus', 'Mortemoth', 'Pokat', 'Spirox', 'Treemu', 'Valianch', 
-        ],
+             'Pikachu'
+	],
 			
 	onSwitchIn(pokemon) {
         	this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
