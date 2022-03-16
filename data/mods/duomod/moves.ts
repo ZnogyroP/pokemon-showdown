@@ -200,7 +200,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 24,
 			onEnd() {
-				this.add('-fieldend', 'move: Neutral Air');
+				this.field.removePseudoWeather('neutralair');
 				for (const pokemon of this.getAllActive()) {
 					pokemon.removeVolatile('gastroacid');
 				}
