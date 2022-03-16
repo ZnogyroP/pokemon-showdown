@@ -175,13 +175,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				if (pokemon.volatiles['dropheat']) {
 					if (move.flags['sound']) {
 						this.debug('Drop Heat boost');
-						// return this.chainModify([0x1800, 0x1000]);
 						this.hint("Glad!");
+						return this.chainModify([0x1800, 0x1000]);
 					}
 					else if (move.type === 'Fire') {
 						this.debug('Drop Heat boost');
-						return this.chainModify([0x1800, 0x1000]);
 						this.hint("Sick!");
+						return this.chainModify([0x1800, 0x1000]);
 					}
 					else {
 						this.hint("Sad!");
