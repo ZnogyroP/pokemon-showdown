@@ -187,7 +187,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onStart(side, source) {
 				let neutralizinggas = false;
-				for (const pokemon of this.battle.getAllActive()) {
+				for (const pokemon of this.getAllActive()) {
 					if (pokemon.ability === ('neutralizinggas' as ID) && !pokemon.volatiles['gastroacid'] && !pokemon.abilityData.ending) {
 						neutralizinggas = true;
 						break;
