@@ -72,13 +72,30 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		num: 3009,
 		accuracy: 100,
 		basePower: 70,
+		basePowerCallback(pokemon, target, move) {
+			if (!pokemon.volatiles['furycutter'] || move.hit === 1) {
+				pokemon.addVolatile('furycutter');
+			}
+			return this.clampIntRange(move.basePower * pokemon.volatiles['furycutter'].multiplier, 1, 140);
+		},
 		category: "Physical",
 		shortDesc: "Power doubles if used last turn.",
 		name: "Strike the Earth",
 		pp: 20,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-
+		condition: {
+			duration: 2,
+			onStart() {
+				this.effectData.multiplier = 1;
+			},
+			onRestart() {
+				if (this.effectData.multiplier < 4) {
+					this.effectData.multiplier <<= 1;
+				}
+				this.effectData.duration = 2;
+			},
+		},
 		secondary: null,
 		target: "normal",
 		type: "Ground",
@@ -175,9 +192,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				}
 			},
 			onSwitchIn(pokemon) {
-				for (const target of this.getAllActive()) {
-					this.add('-endability', target);
-				}
+				this.add('-endability', pokemon);
 			},
 			onRestart(target, source) {
 				this.field.removePseudoWeather('neutralair');
@@ -826,13 +841,13 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		shortDesc: "User cannot move next two turns.",
 		name: "EXTREME BEAM",
 		pp: 5,
-		priority: 0,
+		priority: -6,
 		flags: {recharge: 1, protect: 1, mirror: 1},
 		self: {
 			volatileStatus: 'bide',
 		},
 		condition: {
-			duration: 3,
+			duration: 2,
 			onLockMove: 'bide',
 		},		
 		secondary: null,
