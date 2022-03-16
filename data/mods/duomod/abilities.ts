@@ -361,11 +361,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Poison-types are now being trapped.");
 			}
 			if (pokemon.hasType(currType) && this.isAdjacent(pokemon, this.effectData.target)) {
-				pokemon.addVolatile('trapped', pokemon, null, 'trapper');
 				pokemon.tryTrap(true);
 			}
 			else {
-				pokemon.removeVolatile('trapped', pokemon, null, 'trapper');
 				pokemon.tryTrap(false);
 			} //
 		},
