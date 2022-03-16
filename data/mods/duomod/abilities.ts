@@ -149,8 +149,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	bootlegregen: {
 		shortDesc: "This Pokemon restores a random amount of HP when it switches out.",
 		onSwitchOut(pokemon) {
-			const result = (this.random(5) + 1) * 10;
-			pokemon.heal(pokemon.baseMaxhp / result);
+			const result = this.random(5);
+			pokemon.heal(pokemon.baseMaxhp / ((result + 1) * 10), pokemon);
 		},
 		name: "Bootleg Regen",
 		rating: 4.5,
@@ -375,6 +375,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (pokemon.moveSlots.some(move => move.pp === 0)) {
 				if (pokemon.moveSlots.length < 4) {
 					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon, pokemon, null, true);
+					this.add('-ability', pokemon, 'Guts', '[from] ability: Tough Out');
 				}
 			}
 		},
