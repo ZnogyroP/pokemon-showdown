@@ -163,21 +163,21 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
-					source.addVolatile('flashfire');
+					source.addVolatile('amped');
 				}
 			}
 		},
-		volatileStatus: "flashfire", 
+		volatileStatus: "amped", 
 		condition: {
 			onBasePowerPriority: 7,
 			onBasePower(basePower, attacker, defender, move) {
 				if (move.flags['sound']) {
-					this.debug('Punk Rock boost');
+					this.debug('Drop Heat boost');
 					return this.chainModify([0x1800, 0x1000]);
 					this.hint("Glad!");
 				}
 				else if (move.type === 'Fire') {
-					this.debug('Flash Fire boost');
+					this.debug('Drop Heat boost');
 					return this.chainModify([0x1800, 0x1000]);
 					this.hint("Sick!");
 				}
