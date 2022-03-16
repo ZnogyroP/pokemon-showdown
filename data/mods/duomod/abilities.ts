@@ -163,10 +163,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
-					for (const pokemon of this.getAllActive()) {
-						if (!target.addVolatile('dropheat')) {
-							this.add('-start', pokemon, 'Drop Heat');
-						}
+					if (!source.addVolatile('dropheat')) {
+						this.add('-start', source, 'Drop Heat');
 					}
 				}	
 			}
