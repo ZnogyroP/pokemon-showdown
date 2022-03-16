@@ -172,7 +172,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onBasePowerPriority: 7,
 		onBasePower(basePower, attacker, defender, move) {
 			for (const pokemon of this.getAllActive()) {
-				if (pokemon.volatiles['dropheat']) {
+				if (attacker.volatiles['dropheat']) {
 					if (move.flags['sound']) {
 						this.debug('Drop Heat boost');
 						this.hint("Glad!");
