@@ -181,8 +181,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			duration: 5,
 			durationCallback(source, effect) {
 				if (source?.hasItem('floatstone')) {
-					
+					return 8;
 				}
+				return 5;				
 			},
 			onStart(target, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
