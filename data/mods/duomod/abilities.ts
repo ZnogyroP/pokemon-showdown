@@ -160,12 +160,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	dropheat: {
 		desc: "This Pokemon's Fire-type and Sound-based moves become stronger if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's Sound, Fire moves strengthen if they hit and KO another Pokemon.",
-		onDamage(damage, target, source, effect) {
-			if (effect.id === 'recoil') {
-				if (!this.activeMove) throw new Error("Battle.activeMove is null");
-				if (this.activeMove.id !== 'struggle') return null;
-			}
-		},
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
