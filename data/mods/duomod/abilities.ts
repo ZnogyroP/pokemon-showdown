@@ -172,20 +172,22 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		onBasePowerPriority: 7,
-		onBasePower(basePower, pokemon, target, move) {
-			if (pokemon.volatiles['dropheat']) {
-				if (move.flags['sound']) {
-					this.debug('Drop Heat boost');
-					// return this.chainModify([0x1800, 0x1000]);
-					this.hint("Glad!");
-				}
-				else if (move.type === 'Fire') {
-					this.debug('Drop Heat boost');
-					return this.chainModify([0x1800, 0x1000]);
-					this.hint("Sick!");
-				}
-				else {
-					this.hint("Sad!");
+		onBasePower(basePower, attacker, defender, move) {
+			for (const pokemon of this.getAllActive()) {
+				if (pokemon.volatiles['dropheat']) {
+					if (move.flags['sound']) {
+						this.debug('Drop Heat boost');
+						// return this.chainModify([0x1800, 0x1000]);
+						this.hint("Glad!");
+					}
+					else if (move.type === 'Fire') {
+						this.debug('Drop Heat boost');
+						return this.chainModify([0x1800, 0x1000]);
+						this.hint("Sick!");
+					}
+					else {
+						this.hint("Sad!");
+					}
 				}
 			}
 		},
