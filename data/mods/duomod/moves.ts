@@ -186,24 +186,17 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				}
 			},
 			onStart(side, source) {
-				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
-				for (const target of this.getAllActive()) {
-					this.add('-endability', target);
+				let neutralizinggas = false;
+				for (const pokemon of this.battle.getAllActive()) {
+					if (pokemon.ability === ('neutralizinggas' as ID) && !pokemon.volatiles['gastroacid'] && !pokemon.abilityData.ending) {
+						neutralizinggas = true;
+						break;
+					}
 				}
 			},
-			onSwitchIn(pokemon) {
-				this.add('-endability', pokemon);
-			},
-			onRestart(target, source) {
-				this.field.removePseudoWeather('neutralair');
-			},
-			onResidualOrder: 24,
 			onEnd() {
 				this.add('-fieldend', 'move: Neutral Air');
-				for (const target of this.getAllActive()) {
-					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
-					target.removeVolatile('gastroacid');
-				}
+				neutralizinggas = false;
 			},
 		},
 		secondary: null,
