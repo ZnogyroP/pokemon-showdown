@@ -360,7 +360,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				currType = "Poison";
 				this.hint("Poison-types are now being trapped.");
 			}
-			if (pokemon.hasType(currType) && this.isAdjacent(pokemon, this.effectData.target)) {
+			for (const target of this.getAllActive()) {
+				if (target.hasType(currType) && !target.hasAbility('swagnetpull')) {
 				pokemon.tryTrap(true);
 			}
 			else {
