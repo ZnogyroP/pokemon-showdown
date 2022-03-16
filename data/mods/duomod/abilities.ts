@@ -162,7 +162,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (this.lastMove.type === 'Fire' || this.lastMove.flags['sound']) {
-					pokemon.addVolatile('amped');
+					source.addVolatile('amped');
 				}
 			}
 		},
@@ -208,7 +208,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	mixitup: {
 		shortDesc: "If the user's attack doesn't match its last move, it's 1.3x stronger.",
 		onBasePower (basePower, pokemon, target, move) {
-			if (move !== pokemon.lastMove.id) {
+			if (move.id !== pokemon.lastMove.id) {
 				return this.chainModify(1.3);
 			}
 		},
