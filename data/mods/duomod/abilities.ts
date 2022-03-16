@@ -167,11 +167,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		onSourceAfterFaint(length, target, source, effect) {
-this.hint("1");
 			if (effect && effect.effectType === 'Move') {
-this.hint("1");
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
-this.hint("1");
 					source.addVolatile('flashfire');
 				}
 			}
