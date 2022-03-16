@@ -180,10 +180,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
+				var result: number;
 				if (source?.hasItem('floatstone')) {
-					this.effectData.layers = 8;
+					number = 8;
 				}
-				this.effectData.layers = 5;
+				number = 5;
 			},
 			onStart(target, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
