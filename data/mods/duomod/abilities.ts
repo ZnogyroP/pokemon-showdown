@@ -367,7 +367,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				else {
 					pokemon.tryTrap(false);
 				}
-			}//
+			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
 			pokemon.maybeTrapped = true;
