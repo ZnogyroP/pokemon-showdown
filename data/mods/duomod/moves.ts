@@ -160,6 +160,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {},
 		pseudoWeather: 'neutralair',
+		volatileStatus: 'gastroacid',
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
@@ -829,14 +830,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		self: {
 		volatileStatus: 'doublerecharge',
-		},
 		condition: {
 			duration: 3,
-			onBeforeMove(pokemon, target, move) {
-				pokemon.addVolatile('flinch');	
-			},
+			onLockMove: 'extremebeam',
 		},		
 		secondary: null,
 		target: "normal",
@@ -1290,7 +1287,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		shortDesc: "Goes last. For 5 turns, turn order is reversed.",
 		name: "Trick Room",
 		pp: 5,
-		priority: -7,
+		priority: -6,
 		flags: {mirror: 1},
 		pseudoWeather: 'trickroom',
 		condition: {
