@@ -15,7 +15,7 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		var result: number;
 		this.hint("Time for the Roulette Wheel!");
-		result = this.random(40);
+		result = this.random(40);	
 
 		if (result === 0) {
 			this.hint("Roulette Wheel Result: 1");
@@ -564,6 +564,7 @@ export const Formats: {[k: string]: FormatData} = {
 			for (const pokemon of this.getAllActive()) {
 				this.useMove("Ultranome", pokemon);
 			}
-		}   
+		} 
+		},  
 	},		
 };
