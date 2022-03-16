@@ -167,19 +167,16 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (source?.hasItem('floatstone')) {
 					return 8;
 				}
-				return 5;
 			},
 			onStart(side, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
 				for (const target of this.getAllActive()) {
 					this.add('-endability', target);
-					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
 				}
 			},
 			onSwitchIn(pokemon) {
 				for (const target of this.getAllActive()) {
 					this.add('-endability', target);
-					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
 				}
 			},
 			onRestart(target, source) {
@@ -189,6 +186,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			onEnd() {
 				this.add('-fieldend', 'move: Neutral Air');
 				for (const target of this.getAllActive()) {
+					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
 					target.removeVolatile('gastroacid');
 				}
 			},
@@ -830,10 +828,12 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		volatileStatus: 'doublerecharge',
+		self: {
+			volatileStatus: 'bide',
+		},
 		condition: {
 			duration: 3,
-			onLockMove: 'extremebeam',
+			onLockMove: 'bide',
 		},		
 		secondary: null,
 		target: "normal",
