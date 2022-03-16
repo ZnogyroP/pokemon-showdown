@@ -361,11 +361,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Poison-types are now being trapped.");
 			}
 			if (pokemon.hasType(currType)) {
-				this.hint("Yes");
 				pokemon.tryTrap(true);
-			}
-			else {
-				this.hint("No");
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
@@ -394,7 +390,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		volatileStatus: 'yawn',
 		onStart(pokemon) {
 			for (const target of this.getAllActive()) {
-				if (target.status || !target.runStatusImmunity('slp')) {
+				if (pokemon.status || target.status || !target.runStatusImmunity('slp')) {
 					return false;
 				}
 				target.addVolatile('yawn');
