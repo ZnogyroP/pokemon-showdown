@@ -160,18 +160,20 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	dropheat: {
 		desc: "This Pokemon's Fire-type and Sound-based moves become stronger if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's Sound + Fire moves strengthen one KOs another Pokemon.",
+		onStart(target) {
+			this.add('-start', target, 'ability: Drop Heat');
+		},
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
 					for (const pokemon of this.getAllActive()) {
-						if (pokemon.hasAbility('dropheat')) {
-							this.add('-start', pokemon, 'Flash Fire');
+						if (!target.addVolatile('dropheat')) {
+							this.add('-start', pokemon, 'Drop Heat');
 						}
 					}
 				}	
 			}
 		},
-		volatileStatus: 'flashfire',
 		onBasePowerPriority: 7,
 		onBasePower(basePower, pokemon, target, move) {
 			if (pokemon.volatiles['flashfire']) {
@@ -180,7 +182,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					// return this.chainModify([0x1800, 0x1000]);
 					this.hint("Glad!");
 				}
-				if (move.type === 'Fire') {
+				else if (move.type === 'Fire') {
 					this.debug('Drop Heat boost');
 					return this.chainModify([0x1800, 0x1000]);
 					this.hint("Sick!");
@@ -191,7 +193,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		onEnd(pokemon) {
-			this.add('-end', pokemon, 'Flash Fire', '[silent]');
+			this.add('-end', pokemon, 'Drop Heat', '[silent]');
 		},
 		name: "Drop Heat",
 		rating: 3,
