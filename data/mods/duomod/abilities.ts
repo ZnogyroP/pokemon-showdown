@@ -173,8 +173,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		volatileStatus: 'dropheat',
 		onBasePowerPriority: 7,
-		onBasePower(basePower, attacker, defender, move) {
-			if (attacker.volatiles['dropheat']) {
+		onBasePower(basePower, pokemon, target, move) {
+			if (pokemon.volatiles['dropheat']) {
 				if (move.flags['sound']) {
 					this.debug('Drop Heat boost');
 					return this.chainModify([0x1800, 0x1000]);
