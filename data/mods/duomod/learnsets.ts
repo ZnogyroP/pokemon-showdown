@@ -397,6 +397,7 @@ fluidrake: {learnset: {
 }},
 fluxtape: {learnset: {
         assurance: ["8L1"],
+	boomburst: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
         dedefog: ["8L1"],
@@ -425,6 +426,7 @@ fluxtape: {learnset: {
 }},
 fluxtaperadio: {learnset: {
         assurance: ["8L1"],
+	boomburst: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
         dedefog: ["8L1"],
@@ -456,6 +458,7 @@ fluxtaperadio: {learnset: {
 }},
 fluxtapestereo: {learnset: {
         assurance: ["8L1"],
+	boomburst: ["8L1"],
         bulkup: ["8L1"],
         chargedstone: ["8L1"],
         clearbeam: ["8L1"],
