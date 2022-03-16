@@ -196,7 +196,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				}
 			},
 			onRestart(target, source) {
-				this.add('-fail', pokemon);
+				this.add('-fail', source);
 				return false;
 			},
 			onResidualOrder: 24,
