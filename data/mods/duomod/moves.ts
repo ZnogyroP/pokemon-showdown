@@ -175,12 +175,21 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
 				}
 			},
+			onSwitchIn(pokemon) {
+				for (const target of this.getAllActive()) {
+					this.add('-endability', target);
+					this.singleEvent('End', target.getAbility(), target.abilityData, target, target, 'neutral air');
+				}
+			},
 			onRestart(target, source) {
 				this.field.removePseudoWeather('neutralair');
 			},
 			onResidualOrder: 24,
 			onEnd() {
 				this.add('-fieldend', 'move: Neutral Air');
+				for (const target of this.getAllActive()) {
+					target.removeVolatile('gastroacid');
+				}
 			},
 		},
 		secondary: null,
@@ -826,7 +835,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		condition: {
 			duration: 3,
 			onBeforeMove(pokemon, target, move) {
-				pokemon.volatiles['flinch'] = true;	
+				pokemon.addVolatile('flinch');	
 			},
 		},		
 		secondary: null,
@@ -1743,7 +1752,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			onResidual(side) {
 				for (const ally of side.active) {
 					if (ally.hasItem('heavydutyboots')) return;
-					this.heal(ally.baseMaxhp / 16);
+					this.heal(ally.baseMaxhp / 16, ally);
 				}
 			},
 		},
