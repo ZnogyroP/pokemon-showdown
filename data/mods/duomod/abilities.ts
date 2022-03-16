@@ -169,29 +169,31 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		volatileStatus: "amped", 
 		condition: {
-			onModifyAtk(atk, attacker, defender, move) {
-				if (move.type === 'Fire') {
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, pokemon) {
+				if (move.type === 'Fire' && attacker.hasAbility('dropheat')) {
 					this.debug('Drop Heat boost');
 					return this.chainModify(1.5);
 				}
-				else if (move.flags['sound']) {
+				else if (move.flags['sound'] && attacker.hasAbility('dropheat')) {
 					this.debug('Drop Heat boost');
 					return this.chainModify(1.5);
 				}
 			}
+			onModifySpAPriority: 5,
 			onModifySpA(spa, attacker, defender, move) {
-				if (move.type === 'Fire') {
+				if (move.type === 'Fire' && attacker.hasAbility('dropheat')) {
 					this.debug('Drop Heat boost');
 					return this.chainModify(1.5);
 				}
-				else if (move.flags['sound']) {
+				else if (move.flags['sound'] && attacker.hasAbility('dropheat')) {
 					this.debug('Drop Heat boost');
 					return this.chainModify(1.5);
 				}
 			}
 		},
 		onEnd(pokemon) {
-			pokemon.removeVolatile('amped');
+			this.add('-end', target, 'ability: Drop Heat', '[silent]');
 		},
 		name: "Drop Heat",
 		rating: 3,
