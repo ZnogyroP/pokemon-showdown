@@ -181,8 +181,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			duration: 5,
 			durationCallback(source, effect) {
 				if (source?.hasItem('floatstone')) {
-					return 8;
+					this.effectData.layers = 8;
 				}
+				this.effectData.layers = 5;
 			},
 			onStart(target, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
@@ -199,6 +200,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				return false;
 			},
 			onResidualOrder: 24,
+			onResidual(pokemon) {
+				this.effectData.layers--;
+			}
 			onEnd() {
 				for (const pokemon of this.getAllActive()) {
 					pokemon.removeVolatile('gastroacid');
