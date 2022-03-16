@@ -361,7 +361,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Poison-types are now being trapped.");
 			}
 			for (const target of this.getAllActive()) {
-				if (pokemon.hasType(currType)) {
+				if (target.hasType(currType)) {
 					this.hint("Yes");
 					pokemon.tryTrap(true);
 				}
