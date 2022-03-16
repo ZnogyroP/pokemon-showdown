@@ -180,6 +180,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		},
 		onTry(pokemon) {
 			if (pokemon.status) {
+				this.add('-fail', pokemon, 'move: Dundaboat');
 				return null;
 			}
 		},
