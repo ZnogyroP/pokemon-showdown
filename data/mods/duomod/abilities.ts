@@ -174,7 +174,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		condition: {
-			onModifyAtk(atk, attacker, defeder, move) {
+			onModifyAtk(atk, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Drop Heat boost');
 					return this.chainModify(1.5);
@@ -184,7 +184,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					return this.chainModify(1.5);
 				}
 			}
-			onModifySpA(spa, attacker, defeder, move) {
+			onModifySpA(spa, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Drop Heat boost');
 					return this.chainModify(1.5);
