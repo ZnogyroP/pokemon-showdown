@@ -820,14 +820,15 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
+		self: {
 		volatileStatus: 'doublerecharge',
+		},
 		condition: {
 			duration: 3,
 			onBeforeMove(pokemon, target, move) {
-				return false;	
+				pokemon.volatiles['flinch'] = true;	
 			},
 		},		
-		
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -1740,10 +1741,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onResidualOrder: 6,
 			onResidual(side) {
-				for (const pokemon of side.active) {
-					if (pokemon.item !== 'heavydutyboots') {
-						this.heal(pokemon.baseMaxhp / 16);
-					}
+				for (const ally of side.active) {
+					if (ally.hasItem('heavydutyboots')) return;
+					this.heal(ally.baseMaxhp / 16);
 				}
 			},
 		},
