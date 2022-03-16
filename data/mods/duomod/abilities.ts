@@ -166,8 +166,14 @@ this.hint("1");
 this.hint("2");
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
 this.hint("3");
-					source.addVolatile('amped');
-				}
+					for (const pokemon of this.getAllActive()) {
+this.hint("4");
+						if (pokemon.hasAbility('dropheat')) {
+this.hint("5");
+							pokemon.addVolatile('amped');
+						}
+					}
+				}	
 			}
 		},
 		volatileStatus: "amped", 
