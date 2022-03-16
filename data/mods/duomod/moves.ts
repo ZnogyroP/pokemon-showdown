@@ -1402,10 +1402,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
 			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'dewyflowers', 'chargedstone', 'watershield', 'spikes'
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'dewyflowers', 'chargedstone', 'spikes'
 			];
 			const removeAll = [
-				'dewyflowers', 'chargedstone', 'spikes', 'watershield'
+				'dewyflowers', 'chargedstone', 'spikes'
 			];
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
@@ -1709,7 +1709,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) this.damage(pokemon.baseMaxhp, pokemon, pokemon, move);
+			if (!target || target.fainted || target.hp <= 0) {
+				this.damage(pokemon.baseMaxhp, pokemon, pokemon, move);
+			}
 		},
 		secondary: null,
 		target: "normal",
