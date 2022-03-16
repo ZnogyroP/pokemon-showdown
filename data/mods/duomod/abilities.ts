@@ -160,9 +160,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	dropheat: {
 		desc: "This Pokemon's Fire-type and Sound-based moves become stronger if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's Sound + Fire moves strengthen one KOs another Pokemon.",
-		onStart(pokemon) {
-			this.add('-start', pokemon, 'Drop Heat');
-		},
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
