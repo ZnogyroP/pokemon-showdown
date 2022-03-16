@@ -361,11 +361,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Poison-types are now being trapped.");
 			}
 			for (const target of this.getAllActive()) {
-				if (target.hasType(currType) && !target.hasAbility('swagnetpull')) {
+				if (pokemon.hasType(currType)) {
 					pokemon.tryTrap(true);
-				}
-				else {
-					pokemon.tryTrap(false);
 				}
 			}
 		},
