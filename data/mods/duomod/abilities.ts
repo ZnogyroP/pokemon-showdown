@@ -362,12 +362,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 			if (pokemon.hasType(currType) && this.isAdjacent(pokemon, this.effectData.target)) {
 				pokemon.addVolatile('trapped', pokemon, null, 'trapper');
+				pokemon.tryTrap(true);
 			}
 			else {
-				this.hint("Nope.");
 				pokemon.removeVolatile('trapped', pokemon, null, 'trapper');
+				pokemon.tryTrap(false);
 			}
-		}, //
+		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
 			pokemon.maybeTrapped = true;
 		},
