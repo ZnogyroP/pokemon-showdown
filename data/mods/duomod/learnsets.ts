@@ -916,7 +916,6 @@ treemu: {learnset: {
         frustration: ["8L1"],
         ironhead: ["8L1"],
         leafblade: ["8L1"],
-        moonlight: ["8L1"],
         outrage: ["8L1"],
         pitfall: ["8L1"],
         protect: ["8L1"],
