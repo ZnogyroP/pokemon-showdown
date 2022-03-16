@@ -157,45 +157,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 4.5,
 		num: 3002,
 	},
-	dropheat: {
-		desc: "This Pokemon's Fire-type and Sound-based moves become stronger if it attacks and knocks out another Pokemon.",
-		shortDesc: "This Pokemon's Sound + Fire moves strengthen one KOs another Pokemon.",
-		onSourceAfterFaint(length, target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
-				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
-					if (!source.addVolatile('dropheat')) {
-						this.add('-start', source, 'Drop Heat');
-					}
-				}	
-			}
-		},
-		onBasePowerPriority: 7,
-		onBasePower(basePower, attacker, defender, move) {
-			for (const pokemon of this.getAllActive()) {
-				if (attacker.volatiles['dropheat']) {
-					if (move.flags['sound']) {
-						this.debug('Drop Heat boost');
-						this.hint("Glad!");
-						return this.chainModify([0x1800, 0x1000]);
-					}
-					else if (move.type === 'Fire') {
-						this.debug('Drop Heat boost');
-						this.hint("Sick!");
-						return this.chainModify([0x1800, 0x1000]);
-					}
-					else {
-						this.hint("Sad!");
-					}
-				}
-			}
-		},
-		onEnd(pokemon) {
-			this.add('-end', pokemon, 'Drop Heat', '[silent]');
-		},
-		name: "Drop Heat",
-		rating: 3,
-		num: 3003,
-	},
 	lostmemory: {
 		shortDesc: "On switch, the user learns the used move if it has empty moveslots.",
 		onStart(pokemon) {
