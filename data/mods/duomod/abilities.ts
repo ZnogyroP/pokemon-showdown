@@ -187,6 +187,16 @@ this.hint("1");
 					return this.chainModify(1.5);
 				}
 			}
+			onModifySpA(spa, attacker, defeder, move) {
+				if (move.type === 'Fire') {
+					this.debug('Drop Heat boost');
+					return this.chainModify(1.5);
+				}
+				else if (move.flags['sound']) {
+					this.debug('Drop Heat boost');
+					return this.chainModify(1.5);
+				}
+			}
 		},
 		name: "Drop Heat",
 		rating: 3,
