@@ -177,14 +177,14 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {},
 		pseudoWeather: 'neutralair',
-		var result: number;
+		var turnCounter: number;
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
 				if (source?.hasItem('floatstone')) {
-					number = 8;
+					turnCounter = 8;
 				}
-				number = 5;
+				turnCounter = 5;
 			},
 			onStart(target, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
