@@ -819,7 +819,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	},
 	extremebeam: {
 		num: 3002,
-		accuracy: 100,
+		accuracy: 100, //extreme
 		basePower: 300,
 		category: "Special",
 		desc: "If this move is successful, the user must recharge on the following two turns and cannot select a move.",
