@@ -367,7 +367,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Nope.");
 				pokemon.removeVolatile('trapped', pokemon, null, 'trapper');
 			}
-		},
+		}, //
 		onFoeMaybeTrapPokemon(pokemon, source) {
 			pokemon.maybeTrapped = true;
 		},
