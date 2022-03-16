@@ -163,11 +163,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
-					source.addVolatile('amped');
+					source.addVolatile('flashfire');
 				}
 			}
 		},
-		volatileStatus: "amped", 
+		volatileStatus: "flashfire", 
 		condition: {
 			onModifyAtkPriority: 5,
 			onModifyAtk(atk, pokemon) {
