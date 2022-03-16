@@ -312,7 +312,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onFoeTrapPokemon(pokemon) {
 			const result = this.random(12);
 			if (result === 0) {
-				let currType = "Dark";
+				let currType = "Dark"; //
 				this.hint("Dark-types are now being trapped.");
 			}
 			else if (result === 1) {
