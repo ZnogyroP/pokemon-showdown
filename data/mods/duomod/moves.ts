@@ -177,10 +177,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {},
 		pseudoWeather: 'neutralair',
+		var result: number;
 		condition: {
 			duration: 5,
 			durationCallback(source, effect) {
-				var result: number;
 				if (source?.hasItem('floatstone')) {
 					number = 8;
 				}
