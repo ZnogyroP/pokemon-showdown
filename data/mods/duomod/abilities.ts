@@ -495,7 +495,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const target of this.getAllActive()) {
 				if (target.status || !target.runStatusImmunity('slp')) {
 					return false;
-				}
+				} //
 			}
 		},
 		condition: {
