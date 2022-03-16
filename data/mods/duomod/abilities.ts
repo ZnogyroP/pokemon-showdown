@@ -160,9 +160,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	dropheat: {
 		desc: "This Pokemon's Fire-type and Sound-based moves become stronger if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's Sound + Fire moves strengthen one KOs another Pokemon.",
-		onStart(target) {
-			this.add('-start', target, 'ability: Drop Heat');
-		},
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'Drop Heat');
+		}
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
@@ -177,7 +177,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onBasePowerPriority: 7,
 		onBasePower(basePower, pokemon, target, move) {
 			if (pokemon.volatiles['flashfire']) {
-				if (move.flags['sound']) {
+				if (move.flags['dropheat']) {
 					this.debug('Drop Heat boost');
 					// return this.chainModify([0x1800, 0x1000]);
 					this.hint("Glad!");
