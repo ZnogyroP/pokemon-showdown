@@ -310,7 +310,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	swagnetpull: {
 		shortDesc: "Prevents randomly-typed foes from choosing to switch.",
 		onFoeTrapPokemon(pokemon) {
-			const result = this.random(12);
+			let result = 0; // this.random(12);
 			if (result === 0) {
 				let currType = "Dark";
 				this.hint("Dark-types are now being trapped.");
