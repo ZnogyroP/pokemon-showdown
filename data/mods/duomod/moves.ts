@@ -159,7 +159,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
 					this.add('-start', source, 'typechange', source.types.join('/'), '[from] move: Dundaboat');
 					source.trySetStatus('par', source);
-					source.setType(source.getTypes(true).map(type => type === "Electric" ? "???" : type));
+					source.setType(source.getTypes(true).map(type => type === "???" ? "Electric" : type));
 				}
 				else {
 					source.trySetStatus('par', source);
