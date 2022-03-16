@@ -362,10 +362,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 			for (const target of this.getAllActive()) {
 				if (target.hasType(currType) && !target.hasAbility('swagnetpull')) {
-				pokemon.tryTrap(true);
-			}
-			else {
-				pokemon.tryTrap(false);
+					pokemon.tryTrap(true);
+				}
+				else {
+					pokemon.tryTrap(false);
+				}
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
