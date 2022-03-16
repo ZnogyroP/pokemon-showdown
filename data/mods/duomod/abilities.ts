@@ -169,26 +169,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		volatileStatus: "flashfire", 
 		condition: {
-			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
-				if (move.type === 'Fire' && attacker.hasAbility('dropheat')) {
-					this.debug('Drop Heat boost');
-					return this.chainModify(1.5);
-				}
-				else if (move.flags['sound'] && attacker.hasAbility('dropheat')) {
-					this.debug('Drop Heat boost');
-					return this.chainModify(1.5);
-				}
-			},
-			onModifySpAPriority: 5,
-			onModifySpA(spa, attacker, defender, move) {
-				if (move.type === 'Fire' && attacker.hasAbility('dropheat')) {
-					this.debug('Drop Heat boost');
-					return this.chainModify(1.5);
-				}
-				else if (move.flags['sound'] && attacker.hasAbility('dropheat')) {
-					this.debug('Drop Heat boost');
-					return this.chainModify(1.5);
+			onBasePowerPriority: 7,
+			onBasePower(basePower, attacker, defender, move) {
+				if (move.flags['sound'] || move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify([0x1800, 0x1000]);
 				}
 			},
 		},
