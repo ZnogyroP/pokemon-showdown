@@ -368,7 +368,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			pokemon.maybeTrapped = true;
 		},
 		name: "Swagnet Pull",
-		rating: 4,
+		rating: 4, // <- on purpose 
 		num: 20,
 	},
 	toughout: {
