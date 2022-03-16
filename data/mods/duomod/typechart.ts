@@ -470,7 +470,7 @@ export const TypeChart: {[k: string]: ModdedTypeData} = {
 			Flying: 0,
 			Ghost: 2,
 			Grass: 2,
-			Ground: 2,
+			Ground: 1,
 			Ice: 2,
 			Normal: 2,
 			Poison: 2,

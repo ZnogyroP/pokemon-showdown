@@ -321,7 +321,7 @@ treemu: {
 	species: "Treemu",
 	types: ["Grass"],
 	gender: "N",
-	baseStats: {hp: 58, atk: 83, def: 58, spa: 40, spd: 102, spe: 33},
+	baseStats: {hp: 66, atk: 94, def: 66, spa: 46, spd: 116, spe: 37},
 	abilities: {0: "Bird Up"},
 	heightm: 1,
 	weightkg: 5,

@@ -918,6 +918,7 @@ spiroxripped: {learnset: {
 }},
 treemu: {learnset: {
         metronome: ["8L1"],
+	moonlight: ["8L1"],
         assurance: ["8L1"],
         chargedstone: ["8L1"],
         clearbeam: ["8L1"],

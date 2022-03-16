@@ -314,62 +314,86 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (result === 0) {
 				let currType = "Dark";
 				this.hint("Dark-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 1) {
 				let currType = "Grass";
 				this.hint("Grass-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 2) {
 				let currType = "Fire";
 				this.hint("Fire-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 3) {
 				let currType = "Water";
 				this.hint("Water-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 4) {
 				let currType = "Electric";
 				this.hint("Electric-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 5) {
 				let currType = "Ground";
 				this.hint("Ground-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 6) {
 				let currType = "Flying";
 				this.hint("Flying-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 7) {
 				let currType = "Dragon";
 				this.hint("Dragon-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 8) {
 				let currType = "Fairy";
 				this.hint("Fairy-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 9) {
 				let currType = "Steel";
 				this.hint("Steel-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else if (result === 10) {
 				let currType = "Bug";
 				this.hint("Bug-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 			else {
 				let currType = "Poison";
 				this.hint("Poison-types are now being trapped.");
-				if (pokemon.hasType('currType')) {pokemon.tryTrap(true);}
+				if (pokemon.hasType('currType')) {
+					return pokemon.addVolatile('trapped', source, null, 'trapper');
+				}
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
@@ -385,7 +409,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (pokemon.moveSlots.some(move => move.pp === 0)) {
 				if (pokemon.moveSlots.length < 4) {
 					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon, pokemon, null, true);
-					this.add('-ability', pokemon, 'Guts', '[from] ability: Tough Out');
+					pokemon.addVolatile('gastroacid');
 				}
 			}
 		},
