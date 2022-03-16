@@ -184,7 +184,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 					return 8;
 				}
 			},
-			onStart(all, source) {
+			onStart(target, source) {
 				this.add('-fieldstart', 'move: Neutral Air', '[of] ' + source);
 				for (const pokemon of this.getAllActive()) {
 					if (pokemon.ability === ('neutralizinggas' as ID) && !pokemon.volatiles['gastroacid'] && !pokemon.abilityData.ending) {
