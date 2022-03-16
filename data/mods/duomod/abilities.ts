@@ -67,7 +67,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 			else {
 				this.hint("Hype level: 10 OUT OF 10!!!!!");
-				this.boost({atk: 2}, target, target, null, true);
+				this.boost({atk: 2}, pokemon, pokemon, null, true);
 				this.useMove("Explosion", source);
 			}
 		},
@@ -161,7 +161,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "This Pokemon's Sound, Fire moves strengthen if they hit and KO another Pokemon.",
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				if (this.lastMove.type === 'Fire' || this.lastMove.flags['sound']) {
+				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
 					source.addVolatile('amped');
 				}
 			}
@@ -202,6 +202,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-start', pokemon, 'Lost Memory', move.name);
 			}
 		},
+		name: "Lost Memory",
 		rating: 3,
 		num: 3004,
 	},
