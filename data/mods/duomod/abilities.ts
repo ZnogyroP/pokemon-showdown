@@ -362,7 +362,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 			for (const target of this.getAllActive()) {
 				if (pokemon.hasType(currType)) {
+					this.hint("Yes");
 					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("No");
 				}
 			}
 		},
