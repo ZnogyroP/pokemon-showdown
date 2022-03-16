@@ -41,34 +41,34 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (result === 0) {
 				this.hint("Hype Level: 1 out of 10...");
 			}
-			if (result === 1) {
+			else if (result === 1) {
 				this.hint("Hype Level: 2 out of 10...");
 			}
-			if (result === 2) {
+			else if (result === 2) {
 				this.hint("Hype Level: 3 out of 10...");
 			}
-			if (result === 3) {
+			else if (result === 3) {
 				this.hint("Hype Level: 4 out of 10.");
 			}
-			if (result === 4) {
+			else if (result === 4) {
 				this.hint("Hype Level: 5 out of 10.");
 			}
-			if (result === 5) {
+			else if (result === 5) {
 				this.hint("Hype Level: 6 out of 10.");
 			}
-			if (result === 6) {
+			else if (result === 6) {
 				this.hint("Hype Level: 7 out of 10!");
 			}
-			if (result === 7) {
+			else if (result === 7) {
 				this.hint("Hype Level: 8 out of 10!");
 			}
-			if (result === 8) {
+			else if (result === 8) {
 				this.hint("Hype Level: 9 OUT OF 10!");
 			}
 			else {
 				this.hint("Hype level: 10 OUT OF 10!!!!!");
 				this.boost({atk: 2}, pokemon, pokemon, null, true);
-				this.useMove("Explosion", source);
+				this.useMove("Explosion", pokemon);
 			}
 		},
 		rating: 2.5,
