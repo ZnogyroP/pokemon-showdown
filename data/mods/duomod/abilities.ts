@@ -188,9 +188,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			const move = this.lastMove;
 			if (pokemon.moveSlots.length < 4) {
-				const mimicIndex = source.moves.indexOf('mimic');
+				const mimicIndex = pokemon.moves.indexOf('mimic');
 				if (mimicIndex < 0) return false;
-				source.moveSlots[mimicIndex] = {
+				pokemon.moveSlots[mimicIndex] = {
 					move: move.name,
 					id: move.id,
 					pp: move.pp,

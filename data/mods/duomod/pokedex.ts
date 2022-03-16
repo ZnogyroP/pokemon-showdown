@@ -319,7 +319,7 @@ spiroxripped: {
 treemu: {
 	num: 29.5,
 	species: "Treemu",
-	types: ["Grass", "Flying"],
+	types: ["Grass"],
 	gender: "N",
 	baseStats: {hp: 58, atk: 83, def: 58, spa: 40, spd: 102, spe: 33},
 	abilities: {0: "Bird Up"},
