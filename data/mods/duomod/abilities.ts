@@ -264,10 +264,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				let statName = 'atk';
 				let bestStat = 0;
 				let s: StatNameExceptHP;
-				for (s in source.storedStats) {
-					if (source.storedStats[s] > bestStat) {
+				for (s in pokemon.storedStats) {
+					if (pokemon.storedStats[s] > bestStat) {
 						statName = s;
-						bestStat = source.storedStats[s];
+						bestStat = pokemon.storedStats[s];
 					}
 				}
 				this.boost({[statName]: 1}, source);
@@ -282,26 +282,26 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				let statName = 'atk';
 				let bestStat = 0;
 				let s: StatNameExceptHP;
-				for (s in source.storedStats) {
-					if (source.storedStats[s] > bestStat) {
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
 						statName = s;
-						bestStat = source.storedStats[s];
+						bestStat = target.storedStats[s];
 					}
 				}
-				this.boost({[statName]: 1}, source);
+				this.boost({[statName]: 1}, target);
 			}
 		},
 		onDamagingHit(damage, target, source, effect) {
 			let statName = 'atk';
 			let bestStat = 0;
 			let s: StatNameExceptHP;
-			for (s in source.storedStats) {
-				if (source.storedStats[s] > bestStat) {
+			for (s in target.storedStats) {
+				if (target.storedStats[s] > bestStat) {
 					statName = s;
-					bestStat = source.storedStats[s];
+					bestStat = target.storedStats[s];
 				}
 			}
-			this.boost({[statName]: 1}, source);
+			this.boost({[statName]: 1}, target);
 		},
 		name: "Raging Beast",
 		rating: 1,
