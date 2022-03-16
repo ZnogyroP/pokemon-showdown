@@ -820,17 +820,14 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {recharge: 1, protect: 1, mirror: 1},
-		volatileStatus: 'partiallytrapped',
-		self: {
-			volatileStatus: 'partialtrappinglock',
-		},
-		onHit(target, source) {
-			if (source.volatiles['partiallytrapped']) {
-				if (source.volatiles['partialtrappinglock'] && source.volatiles['partialtrappinglock'].duration > 1) {
-					source.volatiles['partiallytrapped'].duration = 2;
-				}
-			}
-		},
+		volatileStatus: 'doublerecharge',
+		condition: {
+			duration: 3,
+			onBeforeMove(pokemon, target, move) {
+				return false;	
+			},
+		},		
+		
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -1742,10 +1739,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				this.add('-sidestart', side, 'Dewy Flowers');				
 			},
 			onResidualOrder: 6,
-			
 			onResidual(side) {
 				for (const pokemon of side.active) {
-					if (pokemon.item === 'heavydutyboots') {
+					if (pokemon.item !== 'heavydutyboots') {
 						this.heal(pokemon.baseMaxhp / 16);
 					}
 				}
