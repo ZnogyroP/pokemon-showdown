@@ -140,8 +140,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	birdup: {
 		shortdesc: "The user becomes Bird-type, all 12 types combined.",
 		onStart(pokemon) {
-			newType = 'Bird';
-			this.add('-start', target, 'typechange', type);
+			this.add('-start', target, 'typechange', 'Bird');
 		},
 		name: "Bird Up",
 		rating: 4,
