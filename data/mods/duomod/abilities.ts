@@ -171,9 +171,18 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		condition: {
 			onBasePowerPriority: 7,
 			onBasePower(basePower, attacker, defender, move) {
-				if (move.flags['sound'] || move.type === 'Fire') {
+				if (move.flags['sound']) {
+					this.debug('Punk Rock boost');
+					return this.chainModify([0x1800, 0x1000]);
+					this.hint("Glad!");
+				}
+				else if (move.type === 'Fire') {
 					this.debug('Flash Fire boost');
 					return this.chainModify([0x1800, 0x1000]);
+					this.hint("Sick!");
+				}
+				else {
+					this.hint("Sad!");
 				}
 			},
 		},
