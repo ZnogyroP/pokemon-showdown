@@ -161,8 +161,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		desc: "This Pokemon's Fire-type and Sound-based moves become stronger if it attacks and knocks out another Pokemon.",
 		shortDesc: "This Pokemon's Sound + Fire moves strengthen one KOs another Pokemon.",
 		onSourceAfterFaint(length, target, source, effect) {
+this.hint("1");
 			if (effect && effect.effectType === 'Move') {
+this.hint("2");
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
+this.hint("3");
 					source.addVolatile('amped');
 				}
 			}
