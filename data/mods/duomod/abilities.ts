@@ -397,7 +397,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		condition: {
-			noCopy: true,
+			noCopy: true, // doesn't get copied by Baton Pass
 			duration: 1,
 			onStart(target, source) {
 				this.add('-start', target, 'ability: Tranquilizing Gas', '[of] ' + source);
