@@ -193,7 +193,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			},
 		},
 		onEnd(pokemon) {
-			this.add('-end', target, 'ability: Drop Heat', '[silent]');
+			this.add('-end', pokemon, 'ability: Drop Heat', '[silent]');
 		},
 		name: "Drop Heat",
 		rating: 3,
