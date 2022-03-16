@@ -315,21 +315,39 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				let currType = "Dark";
 				this.hint("Dark-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
-					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 1) {
 				let currType = "Grass";
 				this.hint("Grass-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
-					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 2) {
 				let currType = "Fire";
 				this.hint("Fire-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
-					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 3) {
@@ -337,6 +355,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Water-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 4) {
@@ -344,6 +368,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Electric-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 5) {
@@ -351,6 +381,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Ground-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 6) {
@@ -358,6 +394,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Flying-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 7) {
@@ -365,6 +407,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Dragon-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 8) {
@@ -372,6 +420,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Fairy-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else if (result === 9) {
@@ -380,12 +434,23 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
 				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
+				}
 			}
 			else if (result === 10) {
 				let currType = "Bug";
 				this.hint("Bug-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
+				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
 				}
 			}
 			else {
@@ -393,7 +458,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.hint("Poison-types are now being trapped.");
 				if (pokemon.hasType('currType')) {
 					return pokemon.addVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(true);
 				}
+				else {
+					this.hint("Nope.");
+					return pokemon.removeVolatile('trapped', source, null, 'trapper');
+					pokemon.tryTrap(false);
+				}	
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
