@@ -163,9 +163,35 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				if (source.lastMove.type === 'Fire' || source.lastMove.flags['sound']) {
-					source.addVolatile('flashfire');
+					source.addVolatile('amped');
 				}
 			}
+		},
+		volatileStatus: "amped", 
+		condition: {
+			onModifyAtk(atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Drop Heat boost');
+					return this.chainModify(1.5);
+				}
+				else if (move.flags['sound']) {
+					this.debug('Drop Heat boost');
+					return this.chainModify(1.5);
+				}
+			}
+			onModifySpA(spa, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Drop Heat boost');
+					return this.chainModify(1.5);
+				}
+				else if (move.flags['sound']) {
+					this.debug('Drop Heat boost');
+					return this.chainModify(1.5);
+				}
+			}
+		},
+		onEnd(pokemon) {
+			pokemon.removeVolatile('amped');
 		},
 		name: "Drop Heat",
 		rating: 3,
