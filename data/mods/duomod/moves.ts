@@ -200,9 +200,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				return false;
 			},
 			onResidualOrder: 24,
-			onResidual(pokemon) {
-				this.effectData.layers--;
-			}
 			onEnd() {
 				for (const pokemon of this.getAllActive()) {
 					pokemon.removeVolatile('gastroacid');
