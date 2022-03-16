@@ -10,6 +10,19 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1},
+		onPrepareHit: function(target, source, move) {
+		    this.attrLastMove('[still]');
+		    this.add('-anim', source, "Bulk Up", target);
+		    this.add('-anim', source, "Dragon Dance", target);
+		    this.add('-anim', source, "Dragon Dance", target);
+		    this.add('-anim', source, "Charge", target);
+		    this.add('-anim', source, "Extreme Evoboost", target);
+		    this.add('-anim', source, "Luster Purge", target);
+		    this.add('-anim', source, "Hyper Beam", target);
+		    this.add('-anim', source, "Draco Meteor", target);
+		    this.add('-anim', source, "Doom Desire", target);
+		    this.add('-anim', source, "Clangorous Soulblaze", target);
+		},
 		secondary: null,
 		multihit: 22,
 		target: "normal",
@@ -2083,5 +2096,19 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		target: "self",
 		type: "Fairy",
 		contestType: "Cute",
+	},
+	hypervoice: {
+		num: 304,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		name: "Hyper Voice",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		secondary: null,
+		target: "allAdjacentFoes",
+		type: "Dark",
+		contestType: "Cool",
 	},
 };
