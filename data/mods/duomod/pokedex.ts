@@ -241,7 +241,7 @@ modolith: {
 	species: "Modolith",
 	types: ["Steel", "Dragon"],
 	gender: "N",
-	baseStats: {hp: 70, atk: 134, def: 101, spa: 123, spd: 103, spe: 69},
+	baseStats: {hp: 62, atk: 118, def: 89, spa: 109, spd: 91, spe: 61},
 	abilities: {0: "Raging Beast"},
 	heightm: 1,
 	weightkg: 5,
