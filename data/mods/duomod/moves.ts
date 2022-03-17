@@ -280,7 +280,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		} 
 		this.hint("Time for a bonus wheel!");
 		result = this.random(40);
-			result = 15; // DELETE THIS ROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOW
 	        pickSide = this.random(2);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
@@ -502,7 +501,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		else if (result === 15) {
 			this.hint("Roulette Wheel Result 16 - Attempt to Toxic both Pokemon.");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Safeguard", pokemon);  // DELETE THIS ROW AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 				if (!pokemon.side.getSideCondition('safeguard')) { 
 					pokemon.trySetStatus('tox', pokemon);
 				}
