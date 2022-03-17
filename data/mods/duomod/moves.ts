@@ -1922,7 +1922,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {charge: 1, nonsky: 1},
 		onPrepareHit: function(target, source, move) {
 		    this.attrLastMove('[still]');
-		    this.add('-anim', source, "Dragon Dance", target);
+		    this.add('-anim', source, "Dragon Dance", source);
 		},
 		onTryMove(attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
