@@ -502,6 +502,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		else if (result === 15) {
 			this.hint("Roulette Wheel Result 16 - Attempt to Toxic both Pokemon.");
 			for (const pokemon of this.getAllActive()) {
+				this.useMove("Safeguard", pokemon);  // DELETE THIS ROW AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 				if (!pokemon.side.getSideCondition('safeguard')) { 
 					pokemon.trySetStatus('tox', pokemon);
 				}
