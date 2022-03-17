@@ -237,8 +237,10 @@ export const Formats: {[k: string]: FormatData} = {
 		else if (result === 15) {
 			this.hint("Roulette Wheel Result 16 - Attempt to Toxic both Pokemon.");
 			for (const pokemon of this.getAllActive()) {
-				pokemon.trySetStatus('tox', pokemon);
-	        	}
+				if (!pokemon.side.getSideCondition('safeguard')) { 
+					pokemon.trySetStatus('tox', pokemon);
+				}
+	      }
 		}
 
 		else if (result === 16) {
