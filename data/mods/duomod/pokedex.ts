@@ -307,7 +307,7 @@ spiroxancient: {
 spiroxripped: {
 	num: 26.5,
 	species: "Spirox-Ripped",
-	types: ["Dark", "Poison"],
+	types: ["Dark"],
 	gender: "N",
 	baseStats: {hp: 60, atk: 120, def: 110, spa: 120, spd: 110, spe: 80},
 	abilities: {0: "Tough Out"},
