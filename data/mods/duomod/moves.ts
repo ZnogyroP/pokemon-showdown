@@ -2273,4 +2273,18 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		target: "all",
 		type: "Grass",
 	},
+	extremespeed: {
+		num: 245,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Extreme Speed",
+		pp: 5,
+		priority: 2,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
 };
