@@ -893,10 +893,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	extremebeam: {
 		num: 3002,
 		accuracy: 100,
-		basePower: 200,
+		basePower: 250,
 		category: "Special",
-		desc: "If this move is successful, the user must recharge on the following two turns and cannot select a move.",
-		shortDesc: "User cannot move next two turns.",
+		desc: "If this move is successful, the user begins to Bide.",
+		shortDesc: "User Bides. Priority -6.",
 		name: "EXTREME BEAM",
 		pp: 5,
 		priority: -6,
