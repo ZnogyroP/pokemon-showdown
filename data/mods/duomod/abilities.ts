@@ -244,7 +244,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						bestStat = pokemon.storedStats[s];
 					}
 				}
-				this.boost({[statName]: 1}, source);
+				this.boost({[statName]: 1}, pokemon);
 			}
 		},	
 		onAfterMoveSecondary(target, source, move) {
