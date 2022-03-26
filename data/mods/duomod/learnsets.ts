@@ -695,6 +695,7 @@ lumineel: {learnset: {
         earthquake: ["8L1"],
         extremebeam: ["8L1"],
         frustration: ["8L1"],
+        healbell: ["8L1"],
         hydropump: ["8L1"],
         liquidation: ["8L1"],
         protect: ["8L1"],
@@ -816,6 +817,7 @@ mortemoth: {learnset: {
 pokat: {learnset: {
         accupressure: ["8L1"],
         metronome: ["8L1"],
+        aromatherapy: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
