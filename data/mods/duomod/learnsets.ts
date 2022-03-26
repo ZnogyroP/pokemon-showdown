@@ -1,6 +1,7 @@
 export const Learnsets: {[speciesid: string]: LearnsetData} = {
 abysseil: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         agility: ["8L1"],
         assurance: ["8L1"],
         calmmind: ["8L1"],
@@ -36,6 +37,7 @@ abysseil: {learnset: {
 }},
 annelait: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
@@ -66,6 +68,7 @@ annelait: {learnset: {
 }},
 azurolt: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         bulkup: ["8L1"],
         calmmind: ["8L1"],
@@ -97,10 +100,13 @@ azurolt: {learnset: {
         thunderbolt: ["8L1"],
         toxic: ["8L1"],
         vibrantlight: ["8L1"],
+        voltswitch: ["8L1"],
         zingzap: ["8L1"],
 }},
 baloon: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
+        amnesia: ["8L1"],
         anchorshot: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
@@ -131,6 +137,8 @@ baloon: {learnset: {
 }},
 baloonpopped: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
+        amnesia: ["8L1"],
         anchorshot: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
@@ -166,6 +174,8 @@ baloonpopped: {learnset: {
 }},
 baloonwater: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
+        amnesia: ["8L1"],
         anchorshot: ["8L1"],
         assurance: ["8L1"],
         autotomize: ["8L1"],
@@ -201,6 +211,7 @@ baloonwater: {learnset: {
 }},
 catelax: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         chargedstone: ["8L1"],
         clearbeam: ["8L1"],
@@ -230,6 +241,7 @@ catelax: {learnset: {
 }},
 crypterid: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
@@ -260,6 +272,7 @@ crypterid: {learnset: {
 }},
 deliriophage: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         chargedstone: ["8L1"],
         clearbeam: ["8L1"],
@@ -287,6 +300,7 @@ deliriophage: {learnset: {
 }},
 detonuke: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
 		  poisonjab: ["8L1"],
 		  sludgebomb: ["8L1"],
         assurance: ["8L1"],
@@ -317,6 +331,7 @@ detonuke: {learnset: {
 }},
 draglow: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         bravebird: ["8L1"],
         clearbeam: ["8L1"],
@@ -348,6 +363,7 @@ draglow: {learnset: {
 }},
 draxplosion: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         airslash: ["8L1"],
         assurance: ["8L1"],
         blazekick: ["8L1"],
@@ -384,6 +400,7 @@ draxplosion: {learnset: {
 }},
 fluidrake: {learnset: {
         metronome: ["8L1"],
+        accupressure: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
@@ -414,6 +431,7 @@ fluidrake: {learnset: {
 }},
 fluxtape: {learnset: {
 	assurance: ["7L1"],
+        accupressure: ["8L1"],
 	clearbeam: ["7L1"],
 	darkpulse: ["7L1"],
 	dedefog: ["7L1"],
@@ -444,6 +462,7 @@ fluxtape: {learnset: {
 	vibrantlight: ["7L1"],
 }},
 fluxtaperadio: {learnset: {
+        accupressure: ["8L1"],
 	assurance: ["7L1"],
 	clearbeam: ["7L1"],
 	darkpulse: ["7L1"],
@@ -481,6 +500,7 @@ fluxtaperadio: {learnset: {
 	vibrantlight: ["7L1"],
 }},
 fluxtapestereo: {learnset: {
+        accupressure: ["8L1"],
 	assurance: ["7L1"],
 	bulkup: ["7L1"],
 	chargedstone: ["7L1"],
@@ -518,6 +538,7 @@ fluxtapestereo: {learnset: {
 	wildcharge: ["7L1"],
 }},
 gorilax: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         amnesia: ["8L1"],
         assurance: ["8L1"],
@@ -528,6 +549,7 @@ gorilax: {learnset: {
         deeznutsjoke: ["8L1"],
         earthpower: ["8L1"],
         extremebeam: ["8L1"],
+        flamerunner: ["8L1"],
         frustration: ["8L1"],
         lunge: ["8L1"],
         moonblast: ["8L1"],
@@ -549,6 +571,7 @@ gorilax: {learnset: {
         wish: ["8L1"],
 }},
 grievenge: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         agility: ["8L1"],
         assurance: ["8L1"],
@@ -578,6 +601,7 @@ grievenge: {learnset: {
         vibrantlight: ["8L1"],
 }},
 hyperoach: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         acrobatics: ["8L1"],
         assurance: ["8L1"],
@@ -616,6 +640,7 @@ hyperoach: {learnset: {
         xscissor: ["8L1"],
 }},
 lemotic: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
         behemothblade: ["8L1"],
@@ -654,11 +679,13 @@ lemotic: {learnset: {
         wish: ["8L1"],
 }},
 lumineel: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
         calmmind: ["8L1"],
         chargedstone: ["8L1"],
         clearbeam: ["8L1"],
+        coil: ["8L1"],
         darkpulse: ["8L1"],
         dedefog: ["8L1"],
         destructiveblow: ["8L1"],
@@ -686,8 +713,10 @@ lumineel: {learnset: {
         voltswitch: ["8L1"],
         watershield: ["8L1"],
         zingzap: ["8L1"],
+        vibrantlight: ["8L1"],
 }},
 modolith: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         aquajet: ["8L1"],
         assurance: ["8L1"],
@@ -723,6 +752,7 @@ modolith: {learnset: {
         watershield: ["8L1"],
 }},
 monstratus: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         airslash: ["8L1"],
         assurance: ["8L1"],
@@ -756,6 +786,7 @@ monstratus: {learnset: {
         watershield: ["8L1"],
 }},
 mortemoth: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         airslash: ["8L1"],
         assurance: ["8L1"],
@@ -783,6 +814,7 @@ mortemoth: {learnset: {
         toxic: ["8L1"],
 }},
 pokat: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
@@ -813,6 +845,7 @@ pokat: {learnset: {
         willowisp: ["8L1"],
 }},
 spirox: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
         calmmind: ["8L1"],
@@ -847,10 +880,12 @@ spirox: {learnset: {
         willowisp: ["8L1"],
 }},
 spiroxancient: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
         calmmind: ["8L1"],
         chargedstone: ["8L1"],
+		  dewyflowers: ["8L1"],
         clearbeam: ["8L1"],
         crunch: ["8L1"],
         darkpulse: ["8L1"],
@@ -885,6 +920,7 @@ spiroxancient: {learnset: {
         woodhammer: ["8L1"],
 }},
 spiroxripped: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         acidspray: ["8L1"],
         assurance: ["8L1"],
@@ -923,6 +959,7 @@ spiroxripped: {learnset: {
         willowisp: ["8L1"],
 }},
 treemu: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
 	moonlight: ["8L1"],
         assurance: ["8L1"],
@@ -955,6 +992,7 @@ treemu: {learnset: {
         whirlwind: ["8L1"],
 }},
 valianch: {learnset: {
+        accupressure: ["8L1"],
         metronome: ["8L1"],
         aerialace: ["8L1"],
         assurance: ["8L1"],
