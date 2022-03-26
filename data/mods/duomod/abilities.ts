@@ -132,6 +132,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({atk: 1, def: 1});
 			}
 		},
+		shortdesc: "writing at 3 AM and i have the dumb it's berserk + bulk up",
 		name: "Fortification",
 		rating: 2,
 		num: 20121,
