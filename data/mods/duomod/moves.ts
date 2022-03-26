@@ -348,7 +348,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			this.hint("Roulette Wheel Result 6 - Set hazards on both sides.");
 		    for (const pokemon of this.getAllActive()) {
 			this.useMove("Spikes", pokemon);
-			this.useMove("Charged Stone", pokemon);
+			this.useMove("Stealth Electric", pokemon);
 		    }
 		}
 		else if (result === 6) {
@@ -595,7 +595,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		}
 
 		else if (result === 22) {
-			this.hint("Roulette Wheel Result 23 - Sand Attack go!");
+			this.hint("Roulette Wheel Result 23 - Pocket sand go");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
@@ -814,7 +814,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		else if (result === 37) {
 			this.hint("Roulette Wheel Result 38 - uh oh");
 			for (const pokemon of this.getAllActive()) {
-				pokemon.addVolatile('trapped', pokemon, pokemon, 'trapper');
+				this.useMove("Octolock", pokemon);
 			}
 		}
 
@@ -1445,10 +1445,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			let success = false;
 			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
 			const removeTarget = [
-				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'dewyflowers', 'chargedstone', 'spikes'
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'dewyflowers', 'stealthelectric', 'spikes'
 			];
 			const removeAll = [
-				'dewyflowers', 'chargedstone', 'spikes'
+				'dewyflowers', 'stealthelectric', 'spikes'
 			];
 			for (const targetCondition of removeTarget) {
 				if (target.side.removeSideCondition(targetCondition)) {
@@ -1733,7 +1733,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Spinning Web', '[of] ' + pokemon);
 			}
-			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'stickyweb', 'stealthrock', 'toxic spikes'];
+			const sideConditions = ['dewyflowers', 'stealthelectric', 'spikes', 'stickyweb', 'stealthrock', 'toxic spikes'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
@@ -1747,7 +1747,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);
 			}
-			const sideConditions = ['dewyflowers', 'chargedstone', 'spikes', 'stickyweb', 'stealthrock', 'toxic spikes'];
+			const sideConditions = ['dewyflowers', 'stealthelectric', 'spikes', 'stickyweb', 'stealthrock', 'toxic spikes'];
 			for (const condition of sideConditions) {
 				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Spinning Web', '[of] ' + pokemon);
@@ -1876,33 +1876,37 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Fire",
 		contestType: "Beautiful",
 	},
-	chargedstone: {
+	stealthelectric: {
 		num: 3006,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/40, 1/20, 1/10, 1/5, or 1/2.5 of their maximum HP, rounded down, based on their weakness to the Electric type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Spinning Web or Defog successfully, or is hit by Defog.",
 		shortDesc: "Hurts foes on switch-in. Factors Electric weakness.",
-		name: "Charged Stone",
+		name: "Stealth Electric",
 		pp: 20,
 		priority: 0,
 		flags: {reflectable: 1},
 		onPrepareHit: function(target, source, move) {
 		    this.attrLastMove('[still]');
-		    this.add('-anim', source, "Charge", target);
-		    this.add('-anim', source, "Stealth Rock", target);
+		    this.add('-anim', source, "Charge Beam", target);
 		},
-		sideCondition: 'chargedstone',
+		sideCondition: 'stealthelectric',
 		condition: {
 			// this is a side condition
 			onStart(side) {
-				this.add('-sidestart', side, 'move: Charged Stone');
+				this.add('-sidestart', side, 'move: Stealth Electric');
 			},
 			onSwitchIn(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
 				if (pokemon.hasType('Ground')) return;
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('chargedstone')), -6, 6);
-				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthelectric')), -6, 6);
+				if (pokemon.hasItem('lightclay')) {
+					 this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 16);
+				}
+				else {
+					 this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+				}
 			},
 		},
 		secondary: null,
@@ -2238,7 +2242,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			const sourceSide = source.side;
 			const targetSide = source.side.foe;
 			const sideConditions = [
-				'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire', 'watershield', 'dewyflowers', 'chargedstone',
+				'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire', 'watershield', 'dewyflowers', 'stealthelectric',
 			];
 			let success = false;
 			for (const id of sideConditions) {
