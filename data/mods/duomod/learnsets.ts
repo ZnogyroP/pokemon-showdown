@@ -287,6 +287,8 @@ deliriophage: {learnset: {
 }},
 detonuke: {learnset: {
         metronome: ["8L1"],
+		  poisonjab: ["8L1"],
+		  sludgebomb: ["8L1"],
         assurance: ["8L1"],
         blazekick: ["8L1"],
         bonemerang: ["8L1"],
