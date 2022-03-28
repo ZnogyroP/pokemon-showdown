@@ -187,7 +187,7 @@ gorilax: {
 	types: ["Dark", "Fairy"],
 	gender: "N",
 	baseStats: {hp: 116, atk: 61, def: 91, spa: 93, spd: 117, spe: 122},
-	abilities: {0: "Forewarn"},
+	abilities: {0: "Mental Note"},
 	heightm: 1,
 	weightkg: 5,
 	eggGroups: ["Undiscovered"],
