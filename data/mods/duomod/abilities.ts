@@ -166,7 +166,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (pokemon.moveSlots.length < 4) {
 				this.attrLastMove('[still]');
 				if (pokemon.moveSlots.length < 0) return false;
-				pokemon.moveSlots[pokemon.moveSlots.length] = {
+				const learnedMove = {
 					move: move.name,
 					id: move.id,
 					pp: move.pp,
@@ -175,6 +175,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					disabled: false,
 					used: false,
 				};	
+				pokemon.moveSlots[pokemon.moveSlots.length] = learnedMove;
+				pokemon.baseMoveSlots[pokemon.moveSlots.length] = learnedMove;
 			this.add('-start', pokemon, 'Lost Memory', move.name);
 			}
 		},
