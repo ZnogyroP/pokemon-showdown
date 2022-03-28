@@ -379,12 +379,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	trashbeat: {
 		shortDesc: "User's Sound moves taunt targets.",
-		onAfterMoveSecondary(target, source, move) {
+		onModifyMove(move, pokemon) {
 			if (move.flags['sound']) {
-				target.addVolatile('taunt');
+				for (const target of pokemon.side.foe.active) {
+					target.addVolatile('taunt');
+				}
 			}
-		},
-		volatileStatus: 'taunt',
+		},		volatileStatus: 'taunt',
 		condition: {
 			duration: 3,
 			onStart(target) {
