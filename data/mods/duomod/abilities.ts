@@ -447,4 +447,24 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 3,
 		num: 3014,
 	},
+	mentalnote: {
+		onStart(pokemon) {
+			const moves = pokemon.moves;
+			for (const target of pokemon.side.foe.active) {
+				if (target.fainted) continue;
+			}
+			if (!warnMoves.length) return;
+			const [warnMoveName, warnTarget] = this.dex.getMove(this.sample(moves))
+			this.add('-activate', pokemon, 'ability: Mental Note', warnMoveName, '[of] ' + warnTarget);
+		},
+		name: "Mental Note",
+		rating: 0.5,
+		num: 108,
+	},
+	
+
+				/* const move = this.dex.getMove(this.sample(moves));
+				this.add('-start', pokemon, 'Disable', move.name);
+				this.effectData.move = move.id; */
+	
 };
