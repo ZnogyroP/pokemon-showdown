@@ -151,7 +151,7 @@ fluxtape: {
 	types: ["Fire"],
 	gender: "N",
 	baseStats: {hp: 90, atk: 99, def: 70, spa: 125, spd: 90, spe: 126},
-	abilities: {0: "Flash Fire"},
+	abilities: {0: "Mix it Up"},
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Fluxtape-Radio", "Fluxtape-Stereo"],
