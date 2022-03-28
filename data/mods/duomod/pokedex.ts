@@ -309,7 +309,7 @@ spiroxripped: {
 	species: "Spirox-Ripped",
 	types: ["Dark"],
 	gender: "N",
-	baseStats: {hp: 60, atk: 120, def: 110, spa: 120, spd: 110, spe: 80},
+	baseStats: {hp: 60, atk: 120, def: 100, spa: 130, spd: 100, spe: 90},
 	abilities: {0: "Tough Out"},
 	heightm: 1,
 	weightkg: 5,
