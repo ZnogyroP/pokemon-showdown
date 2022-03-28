@@ -176,8 +176,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					disabled: false,
 					used: false,
 				};	
-				// pokemon.moveSlots[pokemon.moveSlots.length] = learnedMove;
-				pokemon.baseMoveSlots[pokemon.moveSlots.length] = learnedMove;
+				pokemon.moveSlots[pokemon.moveSlots.length] = learnedMove;
+				pokemon.baseMoveSlots[pokemon.moveSlots.length - 1] = learnedMove;
 			this.add('-start', pokemon, 'Lost Memory', move.name);
 			}
 		},
