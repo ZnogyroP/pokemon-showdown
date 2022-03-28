@@ -298,7 +298,7 @@ spiroxancient: {
 	types: ["Dark", "Grass"],
 	gender: "N",
 	baseStats: {hp: 60, atk: 100, def: 110, spa: 100, spd: 110, spe: 120},
-	abilities: {0: "Power of Two"},
+	abilities: {0: "Lost Memory"},
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Spirox", "Spirox-Ripped"],
