@@ -458,6 +458,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				attacker.switchFlag = true;
 			}
 		},
+		onMoveFail(target, source, move) {
+			source.switchFlag = false;
+		},
 		name: "Mix it Up",
 		rating: 4,
 		num: 3016,
