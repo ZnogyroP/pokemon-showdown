@@ -340,13 +340,22 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	toughout: {
 		shortDesc: "If the user has few moves and runs out of one, +1 all stats.",
-		onUpdate(pokemon) {
-			if (pokemon.moveSlots.some(move => move.pp === 0)) {
-				if (pokemon.moveSlots.length < 4) {
-					this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon, pokemon, null, true);
-					pokemon.addVolatile('gastroacid');
-				}
-			}
+				onStart(pokemon) {
+			pokemon.addVolatile('toughout');
+		},
+		onEnd(pokemon) {
+			delete pokemon.volatiles['toughout'];
+			this.add('-end', pokemon, 'Tough Out', '[silent]');
+		},
+		condition: {
+			duration: 5,
+			onStart(target) {
+				this.add('-start', target, 'ability: Tough Out');
+			},
+			onEnd(target) {
+				this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon, pokemon, null, true);
+				pokemon.addVolatile('gastroacid');
+			},
 		},
 		name: "Tough Out",
 		rating: 4,
