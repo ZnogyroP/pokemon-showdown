@@ -4,19 +4,16 @@ export const Formats: {[k: string]: FormatData} = {
 		name: 'Subscribe For More Content',
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
 		onResidual(pokemon) {
-       		var sideChoice: number;
-		const pickSide = this.random(2);
+		var result: number;
+		var pickSide: number;
 		for (const allPokemon of this.getAllActive()) {
 			if (allPokemon.hasAbility('obtrusive')) {
 				return;
 			}
 		} 
-
-		
-		var result: number;
-		this.hint("Time for the Roulette Wheel!");
-		result = this.random(40);	
-
+		this.hint("Time for a bonus wheel!");
+		result = this.random(40);
+	        pickSide = this.random(2);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
 	            for (const pokemon of this.getAllActive()) {
@@ -84,7 +81,7 @@ export const Formats: {[k: string]: FormatData} = {
 			this.hint("Roulette Wheel Result 6 - Set hazards on both sides.");
 		    for (const pokemon of this.getAllActive()) {
 			this.useMove("Spikes", pokemon);
-			this.useMove("Charged Stone", pokemon);
+			this.useMove("Stealth Electric", pokemon);
 		    }
 		}
 		else if (result === 6) {
@@ -331,7 +328,7 @@ export const Formats: {[k: string]: FormatData} = {
 		}
 
 		else if (result === 22) {
-			this.hint("Roulette Wheel Result 23 - Sand Attack go!");
+			this.hint("Roulette Wheel Result 23 - Pocket sand go");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
@@ -550,7 +547,7 @@ export const Formats: {[k: string]: FormatData} = {
 		else if (result === 37) {
 			this.hint("Roulette Wheel Result 38 - uh oh");
 			for (const pokemon of this.getAllActive()) {
-				pokemon.addVolatile('trapped', pokemon, pokemon, 'trapper');
+				this.useMove("Octolock", pokemon);
 			}
 		}
 
