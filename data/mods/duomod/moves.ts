@@ -2165,7 +2165,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				const move = Moves[id];
 				if (move.realMove) continue;
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
-				if (move.type === 'Ice' || move.type === 'Rock' || move.type === 'Ghost' || move.type === 'Normal' || move.type === 'Psychic' || move.type === 'Fighting') continue;
 				if (effect.noMetronome!.includes(move.name)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
 				moves.push(move);
@@ -2184,43 +2183,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		target: "self",
 		type: "Fairy",
 		contestType: "Cute",
-	},
-		conversion2: {
-		num: 176,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		name: "Conversion 2",
-		pp: 30,
-		priority: 0,
-		flags: {authentic: 1},
-		onHit(target, source) {
-			if (!target.lastMove) {
-				return false;
-			}
-			const possibleTypes = [];
-			const attackType = target.lastMove.type;
-			for (const type in this.dex.data.TypeChart) {
-				if (source.hasType(type)) continue;
-				const typeCheck = this.dex.data.TypeChart[type].damageTaken[attackType];
-				if (typeCheck === 2 || typeCheck === 3) {
-					possibleTypes.push(type);
-				}
-			}
-			if (!possibleTypes.length) {
-				return false;
-			}
-			const randomType = this.sample(possibleTypes);
-			if (randomType === 'Ice' || randomType === 'Rock' || randomType === 'Ghost' || randomType === 'Normal' || randomType === 'Psychic' || randomType === 'Fighting') continue;	
-
-			if (!source.setType(randomType)) return false;
-			this.add('-start', source, 'typechange', randomType);
-		},
-		secondary: null,
-		target: "normal",
-		type: "Normal",
-		zMove: {effect: 'heal'},
-		contestType: "Beautiful",
 	},
 	hypervoice: {
 		num: 304,
