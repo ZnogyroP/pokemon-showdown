@@ -453,13 +453,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},	
 	mixitup: {
 		shortDesc: "The user switches after using sound move.",
-		onModifyMove(move, attacker) {
-			if (move.flags['sound'] && !attacker.volatiles['dynamax']) {
-				attacker.switchFlag = true;
+		onAfterMoveSecondary(target, source, move) {
+			if (move.flags['sound']) {
+				source.switchFlag = true;
 			}
-		},
-		onMoveFail(target, source, move) {
-			source.switchFlag = false;
 		},
 		name: "Mix it Up",
 		rating: 4,
