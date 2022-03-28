@@ -104,6 +104,7 @@ azurolt: {learnset: {
         zingzap: ["8L1"],
 }},
 baloon: {learnset: {
+        gnome: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         amnesia: ["8L1"],
@@ -136,6 +137,7 @@ baloon: {learnset: {
         waterspout: ["8L1"],
 }},
 baloonpopped: {learnset: {
+        gnome: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         amnesia: ["8L1"],
@@ -173,6 +175,7 @@ baloonpopped: {learnset: {
         wish: ["8L1"],
 }},
 baloonwater: {learnset: {
+        gnome: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         amnesia: ["8L1"],
@@ -210,6 +213,7 @@ baloonwater: {learnset: {
         waterspout: ["8L1"],
 }},
 catelax: {learnset: {
+        gnome: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         assurance: ["8L1"],
@@ -305,6 +309,7 @@ detonuke: {learnset: {
 		  sludgebomb: ["8L1"],
         assurance: ["8L1"],
         blazekick: ["8L1"],
+        gnome: ["8L1"],
         bonemerang: ["8L1"],
         clearbeam: ["8L1"],
         cottonguard: ["8L1"],
@@ -619,6 +624,7 @@ hyperoach: {learnset: {
         acupressure: ["8L1"],
         metronome: ["8L1"],
         acrobatics: ["8L1"],
+        gnome: ["8L1"],
         assurance: ["8L1"],
         bugbuzz: ["8L1"],
         clearbeam: ["8L1"],
@@ -897,6 +903,7 @@ spirox: {learnset: {
         willowisp: ["8L1"],
 }},
 spiroxancient: {learnset: {
+        gnome: ["8L1"],
         acupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
