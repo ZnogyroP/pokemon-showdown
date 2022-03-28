@@ -163,6 +163,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "On switch, the user learns the used move if it has empty moveslots.",
 		onStart(pokemon) {
 			const move = this.lastMove;
+			if (move === null) return;
 			if (pokemon.moveSlots.length < 4) {
 				this.attrLastMove('[still]');
 				if (pokemon.moveSlots.length < 0) return false;
