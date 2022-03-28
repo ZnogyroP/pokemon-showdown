@@ -132,14 +132,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({atk: 1, def: 1});
 			}
 		},
-		shortdesc: "If user is hit below half HP, boosts Atk + Def.",
+		shortDesc: "If user is hit below half HP, boosts Atk + Def.",
 		name: "Fortification",
 		rating: 2,
 		num: 20121,
 	},
    
 	birdup: {
-		shortdesc: "The user becomes Bird-type, all 12 types combined.",
+		shortDesc: "The user becomes Bird-type, all 12 types combined.",
 		onStart(pokemon) {
 			pokemon.setType(pokemon.getTypes(true).map(type => type === "Grass" ? "Flying" : type));
 			this.add('-start', pokemon, 'typechange', 'Flying');
