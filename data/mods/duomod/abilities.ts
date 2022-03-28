@@ -463,9 +463,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},	
 	mixitup: {
 		shortDesc: "Active Pokemon switch after using sound move.",
-		onAfterMoveSecondary(target, source, move) {
+		onAfterMove(pokemon, target, move) {
 			if (move.flags['sound']) {
-				source.switchFlag = true;
+				pokemon.switchFlag = true;
 			}
 		},
 		name: "Mix it Up",
