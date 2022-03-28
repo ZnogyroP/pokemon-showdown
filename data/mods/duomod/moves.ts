@@ -2197,7 +2197,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (pokemon.moveSlots.length < 2) return false; // Last Resort fails unless the user knows at least 2 moves
 			let hasLastResort = false; // User must actually have Last Resort for it to succeed
 			for (const moveSlot of pokemon.moveSlots) {
-				if (moveSlot.id === 'lastresort') {
+				if (moveSlot.id === 'gnome') {
 					hasLastResort = true;
 					continue;
 				}
