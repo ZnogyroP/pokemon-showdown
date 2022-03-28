@@ -430,4 +430,21 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 4,
 		num: 3013,
 	},	
+	dropheat: {
+		onDamage(damage, target, source, effect) {
+			if (effect.id === 'recoil') {
+				if (!this.activeMove) throw new Error("Battle.activeMove is null");
+				if (this.activeMove.id !== 'struggle') return null;
+			}
+		},
+		onDamagingHit(damage, target, source, move) {
+			if (move.flags['sound']) {
+				this.add('-ability', target, 'Drop Heat');
+				this.boost({atk: -1, def: -1, spa: -1, spd: -1, spe: -1}, source, target, null, true);
+			}
+		},
+		name: "Drop Heat",
+		rating: 3,
+		num: 3014,
+	},
 };
