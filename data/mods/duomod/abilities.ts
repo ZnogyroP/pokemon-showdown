@@ -340,7 +340,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	toughout: {
 		shortDesc: "If the user has few moves and runs out of one, +1 all stats.",
-				onStart(pokemon) {
+		onStart(pokemon) {
 			pokemon.addVolatile('toughout');
 		},
 		onEnd(pokemon) {
@@ -352,7 +352,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			onStart(target) {
 				this.add('-start', target, 'ability: Tough Out');
 			},
-			onEnd(target) {
+			onEnd(pokemon) {
 				this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, pokemon, pokemon, null, true);
 				pokemon.addVolatile('gastroacid');
 			},
