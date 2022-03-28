@@ -454,7 +454,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) return;
 				const temp = this.sample(target.moveSlots);
-				this.add('-activate', pokemon, 'ability: Mental Note', temp, '[of] ' + target);
+				this.add('-activate', pokemon, 'ability: Mental Note', temp/*, '[of] ' + target*/);
 			}
 		},
 		name: "Mental Note",
