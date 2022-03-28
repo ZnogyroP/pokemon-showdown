@@ -175,7 +175,7 @@ fluxtapestereo: {
 	types: ["Fire", "Electric"],
 	gender: "N",
 	baseStats: {hp: 110, atk: 119, def: 100, spa: 105, spd: 80, spe: 86},
-	abilities: {0: "Rock Head"},
+	abilities: {0: "Drop Heat"},
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Fluxtape-Radio", "Fluxtape"],
