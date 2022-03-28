@@ -1,5 +1,5 @@
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
-	angler: { //
+	angler: {
 		desc: "If the user is hit by a Water-type move, they take 0.25x damage from it and the opponent recieves recoil equal to the damage dealt.",
 		shortDesc: "The damage from Water-type attacks against this Pokemon is partially reflected.",
 		onSourceBasePowerPriority: 18,
@@ -431,6 +431,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: 3013,
 	},	
 	dropheat: {
+		shortDesc: "User is immune to recoil + punishes opposing Sound moves.",
 		onDamage(damage, target, source, effect) {
 			if (effect.id === 'recoil') {
 				if (!this.activeMove) throw new Error("Battle.activeMove is null");
@@ -448,12 +449,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: 3014,
 	},
 	mentalnote: {
+		shortDesc: "User forewarns of a random move.",
 		onStart(pokemon) {
 			const moves = pokemon.moves;
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) continue;
 			}
-			if (!warnMoves.length) return;
 			const [warnMoveName, warnTarget] = this.dex.getMove(this.sample(moves))
 			this.add('-activate', pokemon, 'ability: Mental Note', warnMoveName, '[of] ' + warnTarget);
 		},
