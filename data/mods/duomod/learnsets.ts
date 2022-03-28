@@ -819,6 +819,7 @@ mortemoth: {learnset: {
         dedefog: ["8L1"],
         dewyflowers: ["8L1"],
         dirtyscheme: ["8L1"],
+        earthpower: ["8L1"],
         energyball: ["8L1"],
         extremebeam: ["8L1"],
         frustration: ["8L1"],
