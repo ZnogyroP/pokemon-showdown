@@ -2195,17 +2195,15 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onHit(pokemon) {
 			if (pokemon.moveSlots.length < 2) return; // Last Resort fails unless the user knows at least 2 moves
-			let hasLastResort = false; // User must actually have Last Resort for it to succeed
 			for (const moveSlot of pokemon.moveSlots) {
 				if (moveSlot.id === 'gnome') {
-					hasLastResort = true;
-					this.useMove("Metronome", pokemon);
-					this.useMove("Metronome", pokemon);
-					this.useMove("Metronome", pokemon);
-					continue;
+					return;
 				}
 				if (!moveSlot.used) return;
 			}
+			this.useMove("Metronome", pokemon);
+			this.useMove("Metronome", pokemon);
+			this.useMove("Metronome", pokemon);
 		},
 		secondary: null,
 		target: "normal",
