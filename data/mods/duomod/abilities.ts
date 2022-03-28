@@ -1,5 +1,5 @@
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
-	angler: { //
+	angler: {
 		desc: "If the user is hit by a Water-type move, they take 0.25x damage from it and the opponent recieves recoil equal to the damage dealt.",
 		shortDesc: "The damage from Water-type attacks against this Pokemon is partially reflected.",
 		onSourceBasePowerPriority: 18,
@@ -453,8 +453,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) return;
-				const temp = this.sample(target.moveSlots);
-				this.add('-message', pokemon.name + "'s Mental Note revealed the move " + target.moveSlots[temp] + "!");
+				// const temp = this.sample(target.moveSlots);
+				this.add('-message', pokemon.name + "'s Mental Note revealed the move " + this.sample(target.moveSlots) + "!");
 			}
 		},
 		name: "Mental Note",
