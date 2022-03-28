@@ -454,7 +454,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	mixitup: {
 		shortDesc: "The user switches after using sound move.",
 		onModifyMove(move, attacker) {
-			if (move.flags['sound'] && !pokemon.volatiles['dynamax']) {
+			if (move.flags['sound'] && !attacker.volatiles['dynamax']) {
 				attacker.switchFlag = true;
 			}
 		},
