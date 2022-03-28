@@ -183,17 +183,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 3,
 		num: 3004,
 	},
-	mixitup: {
-		shortDesc: "If the user's attack doesn't match its last move, it's 1.3x stronger.",
-		onBasePower (basePower, pokemon, target, move) {
-			if (move.id !== pokemon.lastMove.id) {
-				return this.chainModify(1.3);
-			}
-		},
-		name: "Mix it Up",
-		rating: 0.5,
-		num: 3006,
-	},	
 	obtrusive: {
 		shortDesc: "Prevents the Roulette Wheel from being spun while active.",
 		onAnyTryMove(target, source, effect) {
@@ -462,4 +451,15 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 0.5,
 		num: 3015,
 	},	
+	mixitup: {
+		shortDesc: "The user switches after using sound move.",
+		onModifyMove(move, attacker) {
+			if (move.flags['sound'] && !pokemon.volatiles['dynamax']) {
+				attacker.switchFlag = true;
+			}
+		},
+		name: "Mix it Up",
+		rating: 4,
+		num: 3016,
+	},
 };
