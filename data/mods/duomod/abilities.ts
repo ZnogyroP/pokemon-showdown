@@ -456,7 +456,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				if (target.fainted) continue;
 				for (const moveSlot of target.moveSlots) {
 					const move = this.dex.getMove(moveSlot.move);
-					warnMoves.push([this.sample(moves), target]);
+					warnMoves.push([this.sample(move), target]);
 				}
 			}
 			const [warnMoveName, warnTarget] = this.sample(warnMoves);
