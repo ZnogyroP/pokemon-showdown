@@ -2105,7 +2105,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Ultranome",
-		pp: 1,
+		pp: 40,
 		shortDesc: "Uses Metronome 3 times; not learnable.",
 		noPPBoosts: true,
 		priority: 0,
@@ -2131,7 +2131,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		category: "Special",
 		name: "Scald 2",
 		shortDesc: "30% burn chance; not learnable.",
-		pp: 1,
+		pp: 40,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, defrost: 1},
 		onPrepareHit: function(target, source, move) {
@@ -2183,6 +2183,34 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		target: "self",
 		type: "Fairy",
 		contestType: "Cute",
+	},
+	gnome: {
+		num: 301999,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "G'Nome",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onHit(pokemon) {
+			if (pokemon.moveSlots.length < 2) return; // Last Resort fails unless the user knows at least 2 moves
+			let hasLastResort = false; // User must actually have Last Resort for it to succeed
+			for (const moveSlot of pokemon.moveSlots) {
+				if (moveSlot.id === 'gnome') {
+					hasLastResort = true;
+					this.useMove("Metronome", pokemon);
+					this.useMove("Metronome", pokemon);
+					this.useMove("Metronome", pokemon);
+					continue;
+				}
+				if (!moveSlot.used) return;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
 	},
 	hypervoice: {
 		num: 304,
