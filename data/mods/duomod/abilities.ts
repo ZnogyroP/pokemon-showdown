@@ -164,9 +164,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			const move = this.lastMove;
 			if (pokemon.moveSlots.length < 4) {
-				const mimicIndex = pokemon.moves.indexOf('mimic');
-				if (mimicIndex < 0) return false;
-				pokemon.moveSlots[mimicIndex] = {
+				this.attrLastMove('[still]');
+				if (pokemon.moveSlots.length < 0) return false;
+				pokemon.moveSlots[pokemon.moveSlots.length] = {
 					move: move.name,
 					id: move.id,
 					pp: move.pp,
@@ -174,7 +174,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					target: move.target,
 					disabled: false,
 					used: false,
-					virtual: true,
 				};	
 			this.add('-start', pokemon, 'Lost Memory', move.name);
 			}
