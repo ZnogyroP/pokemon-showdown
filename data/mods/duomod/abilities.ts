@@ -449,10 +449,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: 3014,
 	},
 	mentalnote: {
-		shortDesc: "User forewarns of a random move.",
+		shortDesc: "User forewarns a random move.",
 		onStart(pokemon) {
-			const moves = pokemon.moves;
 			for (const target of pokemon.side.foe.active) {
+				const moves = target.moves;
 				if (target.fainted) continue;
 				const warnMove = this.dex.getMove(this.sample(moves));
 				this.add('-activate', pokemon, 'ability: Mental Note', warnMove, '[of] ' + target);
