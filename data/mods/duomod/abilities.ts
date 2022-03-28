@@ -458,8 +458,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 					const move = this.dex.getMove(moveSlot.move);
 				}
 			}
-			if (!warnMoves.length) return;
 			const [warnMoveName, warnTarget] = this.sample(warnMoves);
+			if (!warnMoves.length) return;
 			this.add('-activate', pokemon, 'ability: Forewarn', warnMoveName, '[of] ' + warnTarget);
 		},
 		name: "Mental Note",
