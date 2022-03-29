@@ -1550,8 +1550,8 @@ export class RandomTeams {
 				const typeCombo = types.slice().sort().join();
 
 				if (restrict) {
-					// Make sure only Roulettemons are used
-					if (species.tier !== "Roulettemons") {
+					// Make sure only new mons are used
+					if (species.tier !== "Duomod") {
 						continue;
 					}
 
