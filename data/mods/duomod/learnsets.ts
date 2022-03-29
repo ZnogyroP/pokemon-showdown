@@ -676,6 +676,7 @@ lemotic: {learnset: {
         earthpower: ["8L1"],
         earthquake: ["8L1"],
         energyball: ["8L1"],
+        aromatherapy: ["8L1"],
         flipturn: ["8L1"],
         extremebeam: ["8L1"],
         fleurcannon: ["8L1"],
@@ -840,7 +841,6 @@ mortemoth: {learnset: {
 pokat: {learnset: {
         acupressure: ["8L1"],
         metronome: ["8L1"],
-        aromatherapy: ["8L1"],
         assurance: ["8L1"],
         clearbeam: ["8L1"],
         darkpulse: ["8L1"],
