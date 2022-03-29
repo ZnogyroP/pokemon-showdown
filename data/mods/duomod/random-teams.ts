@@ -1385,8 +1385,6 @@ export class RandomTeams {
 			item = 'Leftovers';
 
 		// Better than Leftovers
-		} else if (isLead && !['Disguise', 'Sturdy'].includes(ability) && !hasMove['substitute'] && !counter['recoil'] && !counter['recovery'] && species.baseStats.hp + species.baseStats.def + species.baseStats.spd < 255 && !isDoubles) {
-			item = 'Focus Sash';
 		} else if (ability === 'Water Bubble' && !isDoubles) {
 			item = 'Mystic Water';
 		} else if (hasMove['clangoroussoul'] || hasMove['boomburst'] && !!counter['speedsetup']) {
@@ -1411,7 +1409,7 @@ export class RandomTeams {
 
 		// For Trick / Switcheroo
 		if (item === 'Leftovers' && hasType['Poison']) {
-			item = 'Black Sludge';
+			item = 'Leftovers';
 		}
 
 		const level: number = (!isDoubles ? species.randomBattleLevel : species.randomDoubleBattleLevel) || 80;
