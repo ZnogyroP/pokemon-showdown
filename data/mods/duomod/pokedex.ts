@@ -139,7 +139,7 @@ fluidrake: {
 	species: "Fluidrake",
 	types: ["Water", "Steel"],
 	gender: "N",
-	baseStats: {hp: 85, atk: 70, def: 80, spa: 125, spd: 75, spe: 65},
+	baseStats: {hp: 90, atk: 70, def: 85, spa: 125, spd: 80, spe: 70},
 	abilities: {0: "Swift Swim"},
 	heightm: 1,
 	weightkg: 5,
