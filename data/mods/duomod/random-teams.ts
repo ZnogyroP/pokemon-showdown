@@ -1312,7 +1312,7 @@ export class RandomTeams {
 			item = (hasMove['closecombat'] || hasMove['curse'] || hasMove['overheat'] || hasMove['leafstorm'] || hasMove['fleurcannon'] || hasMove['dracometeor'] || hasMove['psychoboost']) ? 'White Herb' : 'Sitrus Berry';
 		} else if (hasMove['acrobatics']) {
 			item = (ability === 'Grassy Surge') ? 'Grassy Seed' : '';
-		} else if (this.dex.getEffectiveness('Rock', species) >= 2 && !isDoubles) {
+		} else if (this.dex.getEffectiveness('Electric', species) >= 2 && !isDoubles) {
 			item = 'Heavy-Duty Boots';
 		} else if (hasMove['raindance']) {
 			if (species.baseSpecies === 'Castform' && !teamDetails.zMove) {
