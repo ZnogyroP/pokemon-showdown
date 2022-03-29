@@ -676,6 +676,7 @@ lemotic: {learnset: {
         earthpower: ["8L1"],
         earthquake: ["8L1"],
         energyball: ["8L1"],
+        flipturn: ["8L1"],
         extremebeam: ["8L1"],
         fleurcannon: ["8L1"],
         frustration: ["8L1"],
