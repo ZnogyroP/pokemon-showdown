@@ -14,7 +14,7 @@ abysseil: {learnset: { //
         futuresight: ["8L1"],
         haze: ["8L1"],
         hydropump: ["8L1"],
-        lightscreen: ["8L1"],
+        lightscreen: ["8L1"], //
         moonblast: ["8L1"],
         neutralair: ["8L1"],
         protect: ["8L1"],
