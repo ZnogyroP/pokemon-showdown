@@ -84,7 +84,7 @@ crypterid: {
 	species: "Crypterid",
 	types: ["Ground", "Poison"],
 	gender: "N",
-	baseStats: {hp: 81, atk: 100, def: 103, spa: 75, spd: 121, spe: 60},
+	baseStats: {hp: 81, atk: 100, def: 93, spa: 75, spd: 101, spe: 60},
 	abilities: {0: "Fortification"},
 	heightm: 1,
 	weightkg: 5,
