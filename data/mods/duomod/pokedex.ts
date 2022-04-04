@@ -106,7 +106,7 @@ detonuke: {
 	species: "Detonuke",
 	types: ["Fire", "Poison"],
 	gender: "N",
-	baseStats: {hp: 89, atk: 105, def: 65, spa: 61, spd: 102, spe: 116},
+	baseStats: {hp: 89, atk: 115, def: 65, spa: 61, spd: 102, spe: 116},
 	abilities: {0: "Swagnet Pull"},
 	heightm: 1,
 	weightkg: 5,
