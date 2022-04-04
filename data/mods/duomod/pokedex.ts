@@ -15,7 +15,7 @@ annelait: {
 	species: "Annelait",
 	types: ["Ground"],
 	gender: "N",
-	baseStats: {hp: 87, atk: 51, def: 117, spa: 75, spd: 67, spe: 83},
+	baseStats: {hp: 87, atk: 71, def: 117, spa: 75, spd: 67, spe: 63},
 	abilities: {0: "Angler"},
 	heightm: 1,
 	weightkg: 5,
