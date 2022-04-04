@@ -1629,7 +1629,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	clearbeam: {
 		num: 1033.1,
 		accuracy: 100,
-		basePower: 70,
+		basePower: 60,
 		category: "Special",
 		shortDesc: "Does not factor type effectiveness.",
 		name: "Clear Beam",
