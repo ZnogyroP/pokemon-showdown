@@ -285,7 +285,7 @@ spirox: {
 	species: "Spirox",
 	types: ["Dark", "Steel"],
 	gender: "N",
-	baseStats: {hp: 60, atk: 80, def: 130, spa: 100, spd: 130, spe: 100},
+	baseStats: {hp: 60, atk: 90, def: 130, spa: 90, spd: 130, spe: 100},
 	abilities: {0: "Power of Two"},
 	heightm: 1,
 	weightkg: 5,
