@@ -1,4 +1,4 @@
-export const Statuses: {[k: string]: EffectData} = {
+export const Statuses: {[k: string]: ModdedPureEffectData} = {
   frz: {
 		name: 'frz',
 	   id: 'frz',
