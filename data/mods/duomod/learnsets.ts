@@ -477,6 +477,7 @@ fluxtaperadio: {learnset: {
 	darkpulse: ["7L1"],
 	dedefog: ["7L1"],
 	deeznutsjoke: ["7L1"],
+	defog: ["7L1"],
 	destructiveblow: ["7L1"],
 	dirtyscheme: ["7L1"],
 	dragondance: ["7L1"],
