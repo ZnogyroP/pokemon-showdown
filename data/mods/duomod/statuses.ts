@@ -2,9 +2,11 @@ export const Statuses: {[k: string]: ModdedPureEffectData} = {
   frz: {
 		name: 'frz',
 	   id: 'frz',
-    onStart(target, source, sourceEffect) {
-      this.effectData.time = 4;
-    },
+	  	num: 0,
+		effectType: 'Status',
+    	onStart(target, source, sourceEffect) {
+      	this.effectData.time = 4;
+    	},
 		onBeforeMove(pokemon, target, move) {
       pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
