@@ -1,34 +1,33 @@
-export const Statuses: {[k: string]: ModdedPureEffectData} = {
+export const Statuses: {[k: string]: EffectData} = {
   frz: {
 		name: 'frz',
 	   id: 'frz',
 	  	num: 0,
 		effectType: 'Status',
-    	onStart(target, source, sourceEffect) {
-      	this.effectData.time = 4;
+    	onStart: function (target, source, sourceEffect) {
+			this.add('-status', target, 'frz');
     	},
 		onBeforeMove(pokemon, target, move) {
       pokemon.statusData.time--;
-			if (pokemon.statusData.time <= 0) {
-				pokemon.cureStatus();
-				return;
-			}
 			if (move.flags['defrost']) return;
 			this.add('cant', pokemon, 'frz');
 			return false;
 		},
-		onModifyMove() {},
-		onHit() {},
-		onAfterMoveSecondary(target, source, move) {
+		onModifyMove: function () {},
+		onHit: function () {},
+		onAfterMoveSecondary: function (target, source, move) {
 			if ((move.secondary && move.secondary.status === 'brn') || move.statusRoll === 'brn') {
 				target.cureStatus();
 			}
 		},
-		onAfterMoveSecondarySelf(pokemon, target, move) {
+		onAfterMoveSecondarySelf: function (pokemon, target, move) {
 			if (move.flags['defrost']) pokemon.cureStatus();
 		},
-		onResidual(pokemon) {
+		onResidual: function (pokemon) {
 			if (this.randomChance(40, 100)) pokemon.cureStatus();
+		},
+	  	onEnd: function (target) {
+			this.add('-curestatus', target, 'frz');
 		},
 	},
 };
