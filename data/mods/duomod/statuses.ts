@@ -9,26 +9,25 @@ export const Statuses: {[k: string]: EffectData} = {
 			this.hint("Time for a bonus wheel!");
     	},
 		duration: 3,
+		onBeforeMovePriority: 2,
 		onBeforeMove: function (pokemon, target, move) {
-      pokemon.statusData.time--;
-			if (move.flags['defrost']) return;
+			if (this.randomChance(4, 10)) {
+				pokemon.cureStatus();
+				return;
+			}
+			if (move.flags['defrost']) {
+				pokemon.cureStatus();
+				return;
+			}
 			this.add('cant', pokemon, 'frz');
 			return false;
 		},
-		onModifyMove: function () {},
-		onHit: function () {},
-		onAfterMoveSecondary: function (target, source, move) {
-			if ((move.secondary && move.secondary.status === 'brn') || move.statusRoll === 'brn') {
+		onHit: function (target, source, move) {
+			if (move.type === 'Fire' && move.category !== 'Status' || move.flags['defrost']) {
 				target.cureStatus();
 			}
 		},
-		onAfterMoveSecondarySelf: function (pokemon, target, move) {
-			if (move.flags['defrost']) pokemon.cureStatus();
-		},
-		onResidual: function (pokemon) {
-			if (this.randomChance(40, 100)) pokemon.cureStatus();
-		},
-	  	onEnd: function (target) {
+		onEnd: function (target) {
 			this.add('-curestatus', target, 'frz');
 		},
 	},
