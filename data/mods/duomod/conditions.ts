@@ -8,7 +8,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.add('-status', target, 'frz');
 			this.hint("Time for a bonus wheel!");
     	},
-		duration: 3,
+		duration: 4,
 		onBeforeMovePriority: 2,
 		onBeforeMove: function (pokemon, target, move) {
 			if (this.randomChance(4, 10)) {
