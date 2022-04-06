@@ -30,7 +30,6 @@ abysseil: {learnset: { //
         surf: ["8L1"],
         thief: ["8L1"],
         toxic: ["8L1"],
-			parry: ["8L1"],
         vibrantlight: ["8L1"],
         watershield: ["8L1"],
         wish: ["8L1"],
