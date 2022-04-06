@@ -6,7 +6,7 @@ export const Conditions: {[k: string]: ConditionData} = {
 		effectType: 'Status',
     	onStart: function (target, source, sourceEffect) {
 			this.add('-status', target, 'frz');
-			this.hint("Time for a bonus wheel!");
+			this.hint("NOTE - You now have a 40% chance of thawing per turn.");
     	},
 		duration: 4,
 		onBeforeMovePriority: 2,
