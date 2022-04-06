@@ -6,8 +6,10 @@ export const Statuses: {[k: string]: EffectData} = {
 		effectType: 'Status',
     	onStart: function (target, source, sourceEffect) {
 			this.add('-status', target, 'frz');
+			this.hint("Time for a bonus wheel!");
     	},
-		onBeforeMove(pokemon, target, move) {
+		duration: 3,
+		onBeforeMove: function (pokemon, target, move) {
       pokemon.statusData.time--;
 			if (move.flags['defrost']) return;
 			this.add('cant', pokemon, 'frz');
