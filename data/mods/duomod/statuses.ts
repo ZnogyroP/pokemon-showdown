@@ -1,7 +1,7 @@
 export const Statuses: {[k: string]: ModdedPureEffectData} = {
   frz: {
 		name: 'frz',
-		inherit: true,
+	   id: 'frz',
     onStart(target, source, sourceEffect) {
       this.effectData.time = 4;
     },
