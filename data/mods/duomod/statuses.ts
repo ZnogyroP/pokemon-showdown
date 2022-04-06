@@ -4,7 +4,7 @@ export const Statuses: {[k: string]: ModdedPureEffectData} = {
 		inherit: true,
     onStart(target, source, sourceEffect) {
       this.effectData.time = 4;
-    }
+    },
 		onBeforeMove(pokemon, target, move) {
       pokemon.statusData.time--;
 			if (pokemon.statusData.time <= 0) {
