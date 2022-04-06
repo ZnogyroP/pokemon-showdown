@@ -4,7 +4,7 @@ abysseil: {
 	species: "Abysseil",
 	types: ["Water", "Fairy"],
 	gender: "N",
-	baseStats: {hp: 80, atk: 54, def: 95, spa: 73, spd: 95, spe: 148},
+	baseStats: {hp: 80, atk: 54, def: 85, spa: 73, spd: 85, spe: 148},
 	abilities: {0: "Drizzle"},
 	heightm: 1,
 	weightkg: 5,
