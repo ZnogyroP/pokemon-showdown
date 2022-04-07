@@ -1697,7 +1697,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		    this.attrLastMove('[still]');
 		    this.add('-anim', source, "Toxic", target);
 		},
-		status: 'frz',
+		status: 'tox',
 		target: "normal",
 		type: "Poison",
 		contestType: "Cool",
