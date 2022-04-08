@@ -179,4 +179,34 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
+		spisces: {
+		randomBattleMoves: ["fireblast", "hydropump", "nastyplot", "dazzlinggleam"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	crazefly: {
+		randomBattleMoves: ["roost", "spinningweb", "bugbuzz", "whirlwind"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	pterrost: {
+		randomBattleMoves: ["dracometeor", "earthpower", "roost", "uturn", "defog"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	jewelode: {
+		randomBattleMoves: ["earthpower", "moonblast", "defog", "uturn", "energyball", "watershield"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	jellyolk: {
+		randomBattleMoves: ["shellsmash", "sludgebomb", "energyball", "surf"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "DOUomod",
+	},
 };
