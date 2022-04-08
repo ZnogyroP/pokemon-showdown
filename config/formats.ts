@@ -1,5 +1,5 @@
 ﻿// Note: This is the list of formats
-// The rules that formats use are stored in data/rulesets.js
+// The rules that formats use are stored in data/rulesets.ts
 import {Utils} from './../lib/utils';
 
 export const Formats: (FormatsData | {section: string, column?: number})[] = [
