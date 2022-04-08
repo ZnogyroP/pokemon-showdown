@@ -480,7 +480,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onStart(pokemon) {
 			const type = this.dex.getMove(pokemon.moveSlots[0].id).type;
 			if (pokemon.hasType(type) || !pokemon.setType(type)) return false;
-			this.add('-start', pokemon, 'typeadd', type, '[from] ability: Adaptation');
+			this.add('-start', pokemon, 'typeadd', type);
 		},
 		name: "Adaptation",
 		rating: 3.5,
