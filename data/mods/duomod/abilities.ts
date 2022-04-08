@@ -476,4 +476,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 4,
 		num: 3016,
 	},
+	adaptation: {
+		onStart(pokemon) {
+			const type = this.dex.getMove(target.moveSlots[0].id).type;
+			if (target.hasType(type) || !target.setType(type)) return false;
+			this.add('-start', target, 'typeadd', type, '[from] ability: Adaptation');
+		},
+		name: "Adaptation",
+		rating: 3.5,
+		num: 3017,
+	},
 };
