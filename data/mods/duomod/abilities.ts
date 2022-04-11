@@ -227,7 +227,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 1,
 		num: 3009,
 	},	
-	ragingbeast: { //
+	ragingbeast: {
 		shortDesc: "The user's highest stat rises under a ton of conditions.",
 		onResidual (pokemon) {
 			const result = this.random(5);
@@ -479,7 +479,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	adaptation: {
 		onStart(pokemon) {
 			const type = this.dex.getMove(pokemon.moveSlots[0].id).type;
-			if (pokemon.hasType(type) || !pokemon.setType(type)) return false;
+			if (pokemon.hasType(type) || !pokemon.addType(type)) return false;
 			this.add('-start', pokemon, 'typeadd', type);
 		},
 		name: "Adaptation",
