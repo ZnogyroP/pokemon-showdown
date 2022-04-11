@@ -227,7 +227,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 1,
 		num: 3009,
 	},	
-	ragingbeast: {
+	ragingbeast: { //
 		shortDesc: "The user's highest stat rises under a ton of conditions.",
 		onResidual (pokemon) {
 			const result = this.random(5);
