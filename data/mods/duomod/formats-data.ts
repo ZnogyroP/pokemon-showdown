@@ -102,7 +102,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Duomod",
 	},
 	grievenge: {
-		randomBattleMoves: ["knockoff", "flamerunner", "frustration", "destructiveblow"],
+		randomBattleMoves: ["knockoff", "flamerunner", "striketheearth", "destructiveblow"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
