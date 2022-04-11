@@ -168,7 +168,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Duomod",
 	},
 	treemu: {
-		randomBattleMoves: ["sacredfire", "spinningweb", "stealtheletric", "moonlight", "drillpeck"],
+		randomBattleMoves: ["sacredfire", "spinningweb", "stealthelectric", "moonlight", "drillpeck"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
