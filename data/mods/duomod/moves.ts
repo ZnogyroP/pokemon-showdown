@@ -2325,7 +2325,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: -7,
 		flags: {mirror: 1, authentic: 1, mystery: 1},
 		onHit (target) {
-			target.formeChange('Impsaustor', this.effect, true);
+			target.formeChange('Impsaustor', this.effect, true);	
 			const moveSet1 = ['knockoff'];
 			const moveSet2 = ['recover'];
 			const moveSet3 = ['gunkshot'];
