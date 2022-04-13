@@ -13,7 +13,6 @@ export const Formats: {[k: string]: FormatData} = {
 		} 
 		this.hint("Time for a bonus wheel!");
 		result = this.random(10) + 39;
-	        pickSide = this.random(2);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
 	            for (const pokemon of this.getAllActive()) {
@@ -587,7 +586,7 @@ export const Formats: {[k: string]: FormatData} = {
 			this.hint("Roulette Wheel Result 42 - Both active Pokemon trade HP bars.");
 			for (const temp of this.sides[0].pokemon) {
 				for (const pokemon2 of this.temp.side.foe.active[0]) {
-				for (const target of this.pokemon.side.foe.active[0]) {
+				for (const target of this.pokemon2.side.foe.active[0]) {
 					const pokHP = (pokemon2.hp / pokemon2.maxhp);
 					const tarHP = (target.hp / target.maxhp);
 					pokemon.sethp(tarHP * pokemon2.maxhp);
