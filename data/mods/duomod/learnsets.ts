@@ -946,6 +946,7 @@ spiroxancient: {learnset: {
         woodhammer: ["8L1"],
 }},
 spiroxripped: {learnset: {
+        gnome: ["8L1"],
         acupressure: ["8L1"],
         metronome: ["8L1"],
         acidspray: ["8L1"],
