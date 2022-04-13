@@ -650,6 +650,12 @@ export const Formats: {[k: string]: FormatData} = {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
 					this.useMove("Vote Out", target);
+					const oldAbility = pokemon.setAbility('vent');
+					if (oldAbility) {
+						this.add('-ability', pokemon, 'Vent', '[from] move: Vote Out', '[silent]');
+						return;
+					}
+				return false;
 				}
 				}
 			}
@@ -657,6 +663,12 @@ export const Formats: {[k: string]: FormatData} = {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
 					this.useMove("Vote Out", target);
+					const oldAbility = pokemon.setAbility('vent');
+					if (oldAbility) {
+						this.add('-ability', pokemon, 'Vent', '[from] move: Vote Out', '[silent]');
+						return;
+					}
+				return false;
 				}
 				}
 			}
@@ -667,12 +679,28 @@ export const Formats: {[k: string]: FormatData} = {
 			for (const pokemon of this.sides[0].active) {
 				for (const target of this.sides[1].active) {
 					if (target.storedStats.spe < pokemon.storedStats.spe) {
-						this.useMove("Flame Runner", pokemon);
-						this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner');
+						this.useMove("Flame Runner", pokemon);		
+						if (target.isActive) {
+							this.useMove("Vote Out", target);
+							const oldAbility = pokemon.setAbility('vent');
+							if (oldAbility) {
+								this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner');
+								return;
+							}
+						return false;
+						}
 					}
 					else {
 						this.useMove("Flame Runner", target);
-						this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner');
+						if (target.isActive) {
+							this.useMove("Vote Out", target);
+							const oldAbility = pokemon.setAbility('vent');
+							if (oldAbility) {
+								this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner');
+								return;
+							}
+						return false;
+					}
 					}	
 				}
 			}
