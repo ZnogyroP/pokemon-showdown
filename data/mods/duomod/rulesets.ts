@@ -587,14 +587,14 @@ export const Formats: {[k: string]: FormatData} = {
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
-					this.useMove("Yoink", target);
+					this.useMove("Sick Hacks", target);
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
-					this.useMove("Yoink", target);
+					this.useMove("Sick Hacks", target);
 				}
 				}
 			}
@@ -686,7 +686,6 @@ export const Formats: {[k: string]: FormatData} = {
 					if (target.storedStats.spe < pokemon.storedStats.spe) {
 						this.useMove("Flame Runner", pokemon);		
 						if (target.isActive) {
-							this.useMove("Vote Out", target);
 							const oldAbility = pokemon.setAbility('vent');
 							if (oldAbility) {
 								this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner');
