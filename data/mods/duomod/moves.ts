@@ -2325,47 +2325,43 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: -7,
 		flags: {mirror: 1, authentic: 1, mystery: 1},
 		onHit (target) {
-			target.formeChange('Impsaustor', this.effect, true);	
-			const moveSet1 = ['knockoff'];
-			const moveSet2 = ['recover'];
-			const moveSet3 = ['gunkshot'];
-			const moveSet4 = ['swordsdance'];
+			target.formeChange('Impsaustor', this.effect, true);
 			const ms0 = {
-				move: moveSet1.name,
-				id: moveSet1.id,
-				pp: moveSet1.pp,
-				maxpp: moveSet1.pp,
-				target: moveSet1.target,
+				move: "Knock Off",
+				id: "knockoff",
+				pp: 20,
+				maxpp: 32,
+				target: "normal",
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
 			const ms1 = {
-				move: moveSet2.name,
-				id: moveSet2.id,
-				pp: moveSet2.pp,
-				maxpp: moveSet2.pp,
-				target: moveSet2.target,
+				move: "Recover",
+				id: "recover",
+				pp: 10,
+				maxpp: 16,
+				target: "self",
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
 			const ms2 = {
-				move: moveSet3.name,
-				id: moveSet3.id,
-				pp: moveSet3.pp,
-				maxpp: moveSet3.pp,
-				target: moveSet3.target,
+				move: "Poison Jab",
+				id: "poisonjab",
+				pp: 20,
+				maxpp: 32,
+				target: "normal",
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
 			const ms3 = {
-				move: moveSet4.name,
-				id: moveSet4.id,
-				pp: moveSet4.pp,
-				maxpp: moveSet4.pp,
-				target: moveSet4.target,
+				move: "Swords Dance",
+				id: "swordsdance",
+				pp: 20,
+				maxpp: 32,
+				target: "self",
 				disabled: false,
 				used: false,
 				virtual: true,
