@@ -650,9 +650,9 @@ export const Formats: {[k: string]: FormatData} = {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
 					this.useMove("Vote Out", target);
-					const oldAbility = pokemon.setAbility('vent');
+					const oldAbility = target.setAbility('vent');
 					if (oldAbility) {
-						this.add('-ability', pokemon, 'Vent', '[from] move: Vote Out', '[silent]');
+						this.add('-ability', target, 'Vent', '[from] move: Vote Out', '[silent]');
 						return;
 					}
 				return false;
@@ -663,9 +663,9 @@ export const Formats: {[k: string]: FormatData} = {
 				for (const target of this.sides[1].pokemon) {
 				if (target.isActive) {
 					this.useMove("Vote Out", target);
-					const oldAbility = pokemon.setAbility('vent');
+					const oldAbility = target.setAbility('vent');
 					if (oldAbility) {
-						this.add('-ability', pokemon, 'Vent', '[from] move: Vote Out', '[silent]');
+						this.add('-ability', target, 'Vent', '[from] move: Vote Out', '[silent]');
 						return;
 					}
 				return false;
