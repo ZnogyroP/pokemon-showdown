@@ -2395,7 +2395,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			const pokHP = (source.hp / source.maxhp);
 			const tarHP = (target.hp / target.maxhp);
 			this.directDamage(tarHP * source.maxhp, source);
+			this.add('-sethp', source, target.getHealth, '[from] move: Pain Split', '[silent]');
 			this.directDamage(pokHP * target.maxhp, target);
+			this.add('-sethp', target, target.getHealth, '[from] move: Pain Split', '[silent]');
 		},
 		target: "normal",
 		type: "Fairy",
