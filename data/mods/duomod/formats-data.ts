@@ -90,19 +90,19 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Duomod",
 	},
 	fluxtapestereo: {
-		randomBattleMoves: ["flareblitz", "wildcharge", "dragondance", "deeznutsjoke", "earthquake"],
+		randomBattleMoves: ["flareblitz", "wildcharge", "dragondance", "earthquake"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
 	gorilax: {
-		randomBattleMoves: ["blueflare", "moonblast", "rancidrush", "shoreup", "sludgebomb"],
+		randomBattleMoves: ["blueflare", "moonblast", "rancidrush", "shoreup", "sludgebomb", "earthpower"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
 	grievenge: {
-		randomBattleMoves: ["knockoff", "flamerunner", "striketheearth", "destructiveblow"],
+		randomBattleMoves: ["knockoff", "flamerunner", "dustknuckles", "destructiveblow"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
@@ -114,7 +114,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Duomod",
 	},
 	lemotic: {
-		randomBattleMoves: ["earthquake", "stealthelectric", "flipturn", "poisonjab"],
+		randomBattleMoves: ["earthquake", "stealthelectric", "flipturn", "poisonjab", "aromatherapy", "wish", "protect", "leafblade"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
@@ -144,7 +144,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Duomod",
 	},
 	pokat: {
-		randomBattleMoves: ["stupidcannon", "scorch", "toxic", "recover", "dewyflowers", "gigadrain"],
+		randomBattleMoves: ["stupidcannon", "scorch", "toxic", "slackoff", "dewyflowers", "gigadrain"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
@@ -156,13 +156,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Sugma",
 	},
 	spiroxancient: {
-		randomBattleMoves: ["nastyplot", "darkpulse"],
+		randomBattleMoves: ["nastyplot", "darkpulse", "energyball"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
 	spiroxripped: {
-		randomBattleMoves: ["darkpulse", "substitute", "protect", "nastyplot"],
+		randomBattleMoves: ["darkpulse", "substitute", "protect", "vibrantlight"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
