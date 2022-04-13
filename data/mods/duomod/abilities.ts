@@ -458,7 +458,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				if (target.fainted) return;
 				const temp = this.sample(target.moveSlots);
 				//const move = target.moves.indexOf(temp.id);
-				this.add('-message', pokemon.name + "'s Mental Note revealed the move " + temp.id + "!");
+				this.add('-message', pokemon.name + "'s Mental Note revealed the move " + temp.move + "!");
 			}
 		},
 		name: "Mental Note",
@@ -486,4 +486,16 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 3.5,
 		num: 3017,
 	},
+	vent: {
+		onAfterMoveSecondary(target, source, move) {
+			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			const lastAttackedBy = target.getLastAttackedBy();
+			if (!lastAttackedBy) return;
+			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+			if (target.hp <= target.maxhp / 10 && target.hp + damage > target.maxhp / 10) {
+				this.add('-message', target.name + " is gonna Vent!");
+				target.switchFlag = true;
+				this.heal(target.baseMaxhp);
+			}
+		},
 };
