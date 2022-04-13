@@ -2381,4 +2381,26 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Dark",
 		contestType: "Cool",
 	},
+
+	sickhacks: {
+		num: 3021,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Sick Hacks",
+		pp: 40,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			onHit(target, source, move) {
+				const pokHP = (source.hp / source.maxhp);
+				const tarHP = (target.hp / target.maxhp);
+				source.sethp(tarHP * source.maxhp);
+				target.sethp(pokHP * target.maxhp);					
+			},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Tough",
+	},
 };
