@@ -383,4 +383,15 @@ jellyolk: {
 	abilities: {0: "Magic Guard"},
 	weightkg: 5,
 },
+impsaustor: {
+	num: 999.5,
+	species: "Impsaustor",
+	types: ["Dark", "Poison"],
+	gender: "N",
+	baseStats: {hp: 100, atk: 120, def: 80, spa: 80, spd: 120, spe: 100},
+	abilities: {0: "Vent"},
+	heightm: 1,
+	weightkg: 5,
+	eggGroups: ["Undiscovered"],
+},
 };
