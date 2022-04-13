@@ -10,6 +10,47 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	{
 		section: "Sw/Sh Singles",
 	},
+	
+	{
+        name: "[Gen 8] Duomod",
+        desc: `<b>Duomod</b>: Legendary YouTuber and professional Smash player DuoM2's solomod, build around the idea where nobody is ever truly losing.`,
+        threads: [
+            `&bullet; <a href="https://docs.google.com/spreadsheets/d/1lguyF31tjV8f-Gv3uLxmZXGAlg23k2fkF_nBqevJouM/edit?usp=sharing">Spreadsheet</a>`,
+        ],
+        mod: 'duomod',
+        ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause', 'Subscribe For More Content'],
+        banlist: ['All Pokemon'],
+        unbanlist: [
+             'Abysseil', 'Annelait', 'Azurolt', 'Baloon', 'BaloonPopped', 'BaloonWater', 'Catelax', 'Crypterid', 'Deliriophage', 'Detonuke', 'Draglow', 'Draxplosion', 'Fluidrake', 'Fluxtape', 'FluxtapeRadio', 'FluxtapeStereo', 'Gorilax', 'Grievenge', 'Hyperoach', 'Lemotic', 'Lumineel', 'Modolith', 'Monstratus', 'Mortemoth', 'Pokat', 'Spirox', 'SpiroxAncient', 'SpiroxRipped', 'Treemu', 'Valianch', 'Spisces', 'Pterrost', 'Jewelode', 'Jellyolk', 'Crazefly',
+			],	
+			onSwitchIn(pokemon) {
+        		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+        	},	
+	},
+	
+	{
+		name: "[Gen 8] Duomod Randbats",
+		desc: `<b>Duomod</b>: Legendary YouTuber and professional Smash player DuoM2's solomod, build around the idea where nobody is ever truly losing.`,
+        threads: [
+            `&bullet; <a href="https://docs.google.com/spreadsheets/d/1lguyF31tjV8f-Gv3uLxmZXGAlg23k2fkF_nBqevJouM/edit?usp=sharing">Spreadsheet</a>`,
+        ],
+		team: 'random',
+		mod: 'duomod',
+		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Subscribe For More Content'],
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+		},
+	},
+
+
+	{
+        	name: "[Gen 1] RBY CAP Testing",
+        	desc: '<b>RBY CAP</b>: A metagame meant to explore unique concepts for new Pokemon in Gen 1 OU.',
+	        mod: 'rbycap',
+       		ruleset: ['Standard'],
+        	banlist: ['Uber'],
+        	
+	},
 	{
 		name: "[Gen 8] Random Battle",
 		desc: `Randomized teams of level-balanced Pok&eacute;mon with sets that are generated to be competitively viable.`,
@@ -1547,56 +1588,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		challengeShow: false,
 		ruleset: ['Obtainable', 'HP Percentage Mod', 'Cancel Mod'],
 	},
-
-	// Sw/Sh Singles
-	///////////////////////////////////////////////////////////////////
-
-	  {
-		section: "Custom Formats",
-		column: 3,
-	},
-
-	
-	{
-        name: "[Gen 8] Duomod",
-        desc: `<b>Duomod</b>: Legendary YouTuber and professional Smash player DuoM2's solomod, build around the idea where nobody is ever truly losing.`,
-        threads: [
-            `&bullet; <a href="https://docs.google.com/spreadsheets/d/1lguyF31tjV8f-Gv3uLxmZXGAlg23k2fkF_nBqevJouM/edit?usp=sharing">Spreadsheet</a>`,
-        ],
-        mod: 'duomod',
-        ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause', 'Subscribe For More Content'],
-        banlist: ['All Pokemon'],
-        unbanlist: [
-             'Abysseil', 'Annelait', 'Azurolt', 'Baloon', 'BaloonPopped', 'BaloonWater', 'Catelax', 'Crypterid', 'Deliriophage', 'Detonuke', 'Draglow', 'Draxplosion', 'Fluidrake', 'Fluxtape', 'FluxtapeRadio', 'FluxtapeStereo', 'Gorilax', 'Grievenge', 'Hyperoach', 'Lemotic', 'Lumineel', 'Modolith', 'Monstratus', 'Mortemoth', 'Pokat', 'Spirox', 'SpiroxAncient', 'SpiroxRipped', 'Treemu', 'Valianch', 'Spisces', 'Pterrost', 'Jewelode', 'Jellyolk', 'Crazefly',
-			],	
-			onSwitchIn(pokemon) {
-        		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-        	},	
-	},
-	
-	{
-		name: "[Gen 8] Duomod Randbats",
-		desc: `<b>Duomod</b>: Legendary YouTuber and professional Smash player DuoM2's solomod, build around the idea where nobody is ever truly losing.`,
-        threads: [
-            `&bullet; <a href="https://docs.google.com/spreadsheets/d/1lguyF31tjV8f-Gv3uLxmZXGAlg23k2fkF_nBqevJouM/edit?usp=sharing">Spreadsheet</a>`,
-        ],
-		team: 'random',
-		mod: 'duomod',
-		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Subscribe For More Content'],
-		onSwitchIn(pokemon) {
-			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
-		},
-	},
-
-
-	{
-        	name: "[Gen 1] RBY CAP Testing",
-        	desc: '<b>RBY CAP</b>: A metagame meant to explore unique concepts for new Pokemon in Gen 1 OU.',
-	        mod: 'rbycap',
-       		ruleset: ['Standard'],
-        	banlist: ['Uber'],
-        	
-	},
 	
 	
 	
@@ -1605,6 +1596,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 
 	{
 		section: "RoA Spotlight",
+		column: 3,
 	},
 	{
 		name: "[Gen 4] Ubers",
