@@ -3,7 +3,6 @@ export const Formats: {[k: string]: FormatData} = {
 		effectType: 'Rule',
 		name: 'Subscribe For More Content',
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
-		onResidualOrder: 99,
 		onResidual(pokemon) {
 		var result: number;
 		var pickSide: number;
@@ -588,8 +587,6 @@ export const Formats: {[k: string]: FormatData} = {
 			this.hint("Roulette Wheel Result 42 - Both active Pokemon trade HP bars.");
 			for (const pokemon of this.sides[0].active) {
 				for (const target of this.sides[1].active) {
-					if (pokemon.side.active.length = 0) return;
-					if (target.side.active.length = 0) return;
 					const pokHP = (pokemon.hp / pokemon.maxhp);
 					const tarHP = (target.hp / target.maxhp);
 					pokemon.sethp(tarHP * pokemon.maxhp);
