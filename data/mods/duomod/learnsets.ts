@@ -56,7 +56,6 @@ annelait: {learnset: {
         skitterout: ["8L1"],
         sleeptalk: ["8L1"],
         spinningweb: ["8L1"],
-        striketheearth: ["8L1"],
         stupidcannon: ["8L1"],
         substitute: ["8L1"],
         surf: ["8L1"],
@@ -66,6 +65,7 @@ annelait: {learnset: {
         watershield: ["8L1"],
 }},
 azurolt: {learnset: {
+		  dustknuckles: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         assurance: ["8L1"],
@@ -90,7 +90,6 @@ azurolt: {learnset: {
         protect: ["8L1"],
         rest: ["8L1"],
         sleeptalk: ["8L1"],
-        striketheearth: ["8L1"],
         stupidcannon: ["8L1"],
         substitute: ["8L1"],
         swordsdance: ["8L1"],
@@ -243,6 +242,7 @@ catelax: {learnset: {
         xscissor: ["8L1"],
 }},
 crypterid: {learnset: {
+		  dustknuckles: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         assurance: ["8L1"],
@@ -263,7 +263,6 @@ crypterid: {learnset: {
         rest: ["8L1"],
         sleeptalk: ["8L1"],
         spinningweb: ["8L1"],
-        striketheearth: ["8L1"],
         stupidcannon: ["8L1"],
         substitute: ["8L1"],
         swordsdance: ["8L1"],
@@ -403,6 +402,7 @@ draxplosion: {learnset: {
         vibrantlight: ["8L1"],
 }},
 fluidrake: {learnset: {
+		  dustknuckles: ["8L1"],
         metronome: ["8L1"],
         acupressure: ["8L1"],
         assurance: ["8L1"],
@@ -471,7 +471,8 @@ fluxtape: {learnset: {
 	vibrantlight: ["7L1"],
 }},
 fluxtaperadio: {learnset: {
-        acupressure: ["8L1"],
+	rancidrush: ["7L1"],
+   acupressure: ["8L1"],
 	assurance: ["7L1"],
 	clearbeam: ["7L1"],
 	darkpulse: ["7L1"],
@@ -515,6 +516,7 @@ fluxtaperadio: {learnset: {
 	vibrantlight: ["7L1"],
 }},
 fluxtapestereo: {learnset: {
+		  dustknuckles: ["8L1"],
         acupressure: ["8L1"],
 	assurance: ["7L1"],
 	bulkup: ["7L1"],
@@ -591,6 +593,7 @@ gorilax: {learnset: {
         wish: ["8L1"],
 }},
 grievenge: {learnset: {
+		  dustknuckles: ["8L1"],
         acupressure: ["8L1"],
         metronome: ["8L1"],
         agility: ["8L1"],
@@ -610,7 +613,6 @@ grievenge: {learnset: {
         protect: ["8L1"],
         rest: ["8L1"],
         sleeptalk: ["8L1"],
-        striketheearth: ["8L1"],
         stupidcannon: ["8L1"],
         substitute: ["8L1"],
         suckerpunch: ["8L1"],
@@ -621,6 +623,7 @@ grievenge: {learnset: {
         vibrantlight: ["8L1"],
 }},
 hyperoach: {learnset: {
+		  dustknuckles: ["8L1"],
         acupressure: ["8L1"],
         metronome: ["8L1"],
         acrobatics: ["8L1"],
@@ -661,6 +664,7 @@ hyperoach: {learnset: {
         xscissor: ["8L1"],
 }},
 lemotic: {learnset: {
+		  dustknuckles: ["8L1"],
         acupressure: ["8L1"],
         metronome: ["8L1"],
         assurance: ["8L1"],
@@ -692,7 +696,6 @@ lemotic: {learnset: {
         skitterout: ["8L1"],
         sleeptalk: ["8L1"],
         steameruption: ["8L1"],
-        striketheearth: ["8L1"],
         stupidcannon: ["8L1"],
         substitute: ["8L1"],
         thief: ["8L1"],
@@ -1014,7 +1017,9 @@ treemu: {learnset: {
         whirlwind: ["8L1"],
 }},
 valianch: {learnset: {
+		  dustknuckles: ["8L1"],
         acupressure: ["8L1"],
+		  dustknuckles: ["8L1"],
         metronome: ["8L1"],
         aerialace: ["8L1"],
         assurance: ["8L1"],
@@ -1036,7 +1041,6 @@ valianch: {learnset: {
         sleeptalk: ["8L1"],
         smartstrike: ["8L1"],
         solarblade: ["8L1"],
-        striketheearth: ["8L1"],
         stupidcannon: ["8L1"],
         substitute: ["8L1"],
         swordsdance: ["8L1"],
