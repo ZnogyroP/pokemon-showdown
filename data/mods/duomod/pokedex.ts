@@ -197,7 +197,7 @@ grievenge: {
 	species: "Grievenge",
 	types: ["Dark"],
 	gender: "N",
-	baseStats: {hp: 37, atk: 93, def: 37, spa: 37, spd: 37, spe: 136},
+	baseStats: {hp: 57, atk: 93, def: 57, spa: 57, spd: 57, spe: 136},
 	abilities: {0: "Deaths Call"},
 	heightm: 1,
 	weightkg: 5,
