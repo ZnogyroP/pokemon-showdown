@@ -93,7 +93,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	dustknuckles: {
 		num: 3009,
 		accuracy: 100,
-		basePower: 70,
+		basePower: 90,
 		onHit(target, source, move) {
 			if (target.boosts['def'] > 0) {
 				this.boost({'def': -target.boosts['def']}, target, source, move);
