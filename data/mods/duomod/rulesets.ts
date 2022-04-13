@@ -5,7 +5,7 @@ export const Formats: {[k: string]: FormatData} = {
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
 		onResidual(pokemon) {
 		var result: number;
-		var pickSide: number;
+		const pickSide = this.random(2);
 		for (const allPokemon of this.getAllActive()) {
 			if (allPokemon.hasAbility('obtrusive')) {
 				return;
@@ -584,16 +584,20 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		else if (result === 41) {
 			this.hint("Roulette Wheel Result 42 - Both active Pokemon trade HP bars.");
-		/* 	for (const temp of this.sides[0].pokemon) {
-				for (const pokemon2 of temp.side.foe.active[0]) {
-				for (const target of pokemon2.side.foe.active[0]) {
-					const pokHP = (pokemon2.hp / pokemon2.maxhp);
-					const tarHP = (target.hp / target.maxhp);
-					pokemon.sethp(tarHP * pokemon2.maxhp);
-					target.sethp(pokHP * target.maxhp);					
+			if (pickSide === 0) {
+				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
+					this.useMove("Yoink", target);
 				}
 				}
-			}*/
+			}
+			else if (pickSide === 1) {
+				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
+					this.useMove("Yoink", target);
+				}
+				}
+			}
 		} 
 		
 		else if (result === 42) {
