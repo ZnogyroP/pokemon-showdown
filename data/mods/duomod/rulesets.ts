@@ -632,8 +632,8 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		else if (result === 45) {
 			this.hint("Roulette Wheel Result 46 - One active Pokemon becomes way faster than the other.");
-			for (const pokemon of side[0].active) {
-				for (const target of side[1].active) {
+			for (const pokemon of this.sides[0].active) {
+				for (const target of this.sides[1].active) {
 					if (pickSide === 0) {
 						this.boost({spe: 12}, pokemon, pokemon, null, true);
 						this.boost({spe: 12}, target, target, null, true);
@@ -666,8 +666,8 @@ export const Formats: {[k: string]: FormatData} = {
 			
 		else if (result === 47) {
 			this.hint("Roulette Wheel Result 48 - Time for some good ol' Mario Kart Wii");
-			for (const pokemon of side[0].active) {
-				for (const target of side[1].active) {
+			for (const pokemon of this.sides[0].active) {
+				for (const target of this.sides[1].active) {
 					if (target.storedStats.spe < pokemon.storedStats.spe) {
 						this.useMove("Flame Runner", pokemon);
 						this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner');
