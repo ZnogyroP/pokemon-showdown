@@ -2397,8 +2397,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				const pokHP = (source.hp / source.maxhp);
 				const tarHP = (target.hp / target.maxhp);
 				source.sethp(tarHP * source.maxhp);
-				target.sethp(pokHP * target.maxhp);					
-			},
+				target.sethp(pokHP * target.maxhp);			
+			}
+		},
 		target: "normal",
 		type: "Fairy",
 		contestType: "Tough",
