@@ -2330,7 +2330,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			const moveSet2 = ['recover'];
 			const moveSet3 = ['gunkshot'];
 			const moveSet4 = ['swordsdance'];
-			target.moveSlots[0] = {
+			const ms0 = {
 				move: moveSet1.name,
 				id: moveSet1.id,
 				pp: moveSet1.pp,
@@ -2340,7 +2340,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				used: false,
 				virtual: true,
 			};
-			target.moveSlots[1] = {
+			const ms1 = {
 				move: moveSet2.name,
 				id: moveSet2.id,
 				pp: moveSet2.pp,
@@ -2350,7 +2350,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				used: false,
 				virtual: true,
 			};
-			target.moveSlots[2] = {
+			const ms2 = {
 				move: moveSet3.name,
 				id: moveSet3.id,
 				pp: moveSet3.pp,
@@ -2360,7 +2360,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				used: false,
 				virtual: true,
 			};
-			target.moveSlots[3] = {
+			const ms3 = {
 				move: moveSet4.name,
 				id: moveSet4.id,
 				pp: moveSet4.pp,
@@ -2370,6 +2370,14 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				used: false,
 				virtual: true,
 			};
+			source.moveSlots[0] = ms0;
+			source.baseMoveSlots[0] = ms0;
+			source.moveSlots[1] = ms1;
+			source.baseMoveSlots[1] = ms1;
+			source.moveSlots[2] = ms2;
+			source.baseMoveSlots[2] = ms2;
+			source.moveSlots[3] = ms3;
+			source.baseMoveSlots[3] = ms3;
 			this.add('-message', target + " was the Impsaustor!");
 		},
 		secondary: null,
