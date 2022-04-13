@@ -2369,7 +2369,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				used: false,
 				virtual: true,
 			};
-			this.add('-message', target, "+ was the Impsaustor!");
+			this.add('-message', target + " was the Impsaustor!");
 		},
 		secondary: null,
 		target: "normal",
