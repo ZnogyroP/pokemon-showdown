@@ -498,4 +498,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.heal(target.baseMaxhp);
 			}
 		},
+		name: "Vent",
+		rating: 5,
+		num: 3018,
+	},
 };
