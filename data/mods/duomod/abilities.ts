@@ -343,7 +343,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: 20,
 	},
 	toughout: {
-		shortDesc: "If the user survives five turns, +1 all stats.",
+		shortDesc: "If the user survives seven turns, +1 all stats.",
 		onStart(pokemon) {
 			pokemon.addVolatile('toughout');
 		},
@@ -352,7 +352,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-end', pokemon, 'Tough Out', '[silent]');
 		},
 		condition: {
-			duration: 5,
+			duration: 7,
 			onStart(target) {
 				this.add('-start', target, 'ability: Tough Out');
 			},
