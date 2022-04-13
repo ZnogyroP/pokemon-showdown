@@ -109,6 +109,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		    this.attrLastMove('[still]');
 		    this.add('-anim', source, "Close Combat", target);
 		},
+		ignoreDefensive: true,
 		secondary: null,
 		target: "normal",
 		type: "Ground",
