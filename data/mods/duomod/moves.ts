@@ -2370,14 +2370,14 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				used: false,
 				virtual: true,
 			};
-			source.moveSlots[0] = ms0;
-			source.baseMoveSlots[0] = ms0;
-			source.moveSlots[1] = ms1;
-			source.baseMoveSlots[1] = ms1;
-			source.moveSlots[2] = ms2;
-			source.baseMoveSlots[2] = ms2;
-			source.moveSlots[3] = ms3;
-			source.baseMoveSlots[3] = ms3;
+			target.moveSlots[0] = ms0;
+			target.baseMoveSlots[0] = ms0;
+			target.moveSlots[1] = ms1;
+			target.baseMoveSlots[1] = ms1;
+			target.moveSlots[2] = ms2;
+			target.baseMoveSlots[2] = ms2;
+			target.moveSlots[3] = ms3;
+			target.baseMoveSlots[3] = ms3;
 			this.add('-message', target + " was the Impsaustor!");
 		},
 		secondary: null,
