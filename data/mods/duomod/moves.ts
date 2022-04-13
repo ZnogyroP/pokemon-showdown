@@ -2320,51 +2320,57 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Vote Out",
-		pp: 40,
+		pp: 1,
+		noPPBoosts: true,
 		priority: -7,
 		flags: {mirror: 1, authentic: 1, mystery: 1},
 		onHit (target) {
-			target.baseSpecies.baseSpecies = "Impsaustor";
-			const move1 = 'knockoff';
+			const newSpec = ['Impsaustor'];
+			const moveSet = ['knockoff', 'recover', 'swordsdance', 'gunkshot'];
+			target.species = { 
+				num: 999.5,
+				species: "Impsaustor",
+				types: ["Dark", "Poison"],
+				gender: "N",
+				baseStats: {hp: 100, atk: 120, def: 80, spa: 80, spd: 120, spe: 100},
+				abilities: {0: "Vent"},
+			};
 			target.moveSlots[0] = {
-				move: move1.name,
-				id: move1.id,
-				pp: move1.pp,
-				maxpp: move1.pp,
-				target: move1.target,
+				move: moveSet[0].name,
+				id: moveSet[0].id,
+				pp: moveSet[0].pp,
+				maxpp: moveSet[0].pp,
+				target: moveSet[0].target,
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
-			const move2 = 'recover';
 			target.moveSlots[1] = {
-				move: move2.name,
-				id: move2.id,
-				pp: move2.pp,
-				maxpp: move2.pp,
-				target: move2.target,
+				move: moveSet[1].name,
+				id: moveSet[1].id,
+				pp: moveSet[1].pp,
+				maxpp: moveSet[1].pp,
+				target: moveSet[1].target,
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
-			const move3 = 'gunkshot';
 			target.moveSlots[2] = {
-				move: move3.name,
-				id: move3.id,
-				pp: move3.pp,
-				maxpp: move3.pp,
-				target: move3.target,
+				move: moveSet[2].name,
+				id: moveSet[2].id,
+				pp: moveSet[2].pp,
+				maxpp: moveSet[2].pp,
+				target: moveSet[2].target,
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
-			const move4 = 'swordsdance';
 			target.moveSlots[3] = {
-				move: move4.name,
-				id: move4.id,
-				pp: move4.pp,
-				maxpp: move4.pp,
-				target: move4.target,
+				move: moveSet[3].name,
+				id: moveSet[3].id,
+				pp: moveSet[3].pp,
+				maxpp: moveSet[3].pp,
+				target: moveSet[3].target,
 				disabled: false,
 				used: false,
 				virtual: true,
