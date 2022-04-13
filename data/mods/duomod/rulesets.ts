@@ -585,8 +585,8 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		else if (result === 41) {
 			this.hint("Roulette Wheel Result 42 - Both active Pokemon trade HP bars.");
-			for (const pokemon of this.sides[0].active) {
-				for (const target of this.sides[1].active) {
+			for (const pokemon of this.sides[0].active[0]) {
+				for (const target of this.sides[1].active[0]) {
 					const pokHP = (pokemon.hp / pokemon.maxhp);
 					const tarHP = (target.hp / target.maxhp);
 					pokemon.sethp(tarHP * pokemon.maxhp);
@@ -634,11 +634,11 @@ export const Formats: {[k: string]: FormatData} = {
 				for (const target of this.sides[1].active) {
 					if (pickSide === 0) {
 						this.boost({spe: 12}, pokemon, pokemon, null, true);
-						this.boost({spe: 12}, target, target, null, true);
+						this.boost({spe: -12}, target, target, null, true);
 					}
 					else if (pickSide === 1) {
 						this.boost({spe: 12}, target, target, null, true);
-						this.boost({spe: 12}, pokemon, pokemon, null, true);
+						this.boost({spe: -12}, pokemon, pokemon, null, true);
 					}
 				}
 			}
