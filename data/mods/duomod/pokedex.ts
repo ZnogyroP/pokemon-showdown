@@ -379,7 +379,7 @@ jellyolk: {
 	species: "Jellyolk",
 	types: ["Poison"],
 	gender: "N",
-	baseStats: {hp: 71, atk: 71, def: 71, spa: 105, spd: 71, spe: 61},
+	baseStats: {hp: 71, atk: 67, def: 67, spa: 105, spd: 71, spe: 61},
 	abilities: {0: "Magic Guard"},
 	weightkg: 5,
 },
