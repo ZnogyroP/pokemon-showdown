@@ -12,7 +12,7 @@ export const Formats: {[k: string]: FormatData} = {
 			}
 		} 
 		this.hint("Time for a bonus wheel!");
-		result = this.random(40);
+		result = this.random(10) + 39;
 	        pickSide = this.random(2);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
@@ -557,13 +557,153 @@ export const Formats: {[k: string]: FormatData} = {
 				this.useMove("Metronome", pokemon);
 			}
 		}
-
+		
+		else if (result === 39) {
+			this.hint("Roulette Wheel Result 40 - Both active Pokemon become Moody.");
+			for (const pokemon of this.getAllActive()) {
+				this.add('-ability', pokemon, 'Moody', '[from] move: Roulette Spin');
+			}
+		}
+		
+		else if (result === 40) {
+			this.hint("Roulette Wheel Result 41 - Both active Pokemon swap items.");
+			if (pickSide === 0) {
+				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
+					this.useMove("Trick", target);
+				}
+				}
+			}
+			else if (pickSide === 1) {
+				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
+					this.useMove("Switcheroo", target);
+				}
+				}
+			}	
+		}	
+		
+		else if (result === 41) {
+			this.hint("Roulette Wheel Result 42 - Both active Pokemon trade HP bars.");
+			for (const pokemon of side[0].active) {
+				for (const target of side[1].active) {
+					if (pokemon.side.active.length = 0) return;
+					if (target.side.active.length = 0) return;
+					const pokHP = (pokemon.hp / pokemon.maxhp);
+					const tarHP = (target.hp / target.maxhp);
+					pokemon.sethp(tarHP * pokemon.maxhp);
+					target.sethp(pokHP * target.maxhp);					
+				}
+			}
+		}
+		
+		else if (result === 42) {
+			this.hint("Roulette Wheel Result 43 - Both active Pokemon use their first move.");
+			for (const pokemon of this.getAllActive()) {
+				const frstMove = this.dex.getMove(pokemon.moveSlots[0].id);
+				this.useMove(frstMove, pokemon);
+			}
+		}
+			
+		else if (result === 43) {
+			this.hint("Roulette Wheel Result 44 - don't get critted lmao");
+			if (pickSide === 0) {
+				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
+					this.useMove("Focus Energy", target);
+				}
+				}
+			}
+			else if (pickSide === 1) {
+				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
+					this.useMove("Focus Energy", target);
+				}
+				}
+			}
+		}	
+			
+		else if (result === 44) {
+			this.hint("Roulette Wheel Result 45 - You get a bonus!");
+			for (const pokemon of this.getAllActive()) {
+				this.useMove("Roulette Spin", pokemon);
+			}
+		}			
+		
+		else if (result === 45) {
+			this.hint("Roulette Wheel Result 46 - One active Pokemon becomes way faster than the other.");
+			for (const pokemon of side[0].active) {
+				for (const target of side[1].active) {
+					if (pickSide === 0) {
+						this.boost({spe: 12}, pokemon, pokemon, null, true);
+						this.boost({spe: 12}, target, target, null, true);
+					}
+					else if (pickSide === 1) {
+						this.boost({spe: 12}, target, target, null, true);
+						this.boost({spe: 12}, pokemon, pokemon, null, true);
+					}
+				}
+			}
+		}			
+			
+		else if (result === 46) {
+			this.hint("Roulette Wheel Result 47 - sussie");
+			if (pickSide === 0) {
+				for (const target of this.sides[0].pokemon) {
+				if (target.isActive) {
+					this.useMove("Vote Out", target);
+				}
+				}
+			}
+			else if (pickSide === 1) {
+				for (const target of this.sides[1].pokemon) {
+				if (target.isActive) {
+					this.useMove("Vote Out", target);
+				}
+				}
+			}
+		}	
+			
+		else if (result === 47) {
+			this.hint("Roulette Wheel Result 48 - Time for some good ol' Mario Kart Wii");
+			for (const pokemon of side[0].active) {
+				for (const target of side[1].active) {
+					if (target.storedStats.spe < pokemon.storedStats.spe) {
+						this.useMove("Flame Runner", pokemon);
+						this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner');
+					}
+					else {
+						this.useMove("Flame Runner", target);
+						this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner');
+					}	
+				}
+			}
+		}
+						
+		else if (result === 48) {
+			this.hint("Roulette Wheel Result 49 - Ad break.");
+			this.add('-message', "Hello Duomod v3 enjoyer!");
+			this.add('-message', "The fact that you're spending your time on Pokemon Showdown must mean you're really bored!");
+			this.add('-message', "Well today's your lucky day! Because I've got just the cure!");
+			this.add('-message', "Head on over to DuoM2's YouTube channel, featuring several videos from the one and only DuoM2!");
+			this.add('-message', "He's smart, funny, a gamer, handsome, and the best Mewtwo main in South Carolina Smash!");
+			this.add('-message', "With 4 hours of content right now and more to come, your boredom will soar off into space!");
+			this.add('-message', "Plus, as a special promotional bonus, if you subscribe now, you'll get to say you knew him before it was cool!");
+			this.add('-message', "Head on over to DuoM2's YouTube channel for the time of your life! Linked down below!");
+			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
+			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
+			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
+			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
+			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
+		}		
+		
 		else {
-			this.hint("Roulette Wheel Result 40 - THE ULTIMATE EFFECT");
+			this.hint("Roulette Wheel Result 50 - THE ULTIMATE EFFECT");
 			for (const pokemon of this.getAllActive()) {
 				this.useMove("Ultranome", pokemon);
 			}
 		}
+			
 		},
 	},		
 };
