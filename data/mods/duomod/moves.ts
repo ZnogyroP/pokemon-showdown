@@ -2314,4 +2314,66 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Dark",
 		contestType: "Cool",
 	},
+	voteout: {
+		num: 3020,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Vote Out",
+		pp: 40,
+		priority: -7,
+		flags: {mirror: 1, authentic: 1, mystery: 1},
+		onHit (target) {
+			target.baseSpecies.baseSpecies = "Impsaustor";
+			const move1 = 'knockoff';
+			target.moveSlots[0] = {
+				move: move1.name,
+				id: move1.id,
+				pp: move1.pp,
+				maxpp: move1.pp,
+				target: move1.target,
+				disabled: false,
+				used: false,
+				virtual: true,
+			};
+			const move2 = 'recover';
+			target.moveSlots[1] = {
+				move: move2.name,
+				id: move2.id,
+				pp: move2.pp,
+				maxpp: move2.pp,
+				target: move2.target,
+				disabled: false,
+				used: false,
+				virtual: true,
+			};
+			const move3 = 'gunkshot';
+			target.moveSlots[2] = {
+				move: move3.name,
+				id: move3.id,
+				pp: move3.pp,
+				maxpp: move3.pp,
+				target: move3.target,
+				disabled: false,
+				used: false,
+				virtual: true,
+			};
+			const move4 = 'swordsdance';
+			target.moveSlots[3] = {
+				move: move4.name,
+				id: move4.id,
+				pp: move4.pp,
+				maxpp: move4.pp,
+				target: move4.target,
+				disabled: false,
+				used: false,
+				virtual: true,
+			};
+			this.add('-message', target, "+ was the Impsaustor!");
+		},
+		secondary: null,
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+	},
 };
