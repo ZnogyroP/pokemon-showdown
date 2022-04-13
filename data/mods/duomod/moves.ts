@@ -2391,14 +2391,13 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 40,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		secondary: {
-			chance: 100,
-			onHit(target, source, move) {
-				const pokHP = (source.hp / source.maxhp);
-				const tarHP = (target.hp / target.maxhp);
-				source.sethp(tarHP * source.maxhp);
-				target.sethp(pokHP * target.maxhp);			
-			}
+		onHit(target, source, move) {
+			const pokHP = (source.hp / source.maxhp);
+			const tarHP = (target.hp / target.maxhp);
+			source.sethp(tarHP * source.maxhp);
+			target.sethp(pokHP * target.maxhp);	
+			this.add('-message', tarHP);
+			this.add('-message', pokHP);
 		},
 		target: "normal",
 		type: "Fairy",
