@@ -114,7 +114,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "Duomod",
 	},
 	lemotic: {
-		randomBattleMoves: ["earthquake", "stealthelectric", "flipturn", "poisonjab", "aromatherapy", "wish", "protect", "leafblade"],
+		randomBattleMoves: ["earthquake", "stealthelectric", "flipturn", "poisonjab", "aromatherapy", "leafblade"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "Duomod",
