@@ -50,7 +50,7 @@ baloonpopped: {
 	types: ["Fairy", "Dark"],
 	gender: "N",
 	baseStats: {hp: 77, atk: 124, def: 122, spa: 122, spd: 12, spe: 143},
-	abilities: {0: "Obtrusive"},
+	abilities: {0: "Steadfast"},
 	heightm: 1,
 	weightkg: 5,
 		otherFormes: ["Baloon", "Baloon-Water"],
@@ -353,7 +353,7 @@ crazefly: {
 	types: ["Bug"],
 	gender: "N",
 	baseStats: {hp: 99, atk: 79, def: 85, spa: 86, spd: 101, spe: 54},
-	abilities: {0: "Gooey"},
+	abilities: {0: "Obtrusive"},
 	weightkg: 5,
 },
 pterrost: {
