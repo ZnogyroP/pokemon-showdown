@@ -95,8 +95,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 70,
 		onHit(target, source, move) {
-			if (target.storedStats.def > 0) {
-				this.boost({atk: target.storedStats.def}, target, source, move);
+			if (target.boosts[def] > 0) {
+				this.boost({def: -target.boosts[def]}, target, source, move);
 			}
 		},
 		category: "Physical",
