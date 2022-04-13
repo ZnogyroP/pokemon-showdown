@@ -3,6 +3,7 @@ export const Formats: {[k: string]: FormatData} = {
 		effectType: 'Rule',
 		name: 'Subscribe For More Content',
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
+		onResidualOrder: 99,
 		onResidual(pokemon) {
 		var result: number;
 		var pickSide: number;
