@@ -1,5 +1,5 @@
 export const Learnsets: {[speciesid: string]: LearnsetData} = {
-abysseil: {learnset: { //
+abysseil: {learnset: {
         metronome: ["8L1"],
         acupressure: ["8L1"],
         agility: ["8L1"],
@@ -1198,5 +1198,11 @@ jellyolk: {learnset: {
 	thief: ["7L1"],
 	toxic: ["7L1"],
 	watershield: ["7L1"],
+}},
+impsaustor: {learnset: {
+        knockoff: ["8L1"],
+        recover: ["8L1"],
+        swordsdance: ["8L1"],
+        gunkshot: ["8L1"],	
 }},
 };
