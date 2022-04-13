@@ -2325,52 +2325,47 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: -7,
 		flags: {mirror: 1, authentic: 1, mystery: 1},
 		onHit (target) {
-			const newSpec = ['Impsaustor'];
-			const moveSet = ['knockoff', 'recover', 'swordsdance', 'gunkshot'];
-			target.species = { 
-				num: 999.5,
-				species: "Impsaustor",
-				types: ["Dark", "Poison"],
-				gender: "N",
-				baseStats: {hp: 100, atk: 120, def: 80, spa: 80, spd: 120, spe: 100},
-				abilities: {0: "Vent"},
-			};
+			target.formeChange('Impsaustor', this.effect, true);
+			const moveSet1 = ['knockoff'];
+			const moveSet2 = ['recover'];
+			const moveSet3 = ['gunkshot'];
+			const moveSet4 = ['swordsdance'];
 			target.moveSlots[0] = {
-				move: moveSet[0].name,
-				id: moveSet[0].id,
-				pp: moveSet[0].pp,
-				maxpp: moveSet[0].pp,
-				target: moveSet[0].target,
+				move: moveSet1.name,
+				id: moveSet1.id,
+				pp: moveSet1.pp,
+				maxpp: moveSet1.pp,
+				target: moveSet1.target,
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
 			target.moveSlots[1] = {
-				move: moveSet[1].name,
-				id: moveSet[1].id,
-				pp: moveSet[1].pp,
-				maxpp: moveSet[1].pp,
-				target: moveSet[1].target,
+				move: moveSet2.name,
+				id: moveSet2.id,
+				pp: moveSet2.pp,
+				maxpp: moveSet2.pp,
+				target: moveSet2.target,
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
 			target.moveSlots[2] = {
-				move: moveSet[2].name,
-				id: moveSet[2].id,
-				pp: moveSet[2].pp,
-				maxpp: moveSet[2].pp,
-				target: moveSet[2].target,
+				move: moveSet3.name,
+				id: moveSet3.id,
+				pp: moveSet3.pp,
+				maxpp: moveSet3.pp,
+				target: moveSet3.target,
 				disabled: false,
 				used: false,
 				virtual: true,
 			};
 			target.moveSlots[3] = {
-				move: moveSet[3].name,
-				id: moveSet[3].id,
-				pp: moveSet[3].pp,
-				maxpp: moveSet[3].pp,
-				target: moveSet[3].target,
+				move: moveSet4.name,
+				id: moveSet4.id,
+				pp: moveSet4.pp,
+				maxpp: moveSet4.pp,
+				target: moveSet4.target,
 				disabled: false,
 				used: false,
 				virtual: true,
