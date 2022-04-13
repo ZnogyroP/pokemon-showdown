@@ -90,37 +90,24 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Bug",
 		contestType: "Cute",
 	},
-	striketheearth: {
+	dustknuckles: {
 		num: 3009,
 		accuracy: 100,
 		basePower: 70,
-		basePowerCallback(pokemon, target, move) {
-			if (!pokemon.volatiles['furycutter'] || move.hit === 1) {
-				pokemon.addVolatile('furycutter');
+		onHit(target, source, move) {
+			if (target.storedStats.def > 0) {
+				this.boost({atk: target.storedStats.def}, target, source, move);
 			}
-			return this.clampIntRange(move.basePower * pokemon.volatiles['furycutter'].multiplier, 1, 140);
 		},
 		category: "Physical",
-		shortDesc: "Power doubles if used last turn.",
-		name: "Strike the Earth",
+		shortDesc: "Removes foe's positive Defense boosts.",
+		name: "Dust Knuckles",
 		pp: 20,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 		onPrepareHit: function(target, source, move) {
 		    this.attrLastMove('[still]');
-		    this.add('-anim', source, "Bulldoze", target);
-		},
-		condition: {
-			duration: 2,
-			onStart() {
-				this.effectData.multiplier = 1;
-			},
-			onRestart() {
-				if (this.effectData.multiplier < 4) {
-					this.effectData.multiplier <<= 1;
-				}
-				this.effectData.duration = 2;
-			},
+		    this.add('-anim', source, "Close Combat", target);
 		},
 		secondary: null,
 		target: "normal",
