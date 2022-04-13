@@ -2394,10 +2394,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		onHit(target, source, move) {
 			const pokHP = (source.hp / source.maxhp);
 			const tarHP = (target.hp / target.maxhp);
-			source.sethp(tarHP * source.maxhp);
-			target.sethp(pokHP * target.maxhp);	
-			this.add('-message', tarHP);
-			this.add('-message', pokHP);
+			this.directDamage(tarHP * source.maxhp, source);
+			this.directDamage(pokHP * target.maxhp, target);
 		},
 		target: "normal",
 		type: "Fairy",
