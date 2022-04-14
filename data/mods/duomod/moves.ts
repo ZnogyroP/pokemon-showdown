@@ -2374,6 +2374,12 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			target.baseMoveSlots[2] = ms2;
 			target.moveSlots[3] = ms3;
 			target.baseMoveSlots[3] = ms3;
+			const oldAbility = target.setAbility('Vent');
+				if (oldAbility) {
+				this.add('-ability', target, 'Vent', '[from] move: Vote Out', '[silent]');
+				target.volatileStaleness = 'external';
+				return;
+			}
 			this.add('-message', target + " was the Impsaustor!");
 		},
 		secondary: null,
@@ -2398,6 +2404,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			this.add('-sethp', source, target.getHealth, '[from] move: Pain Split', '[silent]');
 			target.sethp(pokHP * target.maxhp);
 			this.add('-sethp', target, target.getHealth, '[from] move: Pain Split', '[silent]');
+			this.add('-message', "The Pokemon traded HP bars!");
 		},
 		target: "normal",
 		type: "Fairy",
