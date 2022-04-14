@@ -712,7 +712,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	        }
 
 		else if (result === 30) {
-			this.hint("Roulette Wheel Result 31 - Deactivates all abilities that are active within 5 turns.");
+			this.hint("Roulette Wheel Result 31 - Deactivates all abilities that are active within 2 turns.");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
