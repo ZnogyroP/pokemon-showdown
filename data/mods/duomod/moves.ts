@@ -272,7 +272,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			}
 		} 
 		this.hint("Time for a bonus wheel!");
-		result = this.random(40);
+		result = this.random(50);
 	        pickSide = this.random(2);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
