@@ -566,14 +566,12 @@ export const Formats: {[k: string]: FormatData} = {
 				const oldAbility = target.setAbility('Moody');
 				if (oldAbility) {
 					this.add('-ability', target, 'Moody', '[from] move: Roulette Spin');
-					return;
 				}
 			}
 			for (const target of this.sides[1].pokemon) {
 				const oldAbility = target.setAbility('Moody');
 				if (oldAbility) {
 					this.add('-ability', target, 'Moody', '[from] move: Roulette Spin');
-					return;
 				}
 			}
 		}
