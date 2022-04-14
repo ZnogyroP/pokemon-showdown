@@ -572,9 +572,9 @@ export const Formats: {[k: string]: FormatData} = {
 				const oldAbility = target.setAbility('Moody');
 				if (oldAbility) {
 					this.add('-ability', target, 'Moody', '[from] move: Roulette Spin');
+					return;
 				}
 			}
-			return;
 		}
 		
 		else if (result === 40) {
