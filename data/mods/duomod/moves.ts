@@ -215,6 +215,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (source?.hasItem('floatstone')) {
 					return 8;
 				}
+				for (const moveSlot of source.moveSlots) {
+					if (moveSlot.id !== 'neutralair') {
+						return 2;
+					}
+				}
 				return 5;				
 			},
 			onStart(target, source) {
