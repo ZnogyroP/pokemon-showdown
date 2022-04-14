@@ -2332,7 +2332,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			const ms0 = {
 				move: "Knock Off",
 				id: "knockoff",
-				pp: 20,
+				pp: 32,
 				maxpp: 32,
 				target: "normal",
 				disabled: false,
@@ -2342,7 +2342,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			const ms1 = {
 				move: "Recover",
 				id: "recover",
-				pp: 10,
+				pp: 16,
 				maxpp: 16,
 				target: "self",
 				disabled: false,
@@ -2350,10 +2350,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				virtual: true,
 			};
 			const ms2 = {
-				move: "Poison Jab",
-				id: "poisonjab",
-				pp: 20,
-				maxpp: 32,
+				move: "Gunk Shot",
+				id: "gunkshot",
+				pp: 8,
+				maxpp: 8,
 				target: "normal",
 				disabled: false,
 				used: false,
@@ -2362,7 +2362,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			const ms3 = {
 				move: "Swords Dance",
 				id: "swordsdance",
-				pp: 20,
+				pp: 32,
 				maxpp: 32,
 				target: "self",
 				disabled: false,
