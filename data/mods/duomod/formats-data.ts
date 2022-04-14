@@ -113,6 +113,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
+	impsaustor: {
+		tier: "Illegal",
+		doublesTier: "Illegal",
+	},
 	lemotic: {
 		randomBattleMoves: ["earthquake", "stealthelectric", "flipturn", "poisonjab", "aromatherapy", "leafblade"],
 		randomBattleLevel: 100,
