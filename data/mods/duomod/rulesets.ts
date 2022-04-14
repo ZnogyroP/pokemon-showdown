@@ -13,9 +13,9 @@ export const Formats: {[k: string]: FormatData} = {
 			}
 		} 
 
-		this.hint("Time for a bonus wheel!");
-		result = 39;
-		// result = this.random(50);
+		this.add('-message', "Time for the Roulette Wheel!");
+			
+		result = this.random(50);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
 	            for (const pokemon of this.getAllActive()) {
@@ -705,7 +705,7 @@ export const Formats: {[k: string]: FormatData} = {
 						const oldAbility = pokemon.setAbility('Slow Start');
 						if (oldAbility) {
 							this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner', '[silent]');
-							if (target.side !== pokemon.side) target.volatileStaleness = 'external';
+							if (target.side !== pokemon.side) pokemon.volatileStaleness = 'external';
 							return;
 						}
 					}
