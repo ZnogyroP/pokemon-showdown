@@ -563,7 +563,11 @@ export const Formats: {[k: string]: FormatData} = {
 		else if (result === 39) {
 			this.hint("Roulette Wheel Result 40 - Both active Pokemon become Moody.");
 			for (const pokemon of this.getAllActive()) {
-				this.add('-ability', pokemon, 'Moody', '[from] move: Roulette Spin');
+				const oldAbility = pokemon.setAbility('Moody');
+				if (oldAbility) {
+					this.add('-ability', pokemon, 'Moody', '[from] move: Roulette Spin');
+					return;
+				}
 			}
 		}
 		
@@ -680,7 +684,7 @@ export const Formats: {[k: string]: FormatData} = {
 						this.useMove("Flame Runner", pokemon);
 						const oldAbility = target.setAbility('Slow Start');
 						if (oldAbility) {
-							this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner');
+							this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner', '[silent]');
 							if (target.side !== pokemon.side) target.volatileStaleness = 'external';
 							return;
 						}
@@ -689,7 +693,7 @@ export const Formats: {[k: string]: FormatData} = {
 						this.useMove("Flame Runner", target);
 						const oldAbility = pokemon.setAbility('Slow Start');
 						if (oldAbility) {
-							this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner');
+							this.add('-ability', pokemon, 'Slow Start', '[from] move: Flame Runner', '[silent]');
 							if (target.side !== pokemon.side) target.volatileStaleness = 'external';
 							return;
 						}
