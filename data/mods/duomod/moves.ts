@@ -2332,9 +2332,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		],
 		onHit(target, source, effect) {
 			const moves: MoveData[] = [];
-			const typeList: ["Dark", "Bug", "Poison", "Fire", "Grass", "Water", "Electric", "Flying", "Ground", "Dragon", "Fairy", "Steel",];
-			for (const id in Moves) {
-				const move = Moves[id];
+			const typeList: ["Dark", "Bug", "Poison", "Fire", "Grass", "Water", "Electric", "Flying", "Ground", "Dragon", "Fairy", "Steel"];
+			for (const id in moves) {
+				const move = moves[id];
 				if (move.realMove) continue;
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
 				if (effect.noMetronome!.includes(move.name)) continue;
