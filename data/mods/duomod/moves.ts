@@ -2338,10 +2338,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (move.realMove) continue;
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
 				if (effect.noMetronome!.includes(move.name)) continue;
-				if (effect.typeList!.includes(move.type)) continue;
+				if (effect.typeList!.includes(this.dex.getMove(id).gen.type)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
 				moves.push(move);
 			}
+				
 			let randomMove = '';
 			if (moves.length) {
 				moves.sort((a, b) => a.num! - b.num!);
