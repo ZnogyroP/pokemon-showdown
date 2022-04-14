@@ -1927,6 +1927,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				return;
 			}
 			attacker.addVolatile('twoturnmove', defender);
+			this.attrLastMove('[still]');
+		   this.add('-anim', attacker, "Nasty Plot", attacker);
+			this.add('-message', attacker + " is forming a plan...");
 			return null;
 		},
 		boosts: {
