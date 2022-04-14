@@ -574,6 +574,7 @@ export const Formats: {[k: string]: FormatData} = {
 					this.add('-ability', target, 'Moody', '[from] move: Roulette Spin');
 				}
 			}
+			return;
 		}
 		
 		else if (result === 40) {
