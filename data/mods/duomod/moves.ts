@@ -2343,10 +2343,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				moves.push(move);
 			}
 				
-			let randomMove = '';
 			if (moves.length) {
 				moves.sort((a, b) => a.num! - b.num!);
-				randomMove = this.sample(moves);
+				let randomMove = Move | ActiveMove | null = this.sample(moves);
 				while (effect.typeList!.includes(randomMove.type)) {
 					randomMove = this.sample(moves);	
 				}
