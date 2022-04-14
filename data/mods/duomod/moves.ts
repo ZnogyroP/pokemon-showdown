@@ -2397,6 +2397,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 40,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit: function(target, source, move) {
+		    this.attrLastMove('[still]');
+		    this.add('-anim', source, "Heart Swap", target);
+		},
 		onHit(target, source, move) {
 			const pokHP = (source.hp / source.maxhp);
 			const tarHP = (target.hp / target.maxhp);
