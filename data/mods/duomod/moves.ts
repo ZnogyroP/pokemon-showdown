@@ -2346,15 +2346,15 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			let randomMove = '';
 			if (moves.length) {
 				moves.sort((a, b) => a.num! - b.num!);
-				randomMove = this.sample(moves).name;
-				while (effect.typeList!.includes(randomMove.type)) {
-					randomMove = this.sample(moves).name;	
+				randomMove = this.sample(moves);
+				while (randomMove.type) {
+					randomMove = this.sample(moves);	
 				}
 			}
 			if (!randomMove) {
 				return false;
 			}
-			this.useMove(randomMove, target);
+			this.useMove(randomMove.name, target);
 		},
 		secondary: null,
 		target: "self",
