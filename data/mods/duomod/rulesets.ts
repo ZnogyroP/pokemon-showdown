@@ -679,7 +679,7 @@ export const Formats: {[k: string]: FormatData} = {
 						this.useMove("Flame Runner", target);
 						const oldAbility = target.setAbility('Slow Start');
 						if (oldAbility) {
-							this.add('-ability', target, 'Slow Start, '[from] move: Flame Runner');
+							this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner');
 							if (target.side !== source.side) target.volatileStaleness = 'external';
 							return;
 						}
@@ -688,7 +688,7 @@ export const Formats: {[k: string]: FormatData} = {
 						this.useMove("Flame Runner", target);
 						const oldAbility = target.setAbility('Slow Start');
 						if (oldAbility) {
-							this.add('-ability', target, 'Slow Start, '[from] move: Flame Runner');
+							this.add('-ability', target, 'Slow Start', '[from] move: Flame Runner');
 							if (target.side !== source.side) target.volatileStaleness = 'external';
 							return;
 						}
