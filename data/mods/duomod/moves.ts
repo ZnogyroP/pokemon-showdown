@@ -2338,7 +2338,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (move.realMove) continue;
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
 				if (effect.noMetronome!.includes(move.name)) continue;
-				if (effect.typeList!.includes(this.type)) continue;
+				// if (effect.typeList!.includes(this.type)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
 				moves.push(move);
 			}
@@ -2347,6 +2347,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (moves.length) {
 				moves.sort((a, b) => a.num! - b.num!);
 				randomMove = this.sample(moves).name;
+				while (effect.typeList!.includes(randomMove.type)) {
+					randomMove = this.sample(moves).name;	
+				}
 			}
 			if (!randomMove) {
 				return false;
