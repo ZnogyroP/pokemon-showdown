@@ -2332,7 +2332,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		],
 		onHit(target, source, effect) {
 			const moves: MoveData[] = [];
-			// const typeList: ["Dark", "Bug", "Poison", "Fire", "Grass", "Water", "Electric", "Flying", "Ground", "Dragon", "Fairy", "Steel"];
+			const typeList: TypeData[] = ["Dark", "Bug", "Poison", "Fire", "Grass", "Water", "Electric", "Flying", "Ground", "Dragon", "Fairy", "Steel"];
 			for (const id in Moves) {
 				const move = Moves[id];
 				if (move.realMove) continue;
