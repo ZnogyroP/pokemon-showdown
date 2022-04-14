@@ -4,6 +4,7 @@ export const Formats: {[k: string]: FormatData} = {
 		name: 'Subscribe For More Content',
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
 		onResidual(pokemon) {
+			
 		var result: number;
 		const pickSide = this.random(2);
 
