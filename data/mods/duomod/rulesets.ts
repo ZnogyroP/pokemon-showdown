@@ -14,7 +14,7 @@ export const Formats: {[k: string]: FormatData} = {
 		} 
 
 		this.hint("Time for a bonus wheel!");
-		result = 47;
+		result = 46;
 		// result = this.random(50);
 		if (result === 0) {
 			this.hint("Roulette Wheel Result 1 - Fully heal every active Pokemon.");
