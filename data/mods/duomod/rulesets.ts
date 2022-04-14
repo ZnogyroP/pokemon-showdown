@@ -563,16 +563,16 @@ export const Formats: {[k: string]: FormatData} = {
 		else if (result === 39) {
 			this.hint("Roulette Wheel Result 40 - Both active Pokemon become Moody.");
 			for (const target of this.sides[0].pokemon) {
-				const oldAbility = pokemon.setAbility('Moody');
+				const oldAbility = target.setAbility('Moody');
 				if (oldAbility) {
-					this.add('-ability', pokemon, 'Moody', '[from] move: Roulette Spin');
+					this.add('-ability', target, 'Moody', '[from] move: Roulette Spin');
 					return;
 				}
 			}
 			for (const target of this.sides[1].pokemon) {
-				const oldAbility = pokemon.setAbility('Moody');
+				const oldAbility = target.setAbility('Moody');
 				if (oldAbility) {
-					this.add('-ability', pokemon, 'Moody', '[from] move: Roulette Spin');
+					this.add('-ability', target, 'Moody', '[from] move: Roulette Spin');
 					return;
 				}
 			}
