@@ -2324,7 +2324,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Metronome",
-		pp: 10,
+		pp: 40,
 		priority: 0,
 		flags: {},
 		noMetronome: [
