@@ -2622,11 +2622,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (typeCheck === 2 || typeCheck === 3) {
 					possibleTypes.push(type);
 				}
-				this.add("-message", possibleTypes);
 			}
 			if (!possibleTypes.length) {
 				return false;
 			}
+			this.add("-message", possibleTypes);
 			const randomType = this.sample(possibleTypes);
 
 			if (!source.setType(randomType)) return false;
