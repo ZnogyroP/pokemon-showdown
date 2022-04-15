@@ -2614,13 +2614,15 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (!target.lastMove) {
 				return false;
 			}
-			const types: possibleTypes[] = ['Bug', 'Poison', 'Dark', 'Grass', 'Fire', 'Water', 'Electric', 'Ground', 'Flying', 'Dragon', 'Steel', 'Fairy'];
+			const possibleTypes = [];
 			const attackType = target.lastMove.type;
 			for (const type in this.dex.data.TypeChart) {
 				if (source.hasType(type)) continue;
 				const typeCheck = this.dex.data.TypeChart[type].damageTaken[attackType];
 				if (typeCheck === 2 || typeCheck === 3) {
-					possibleTypes.push(type);
+					if (type !== 'Fighting' && type !== 'Ghost' && type !== 'Ice' && type !== 'Normal' && type !== 'Rock' && type !== 'Psychic') {
+						possibleTypes.push(type);
+					}
 				}
 			}
 			if (!possibleTypes.length) {
