@@ -1081,6 +1081,7 @@ spisces: {learnset: {
 	waterspout: ["7L1"],
 }},
 crazefly: {learnset: {
+	conversion: ["7L1"],
 	conversion2: ["7L1"],
 	acidspray: ["7L1"],
 	acupressure: ["7L1"],
