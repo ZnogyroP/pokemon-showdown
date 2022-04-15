@@ -2339,7 +2339,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (effect.noMetronome!.includes(move.name)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
 				if (move.type === 'Fighting' || move.type === 'Ghost' || move.type === 'Ice' || move.type === 'Normal' || move.type === 'Rock' || move.type === 'Psychic') continue;
-				this.add('-message', move.type); // move.name displays the name of every move
 				moves.push(move);
 			}
 			let randomMove = '';
@@ -2347,7 +2346,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				moves.sort((a, b) => a.num! - b.num!);
 				randomMove = this.sample(moves).name;
 			}
-			this.add('-message', randomMove); // DELETE LATER
 			if (!randomMove) {
 				return false;
 			}
