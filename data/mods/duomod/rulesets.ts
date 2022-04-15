@@ -3,6 +3,12 @@ export const Formats: {[k: string]: FormatData} = {
 		effectType: 'Rule',
 		name: 'Subscribe For More Content',
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
+		onBegin() {
+			this.add(`raw|<img src="https://media.discordapp.net/attachments/575738724680204329/909632559036629022/talkinchu.png" height="65" width="381">`);
+			
+		this.add('-message', "Welcome to Duomod!");
+			
+		}
 		onResidual(pokemon) {
 			
 		var result: number;
