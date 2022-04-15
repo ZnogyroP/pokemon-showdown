@@ -2622,6 +2622,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (typeCheck === 2 || typeCheck === 3) {
 					possibleTypes.push(type);
 				}
+				this.add("-message", possibleTypes);
 			}
 			if (!possibleTypes.length) {
 				return false;
