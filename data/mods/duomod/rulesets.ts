@@ -765,7 +765,7 @@ export const Formats: {[k: string]: FormatData} = {
 			pokemon.moveSlots[4] = {
 				move: "Metronome",
 				id: "metronome",
-				pp: 10,
+				pp: 5,
 				maxpp: 64,
 				target: "self",
 				disabled: false,
