@@ -2345,6 +2345,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				moves.sort((a, b) => a.num! - b.num!);
 				randomMove = this.sample(moves).name;
 			}
+			this.add('-message', moves); // DELETE LATER
 			if (!randomMove) {
 				return false;
 			}
@@ -2628,7 +2629,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (!possibleTypes.length) {
 				return false;
 			}
-			this.add("-message", possibleTypes);
 			const randomType = this.sample(possibleTypes);
 
 			if (!source.setType(randomType)) return false;
