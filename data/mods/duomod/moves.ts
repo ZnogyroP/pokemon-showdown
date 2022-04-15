@@ -2345,7 +2345,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				moves.sort((a, b) => a.num! - b.num!);
 				randomMove = this.sample(moves).name;
 			}
-			this.add('-message', this.dex.getMove(id)); // DELETE LATER
+			this.add('-message', randomMove); // DELETE LATER
 			if (!randomMove) {
 				return false;
 			}
