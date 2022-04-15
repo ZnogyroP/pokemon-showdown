@@ -4,9 +4,9 @@ export const Formats: {[k: string]: FormatData} = {
 		name: 'Subscribe For More Content',
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
 		onBegin() {
-			this.add(`raw|<img src="https://media.discordapp.net/attachments/575738724680204329/909632559036629022/talkinchu.png" height="605" width="547">`);
+			this.add(`raw|<img src="https://media.discordapp.net/attachments/575738724680204329/909632559036629022/talkinchu.png" height="454" width="411">`);
 			this.add('-message', "<b>Welcome to Duomod!</b>");		
-			this.add('-message', "A lot of crazy stuff can happen at the end of each turn here. For more information, please check this spreadsheet - ");	
+			this.add('-message', "A lot of crazy stuff can happen in this meta. For more information, please check this spreadsheet - ");	
 			this.add('-message', "https://docs.google.com/spreadsheets/d/1FO4wuxSQnquV5vubEHNVwEwrzZWjtR6gCt4RZRXBqdM/edit#gid=768503844");	
 		},
 		
