@@ -2601,4 +2601,40 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Fairy",
 		contestType: "Tough",
 	},
+	conversion2: {
+		num: 176,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Conversion 2",
+		pp: 30,
+		priority: 0,
+		flags: {authentic: 1},
+		onHit(target, source) {
+			if (!target.lastMove) {
+				return false;
+			}
+			const possibleTypes = ["Bug", "Poison", "Dark", "Grass", "Fire", "Water", "Electric", "Ground", "Flying", "Dragon", "Steel", "Fairy"];
+			const attackType = target.lastMove.type;
+			for (const type in this.dex.data.TypeChart) {
+				if (source.hasType(type)) continue;
+				const typeCheck = this.dex.data.TypeChart[type].damageTaken[attackType];
+				if (typeCheck === 2 || typeCheck === 3) {
+					possibleTypes.push(type);
+				}
+			}
+			if (!possibleTypes.length) {
+				return false;
+			}
+			const randomType = this.sample(possibleTypes);
+
+			if (!source.setType(randomType)) return false;
+			this.add('-start', source, 'typechange', randomType);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		zMove: {effect: 'heal'},
+		contestType: "Beautiful",
+	},
 };
