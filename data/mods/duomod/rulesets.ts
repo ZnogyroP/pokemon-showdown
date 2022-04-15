@@ -5,12 +5,11 @@ export const Formats: {[k: string]: FormatData} = {
 		desc: 'https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A',
 		onBegin() {
 			this.add(`raw|<img src="https://media.discordapp.net/attachments/575738724680204329/909632559036629022/talkinchu.png" height="65" width="381">`);
-			
-		this.add('-message', "Welcome to Duomod!");
-			
-		}
+			this.add('-message', "<b>Welcome to Duomod!</b>");		
+			this.add('-message', "A lot of crazy stuff can happen at the end of each turn here. For more information, please check this spreadsheet - ");	
+		},
+		
 		onResidual(pokemon) {
-			
 		var result: number;
 		const pickSide = this.random(2);
 
@@ -768,7 +767,7 @@ export const Formats: {[k: string]: FormatData} = {
 			} else {
 				this.add(`raw|<ul class="utilichart"><li class="result"><span class="col pokemonnamecol" style="white-space: nowrap">` + species.name + `</span> <span class="col typecol"><img src="https://${Config.routes.client}/sprites/types/${type}.png" alt="${type}" height="14" width="32"></span> <span style="float: left ; min-height: 26px"><span class="col abilitycol">` + abilities[0] + `</span><span class="col abilitycol"></span></span><span style="float: left ; min-height: 26px"><span class="col statcol"><em>HP</em><br>` + baseStats.hp + `</span> <span class="col statcol"><em>Atk</em><br>` + baseStats.atk + `</span> <span class="col statcol"><em>Def</em><br>` + baseStats.def + `</span> <span class="col statcol"><em>SpA</em><br>` + baseStats.spa + `</span> <span class="col statcol"><em>SpD</em><br>` + baseStats.spd + `</span> <span class="col statcol"><em>Spe</em><br>` + baseStats.spe + `</span> </span></li><li style="clear: both"></li></ul>`);
 			}
-			pokemon.moveSlots[4] = {
+			/* pokemon.moveSlots[4] = {
 				move: "Metronome",
 				id: "metronome",
 				pp: 5,
@@ -777,8 +776,7 @@ export const Formats: {[k: string]: FormatData} = {
 				disabled: false,
 				used: false,
 				virtual: true,
-			};
-			// this.add('-start', pokemon, 'Mimic', 'Metronome', '[silent]');
+			}; Maybe later, but for now, I'm not doing this. This would give each Pokemon 5 Metronomes in an additional moveslot.*/ 
 		},
 	},
 };
