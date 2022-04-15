@@ -772,7 +772,7 @@ export const Formats: {[k: string]: FormatData} = {
 				used: false,
 				virtual: true,
 			};
-			this.add('-start', pokemon, 'Mimic', 'Metronome', '[silent]');
+			// this.add('-start', pokemon, 'Mimic', 'Metronome', '[silent]');
 		},
 	},
 };
