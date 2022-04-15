@@ -2614,7 +2614,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (!target.lastMove) {
 				return false;
 			}
-			const possibleTypes = ["Bug", "Poison", "Dark", "Grass", "Fire", "Water", "Electric", "Ground", "Flying", "Dragon", "Steel", "Fairy"];
+			const possibleTypes = ["bug", "poison", "dark", "grass", "fire", "water", "electric", "ground", "flying", "dragon", "steel", "fairy"];
 			const attackType = target.lastMove.type;
 			for (const type in this.dex.data.TypeChart) {
 				if (source.hasType(type)) continue;
