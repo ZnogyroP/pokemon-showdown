@@ -353,7 +353,7 @@ crazefly: {
 	types: ["Bug"],
 	gender: "N",
 	baseStats: {hp: 99, atk: 79, def: 85, spa: 86, spd: 101, spe: 54},
-	abilities: {0: "Obtrusive"},
+	abilities: {0: "Gooey"},
 	weightkg: 5,
 },
 pterrost: {
