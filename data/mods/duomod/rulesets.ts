@@ -750,7 +750,7 @@ export const Formats: {[k: string]: FormatData} = {
 		effectType: 'Rule',
 		name: 'Duomod Data Mod',
 		desc: 'Gives data on stats, Ability and types when a Pokémon switches in.',
-		onStart(pokemon) {
+		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.getTypes(true).join('/'), '[silent]');
 			const species = this.dex.getSpecies(pokemon.species.name);
 			const abilities = species.abilities;
