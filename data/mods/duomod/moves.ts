@@ -2338,7 +2338,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				if (move.isZ || move.isMax || move.isNonstandard) continue;
 				if (effect.noMetronome!.includes(move.name)) continue;
 				if (this.dex.getMove(id).gen > this.gen) continue;
-				this.add('-message', move); // DELETE LATER
+				this.add('-message', move.name); // DELETE LATER
 				moves.push(move);
 			}
 			let randomMove = '';
