@@ -1062,7 +1062,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 	},
 	extremebeam: {
 		num: 3002,
-		accuracy: 100,
+		accuracy: 99,
 		basePower: 250,
 		category: "Special",
 		desc: "If this move is successful, the user begins to Bide.",
