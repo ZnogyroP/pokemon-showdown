@@ -412,19 +412,25 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			this.hint("Roulette Wheel Result 9 - Minimize every stat of one Pokemon.");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
-				if (target.isActive) {
+				if (target.isActive && target.hasAbility('contrary')) {
+					this.boost({atk: 12, def: 12, spa: 12, spd: 12, spe: 12}, target, target, null, true);
+				}
+				else if (target.isActive) {
 					this.boost({atk: -12, def: -12, spa: -12, spd: -12, spe: -12}, target, target, null, true);
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
-				if (target.isActive) {
+				if (target.isActive && target.hasAbility('contrary')) {
+					this.boost({atk: 12, def: 12, spa: 12, spd: 12, spe: 12}, target, target, null, true);
+				}
+				else if (target.isActive) {
 					this.boost({atk: -12, def: -12, spa: -12, spd: -12, spe: -12}, target, target, null, true);
 				}
 				}
 			}
-	        } 
+	   } 
 
 		else if (result === 9) {
 			this.hint("Roulette Wheel Result 10 - Forcibly switch every Pokemon.");
@@ -487,7 +493,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		else if (result === 14) {
 			this.hint("Roulette Wheel Result 15 - heard you guys liked scald");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Scald 2", pokemon);
+				this.useMove("Scald", pokemon);
 			}
 		}
 
@@ -755,9 +761,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		}
 
 		else if (result === 33) {
-			this.hint("Roulette Wheel Result 34 - Sets up Water Shield for both sides.");
+			this.hint("Roulette Wheel Result 34 - Sets up Aqua Ring for both sides.");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Water Shield", pokemon);
+				this.useMove("Aqua Ring", pokemon);
 			}
 		}
 
@@ -819,7 +825,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		}
 		
 		else if (result === 39) {
-			this.hint("Roulette Wheel Result 40 - hope you're ready for this one lmao");
+			this.hint("Roulette Wheel Result 40 - get ready");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 					const oldAbility = target.setAbility('Moody');
@@ -885,7 +891,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		}
 			
 		else if (result === 43) {
-			this.hint("Roulette Wheel Result 44 - don't get critted lmao");
+			this.hint("Roulette Wheel Result 44 - One active Pokemon gains a higher crit rate.");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
@@ -903,7 +909,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		}	
 			
 		else if (result === 44) {
-			this.hint("Roulette Wheel Result 45 - You get a bonus!");
+			this.hint("Roulette Wheel Result 45 - One new spin for each active Pokemon!");
 			for (const pokemon of this.getAllActive()) {
 				this.useMove("Roulette Spin", pokemon);
 			}
@@ -986,8 +992,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			this.add('-message', "With 4 hours of content right now and more to come, your boredom will soar off into space!");
 			this.add('-message', "Plus, as a special promotional bonus, if you subscribe now, you'll get to say you knew him before it was cool!");
 			this.add('-message', "Head on over to DuoM2's YouTube channel for the time of your life! Linked down below!");
-			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
-			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
 			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
 			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
 			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
@@ -2569,6 +2573,18 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				return;
 			}
 			this.add('-message', target + " was the Impsaustor!");
+			this.add('-start', target, 'typechange', target.getTypes(true).join('/'), '[silent]');
+			const species = this.dex.getSpecies(target.species.name);
+			const abilities = species.abilities;
+			const baseStats = species.baseStats;
+			const type = species.types[0];
+			if (species.types[1]) {
+				const type2 = species.types[1];
+				this.add(`raw|<ul class="utilichart"><li class="result"><span class="col pokemonnamecol" style="white-space: nowrap">` + species.name + `</span> <span class="col typecol"><img src="https://${Config.routes.client}/sprites/types/${type}.png" alt="${type}" height="14" width="32"><img src="https://${Config.routes.client}/sprites/types/${type2}.png" alt="${type2}" height="14" width="32"></span> <span style="float: left ; min-height: 26px"><span class="col abilitycol">` + abilities[0] + `</span><span class="col abilitycol"></span></span><span style="float: left ; min-height: 26px"><span class="col statcol"><em>HP</em><br>` + baseStats.hp + `</span> <span class="col statcol"><em>Atk</em><br>` + baseStats.atk + `</span> <span class="col statcol"><em>Def</em><br>` + baseStats.def + `</span> <span class="col statcol"><em>SpA</em><br>` + baseStats.spa + `</span> <span class="col statcol"><em>SpD</em><br>` + baseStats.spd + `</span> <span class="col statcol"><em>Spe</em><br>` + baseStats.spe + `</span> </span></li><li style="clear: both"></li></ul>`);
+			} else {
+				this.add(`raw|<ul class="utilichart"><li class="result"><span class="col pokemonnamecol" style="white-space: nowrap">` + species.name + `</span> <span class="col typecol"><img src="https://${Config.routes.client}/sprites/types/${type}.png" alt="${type}" height="14" width="32"></span> <span style="float: left ; min-height: 26px"><span class="col abilitycol">` + abilities[0] + `</span><span class="col abilitycol"></span></span><span style="float: left ; min-height: 26px"><span class="col statcol"><em>HP</em><br>` + baseStats.hp + `</span> <span class="col statcol"><em>Atk</em><br>` + baseStats.atk + `</span> <span class="col statcol"><em>Def</em><br>` + baseStats.def + `</span> <span class="col statcol"><em>SpA</em><br>` + baseStats.spa + `</span> <span class="col statcol"><em>SpD</em><br>` + baseStats.spd + `</span> <span class="col statcol"><em>Spe</em><br>` + baseStats.spe + `</span> </span></li><li style="clear: both"></li></ul>`);
+			}
+			this.add('-start', target, 'typechange', target.species.types.join('/'), '[silent]');
 		},
 		secondary: null,
 		target: "normal",
