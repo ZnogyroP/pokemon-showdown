@@ -219,7 +219,7 @@ impsaustor: {
 	species: "Impsaustor",
 	types: ["Dark", "Poison"],
 	gender: "N",
-	baseStats: {hp: 100, atk: 120, def: 80, spa: 80, spd: 120, spe: 100},
+	baseStats: {hp: 100, atk: 120, def: 80, spa: 80, spd: 120, spe: 100}, // i'm so freaking tired i did this to be funny lmao
 	abilities: {0: "Vent"},
 	heightm: 1,
 	weightkg: 5,
@@ -393,5 +393,16 @@ jellyolk: {
 	baseStats: {hp: 71, atk: 67, def: 67, spa: 105, spd: 71, spe: 61},
 	abilities: {0: "Magic Guard"},
 	weightkg: 5,
+},
+fairydisc: {
+	num: 36.5,
+	species: "Fairydisc",
+	types: ["Fairy", "Steel"],
+	gender: "N",
+	baseStats: {hp: 200, atk: 100, def: 125, spa: 100, spd: 125, spe: 250},
+	abilities: {0: "Magic Body"},
+	heightm: 1,
+	weightkg: 5,
+	eggGroups: ["Undiscovered"],
 },
 };
