@@ -163,19 +163,25 @@ export const Formats: {[k: string]: FormatData} = {
 			this.hint("Roulette Wheel Result 9 - Minimize every stat of one Pokemon.");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
-				if (target.isActive) {
+				if (target.isActive && target.hasAbility('contrary')) {
+					this.boost({atk: 12, def: 12, spa: 12, spd: 12, spe: 12}, target, target, null, true);
+				}
+				else if (target.isActive) {
 					this.boost({atk: -12, def: -12, spa: -12, spd: -12, spe: -12}, target, target, null, true);
 				}
 				}
 			}
 			else if (pickSide === 1) {
 				for (const target of this.sides[1].pokemon) {
-				if (target.isActive) {
+				if (target.isActive && target.hasAbility('contrary')) {
+					this.boost({atk: 12, def: 12, spa: 12, spd: 12, spe: 12}, target, target, null, true);
+				}
+				else if (target.isActive) {
 					this.boost({atk: -12, def: -12, spa: -12, spd: -12, spe: -12}, target, target, null, true);
 				}
 				}
 			}
-	        } 
+	   } 
 
 		else if (result === 9) {
 			this.hint("Roulette Wheel Result 10 - Forcibly switch every Pokemon.");
@@ -238,7 +244,7 @@ export const Formats: {[k: string]: FormatData} = {
 		else if (result === 14) {
 			this.hint("Roulette Wheel Result 15 - heard you guys liked scald");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Scald 2", pokemon);
+				this.useMove("Scald", pokemon);
 			}
 		}
 
@@ -506,9 +512,9 @@ export const Formats: {[k: string]: FormatData} = {
 		}
 
 		else if (result === 33) {
-			this.hint("Roulette Wheel Result 34 - Sets up Water Shield for both sides.");
+			this.hint("Roulette Wheel Result 34 - Sets up Aqua Ring for both sides.");
 			for (const pokemon of this.getAllActive()) {
-				this.useMove("Water Shield", pokemon);
+				this.useMove("Aqua Ring", pokemon);
 			}
 		}
 
@@ -570,7 +576,7 @@ export const Formats: {[k: string]: FormatData} = {
 		}
 		
 		else if (result === 39) {
-			this.hint("Roulette Wheel Result 40 - hope you're ready for this one lmao");
+			this.hint("Roulette Wheel Result 40 - get ready");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 					const oldAbility = target.setAbility('Moody');
@@ -636,7 +642,7 @@ export const Formats: {[k: string]: FormatData} = {
 		}
 			
 		else if (result === 43) {
-			this.hint("Roulette Wheel Result 44 - don't get critted lmao");
+			this.hint("Roulette Wheel Result 44 - One active Pokemon gains a higher crit rate.");
 			if (pickSide === 0) {
 				for (const target of this.sides[0].pokemon) {
 				if (target.isActive) {
@@ -654,7 +660,7 @@ export const Formats: {[k: string]: FormatData} = {
 		}	
 			
 		else if (result === 44) {
-			this.hint("Roulette Wheel Result 45 - You get a bonus!");
+			this.hint("Roulette Wheel Result 45 - One new spin for each active Pokemon!");
 			for (const pokemon of this.getAllActive()) {
 				this.useMove("Roulette Spin", pokemon);
 			}
@@ -737,8 +743,6 @@ export const Formats: {[k: string]: FormatData} = {
 			this.add('-message', "With 4 hours of content right now and more to come, your boredom will soar off into space!");
 			this.add('-message', "Plus, as a special promotional bonus, if you subscribe now, you'll get to say you knew him before it was cool!");
 			this.add('-message', "Head on over to DuoM2's YouTube channel for the time of your life! Linked down below!");
-			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
-			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
 			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
 			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
 			this.add('-message', "https://www.youtube.com/channel/UCvVihnVokWwZ4NpeMsBk48A/");
