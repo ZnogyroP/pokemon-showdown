@@ -502,4 +502,15 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 5,
 		num: 3018,
 	},
+	magicbody: {
+		name: "Magic Body",
+		onResidualOrder: 5,
+		onResidualSubOrder: 5,
+		onResidual(pokemon) {
+			this.heal(pokemon.baseMaxhp / 16);
+		},
+		name: "Magic Body",
+		rating: 5,
+		num: 3019,
+	},
 };
