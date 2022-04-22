@@ -183,7 +183,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Duomod",
 		doublesTier: "Duomod",
 	},
-		spisces: {
+	spisces: {
 		randomBattleMoves: ["fireblast", "hydropump", "nastyplot", "dazzlinggleam"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
@@ -209,6 +209,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	jellyolk: {
 		randomBattleMoves: ["shellsmash", "sludgebomb", "energyball", "surf"],
+		randomBattleLevel: 100,
+		tier: "Duomod",
+		doublesTier: "DOUomod",
+	},
+	fairydisc: {
+		randomBattleMoves: ["metronome"],
 		randomBattleLevel: 100,
 		tier: "Duomod",
 		doublesTier: "DOUomod",
