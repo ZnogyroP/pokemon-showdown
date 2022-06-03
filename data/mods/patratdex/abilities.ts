@@ -96,7 +96,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (target.transformed) {
 				this.damage(source.baseMaxhp / 4, source, target);
 				this.add('-message', "deez nuts");
-				target.formeChange('Ostrata', move);
+				target.formeChange('Ostrata', move, true);
 			}
 		},
 		onSourceTryPrimaryHit(target, source, effect) {
@@ -108,10 +108,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				// source.species.baseSpecies === Ostrata
 				// source.species.name === Ostrata
 				// source.species.id === ostrata
-				this.add('-message', source.transformed);
-				this.add('-message', source.species.forme);
-				this.add('-message', this.effectData.target.baseSpecies.baseSpecies);
-				source.formeChange('Ostrata-Hammer', effect);
+				// source.transformed === false
+				// source.species.forme === blank
+				// this.add('-message', source.transformed);
+				source.formeChange('Ostrata-Hammer', this.effect, true);
 			}
 		},
 		isPermanent: true,
