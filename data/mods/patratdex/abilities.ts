@@ -103,7 +103,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead') &&
 				source.species.name === 'Ostrata' && !source.transformed
 			) {
-				source.formeChange(forme, effect);
+				source.formeChange('Ostrata-Hammer', effect);
 			}
 		},
 		isPermanent: true,
