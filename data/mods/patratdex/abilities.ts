@@ -73,7 +73,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.debug('compoundeyes - enhancing accuracy');
 			return accuracy * 1.3;
 		},
-		name: "Electro-Reception",
+		name: "Electroreception",
 		rating: 3,
 		num: 9003,
 	},
