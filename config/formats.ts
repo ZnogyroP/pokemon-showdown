@@ -53,7 +53,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	},
 	
 	
-	{
+/*	{
         name: "[Gen 8] Patratdex",
         desc: `<b>Patratdex</b>: Galvantic's Solomod, containing a new regional dex with 151 Fakemon and some new abilities.`,
         mod: 'patrtdex',
@@ -65,7 +65,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			onSwitchIn(pokemon) {
         		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         	},	
-	},
+	}, */
 	
 	{
 		name: "[Gen 8] Random Battle",
