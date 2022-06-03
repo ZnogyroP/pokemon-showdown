@@ -148,5 +148,5 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = { //
 		name: "Raingrow",
 		rating: 1,
 		num: 9007,
-	}, //
+	},
 };
