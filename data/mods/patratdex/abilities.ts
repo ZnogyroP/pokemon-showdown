@@ -95,14 +95,16 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			//if (target.isSemiInvulnerable()) return;
 			if (target.species.name === 'Ostrata-Hammer') {
 				this.damage(source.baseMaxhp / 4, source, target);
+				this.add('-message', "deez nuts");
 				target.formeChange('Ostrata', move);
 			}
 		},
 		onSourceTryPrimaryHit(target, source, effect) {
-			if (source.species.baseSpecies !== 'Ostrata' || source.transformed) return;
+			if (source.species.baseSpecies !== 'Ostrata' || source.species.name === 'Ostrata-Hammer') return;
 			if (
 				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead')
 			) {
+				this.add('-message', "ping");
 				source.formeChange('Ostrata-Hammer', effect);
 			}
 		},
