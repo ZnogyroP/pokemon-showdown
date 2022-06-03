@@ -26,7 +26,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			onSwitchIn(pokemon) {
         		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         	},	
-	},
+	}, //
 	
 	{
 		name: "[Gen 8] Duomod Randbats",
