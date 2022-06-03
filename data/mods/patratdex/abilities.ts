@@ -1,4 +1,4 @@
-export const Abilities: {[abilityid: string]: ModdedAbilityData} = { // 
+export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
   	chitinize: {
   		onModifyTypePriority: -1,
   		onModifyType(move, pokemon) {
