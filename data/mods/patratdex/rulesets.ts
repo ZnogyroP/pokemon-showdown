@@ -5,7 +5,8 @@ export const Formats: {[k: string]: FormatData} = {
 		desc: "Bans all previously-existing Pokemon.",
 		onValidateSet(set) {
 			const species = this.dex.getSpecies(set.species);
-			if (species.num < 1000) {
+			const exceptions = ["onix", "onixpatratdex", "wobbuffet", "wobbuffetpatratdex", "spoink", "spoinkpatratdex", "wynaut", "wynautpatratdex", "luvdisc", "luvdiscpatratdex", "carnivine", "carnivinepatratdex", "patrat", "patratpatratdex", "watchog", "watchogpatratdex", "vanillite", "valillitepatratdex", "vanillish", "vanillishpatratdex", "vanilluxe", "vanilluxepatratdex", "litwick", "litwickpatratdex", "lampent", "lampentpatratdex", "chandelure", "chandelurepatratdex",]
+			if ((exceptions!.includes(species.name) || (species.num < 1000)) {
         return [
 							"Previously-existing Pokemon are banned. Please use the Pokemon created for this mod.",
 						];
