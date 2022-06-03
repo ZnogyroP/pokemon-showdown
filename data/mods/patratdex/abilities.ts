@@ -95,15 +95,21 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (target.transformed || target.isSemiInvulnerable()) return;
 			if (['ostratahammer'].includes(target.species.id)) {
 				this.damage(source.baseMaxhp / 4, source, target);
+				if (target.species.id === 'ostratahammer') {
+					this.boost({def: -1}, source, target, null, true);
+				} else {
+					source.trySetStatus('par', target, move);
+				}
 				target.formeChange('ostrata', move);
 			}
 		},
 		onSourceTryPrimaryHit(target, source, effect) {
 			if (
-				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead') &&
+				effect && effect.id === 'drillrun' && source.hasAbility('hammerhead') &&
 				source.species.name === 'Ostrata' && !source.transformed
 			) {
-				source.formeChange('Ostrata-Hammer', effect);
+				const forme = source.hp <= source.maxhp / 2 ? 'ostratahammer' : 'ostratahammer';
+				source.formeChange(forme, effect);
 			}
 		},
 		isPermanent: true,
