@@ -1264,7 +1264,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = { //
 		num: 9122,
 		name: "Ostrata",
 		types: ["Ground"],
-		baseStats: {hp: 70, atk: 102, def: 60, spa: 255, spd: 65, spe: 123},
+		baseStats: {hp: 70, atk: 102, def: 60, spa: 55, spd: 65, spe: 123},
 		abilities: {0: "Hammer Head"},
 		weightkg: 125,
 		requiredAbility: "Hammer Head",
