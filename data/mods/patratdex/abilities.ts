@@ -105,7 +105,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = { //
 				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead')
 			) {
 				if (source.transformed) return;
-				this.add('-message', "ping");
+				this.add('-message', source.species.baseSpecies, source.species.name, source.transformed);
 				source.formeChange('Ostrata-Hammer', effect);
 			}
 		},
