@@ -91,6 +91,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 
  	hammerhead: {
+		onStart(pokemon) {
+			delete this.effectData.forme;
+			source.transformed = false	
+		},
 		onDamagingHit(damage, target, source, move) {
 			//if (target.isSemiInvulnerable()) return;
 			if (target.transformed) {
