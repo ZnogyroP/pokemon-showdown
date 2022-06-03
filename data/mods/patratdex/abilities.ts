@@ -107,10 +107,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = { //
 				if (source.transformed) return;
 				// source.species.baseSpecies === Ostrata
 				// source.species.name === Ostrata
-				//
-				this.add('-message', source.species.baseSpecies);
-				this.add('-message', source.species.name);
-				this.add('-message', source.species.id);
+				// source.species.id === ostrata
+				this.add('-message', source.transformed);
+				this.add('-message', source.species.forme);
+				this.add('-message', this.effectData.target.baseSpecies.baseSpecies);
 				source.formeChange('Ostrata-Hammer', effect);
 			}
 		},
