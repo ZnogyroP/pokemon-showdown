@@ -99,9 +99,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = { //
 			}
 		},
 		onSourceTryPrimaryHit(target, source, effect) {
+			if (source.species.baseSpecies !== 'Ostrata' || source.transformed) return;
 			if (
-				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead') &&
-				source.species.name === 'Ostrata' && !source.transformed
+				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead')
 			) {
 				source.formeChange('Ostrata-Hammer', effect);
 			}
