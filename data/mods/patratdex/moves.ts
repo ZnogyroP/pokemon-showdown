@@ -30,7 +30,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
         this.add('-fail', pokemon, 'move: Citrus Blast');
         return null;
       }
-    }
+    },
     secondary: null,
 		target: "normal",
 		type: "Grass",
@@ -187,7 +187,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
-    multihit: 3,
+   	multihit: 3,
 		secondary: null,
 		target: "normal",
 		type: "Electric",
