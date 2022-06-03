@@ -4,7 +4,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 20,
 		category: "Physical",
-		name: "Fury Swipes",
+		name: "Buckshot",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
@@ -103,7 +103,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
-		name: "Fire Lash",
+		name: "Magma Lash",
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
@@ -118,12 +118,12 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		contestType: "Cute",
 	},
 
-  grassyterrain: {
+  naturesbounty: {
 		num: 9006,
 		accuracy: 100,
 		basePower: 100,
 		category: "Physical",
-		name: "Grassy Terrain",
+		name: "Nature's Bounty",
 		pp: 5,
 		priority: 0,
 		flags: {nonsky: 1},
