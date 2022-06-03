@@ -99,7 +99,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			//if (target.isSemiInvulnerable()) return;
 			if (target.transformed) {
 				this.damage(source.baseMaxhp / 4, source, target);
-				this.add('-message', "deez nuts");
 				target.formeChange('Ostrata', move, true);
 			}
 		},
@@ -109,10 +108,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				effect && (effect.id === 'drillrun' || effect.id === 'dig') && source.hasAbility('hammerhead')
 			) {
 				if (source.transformed) return;
-				// source.species.baseSpecies === Ostrata
-				// source.species.name === Ostrata
-				// source.species.id === ostrata
-				// this.add('-message', source.transformed);
 				source.formeChange('Ostrata-Hammer', this.effect);
 				source.transformed = true
 			}
