@@ -71,7 +71,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
-		onBasePower(basePower, source, target, move) {
+		basePowerCallback(pokemon, target, move) {
 			const item = source.getItem();
 			if (!item.fling) return false;
 			return item.fling.basePower;
