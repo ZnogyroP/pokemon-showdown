@@ -5,7 +5,7 @@ threedy: {
 	types: ["Dark", "Steel"],
 	baseStats: {hp: 90, atk: 130, def: 105, spa: 105, spd: 65, spe: 85},
 	abilities: {0: "Magician", 1: "Klutz", H: "Technician"},
-	weightkg: 105,
+	weightkg: 158,
 },
 amvip: {
 	num: 2.5,
@@ -13,7 +13,7 @@ amvip: {
 	types: ["Poison", "Ground"],
 	baseStats: {hp: 70, atk: 98, def: 79, spa: 42, spd: 84, spe: 107},
 	abilities: {0: "Analytic", 1: "Strong Jaw", H: "Keen Eye"},
-	weightkg: 79,
+	weightkg: 27,
 },
 capsaken: {
 	num: 3.5,
@@ -21,7 +21,7 @@ capsaken: {
 	types: ["Fire", "Dark"],
 	baseStats: {hp: 95, atk: 104, def: 95, spa: 67, spd: 67, spe: 94},
 	abilities: {0: "Vital Spirit", 1: "Intimidate", H: "Magic Guard"},
-	weightkg: 95,
+	weightkg: 20,
 },
 shinamako: {
 	num: 4.5,
@@ -29,7 +29,7 @@ shinamako: {
 	types: ["Water", "Fighting"],
 	baseStats: {hp: 72, atk: 85, def: 96, spa: 76, spd: 100, spe: 73},
 	abilities: {0: "Water Absorb", 1: "Poison Heal", H: "Merciless"},
-	weightkg: 96,
+	weightkg: 1,
 },
 abrakin: {
 	num: 5.5,
@@ -37,7 +37,7 @@ abrakin: {
 	types: ["Psychic", "Fire"],
 	baseStats: {hp: 85, atk: 80, def: 85, spa: 105, spd: 85, spe: 100},
 	abilities: {0: "Oblivious", 1: "Prankster", H: "Trace"},
-	weightkg: 85,
+	weightkg: 1,
 },
 avasterror: {
 	num: 6.5,
@@ -45,7 +45,7 @@ avasterror: {
 	types: ["Water", "Ghost"],
 	baseStats: {hp: 70, atk: 70, def: 80, spa: 120, spd: 110, spe: 150},
 	abilities: {0: "Magician", 1: "Klutz", H: "Technician"},
-	weightkg: 80,
+	weightkg: 400,
 },
 dustrake: {
 	num: 7.5,
@@ -53,7 +53,7 @@ dustrake: {
 	types: ["Dragon", "Ground"],
 	baseStats: {hp: 100, atk: 73, def: 94, spa: 117, spd: 83, spe: 63},
 	abilities: {0: "Water Compaction", 1: "Sand Force", H: "Own Tempo"},
-	weightkg: 94,
+	weightkg: 121,
 },
 eneryth: {
 	num: 8.5,
@@ -61,7 +61,7 @@ eneryth: {
 	types: ["Electric", "Rock"],
 	baseStats: {hp: 73, atk: 61, def: 61, spa: 111, spd: 73, spe: 191},
 	abilities: {0: "Speed Boost", 1: "Multiscale", H: "Contrary"},
-	weightkg: 61,
+	weightkg: 2,
 },
 skyrider: {
 	num: 9.5,
@@ -69,7 +69,7 @@ skyrider: {
 	types: ["Steel", "Flying"],
 	baseStats: {hp: 95, atk: 92, def: 75, spa: 80, spd: 75, spe: 113},
 	abilities: {0: "Pressure", 1: "Mirror Armor", H: "Aerilate"},
-	weightkg: 75,
+	weightkg: 1,
 },
 tusquoka: {
 	num: 10.5,
@@ -77,7 +77,7 @@ tusquoka: {
 	types: ["Normal"],
 	baseStats: {hp: 90, atk: 110, def: 75, spa: 85, spd: 90, spe: 120},
 	abilities: {0: "Normalize", H: "Scrappy"},
-	weightkg: 75,
+	weightkg: 1,
 },
 turbulusk: {
 	num: 11.5,
@@ -89,10 +89,13 @@ turbulusk: {
 },
 turbuluskairborne: {
 	num: 12.5,
-	species: "Turbuluskairborne",
+	species: "Turbulusk-Airborne",
+	baseSpecies: "Turbulusk",
+	forme: "Airborne",
 	types: ["Bug", "Flying"],
 	baseStats: {hp: 100, atk: 110, def: 40, spa: 70, spd: 80, spe: 120},
 	abilities: {0: "Filter", 1: "Tough Claws", H: "Delta Stream"},
-	weightkg: 40,
+	weightkg: 1,
+	battleOnly: "Turbulusk",
 },
 );
