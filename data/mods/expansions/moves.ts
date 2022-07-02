@@ -245,6 +245,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				return false;
 			}
 			else {
+				pokemon.addVolatile('embargo');
 				attacker.addVolatile('energybreaker');
 				defender.addVolatile('energybreaker');
 			}
@@ -252,10 +253,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		condition: {
 			duration: 1,
 			onStart(pokemon) {
-				this.add('-endability', pokemon);
-				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'energybreaker');
-				if (pokemon.m.innates) (pokemon.m.innates as string[]).forEach(innate => pokemon.removeVolatile("ability" + innate));
-				this.add('-start', pokemon, 'Embargo');
+				pokemon.addVolatile('embargo');
+				pokemon.addVolatile('gastroacid');
 			},
 			onCopy(pokemon) {
 				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('energyrbeaker');
