@@ -13,7 +13,8 @@ export const Formats: {[k: string]: FormatData} = {
         		target: "normal",
       		disabled: false,
        		used: false,
-     		};        
+     		};
+			side0.baseMoveSlots[side0.baseMoveSlots.length] = side0.moveSlots[side0.moveSlots.length - 1]
 		}
 
       for (const side1 of this.sides[1].pokemon) { // i had to do both sides individually from lack of knowledge in this language, if anyone knows of a way to condense this then feel free to let me know
@@ -26,6 +27,7 @@ export const Formats: {[k: string]: FormatData} = {
       		disabled: false,
        		used: false,
      		};        
+			side1.baseMoveSlots[side1.baseMoveSlots.length] = side1.moveSlots[side0.moveSlots.length - 1]
 		}
 	 },
 	},
