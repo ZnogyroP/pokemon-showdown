@@ -12,6 +12,55 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		},
 	},
 	
+	fifthmove: {
+		num: 3000,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Fifth Move",
+		pp: 1,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		onHit(target, source, effect) {
+			if (source.species.name === 'Threedy') {
+				this.useMove("Replicate", source);
+			}
+			if (source.species.name === 'Amvip') {
+				this.useMove("Lethal Fang", source);
+			}
+			if (source.species.name === 'Capsaken') {
+				this.useMove("Revitalize", source);
+			}
+			if (source.species.name === 'Shinamako') {
+				this.useMove("Cumbersome Crash", source);
+			}
+			if (source.species.name === 'Abrakin') {
+				this.useMove("Curse of the Moon", source);
+			}
+			if (source.species.name === 'Avasterror') {
+				this.useMove("Poseidon's Breath", source);
+			}
+			if (source.species.name === 'Dustrake') {
+				this.useMove("Duststorm Whip-Up", source);
+			}
+			if (source.species.name === 'Eneryth') {
+				this.useMove("Energy Breaker", source);
+			}
+			if (source.species.name === 'Skyrider') {
+				this.useMove("Final Judgment", source);
+			}
+			if (source.species.name === 'Tusquoka') {
+				this.useMove("Enforcer Punch", source);
+			}
+			if (source.species.name === 'Turbulusk') {
+				this.useMove("Liftoff", source);
+			}
+		},
+		target: "self",
+		type: "Normal",
+		contestType: "Cute",
+	},
+	
 	replicate: {
 		num: 3001,
 		accuracy: 100,
