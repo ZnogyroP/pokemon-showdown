@@ -23,37 +23,37 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		onHit(target, source, effect) {
 			this.add('-message', source.species.name);
-			if (source.species.name === 'Threedy') {
+			if (source.species.name === 'Threedy' || source.species.name === 'threedy') {
 				this.useMove("Replicate", source);
 			}
-			if (source.species.name === 'Amvip') {
+			if (source.species.name === 'Amvip' || source.species.name === 'amvip') {
 				this.useMove("Lethal Fang", source);
 			}
-			if (source.species.name === 'Capsaken') {
+			if (source.species.name === 'Capsaken' || source.species.name === 'capsaken') {
 				this.useMove("Revitalization", source);
 			}
-			if (source.species.name === 'Shinamako') {
+			if (source.species.name === 'Shinamako' || source.species.name === 'shinamako') {
 				this.useMove("Cumbersome Crash", source);
 			}
-			if (source.species.name === 'Abrakin') {
+			if (source.species.name === 'Abrakin' || source.species.name === 'abrakin') {
 				this.useMove("Curse of the Moon", source);
 			}
-			if (source.species.name === 'Avasterror') {
+			if (source.species.name === 'Avasterror' || source.species.name === 'avasterror') {
 				this.useMove("Poseidon's Breath", source);
 			}
-			if (source.species.name === 'Dustrake') {
+			if (source.species.name === 'Dustrake' || source.species.name === 'dustrake') {
 				this.useMove("Duststorm Whip-Up", source);
 			}
-			if (source.species.name === 'Eneryth') {
+			if (source.species.name === 'Eneryth' || source.species.name === 'eneryth') {
 				this.useMove("Energy Breaker", source);
 			}
-			if (source.species.name === 'Skyrider') {
+			if (source.species.name === 'Skyrider' || source.species.name === 'skyrider') {
 				this.useMove("Final Judgment", source);
 			}
-			if (source.species.name === 'Tusquoka') {
+			if (source.species.name === 'Tusquoka' || source.species.name === 'tusquoka') {
 				this.useMove("Enforcer Punch", source);
 			}
-			if (source.species.name === 'Turbulusk') {
+			if (source.species.name === 'Turbulusk' || source.species.name === 'turbulusk') {
 				this.useMove("Liftoff", source);
 			}
 		},
