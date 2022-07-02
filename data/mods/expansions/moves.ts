@@ -245,8 +245,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				return false;
 			}
 			else {
-				pokemon.addVolatile('embargo');
+				attacker.addVolatile('embargo');
 				attacker.addVolatile('energybreaker');
+				defender.addVolatile('embargo');
 				defender.addVolatile('energybreaker');
 			}
 		},
