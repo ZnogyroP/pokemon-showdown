@@ -15,7 +15,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Amvip') {
             side0.moveSlots[4] = {
@@ -28,6 +29,7 @@ export const Formats: {[k: string]: FormatData} = {
        			used: false,
      			  virtual: true,
      		  };    
+			 }    
 
           if (side0.baseSpecies.baseSpecies === 'Capsaken') {
             side0.moveSlots[4] = {
@@ -39,7 +41,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Shinamako') {
             side0.moveSlots[4] = {
@@ -51,7 +54,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };   
+     		  };       
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Abrakin') {
             side0.moveSlots[4] = {
@@ -64,6 +68,7 @@ export const Formats: {[k: string]: FormatData} = {
        			used: false,
      			  virtual: true,
      		  };    
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Avasterror') {
             side0.moveSlots[4] = {
@@ -75,7 +80,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Dustrake') {
             side0.moveSlots[4] = {
@@ -87,7 +93,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Eneryth') {
             side0.moveSlots[4] = {
@@ -99,7 +106,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Skyrider') {
             side0.moveSlots[4] = {
@@ -111,7 +119,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Tusquoka') {
             side0.moveSlots[4] = {
@@ -123,7 +132,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side0.baseSpecies.baseSpecies === 'Turbulusk') {
             side0.moveSlots[4] = {
@@ -135,7 +145,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
         }
 
        for (const side1 of this.sides[1].pokemon) { // i had to do both sides individually from lack of knowledge in this language, if anyone knows of a way to condense this then feel free to let me know
@@ -149,7 +160,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Amvip') {
             side1.moveSlots[4] = {
@@ -161,7 +173,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Capsaken') {
             side1.moveSlots[4] = {
@@ -173,7 +186,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Shinamako') {
             side1.moveSlots[4] = {
@@ -185,7 +199,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };   
+     		  };       
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Abrakin') {
             side1.moveSlots[4] = {
@@ -197,7 +212,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Avasterror') {
             side1.moveSlots[4] = {
@@ -209,7 +225,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Dustrake') {
             side1.moveSlots[4] = {
@@ -221,7 +238,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Eneryth') {
             side1.moveSlots[4] = {
@@ -233,7 +251,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Skyrider') {
             side1.moveSlots[4] = {
@@ -245,7 +264,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Tusquoka') {
             side1.moveSlots[4] = {
@@ -257,7 +277,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
 
           if (side1.baseSpecies.baseSpecies === 'Turbulusk') {
             side1.moveSlots[4] = {
@@ -269,7 +290,8 @@ export const Formats: {[k: string]: FormatData} = {
       			disabled: false,
        			used: false,
      			  virtual: true,
-     		  };    
+     		  };        
+			 }
         }
     };
 
