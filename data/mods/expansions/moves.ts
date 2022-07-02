@@ -250,7 +250,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			}
 		},
 		condition: {
-			duration: 1;
+			duration: 1,
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'energybreaker');
