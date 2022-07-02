@@ -250,11 +250,12 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			}
 		},
 		condition: {
-			duration: 1
+			duration: 1;
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'energybreaker');
 				this.add('-start', pokemon, 'Embargo');
+				if (pokemon.m.innates) (pokemon.m.innates as string[]).forEach(innate => pokemon.removeVolatile("ability" + innate));
 			},
 			onCopy(pokemon) {
 				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('energyrbeaker');
