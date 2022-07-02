@@ -244,11 +244,13 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (defender.getAbility().isPermanent) {
 				return false;
 			}
-		},
-		onHitField() {
-			attacker.addVolatile('energybreaker');
+			else {
+				attacker.addVolatile('energybreaker');
+				defender.addVolatile('energybreaker');
+			}
 		},
 		condition: {
+			duration: 1
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'energybreaker');
@@ -257,6 +259,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			},
 			onCopy(pokemon) {
 				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('energyrbeaker');
+			},
+			onResidual(pokemon) {
+				duration = duration + 1;
 			},
 		},
 		secondary: null,
@@ -312,13 +317,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBeforeMovePriority: 2,
 		onBeforeMove(pokemon, target, move) {
-		
-			this.add('-message', pokemon.species.name);
-		  if (pokemon.baseSpecies.baseSpecies === 'Turbulusk' || pokemon.baseSpecies.baseSpecies === 'turbulusk') {
-		  
-			this.add('-message', "ping");
-        	pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
-        }
+		  	pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
     	},
 		onAfterHit(target, source) {
 			if (source.hp) {
