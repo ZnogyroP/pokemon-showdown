@@ -1,4 +1,4 @@
- export const Formats: {[k: string]: FormatData} = {
+export const Formats: {[k: string]: FormatData} = {
 	fifthmoveadditions: {
     effectType: 'Rule',
 		name: 'Fifth Move Additions',
@@ -14,7 +14,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -27,7 +27,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };    
 			 }    
 
@@ -40,7 +40,7 @@
         		target: "self",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -53,7 +53,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };       
 			 }
 
@@ -66,7 +66,7 @@
         		target: "self",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };    
 			 }
 
@@ -79,7 +79,7 @@
         		target: "self",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -92,7 +92,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -105,7 +105,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -118,7 +118,7 @@
         		target: "allAdjacent",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -131,7 +131,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -144,7 +144,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
         }
@@ -159,7 +159,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -172,7 +172,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -185,7 +185,7 @@
         		target: "self",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -198,7 +198,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };       
 			 }
 
@@ -211,7 +211,7 @@
         		target: "self",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -224,7 +224,7 @@
         		target: "self",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -237,7 +237,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -250,7 +250,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -263,7 +263,7 @@
         		target: "allAdjacent",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -276,7 +276,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
 
@@ -289,7 +289,7 @@
         		target: "normal",
       			disabled: false,
        			used: false,
-     			  virtual: true,
+     			  virtual: false,
      		  };        
 			 }
         }
@@ -298,3 +298,5 @@
 
 
 };
+
+
