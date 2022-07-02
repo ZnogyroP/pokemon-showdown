@@ -22,6 +22,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		onHit(target, source, effect) {
+			this.add('-message', source.species.name);
 			if (source.species.name === 'Threedy') {
 				this.useMove("Replicate", source);
 			}
