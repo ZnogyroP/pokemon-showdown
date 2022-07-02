@@ -78,7 +78,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			pokemon.m.innates = undefined;
 		},
 	},
-	}, 
 	
 	{
 		name: "[Gen 8] Duomod Randbats",
