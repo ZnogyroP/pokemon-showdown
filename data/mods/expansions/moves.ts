@@ -98,7 +98,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			source.addVolatile('fling');
 		},
     
-    /// this is basically just a fling that doesn't remove the user's item for now, no idea where to even start with coding this
+    /// this will basically be just a fling that doesn't remove the user's item for now, no idea where to even start with coding this
 		
     secondary: null,
 		target: "normal",
@@ -186,7 +186,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {mystery: 1},
 		onHit(target) {
-			this.add('-start', target, 'typechange', 'Ghost', 'Dark');
+			this.add('-start', target, 'typechange', 'Ghost');
+			this.add('-start', target, 'typeadd', 'Ghost', '[from] move: Curse of the Moon');
 		},
     boosts: {
 			spa: 1,
@@ -194,7 +195,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			spe: 1,
 		},
 		secondary: null,
-		target: "normal",
+		target: "self",
 		type: "Psychic",
 		zMove: {boost: {spa: 1}},
 		contestType: "Cool",
@@ -218,10 +219,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		condition: {
 			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
 			onStart(pokemon) {
+				this.heal(pokemon.maxhp);
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
-        this.heal(pokemon.maxhp);
-			},
+        },
 			onCopy(pokemon) {
 				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('gastroacid');
 			},
@@ -333,7 +334,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBeforeMovePriority: 2,
 		onBeforeMove(pokemon, target, move) {
-		  if (pokemon.baseSpecies.baseSpecies === 'Turbulusk' && !pokemon.transformed) {
+		  if ((pokemon.baseSpecies.baseSpecies === 'Turbulusk' || pokemon.baseSpecies.baseSpecies === 'turbulusk') && !pokemon.transformed) {
         pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
       }
     },
