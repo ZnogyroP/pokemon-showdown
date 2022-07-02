@@ -249,7 +249,7 @@ shinamako: {learnset: {
 	venomdrench: ["7L1"],
 	venoshock: ["7L1"],
 	waterpulse: ["7L1"],
-	whirlpool?: ["7L1"],
+	whirlpool: ["7L1"],
 }},
 abrakin: {learnset: {
 	allyswitch: ["7L1"],
@@ -785,7 +785,7 @@ turbulusk: {learnset: {
 	solarblade: ["7L1"],
 	stealthrock: ["7L1"],
 	stoneedge: ["7L1"],
-	strugglebug?: ["7L1"],
+	strugglebug: ["7L1"],
 }},
 turbuluskairborne: {learnset: {
 	absorb: ["7L1"],
@@ -828,6 +828,6 @@ turbuluskairborne: {learnset: {
 	solarblade: ["7L1"],
 	stealthrock: ["7L1"],
 	stoneedge: ["7L1"],
-	strugglebug?: ["7L1"],
+	strugglebug: ["7L1"],
 }},
 };
