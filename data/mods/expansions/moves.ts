@@ -169,7 +169,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
-        this.heal(target.maxhp);
+        this.heal(pokemon.maxhp);
 			},
 			onCopy(pokemon) {
 				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('gastroacid');
