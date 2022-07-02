@@ -102,6 +102,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Fire",
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cute",
+	},
 
 	cumbersomecrash: {
 		num: 3004,
