@@ -244,10 +244,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (defender.getAbility().isPermanent) {
 				return false;
 			}
-			else {
-				attacker.addVolatile('energybreaker');
-				defender.addVolatile('energybreaker');
-			}
+		},
+		onHitField() {
+			attacker.addVolatile('energybreaker');
 		},
 		condition: {
 			onStart(pokemon) {
@@ -313,7 +312,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBeforeMovePriority: 2,
 		onBeforeMove(pokemon, target, move) {
+		
+			this.add('-message', pokemon.species.name);
 		  if (pokemon.baseSpecies.baseSpecies === 'Turbulusk' || pokemon.baseSpecies.baseSpecies === 'turbulusk') {
+		  
+			this.add('-message', "ping");
         	pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
         }
     	},
