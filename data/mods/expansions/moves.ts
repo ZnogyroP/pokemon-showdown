@@ -29,7 +29,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 				this.useMove("Lethal Fang", source);
 			}
 			if (source.species.name === 'Capsaken') {
-				this.useMove("Revitalize", source);
+				this.useMove("Revitalization", source);
 			}
 			if (source.species.name === 'Shinamako') {
 				this.useMove("Cumbersome Crash", source);
