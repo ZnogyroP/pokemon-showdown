@@ -47,4 +47,4 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Expand",
 		doublesTier: "Expand",
 	},
-);
+};
