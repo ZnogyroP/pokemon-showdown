@@ -71,31 +71,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
-		onPrepareHit(target, source, move) {
-			if (source.ignoringItem()) return false;
+		onBasePower(basePower, source, target, move) {
 			const item = source.getItem();
-			if (!this.singleEvent('TakeItem', item, source.itemData, source, source, move, item)) return false;
 			if (!item.fling) return false;
-			move.basePower = item.fling.basePower;
-			if (item.isBerry) {
-				move.onHit = function (foe) {
-					if (this.singleEvent('Eat', item, null, foe, null, null)) {
-						this.runEvent('EatItem', foe, null, null, item);
-						if (item.id === 'leppaberry') foe.staleness = 'external';
-					}
-					if (item.onEat) foe.ateBerry = true;
-				};
-			} else if (item.fling.effect) {
-				move.onHit = item.fling.effect;
-			} else {
-				if (!move.secondaries) move.secondaries = [];
-				if (item.fling.status) {
-					move.secondaries.push({status: item.fling.status});
-				} else if (item.fling.volatileStatus) {
-					move.secondaries.push({volatileStatus: item.fling.volatileStatus});
-				}
-			}
-			source.addVolatile('fling');
+			return item.fling.basePower;
 		},
     
     /// this will basically be just a fling that doesn't remove the user's item for now, no idea where to even start with coding this
@@ -187,7 +166,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {mystery: 1},
 		onHit(target) {
 			this.add('-start', target, 'typechange', 'Ghost');
-			this.add('-start', target, 'typeadd', 'Ghost', '[from] move: Curse of the Moon');
+			this.add('-start', target, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
 		},
     boosts: {
 			spa: 1,
@@ -212,6 +191,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {mystery: 1},
 		volatileStatus: 'gastroacid',
 		onTryHit(target) {
+			this.heal(target.maxhp);
 			if (target.getAbility().isPermanent) {
 				return false;
 			}
@@ -219,7 +199,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		condition: {
 			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
 			onStart(pokemon) {
-				this.heal(pokemon.maxhp);
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
         },
@@ -251,7 +230,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		contestType: "Tough",
 	},
   
-  energybreaker: {
+	energybreaker: {
 		num: 3008,
 		accuracy: 100,
 		basePower: 100,
@@ -259,33 +238,33 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		name: "Energy Breaker",
 		pp: 1,
 		priority: 0,
-		flags: {protect: 1},
-		onStart(source) {
-			for (const pokemon of this.getAllActive()) {
-				if (!pokemon.volatiles['embargo']) {
-					pokemon.addVolatile('embargo');
-				}
-  			if (!pokemon.volatiles['gastroacid']) {
-					pokemon.addVolatile('gastroacid');
-				}      
+		flags: {protect: 1, mystery: 1},
+		volatileStatus: 'energybreaker',
+		onTryMove(attacker, defender, move) {
+			if (defender.getAbility().isPermanent) {
+				return false;
+			}
+			else {
+				attacker.addVolatile('energybreaker');
+				defender.addVolatile('energybreaker');
 			}
 		},
-    onEnd(pokemon) {
-			const source = this.effectData.target;
-			for (const target of this.getAllActive()) {
-        if (target.volatiles['embargo']) {
-  				target.removeVolatile('embargo');
-        }
-        if (target.volatiles['gastroacid']) {
-  				target.removeVolatile('gastroacid');
-        }
-			}
+		condition: {
+			onStart(pokemon) {
+				this.add('-endability', pokemon);
+				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'energybreaker');
+				if (pokemon.m.innates) (pokemon.m.innates as string[]).forEach(innate => pokemon.removeVolatile("ability" + innate));
+				this.add('-start', pokemon, 'Embargo');
+			},
+			onCopy(pokemon) {
+				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('energyrbeaker');
+			},
 		},
 		secondary: null,
 		target: "normal",
 		type: "Electric",
-		zMove: {boost: {spa: 1}},
-		contestType: "Clever",
+		zMove: {boost: {spe: 1}},
+		contestType: "Tough",
 	},
 
 	finaljudgment: {
@@ -334,10 +313,10 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBeforeMovePriority: 2,
 		onBeforeMove(pokemon, target, move) {
-		  if ((pokemon.baseSpecies.baseSpecies === 'Turbulusk' || pokemon.baseSpecies.baseSpecies === 'turbulusk') && !pokemon.transformed) {
-        pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
-      }
-    },
+		  if (pokemon.baseSpecies.baseSpecies === 'Turbulusk' || pokemon.baseSpecies.baseSpecies === 'turbulusk') {
+        	pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
+        }
+    	},
 		onAfterHit(target, source) {
 			if (source.hp) {
 				const item = target.takeItem();
