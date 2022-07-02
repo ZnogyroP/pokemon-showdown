@@ -317,7 +317,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onTryHit(pokemon, target, move) {
 		  	pokemon.formeChange('Turbulusk-Airborne', this.effect, true);
-			this.add('-message', attacker.species.name);
+			this.add('-message', pokemon.species.name);
     	},
 		onAfterHit(target, source) {
 			if (source.hp) {
