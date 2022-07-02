@@ -1,5 +1,4 @@
 export const Scripts: ModdedBattleScriptsData = {
-	inherit: 'gen7',
 	/*
 	init() {
 		Object.values(this.data.Abilities).forEach(ability => {
