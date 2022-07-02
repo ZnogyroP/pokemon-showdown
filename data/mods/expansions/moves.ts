@@ -254,8 +254,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			onStart(pokemon) {
 				this.add('-endability', pokemon);
 				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'energybreaker');
-				this.add('-start', pokemon, 'Embargo');
 				if (pokemon.m.innates) (pokemon.m.innates as string[]).forEach(innate => pokemon.removeVolatile("ability" + innate));
+				this.add('-start', pokemon, 'Embargo');
 			},
 			onCopy(pokemon) {
 				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('energyrbeaker');
@@ -317,7 +317,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onBeforeMovePriority: 2,
 		onBeforeMove(pokemon, target, move) {
-		  	pokemon.formeChange('Turbulusk-Airborne', this.effect, false, '[msg]');
+		  	pokemon.formeChange('Turbulusk-Airborne', this.effect, true);
+			this.add('-message', pokemon.species.name);
     	},
 		onAfterHit(target, source) {
 			if (source.hp) {
