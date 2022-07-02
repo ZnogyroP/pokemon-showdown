@@ -22,7 +22,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		onHit(target, source, effect) {
-			this.add('-message', source.species.name);
+//			this.add('-message', source.species.name);
 			if (source.species.name === 'Threedy' || source.species.name === 'threedy') {
 				this.useMove("Replicate", source);
 			}
@@ -72,7 +72,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		basePowerCallback(pokemon, target, move) {
-			const item = source.getItem();
+			const item = pokemon.getItem();
 			if (!item.fling) return false;
 			return item.fling.basePower;
 		},
