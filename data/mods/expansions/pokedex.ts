@@ -98,4 +98,4 @@ turbuluskairborne: {
 	weightkg: 1,
 	battleOnly: "Turbulusk",
 },
-);
+};
