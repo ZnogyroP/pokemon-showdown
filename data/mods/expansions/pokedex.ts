@@ -44,7 +44,7 @@ avasterror: {
 	species: "Avasterror",
 	types: ["Water", "Ghost"],
 	baseStats: {hp: 70, atk: 70, def: 80, spa: 120, spd: 110, spe: 150},
-	abilities: {0: "Magician", 1: "Klutz", H: "Technician"},
+	abilities: {0: "Soul-Heart", 1: "Volt Absorb", H: "Stall"},
 	weightkg: 400,
 },
 dustrake: {
