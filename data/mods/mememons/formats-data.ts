@@ -1,5 +1,5 @@
 export const FormatsData: {[k: string]: SpeciesFormatsData} = {
-	kermiitthefrog: {
+	kermitthefrog: {
 		tier: "Mememons",
 		doublesTier: "Mememons",
 	},
