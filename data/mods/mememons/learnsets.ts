@@ -1,3 +1,4 @@
+export const Learnsets: {[speciesid: string]: LearnsetData} = {
 kermitthefrog: {learnset: {
 	earthquake: ["7L1"],
 	geomancy: ["7L1"],
@@ -76,3 +77,4 @@ waluigi: {learnset: {
 	spikes: ["7L1"],
 	surf: ["7L1"],
 }},
+};
