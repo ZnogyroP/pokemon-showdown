@@ -60,18 +60,18 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 				}
 			}
 		},
-		onSwitchOut(pokemon) {
+		onEnd(pokemon) {
 			for (const innate of Object.keys(pokemon.volatiles).filter(i => i.startsWith('ability:'))) {
 				pokemon.removeVolatile(innate);
 			}
 		},
-		onFaint(pokemon) {
+/*		onFaint(pokemon) {
 			for (const innate of Object.keys(pokemon.volatiles).filter(i => i.startsWith('ability:'))) {
 				const innateEffect = this.dex.conditions.get(innate) as Effect;
 				this.singleEvent('End', innateEffect, null, pokemon);
 			}
 		},
-		onAfterMega(pokemon) {
+*/		onAfterMega(pokemon) {
 			for (const innate of Object.keys(pokemon.volatiles).filter(i => i.startsWith('ability:'))) {
 				pokemon.removeVolatile(innate);
 			}
