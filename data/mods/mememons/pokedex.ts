@@ -38,7 +38,7 @@ darthvader: {
 	num: 1006.5,
 	species: "Darth Vader",
 	types: ["Normal", "Dark"],
-	baseStats: {hp: 500, atk: 10, def: 200, spa: 70, spd: 100, spe: 10},
+	baseStats: {hp: 255, atk: 10, def: 200, spa: 70, spd: 100, spe: 10},
 	abilities: {0: "Magic Bounce"},
 },
 hotelmario: {
