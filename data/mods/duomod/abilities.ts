@@ -468,8 +468,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	mixitup: {
 		shortDesc: "The user switches after using sound move.",
 		onModifyMove(move, pokemon) {
-			if (!move || !move.flags['sound'] || move.target === 'self') return;
-			pokemon.switchFlag = true;
+			move.selfSwitch = true;
+			const success = this.add('-message', pokemon, " is outta here!");
+			if (!success) {
+				delete move.selfSwitch;
+			}
 		},
 		name: "Mix it Up",
 		rating: 4,
