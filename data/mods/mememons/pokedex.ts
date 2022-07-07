@@ -1,7 +1,7 @@
 export const Pokedex: {[k: string]: ModdedSpeciesData} = {
-kermiitthefrog: {
+kermitthefrog: {
 	num: 1001.5,
-	species: "Kermiit The Frog",
+	species: "Kermit The Frog",
 	types: ["Water", "Normal"],
 	baseStats: {hp: 50, atk: 50, def: 100, spa: 200, spd: 50, spe: 50},
 	abilities: {0: "Drizzle"},
