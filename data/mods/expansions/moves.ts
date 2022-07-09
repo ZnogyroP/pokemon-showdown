@@ -350,7 +350,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		num: 3012,
 		accuracy: 100,
 		basePower: 120,
-		basePowerCallback(pokemon, target) {
+		onAfterHit(target, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				this.boost({atk: 6, spatk: 6}, pokemon);
 			}
@@ -367,7 +367,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		contestType: "Cool",
 	},
 	
-	rapidspin: {
+	orbitallaunch: {
 		num: 3013,
 		accuracy: 100,
 		basePower: 140,
