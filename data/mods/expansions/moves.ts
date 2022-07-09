@@ -56,13 +56,13 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (source.species.name === 'Turbulusk' || source.species.name === 'turbulusk') {
 				this.useMove("Liftoff", source);
 			}
-			if (source.species.name === 'Baloon' || source.species.name === 'baloon' || source.species.name === 'Baloon-popped' || source.species.name === 'baloon-popped') {
+			if (source.species.name === 'Baloonpopped' || source.species.name === 'baloonpopped' || source.species.name === 'Baloon-Popped' || source.species.name === 'baloon-popped') {
 				this.useMove("Confidence Rush", source);
 			}
-			if (source.species.name === 'Turbulusk' || source.species.name === 'turbulusk') {
+			if (source.species.name === 'Rapteroid' || source.species.name === 'rapteroid') {
 				this.useMove("Orbital Launch", source);
 			}
-			if (source.species.name === 'Turbulusk' || source.species.name === 'turbulusk') {
+			if (source.species.name === 'Lilyqueen' || source.species.name === 'lilyqueen') {
 				this.useMove("Tidal Force", source);
 			}
 		},
