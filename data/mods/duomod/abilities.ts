@@ -32,7 +32,50 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: -1,
 		num: 7.1,
 	},
-	hypeoverload: {
+/*	hypeoverload: {
+		shortDesc: "Measures the user's hype level at the end of each turn.",
+		name: "Hype Overload",
+		onResidualOrder: 26,
+		onResidual(pokemon) {
+			const result = this.random(10);
+			if (result === 0) {
+				this.hint("Hype Level: 1 out of 10...");
+			}
+			else if (result === 1) {
+				this.hint("Hype Level: 2 out of 10...");
+			}
+			else if (result === 2) {
+				this.hint("Hype Level: 3 out of 10...");
+			}
+			else if (result === 3) {
+				this.hint("Hype Level: 4 out of 10.");
+			}
+			else if (result === 4) {
+				this.hint("Hype Level: 5 out of 10.");
+			}
+			else if (result === 5) {
+				this.hint("Hype Level: 6 out of 10.");
+			}
+			else if (result === 6) {
+				this.hint("Hype Level: 7 out of 10!");
+			}
+			else if (result === 7) {
+				this.hint("Hype Level: 8 out of 10!");
+			}
+			else if (result === 8) {
+				this.hint("Hype Level: 9 OUT OF 10!");
+			}
+			else {
+				this.hint("Hype level: 10 OUT OF 10!!!!!");
+				this.boost({atk: 2}, pokemon, pokemon, null, true);
+				this.useMove("Explosion", pokemon);
+			}
+		},
+		rating: 2.5,
+		num: 10.1,
+	},*/
+	
+		hypeoverload: {
 		shortDesc: "Measures the user's hype level at the end of each turn.",
 		name: "Hype Overload",
 		onResidualOrder: 26,
