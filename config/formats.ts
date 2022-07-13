@@ -123,6 +123,21 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
 	},
+	
+	{
+		name: "[Gen 8] Duomod Randbats (R1 Big Banlist)",
+		desc: `<b>Duomod</b>: Legendary YouTuber and professional Smash player DuoM2's solomod, build around the idea where nobody is ever truly losing.`,
+        threads: [
+            `&bullet; <a href="https://docs.google.com/spreadsheets/d/1lguyF31tjV8f-Gv3uLxmZXGAlg23k2fkF_nBqevJouM/edit?usp=sharing">Spreadsheet</a>`,
+        ],
+		team: 'random',
+		mod: 'duomod',
+		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Subscribe For More Content', 'Duomod Data Mod'],
+		banlist: ['Abysseil', 'Annelait', 'Azurolt', 'BaloonPopped', 'BaloonWater', 'Catelax', 'Crazefly', 'Crypterid', 'Draglow', 'FluxtapeRadio', 'Hyperoach', 'Jewelode', 'Lumineel', 'Modolith', 'Pterrost', 'SpiroxRipped', 'Treemu', 'Valianch',], 
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+		},
+	},
 
 	{
         	name: "[Gen 1] RBY CAP Testing",
