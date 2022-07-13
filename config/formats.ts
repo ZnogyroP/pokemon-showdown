@@ -133,7 +133,6 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		team: 'random',
 		mod: 'duomod',
 		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Subscribe For More Content', 'Duomod Data Mod'],
-		banlist: ['Abysseil', 'Annelait', 'Azurolt', 'BaloonPopped', 'BaloonWater', 'Catelax', 'Crazefly', 'Crypterid', 'Draglow', 'FluxtapeRadio', 'Hyperoach', 'Jewelode', 'Lumineel', 'Modolith', 'Pterrost', 'SpiroxRipped', 'Treemu', 'Valianch',], 
 		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 		},
