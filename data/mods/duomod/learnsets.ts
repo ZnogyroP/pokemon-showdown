@@ -1213,7 +1213,6 @@ fairydisc: {learnset: {
 }},
 badgearth: {learnset: {
 	aquatail: ["7L1"],
-	closecombat: ["7L1"],
 	dragonclaw: ["7L1"],
 	dragondance: ["7L1"],
 	earthquake: ["7L1"],
