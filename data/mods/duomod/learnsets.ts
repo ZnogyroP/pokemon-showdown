@@ -819,6 +819,7 @@ monstratus: {learnset: {
         watershield: ["8L1"],
 }},
 mortemoth: {learnset: {
+        uturn: ["8L1"],
         acupressure: ["8L1"],
         metronome: ["8L1"],
         airslash: ["8L1"],
