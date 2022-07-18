@@ -229,10 +229,8 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		name: "Duststorm Whip-Up",
 		pp: 1,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, nonsky: 1},
-		onAfterHit(target, source, move) {
-			this.useMove("Sandstorm", source, '[silent]');
-		},
+		flags: {protect: 1, mirror: 1},
+		weather: "Sandstorm",
 		secondary: null,
 		target: "all",
 		type: "Ground",
