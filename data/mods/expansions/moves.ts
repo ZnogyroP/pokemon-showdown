@@ -1,5 +1,4 @@
-export const Moves: {[moveid: string]: ModdedMoveData} = {
-	
+export const Moves: {[moveid: string]: ModdedMoveData} = {	
 	"gastroacid": {
 		inherit: true,
 		condition: {
@@ -16,7 +15,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		num: 3000,
 		accuracy: 100,
 		basePower: 0,
-		category: "Physical",
+		category: "Status",
 		name: "Fifth Move",
 		pp: 1,
 		priority: 0,
@@ -173,9 +172,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {mystery: 1},
-		onHit(source) {
-			this.add('-start', source, 'typechange', 'Ghost');
-			this.add('-start', source, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
+		onHit(pokemon) {
+			this.add('-start', pokemon, 'typechange', 'Ghost');
+			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
 		},
     boosts: {
 			spa: 1,
@@ -231,7 +230,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
-		weather: 'Sandstorm',
+		onAfterHit(target, source, move) {
+			this.useMove("Sandstorm", source, '[silent]');
+		},
 		secondary: null,
 		target: "all",
 		type: "Ground",
