@@ -16,7 +16,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		num: 3000,
 		accuracy: 100,
 		basePower: 0,
-		category: "Status",
+		category: "Physical",
 		name: "Fifth Move",
 		pp: 1,
 		priority: 0,
