@@ -173,7 +173,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		priority: 0,
 		flags: {mystery: 1},
 		onHit(target) {
-			this.add('-start', target, 'typechange', Ghost, '[from] move: Curse of the Moon');
+			this.add('-start', target, 'typechange', 'Ghost', '[from] move: Curse of the Moon');
 			this.add('-start', target, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
 		},
     boosts: {
