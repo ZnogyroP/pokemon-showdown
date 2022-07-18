@@ -108,7 +108,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			status: 'tox',
       boosts: {
         atk: -1,
-				def: -1,
+		  def: -1,
         spa: -1,
         spd: -1,
         spe: -1,
@@ -173,9 +173,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {mystery: 1},
-		onHit(target) {
-			this.add('-start', target, 'typechange', 'Ghost');
-			this.add('-start', target, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
+		onHit(source) {
+			this.add('-start', source, 'typechange', 'Ghost');
+			this.add('-start', source, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
 		},
     boosts: {
 			spa: 1,
@@ -226,11 +226,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		num: 3007,
 		accuracy: 100,
 		basePower: 110,
-		category: "Status",
+		category: "Special",
 		name: "Duststorm Whip-Up",
 		pp: 1,
 		priority: 0,
-		flags: {protect: 1},
+		flags: {protect: 1, mirror: 1, nonsky: 1},
 		weather: 'Sandstorm',
 		secondary: null,
 		target: "all",
@@ -303,7 +303,7 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		category: "Physical",
 		name: "Enforcer Punch",
 		pp: 1,
-		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1, distance: 1, punch: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, distance: 1, punch: 1},
 		onEffectiveness(typeMod, target, type, move) {
 			return typeMod + this.dex.getEffectiveness('Fighting', type);
 		},
@@ -378,14 +378,30 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		flags: {protect: 1, mirror: 1},
 		basePowerCallback(pokemon, target, move) {
 			var hazards = 0;
-			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
-			for (const condition of sideConditions) {
-				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
-					this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] move: Orbital Launch', '[of] ' + pokemon);
+			let success = false;
+			if (!target.volatiles['substitute'] || move.infiltrates) success = !!this.boost({evasion: -1});
+			const removeTarget = [
+				'reflect', 'lightscreen', 'auroraveil', 'safeguard', 'mist', 'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge',
+			];
+			const removeAll = [
+				'spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge',
+			];
+			for (const targetCondition of removeTarget) {
+				if (target.side.removeSideCondition(targetCondition)) {
+					if (!removeAll.includes(targetCondition)) continue;
+					this.add('-sideend', target.side, this.dex.getEffect(targetCondition).name, '[from] move: Defog', '[of] ' + pokemon);
+					success = true;
 					hazards = hazards + 5;
 				}
 			}
-			this.add('-message', hazards);
+			for (const sideCondition of removeAll) {
+				if (pokemon.side.removeSideCondition(sideCondition)) {
+					this.add('-sideend', pokemon.side, this.dex.getEffect(sideCondition).name, '[from] move: Defog', '[of] ' + pokemon);
+					success = true;
+					hazards = hazards + 5;
+				}
+			}
+			this.field.clearTerrain();
 			return move.basePower + hazards;
 		},
 		target: "normal",
