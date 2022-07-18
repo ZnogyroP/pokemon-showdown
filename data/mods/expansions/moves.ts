@@ -172,9 +172,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {mystery: 1},
-		onHit(pokemon) {
-			this.add('-start', pokemon, 'typechange', 'Ghost');
-			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
+		onHit(target) {
+			this.add('-start', target, 'typechange', Ghost, '[from] move: Curse of the Moon');
+			this.add('-start', target, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
 		},
     boosts: {
 			spa: 1,
