@@ -230,7 +230,6 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		weather: "Sandstorm",
 		secondary: null,
 		target: "all",
 		type: "Ground",
