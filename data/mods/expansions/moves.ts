@@ -217,9 +217,9 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 1,
 		priority: 0,
 		flags: {mystery: 1},
-		noMetronome: ["Ghost", "Dark",],
 		onHit(target) {
-			target.setType(noMetronome);
+			const type = ["Ghost", "Dark",],
+			target.setType(type);
 			this.add('-start', target, 'typechange', 'Ghost', '[from] move: Curse of the Moon');
 			this.add('-start', target, 'typeadd', 'Dark', '[from] move: Curse of the Moon');
 		},
