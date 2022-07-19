@@ -109,6 +109,18 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			if (source.species.name === 'Lilyqueen' || source.species.name === 'lilyqueen') {
 				this.useMove("Tidal Force", source);
 			}
+			if (source.species.name === 'Gladiarbor' || source.species.name === 'gladiarbor') {
+				this.useMove("Old-Growth Strike", source);
+			}
+			if (source.species.name === 'Showmandril' || source.species.name === 'showmandril') {
+				this.useMove("Danger Stunt", source);
+			}
+			if (source.species.name === 'Animeleon' || source.species.name === 'animeleon') {
+				this.useMove("Corrosive Acid", source);
+			}
+			if (source.species.name === 'Equivalor' || source.species.name === 'equivalor') {
+				this.useMove("Transmutate", source);
+			}
 		},
 		target: "self",
 		type: "Normal",
@@ -470,5 +482,173 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		type: "Water",
 		zMove: {boost: {spe: 1}},
 		contestType: "Beautiful",
+	},
+	
+	oldgrowthstrike: {
+		num: 3015,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Old-Growth Strike",
+		pp: 1,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		terrain: 'grassyterrain',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasItem('terrainextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onBasePowerPriority: 6,
+			onBasePower(basePower, attacker, defender, move) {
+				const weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
+				if (weakenedMoves.includes(move.id)) {
+					this.debug('move weakened by grassy terrain');
+					return this.chainModify(0.5);
+				}
+				if (move.type === 'Grass' && attacker.isGrounded()) {
+					this.debug('grassy terrain boost');
+					return this.chainModify([0x14CD, 0x1000]);
+				}
+			},
+			onStart(battle, source, effect) {
+				if (effect?.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Grassy Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Grassy Terrain');
+				}
+			},
+			onResidualOrder: 5,
+			onResidualSubOrder: 3,
+			onResidual() {
+				this.eachEvent('Terrain');
+			},
+			onTerrain(pokemon) {
+				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
+					this.debug('Pokemon is grounded, healing through Grassy Terrain.');
+					this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
+				}
+			},
+			onEnd() {
+				if (!this.effectData.duration) this.eachEvent('Terrain');
+				this.add('-fieldend', 'move: Grassy Terrain');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Grass",
+		zMove: {boost: {def: 1}},
+		contestType: "Beautiful",
+	},
+	
+	dangerstunt: {
+		num: 3016,
+		accuracy: 100,
+		basePower: 150,
+		category: "Physical",
+		name: "Danger Stunt",
+		pp: 1,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		recoil: [1, 2],
+		secondary: null,
+		target: "normal",
+		type: "Electric",
+		contestType: "Tough",
+	},
+	
+	corrosiveacid: {
+		num: 3017,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		name: "Gastro Acid",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, mystery: 1},
+		volatileStatus: 'gastroacid',
+		onTryHit(target) {
+			if (target.getAbility().isPermanent) {
+				return false;
+			}
+		},
+		condition: {
+			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
+			onStart(pokemon) {
+				this.add('-endability', pokemon);
+				this.singleEvent('End', pokemon.getAbility(), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
+			},
+			onCopy(pokemon) {
+				if (pokemon.getAbility().isPermanent) pokemon.removeVolatile('gastroacid');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Poison",
+		zMove: {boost: {spe: 1}},
+		contestType: "Tough",
+	},
+	
+	transmutate: {
+		num: 3018,
+		accuracy: 100,
+		basePower: 130,
+		category: "Physical",
+		name: "Transmutate",
+		pp: 1,
+		priority: 0,
+		flags: {nonsky: 1},
+		terrain: 'electricterrain',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasItem('terrainextender')) {
+					return 8;
+				}
+				return 5;
+			},
+			onSetStatus(status, target, source, effect) {
+				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
+					if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
+						this.add('-activate', target, 'move: Electric Terrain');
+					}
+					return false;
+				}
+			},
+			onTryAddVolatile(status, target) {
+				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (status.id === 'yawn') {
+					this.add('-activate', target, 'move: Electric Terrain');
+					return null;
+				}
+			},
+			onBasePowerPriority: 6,
+			onBasePower(basePower, attacker, defender, move) {
+				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+					this.debug('electric terrain boost');
+					return this.chainModify([0x14CD, 0x1000]);
+				}
+			},
+			onStart(battle, source, effect) {
+				if (effect?.effectType === 'Ability') {
+					this.add('-fieldstart', 'move: Electric Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				} else {
+					this.add('-fieldstart', 'move: Electric Terrain');
+				}
+			},
+			onResidualOrder: 21,
+			onResidualSubOrder: 2,
+			onEnd() {
+				this.add('-fieldend', 'move: Electric Terrain');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		zMove: {boost: {spe: 1}},
+		contestType: "Clever",
 	},
 };
