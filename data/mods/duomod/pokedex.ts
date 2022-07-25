@@ -429,11 +429,11 @@ shroominesce: {
 },
 helivery: {
 	num: 103.5,
-	species: "Badgearth",
+	species: "Helivery",
 	types: ["Steel", "Flying"],
 	gender: "N",
 	baseStats: {hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85},
-	abilities: {0: "Regenerator"},
+	abilities: {0: "Queen of Roulette"},
 	heightm: 1,
 	weightkg: 5,
 	eggGroups: ["Undiscovered"],
