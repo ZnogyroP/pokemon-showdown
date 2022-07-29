@@ -171,7 +171,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 			'Uber', 'Baton Pass',
 		],
 		unbanlist: [
-				 'Aeroltspiderpig', 'Aggresteusspiderpig', 'Aguacatherbobsican', 'Blustriagexenonhero', 'Boomboxdoubleironbash', 'Chandliergekokeso', 'Conakashpaulluxx', 'Cutternalgravitymonkey', 'Demudainpaulluxx', 'Dukessgekokeso', 'Endurchobobsican', 'Genesyspaulluxx', 'Goldoborosspiderpig', 'Komodoregravitymonkey', 'Mojambobsican', 'Namaraftgekokeso', 'perdemos1anaconja', 'perdemos2anaconja', 'perdemos3anaconja', 'Shailxenonhero', 'TBDdoubleironbash', 'TheBossdoubleironbash', 'Vailaflygravitymonkey', 'Wattackxenonhero',
+				 'Aeroltspiderpig', 'Aggresteusspiderpig', 'Aguacatherbobsican', 'Blustriagexenonhero', 'Boomboxdoubleironbash', 'Chandliergekokeso', 'Conakashpaulluxx', 'Cutternalgravitymonkey', 'Demudainpaulluxx', 'Dukessgekokeso', 'Endurchobobsican', 'Genesyspaulluxx', 'Goldoborosspiderpig', 'Komodoregravitymonkey', 'Mojambobsican', 'Namaraftgekokeso', 'perdemos1anaconja', 'perdemos2anaconja', 'perdemos3anaconja', 'Shailxenonhero', 'TBDdoubleironbash', 'TheBossdoubleironbash', 'Vailaflygravitymonkey', 'Sorcewattxenonhero',
 		],
 	},
 	
