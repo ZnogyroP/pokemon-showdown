@@ -157,6 +157,26 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	},
 	
 	{
+		name: "[Gen 8] Black Market",
+		mod: "blackmarket",
+		desc: [
+			`<b>Black Market</b>: A Pet Mod where users build Fakemon over the span of a tournament.`
+		],
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/tournament-black-market-starting-phase.3704607/">Black Market on Smogon Forums</a>`,
+			`&bullet; <a href="https://docs.google.com/spreadsheets/d/10BkMc61hCnfEc6XpjozDrQ20zMVAt5rArlvjsCENR7I/edit#gid=0">Spreadsheet</a>`,
+		],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
+		banlist: [
+			'Uber', 'Baton Pass',
+		],
+		unbanlist: [
+				 'Aeroltspiderpig', 'Aggresteusspiderpig', 'Aguacatherbobsican', 'Blustriagexenonhero', 'Boomboxdoubleironbash', 'Chandliergekokeso', 'Conakashpaulluxx', 'Cutternalgravitymonkey', 'Demudainpaulluxx', 'Dukessgekokeso', 'Endurchobobsican', 'Genesyspaulluxx', 'Goldoborosspiderpig', 'Komodoregravitymonkey', 'Mojambobsican', 'Namaraftgekokeso', 'perdemos1anaconja', 'perdemos2anaconja', 'perdemos3anaconja', 'Shailxenonhero', 'TBDdoubleironbash', 'TheBossdoubleironbash', 'Vailaflygravitymonkey', 'Wattackxenonhero',
+		],
+	},
+	
+	
+	{
 		name: "[Gen 8] Random Battle",
 		desc: `Randomized teams of level-balanced Pok&eacute;mon with sets that are generated to be competitively viable.`,
 		threads: [
