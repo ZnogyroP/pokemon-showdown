@@ -1,98 +1,98 @@
 export const FormatsData: {[k: string]: SpeciesFormatsData} = {
-	perdemos1anaconja: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	perdemos3anaconja: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	perdemos2anaconja: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	genesyspaulluxx: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	conakashpaulluxx: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	demudainpaulluxx: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	goldoborosspiderpig: {
-		tier: "OU",
-		doublesTier: "DOU",
+	aeroltspiderpig: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
 	},
 	aggresteusspiderpig: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	aeroltspiderpig: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	mojambobsican: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	endurchobobsican: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
 	},
 	aguacatherbobsican: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	dukessgekokeso: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	namaraftgekokeso: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	chandliergekokeso: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	vailaflygravitymonkey: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	komodoregravitymonkey: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	cutternalgravitymonkey: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	sorcewattxenonhero: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	shailxenonhero: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
 	},
 	blustriagexenonhero: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	thebossdoubleironbash: {
-		tier: "OU",
-		doublesTier: "DOU",
-	},
-	tbddoubleironbash: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
 	},
 	boomboxdoubleironbash: {
-		tier: "OU",
-		doublesTier: "DOU",
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	chandliergekokeso: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	conakashpaulluxx: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	cutternalgravitymonkey: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	demudainpaulluxx: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	dukessgekokeso: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	endurchobobsican: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	genesyspaulluxx: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	goldoborosspiderpig: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	komodoregravitymonkey: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	mojambobsican: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	namaraftgekokeso: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	perdemos1anaconja: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	perdemos2anaconja: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	perdemos3anaconja: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	shailxenonhero: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	sorcewattxenonhero: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	tbddoubleironbash: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	thebossdoubleironbash: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
+	},
+	vailaflygravitymonkey: {
+		tier: "Black Market",
+		doublesTier: "sub 2 duo",
 	},
 };
