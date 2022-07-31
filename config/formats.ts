@@ -170,9 +170,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		banlist: [
 			'Uber', 'Baton Pass',
 		],
-		unbanlist: [
+		/*unbanlist: [
 				  'perdemos1anaconja', 'perdemos3anaconja', 'perdemos2anaconja', 'genesyspaulluxx', 'conakashpaulluxx', 'demudainpaulluxx', 'goldoborosspiderpig', 'aggresteusspiderpig', 'aeroltspiderpig', 'mojambobsican', 'endurchobobsican', 'aguacatherbobsican', 'dukessgekokeso', 'namaraftgekokeso', 'chandliergekokeso', 'vailaflygravitymonkey', 'komodoregravitymonkey', 'cutternalgravitymonkey', 'sorcewattxenonhero', 'shailxenonhero', 'blustriagexenonhero', 'thebossdoubleironbash', 'tbddoubleironbash', 'boomboxdoubleironbash',
-		],
+		],*/
 	},
 	
 	
