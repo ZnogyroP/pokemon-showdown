@@ -185,7 +185,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 		  threads: [
 			  `&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3660004/">Solomods Megathread</a>`,
 		  ],
-        ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause', 'Subscribe For More Content'],
+        ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
         banlist: ['All Pokemon', 'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Leppa Berry',],
           unbanlist: [
              'breroot', 'furnostrich', 'sholossus', 'espopod', 'croissansect', 'piedraderm', 'kakavo', 'pelli', 'dripig', 'harmoth', 'formagia', 'sodia', 'dripig', 'woosher', 'gurso', 'phelpinch', 'shiah', 'gillomen', 'uriotl', 'cuzima', 'themon', 'shocbrute', 'lightnimbus', 'cephalethal', 'malizor', 'lunheron', 'erverena', 'siltmanya', 'tudek', 'glypdorsa', 'voraciousect', 'pichiri', 'wooliba', 'olfacrid', 'rodiche', 'mowisp', 'cephalopath', 'vambyss', 'mamicky', 'sklea', 'corazone', 'folivora', 'galena', 'grumplet', 'marlion', 'androsmos', 'dustoph', 'aeromo', 'peekoceros', 'aquimanna', 'apparicious', 'quetzadrakon', 'trybas', 'raiga', 'frogaloft'
