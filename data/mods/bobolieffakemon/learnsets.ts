@@ -199,7 +199,7 @@ cephalopath: {learnset: {
 vambyss: {learnset: {
     tackle: ["8L1"],
 }},
-mamicky: {learnset: {
+mammicky: {learnset: {
     tackle: ["8L1"],
 }},
 sklea: {learnset: {
