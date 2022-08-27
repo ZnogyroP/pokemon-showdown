@@ -280,7 +280,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
           types: ["Poison"],
           gender: "N",
           baseStats: {hp: 50, atk: 137, def: 55, spa: 100, spd: 80, spe: 103},
-          abilities: {0: "Illuminate", 1: "Illuminate", H: "Hustle"},
+          abilities: {0: "Illuminate", H: "Hustle"},
           heightm: 1.7,
           weightkg: 45,
           eggGroups: ["Undiscovered"],
