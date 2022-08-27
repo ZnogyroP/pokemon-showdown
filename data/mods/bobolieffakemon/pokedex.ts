@@ -10,7 +10,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
           weightkg: 900,          
           eggGroups: ["Undiscovered"],
       },
-     furnostrich: {
+/*     furnostrich: {
         num: 1002,
           species: "Furnostrich",
           types: ["Fire", "Steel"],
@@ -649,5 +649,5 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
           heightm: 0.9,
           weightkg: 27,
           eggGroups: ["Undiscovered"],
-    },
+    },*/
 };
