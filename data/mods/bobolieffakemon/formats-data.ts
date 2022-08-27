@@ -47,7 +47,7 @@ sodia: {
     tier: "leif",
     doublesTier: "leif",
 },
-dripig: {
+infekshi: {
     tier: "leif",
     doublesTier: "leif",
 },
