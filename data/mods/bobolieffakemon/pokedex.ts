@@ -452,7 +452,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
           weightkg: 27,
           eggGroups: ["Undiscovered"],
     },
-    mamicky: {
+    mammicky: {
         num: 1041,
           species: "Mammicky",
           types: ["Bug", "Normal"],
