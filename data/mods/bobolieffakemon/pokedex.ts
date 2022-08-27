@@ -104,7 +104,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
           types: ["Fairy"],
           genderRatio: {M: 0.5, F: 0.5},
           baseStats: {hp: 50, atk: 99, def: 80, spa: 62, spd: 80, spe: 109},
-          abilities: {0: "Illuminate", 1: "Illuminate", H: "Illuminate"}, // ability 1 is flattery
+          abilities: {0: "Illuminate"}, // ability 1 is flattery
           heightm: 0.2,
           weightkg: 6,
           eggGroups: ["Undiscovered"],
