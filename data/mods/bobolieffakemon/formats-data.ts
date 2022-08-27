@@ -163,7 +163,7 @@ vambyss: {
     tier: "leif",
     doublesTier: "leif",
 },
-mamicky: {
+mammicky: {
     tier: "leif",
     doublesTier: "leif",
 },
