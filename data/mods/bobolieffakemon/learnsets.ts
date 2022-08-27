@@ -112,7 +112,7 @@ formagia: {learnset: {
 sodia: {learnset: {
     tackle: ["8L1"],
 }},
-dripig: {learnset: {
+infekshi: {learnset: {
     tackle: ["8L1"],
 }},
 woosher: {learnset: {
