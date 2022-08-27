@@ -2,7 +2,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 breroot: {
 	tier: "leif",
 	doublesTier: "leif",
-},
+},/*
 furnostrich: {
     tier: "leif",
     doublesTier: "leif",
@@ -230,5 +230,5 @@ raiga: {
 frogaloft: {
     tier: "leif",
     doublesTier: "leif",
-},
+},*/
 };
