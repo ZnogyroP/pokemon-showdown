@@ -78,7 +78,7 @@ breroot: {learnset: {
         toxic: ["8L1"],
         wildcharge: ["8L1"],
         grassyglide: ["8L1"],
-}}, /*
+}}, 
 furnostrich: {learnset: {
     tackle: ["8L1"],
 }},
@@ -249,5 +249,5 @@ raiga: {learnset: {
 }},
 frogaloft: {learnset: {
     tackle: ["8L1"],
-}}, */
+}}, 
 };
