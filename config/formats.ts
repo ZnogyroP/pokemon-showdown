@@ -196,6 +196,21 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         },    
     },
 	
+	{
+        name: "[Gen 8] Pet Mods Soup",
+        desc: `<b>Pet Mods Soup</b>: just a crapload of random pet mods stuff lmao`,
+        threads: [
+            `&bullet; <a href="https://www.smogon.com/forums/forums/pet-mods.549/">click</a>`,
+        ],
+        mod: 'petmodssoup',
+        ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
+        unbanlist: [
+             'Pikachu-Starter', 'Eevee-Starter',
+			],	
+			onSwitchIn(pokemon) {
+        		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+        	},	
+	}, 
 	
 	{
 		name: "[Gen 8] Random Battle",
