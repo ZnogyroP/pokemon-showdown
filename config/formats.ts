@@ -198,7 +198,7 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	
 	{
 		name: "[Gen 8] PMS",
-		mod: "petmodssoup",
+		mod: "feuu",
 		desc: [
 			`<b>Fusion Evolution Under Used</b>: A micrometa Pet Mod aiming to create more-balanced-than-usual "Pokemon Fusions" with unique abilities.`
 		],
