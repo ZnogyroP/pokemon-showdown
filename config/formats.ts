@@ -204,9 +204,9 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
         ],
         mod: 'petmodssoup',
         ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod', 'Species Clause', 'Moody Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'OHKO Clause'],
-        unbanlist: [
-             'Pikachu-Starter', 'Eevee-Starter',
-			],	
+//        unbanlist: [
+ //            'Pikachu-Starter', 'Eevee-Starter',
+//			],	
 			onSwitchIn(pokemon) {
         		this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
         	},	
