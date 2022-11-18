@@ -27,7 +27,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 15,
 		category: "Physical",
-		name: "Bonemerang",
+		name: "Double Dab",
 		pp: 1,
 		noPPBoosts: true,
 		priority: 1,
@@ -61,7 +61,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {bullet: 1, contact: 1, protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
-		type: "Steel",
+		type: "Bug",
 		zMove: {basePower: 160},
 		maxMove: {basePower: 130},
 		contestType: "Cool",
@@ -170,7 +170,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		isNonstandard: null,
 		gen: 8,
 		shortDesc: "The user clears hazards from the opponents side.",
-		name: "Razor Wind",
+		name: "Hyper Wind",
 		pp: 10,
 		priority: 0,
 		flags: {charge: 1, protect: 1, mirror: 1},
@@ -246,7 +246,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
-		type: "Fighting",
+		type: "Poison",
 		maxMove: {basePower: 130},
 		contestType: "Tough",
 	},
@@ -290,14 +290,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		volatileStatus: 'arrowed',
 		condition: {
 			onEnd(pokemon) {
-				onTryHit(target, source, move) {
-					move.ignoreImmunity = true;
-					return 0;
-				}
 				delete pokemon.volatiles['arrowed'];
 				this.add('-end', pokemon, 'arrowed');
-			}
-		}
+			},
+			onTryHit(target, source, move) {
+				move.ignoreImmunity = true;
+			},
+		},
 		ignoreImmunity: {'Ground': true},
 		secondary: null,
 		target: "allAdjacentFoes",
@@ -380,7 +379,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Polar Pounce",
 		pp: 16,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, contact: 1},
 		weather: 'hail',
 		secondary: null,
 		target: "all",
