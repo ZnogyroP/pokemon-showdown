@@ -61,7 +61,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {bullet: 1, contact: 1, protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
-		type: "Steel",
+		type: "Bug",
 		zMove: {basePower: 160},
 		maxMove: {basePower: 130},
 		contestType: "Cool",
@@ -203,15 +203,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (!target || target.fainted || target.hp <= 0) {
 				this.add('-message', "I dunno... ", pokemon.name, "'s been acting pretty sus lately...");
 				target.formeChange('Impsaustor', this.effect, true);
-				const oldAbility = target.setAbility('Vent');
+				const oldAbility = pokemon.setAbility('Vent');
 				if (oldAbility) {
-					this.add('-ability', target, 'Vent', '[from] move: Impostor Blade', '[silent]');
+					this.add('-ability', pokemon, 'Vent', '[from] move: Impostor Blade', '[silent]');
 					target.volatileStaleness = 'external';
 					return;
 				}
-				this.add('-message', target + " was the Impsaustor!");
-				this.add('-start', target, 'typechange', target.getTypes(true).join('/'), '[silent]');
-				const species = this.dex.getSpecies(target.species.name);
+				this.add('-message', pokemon.name + " was the Impsaustor!");
+				this.add('-start', pokemon, 'typechange', target.getTypes(true).join('/'), '[silent]');
+				const species = this.dex.getSpecies(pokemon.species.name);
 				const abilities = species.abilities;
 				const baseStats = species.baseStats;
 				const type = species.types[0];
@@ -221,10 +221,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				} else {
 					this.add(`raw|<ul class="utilichart"><li class="result"><span class="col pokemonnamecol" style="white-space: nowrap">` + species.name + `</span> <span class="col typecol"><img src="https://${Config.routes.client}/sprites/types/${type}.png" alt="${type}" height="14" width="32"></span> <span style="float: left ; min-height: 26px"><span class="col abilitycol">` + abilities[0] + `</span><span class="col abilitycol"></span></span><span style="float: left ; min-height: 26px"><span class="col statcol"><em>HP</em><br>` + baseStats.hp + `</span> <span class="col statcol"><em>Atk</em><br>` + baseStats.atk + `</span> <span class="col statcol"><em>Def</em><br>` + baseStats.def + `</span> <span class="col statcol"><em>SpA</em><br>` + baseStats.spa + `</span> <span class="col statcol"><em>SpD</em><br>` + baseStats.spd + `</span> <span class="col statcol"><em>Spe</em><br>` + baseStats.spe + `</span> </span></li><li style="clear: both"></li></ul>`);
 				}
-				this.add('-start', target, 'typechange', target.species.types.join('/'), '[silent]');
-			}
-			else if (this.dex.getSpecies(pokemon.species.name) !== 'Impsaustor') {
-				this.damage(pokemon.baseMaxhp / 16, pokemon, pokemon);
+				this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 			}
 		},
 		secondary: null,
@@ -312,7 +309,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 140,
 		category: "Special",
 		name: "Outburst",
-		pp: 8,
+		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, mystery: 1},
 		onTryHit(target) {
