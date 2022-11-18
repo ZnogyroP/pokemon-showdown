@@ -318,14 +318,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onTryHit(target) {
 			if (target.getAbility().isPermanent || target.ability === 'lightningrod') {
 				return false;
-			},
+			}
 		},
 		onHit(pokemon) {
 			const oldAbility = pokemon.setAbility('lightningrod');
 			if (oldAbility) {
 				this.add('-ability', pokemon, 'Lightning Rod', '[from] move: Outburst');
 				return;
-			},
+			}
 			return false;
 		},
 		secondary: null,
