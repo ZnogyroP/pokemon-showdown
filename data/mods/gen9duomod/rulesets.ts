@@ -219,8 +219,8 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		else if (result === 17) {
 			this.hint("Roulette Wheel Result 18 - One of you needs a hand!");
-			const s1 of this.sides[0].active;
-			const s2 of this.sides[1].active;
+			const s1 = this.sides[0].active;
+			const s2 = this.sides[1].active;
 			if (s1.hp >= s2.hp) {this.heal(s2.maxhp, s2);}
 			if (s1.hp <= s2.hp) {this.heal(s1.maxhp, s1);}
 		}
@@ -430,8 +430,6 @@ export const Formats: {[k: string]: FormatData} = {
 			this.hint("Roulette Wheel Result 33 - Funeral service...");
 			var deez: number;
 			deez = this.random(32);
-			
-				for (const target of this.sides[1].active) {
 			if (deez === 0) {
 				for (const pokemon of this.sides[0].active) {
 					this.directDamage(pokemon.hp, pokemon);
@@ -686,8 +684,8 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		else if (result === 17) {
 			this.hint("Roulette Wheel Result 18 - One of you needs a hand!");
-			const s1 of this.sides[0].active;
-			const s2 of this.sides[1].active;
+			const s1 = this.sides[0].active;
+			const s2 = this.sides[1].active;
 			if (s1.hp >= s2.hp) {this.heal(s2.maxhp, s2);}
 			if (s1.hp <= s2.hp) {this.heal(s1.maxhp, s1);}
 		}
@@ -897,8 +895,6 @@ export const Formats: {[k: string]: FormatData} = {
 			this.hint("Roulette Wheel Result 33 - Funeral service...");
 			var deez: number;
 			deez = this.random(32);
-			
-				for (const target of this.sides[1].active) {
 			if (deez === 0) {
 				for (const pokemon of this.sides[0].active) {
 					this.directDamage(pokemon.hp, pokemon);
