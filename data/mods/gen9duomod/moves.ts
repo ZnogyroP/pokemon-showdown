@@ -202,7 +202,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
 				this.add('-message', "I dunno... ", pokemon.name, "'s been acting pretty sus lately...");
-				target.formeChange('Impsaustor', this.effect, true);
+				pokemon.formeChange('Impsaustor', this.effect, true);
 				const oldAbility = pokemon.setAbility('Vent');
 				if (oldAbility) {
 					this.add('-ability', pokemon, 'Vent', '[from] move: Impostor Blade', '[silent]');
