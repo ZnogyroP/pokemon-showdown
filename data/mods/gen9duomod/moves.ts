@@ -396,9 +396,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onBeforeMovePriority: 6,
 		onTryMove(pokemon, target, move) {
 			const callerMoveId = move.sourceEffect || move.id;
-			const moveSlot = callerMoveId === 'instruct' ? source.getMoveData(move.id) : pokemon.getMoveData(callerMoveId);
+			const moveSlot = callerMoveId === 'instruct' ? pokemon.getMoveData(move.id) : pokemon.getMoveData(callerMoveId);
 			if (!moveSlot) {return false;}
-			if (moveSlot.pp % 2 = 0)) {return false;}
+			if (moveSlot.pp % 2 === 0)) {return false;}
 			return true;
 		},
 		category: "Special",
