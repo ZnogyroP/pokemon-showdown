@@ -27,7 +27,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 100,
 		basePower: 15,
 		category: "Physical",
-		name: "Bonemerang",
+		name: "Double Dab",
 		pp: 1,
 		noPPBoosts: true,
 		priority: 1,
@@ -118,7 +118,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return false;
 		},
 		secondary: null,
-		target: "normal",
+		target: "self",
 		type: "Psychic",
 		zMove: {boost: {spa: 1}},
 		contestType: "Cute",
@@ -170,7 +170,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		isNonstandard: null,
 		gen: 8,
 		shortDesc: "The user clears hazards from the opponents side.",
-		name: "Razor Wind",
+		name: "Hyper Wind",
 		pp: 10,
 		priority: 0,
 		flags: {charge: 1, protect: 1, mirror: 1},
@@ -246,7 +246,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
-		type: "Fighting",
+		type: "Poison",
 		maxMove: {basePower: 130},
 		contestType: "Tough",
 	},
@@ -256,7 +256,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: 50,
 		basePower: 0,
 		damageCallback(pokemon, target) {
-			return this.clampIntRange(target.maxHP / 2, 1);
+			return this.clampIntRange(target.maxhp / 2, 1);
 		},
 		onMoveFail(target, source, move) {
 			this.damage(source.baseMaxhp / 2, source, source, this.dex.getEffect('High Jump Kick'));
