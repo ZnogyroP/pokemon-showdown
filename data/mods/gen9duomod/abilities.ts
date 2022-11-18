@@ -106,7 +106,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-activate', pokemon, 'ability: Update', this.dex.getItem(pokemon.item).name, '[silent]');
 		},
 		onTryHit(target, source, move) {
-			if (target.getMoveHitData(move).typeMod > 0) {return;}
+			if (target.getMoveHitData(move).typeMod > 0) {
+				
+			this.add('-message', source.name + " copied its victim's moves!");
+				return;}
 			if (target !== source && move.type === 'Water' && target.hasItem('splashplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
