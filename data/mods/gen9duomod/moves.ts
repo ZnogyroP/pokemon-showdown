@@ -224,6 +224,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
 			}
 			else {
+				this.add('-message', "VOTE HIM OUT!!!");
 				this.damage(pokemon.baseMaxhp, pokemon);
 			}
 		},
