@@ -200,6 +200,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (source.species.id === 'impsaustor') {return;}
 			if (!target || target.fainted || target.hp <= 0) {
 				this.add('-message', "I dunno... ", pokemon.name, "'s been acting pretty sus lately...");
 				pokemon.formeChange('Impsaustor', this.effect, true);
@@ -362,7 +363,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onHit(pokemon, source, move) {
 				if (move.flags['contact']) {
-					this.useMove("Pharaoh Shot", pokemon);
+					this.add('-message', "The attack hit the charging flame!");
 					this.useMove("Pharaoh Shot", pokemon);
 				}
 			},
@@ -379,10 +380,15 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 80,
 		category: "Physical",
 		name: "Polar Pounce",
-		pp: 16,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		weather: 'hail',
+		self: {
+			onHit(source) {
+				if (!source.volatiles['dynamax']) return;
+				this.field.setWeather('hail');
+			},
+		},
 		secondary: null,
 		target: "all",
 		type: "Ice",
