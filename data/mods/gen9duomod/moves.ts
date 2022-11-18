@@ -1491,8 +1491,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			this.hint("Roulette Wheel Result 33 - Funeral service...");
 			var deez: number;
 			deez = this.random(32);
-			
-				for (const target of this.sides[1].active) {
 			if (deez === 0) {
 				for (const pokemon of this.sides[0].active) {
 					this.directDamage(pokemon.hp, pokemon);
