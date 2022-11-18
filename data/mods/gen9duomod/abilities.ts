@@ -102,74 +102,76 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	update: {
 		onStart(pokemon) {
-			this.add('-message', pokemon.name + " is currently holding a " + pokemon.item + "!", '[identify]');	
+			this.add('-message', pokemon.name + " is currently holding a " + pokemon.item + "!", '[identify]');
+			this.add('-activate', pokemon, 'ability: Update', this.dex.getItem(pokemon.item).name, '[silent]');
 		},
 		onTryHit(target, source, move) {
-			if (target !== source && move.type === 'Water' && target.hasItem('splashplate') && target.getMoveHitData(move).typeMod <= 0) {
+			if (target.getMoveHitData(move).typeMod <= 0) {return;}
+			if (target !== source && move.type === 'Water' && target.hasItem('splashplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Fire' && target.hasItem('flameplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Fire' && target.hasItem('flameplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Grass' && target.hasItem('meadowplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Grass' && target.hasItem('meadowplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Electric' && target.hasItem('zapplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Electric' && target.hasItem('zapplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Bug' && target.hasItem('insectplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Bug' && target.hasItem('insectplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Flying' && target.hasItem('skyplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Flying' && target.hasItem('skyplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Rock' && target.hasItem('stoneplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Rock' && target.hasItem('stoneplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Ground' && target.hasItem('earthplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Ground' && target.hasItem('earthplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Fighting' && target.hasItem('fistplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Fighting' && target.hasItem('fistplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Psychic' && target.hasItem('mindplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Psychic' && target.hasItem('mindplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Poison' && target.hasItem('toxicplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Poison' && target.hasItem('toxicplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Ghost' && target.hasItem('spookyplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Ghost' && target.hasItem('spookyplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Ice' && target.hasItem('icicleplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Ice' && target.hasItem('icicleplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Dragon' && target.hasItem('dracoplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Dragon' && target.hasItem('dracoplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Steel' && target.hasItem('ironplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Steel' && target.hasItem('ironplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Dark' && target.hasItem('dreadplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Dark' && target.hasItem('dreadplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
-			else if (target !== source && move.type === 'Fairy' && target.hasItem('pixieplate') && target.getMoveHitData(move).typeMod <= 0) {
+			else if (target !== source && move.type === 'Fairy' && target.hasItem('pixieplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
 			}
