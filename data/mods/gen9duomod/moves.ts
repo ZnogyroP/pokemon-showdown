@@ -399,7 +399,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const moveSlot = callerMoveId === 'instruct' ? pokemon.getMoveData(move.id) : pokemon.getMoveData(callerMoveId);
 			if (!moveSlot) {return false;}
 			if (moveSlot.pp % 2 === 1) {
-				this.add('-message', pokemon.name, " readied a mine!");
+				this.add('-message', "It readied a mine!");
 				return false;
 			}
 			return true;
