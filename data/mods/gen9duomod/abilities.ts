@@ -206,23 +206,26 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	// expect errors
 	drawfour: {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
-		onSourceAfterFaint(length, target, source, effect) {
-			for (const moveSlot of target.moveSlots) {
-				if (moveSlot === null) return;
-				if (source.moveSlots.length < 12) {
-					this.attrLastMove('[still]');
-					if (source.moveSlots.length < 0) return false;
-					const learnedMove = {
-						move: target.moveSlots.name,
-						id: target.moveSlots.id,
-						pp: target.moveSlots.pp,
-						maxpp: target.moveSlots.pp,
-						target: target.moveSlots.target,
-						disabled: false,
-						used: false,
-					};	
-					source.moveSlots[source.moveSlots.length] = learnedMove;
-					source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
+		onAnyModifyDamage(damage, source, target, move) {
+			if (target === source) {return;}
+			if (damage >= target.hp && effect && effect.effectType === 'Move') {
+				for (const moveSlot of target.moveSlots) {
+					if (moveSlot === null) return;
+					if (source.moveSlots.length < 12) {
+						this.attrLastMove('[still]');
+						if (source.moveSlots.length < 0) return false;
+						const learnedMove = {
+							move: target.moveSlots.name,
+							id: target.moveSlots.id,
+							pp: target.moveSlots.pp,
+							maxpp: target.moveSlots.pp,
+							target: target.moveSlots.target,
+							disabled: false,
+							used: false,
+						};	
+						source.moveSlots[source.moveSlots.length] = learnedMove;
+						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
+					}
 				}
 			}
 			this.add('-message', source.name + " copied its victim's moves!");
