@@ -745,7 +745,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Cute",
 	},
-	/*
+	
 	chillyreception: {
 		num: 881,
 		accuracy: true,
@@ -950,7 +950,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Water",
 		contestType: "Cool",
-	}, */
+	}, 
 	
 	// haha i have stolen hematite's code AND HE MAY NEVER KNOW!!
 	direclaw: {
@@ -988,7 +988,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Poison",
 		contestType: "Clever",
 	},
-	/*
+	
 	shedtail: {
 		num: 880,
 		accuracy: true,
@@ -1069,7 +1069,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Beautiful",
 	},
-	*/
+	
 	roulettespin: {
 		accuracy: true,
 		basePower: 0,
