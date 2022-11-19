@@ -212,7 +212,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
 		onAnyModifyDamage(damage, source, target, move) {
 			if (target === source) {return;}
-			if (damage >= target.hp && effect && effect.effectType === 'Move') {
+			if (damage >= target.hp) {
 				for (const moveSlot of target.moveSlots) {
 					if (moveSlot === null) return;
 					if (source.moveSlots.length < 12) {
@@ -264,8 +264,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {pokemon.addVolatile('respawnpunisher');}
 		},
-		onBeforeSwitchOut(pokemon) {
-			pokemon.addVolatile('respawnpunisher');
+		onPrepareHit(source, target, move) {
+			for (const targ of pokemon.side.foe.active) {
+				if (!targ.activeTurns) {targ.addVolatile('respawnpunisher');}
+			}
 		},
 		onEnd(pokemon) {
 			delete pokemon.volatiles['respawnpunisher'];
@@ -275,6 +277,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			duration: 2,
 			onStart(pokemon) {
 				this.boost({atk: 1}, pokemon);
+				this.add('-start', pokemon, 'Respawn Punisher');
 			},
 			onEnd(pokemon) {
 				this.boost({atk: -1}, pokemon);
