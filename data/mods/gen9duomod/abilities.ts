@@ -90,9 +90,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAnyTryMove(target, source, effect) {
 			if (['teleport', 'chillyreception', 'voltswitch', 'uturn', 'flipturn', 'batonpass'].includes(effect.id)) {
 				this.attrLastMove('[still]');
-				this.add('cant', this.effectData.target, 'ability: Sticky Starch', effect, '[of] ' + target);
-				source.addVolatile('partiallytrapped');
-				source.volatiles['partiallytrapped'].duration = 1;
+				this.add('cant', this.effectData.target, 'ability: Sticky Starch', effect, '[of] ' + source);
+				target.addVolatile('partiallytrapped');
+				target.volatiles['partiallytrapped'].duration = 2;
 				return false;
 			}
 		},
@@ -277,7 +277,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({atk: 1}, pokemon);
 			},
 			onEnd(pokemon) {
-				delete pokemon.volatiles['respawnpunisher'];
 				this.boost({atk: -1}, pokemon);
 			},			
 		},
