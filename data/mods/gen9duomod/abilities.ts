@@ -242,12 +242,12 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	
 	conduction: {
 		onAfterMoveSecondary(target, source, move) {
-			if ((source.species.id === 'gelsius' || source.species.id === 'Gelsius') && source.hp && !source.transformed && move.type === 'Ice') {
+			if ((source.species.id === 'gelsius' || source.species.id === 'Gelsius') && source.hp && move.type === 'Ice') {
 				this.add('-message', source.name + " is beginning to rapidly cool!");
 				source.formeChange('Gelsius-Subzero', this.effect, true);
 				this.add('-message', source.name + " transformed!");
 			}
-			else if ((source.species.id === 'gelsius' || source.species.id === 'Gelsius') && source.hp && !source.transformed && move.type === 'Fire') {
+			else if ((source.species.id === 'gelsius' || source.species.id === 'Gelsius') && source.hp && move.type === 'Fire') {
 				this.add('-message', source.name + " is beginning to rapidly heat up!");
 				source.formeChange('Gelsius-Hundred', this.effect, true);
 				this.add('-message', source.name + " transformed!");
@@ -261,7 +261,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	//  && source.side.foe.pokemonLeft
 
 	respawnpunisher: {
-		onAnyFaintPriority: 1,
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {pokemon.addVolatile('respawnpunisher');}
 		},
@@ -273,7 +272,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-end', pokemon, 'Respawn Punisher', '[silent]');
 		},
 		condition: {
-			duration: 1,
+			duration: 2,
 			onStart(pokemon) {
 				this.boost({atk: 1}, pokemon);
 			},
