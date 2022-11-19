@@ -265,7 +265,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (!target || target.fainted || target.hp <= 0) {pokemon.addVolatile('respawnpunisher');}
 		},
 		onPrepareHit(source, target, move) {
-			for (const targ of pokemon.side.foe.active) {
+			for (const targ of source.side.foe.active) {
 				if (!targ.activeTurns) {targ.addVolatile('respawnpunisher');}
 			}
 		},
