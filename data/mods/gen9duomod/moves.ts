@@ -974,13 +974,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 				const result = this.random(3);
 				if (result === 0) {
 					target.trySetStatus('psn', source);
-					if ((target) && source.ability === "unstableclaws") {this.add('-start', target, 'typechange', 'Poison');}
+					if ((target) && source.ability === "unstableclaws") {this.add('-start', source, 'typechange', 'Poison');}
 				} else if (result === 1) {
 					target.trySetStatus('par', source);
-					if ((target) && source.ability === "unstableclaws") {this.add('-start', target, 'typechange', 'Electric');}
+					if ((target) && source.ability === "unstableclaws") {this.add('-start', source, 'typechange', 'Electric');}
 				} else {
 					target.trySetStatus('slp', source);
-					if ((target) && source.ability === "unstableclaws") {this.add('-start', target, 'typechange', 'Psychic');}
+					if ((target) && source.ability === "unstableclaws") {this.add('-start', source, 'typechange', 'Psychic');}
 				}
 			},
 		},
