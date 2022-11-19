@@ -202,7 +202,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (pokemon.species.id === 'impsaustor') {return;}
 			if (!target || target.fainted || target.hp <= 0) {
-				this.add('-message', "I dunno... ", pokemon.name, "'s been acting pretty sus lately...");
+//				this.add('-message', "I dunno... ", pokemon.name, "'s been acting pretty sus lately...");
 				pokemon.formeChange('Impsaustor', this.effect, true);
 				const oldAbility = pokemon.setAbility('Vent');
 				if (oldAbility) {
@@ -385,12 +385,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		self: {
 			onHit(source) {
-				if (!source.volatiles['dynamax']) return;
 				this.field.setWeather('hail');
 			},
 		},
 		secondary: null,
-		target: "all",
+		target: "normal",
 		type: "Ice",
 		zMove: {boost: {spe: 1}},
 		contestType: "Beautiful",
