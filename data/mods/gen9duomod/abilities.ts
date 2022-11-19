@@ -91,6 +91,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (['teleport', 'chillyreception', 'voltswitch', 'uturn', 'flipturn', 'batonpass'].includes(effect.id)) {
 				this.attrLastMove('[still]');
 				this.add('cant', this.effectData.target, 'ability: Sticky Starch', effect, '[of] ' + target);
+				source.addVolatile('partiallytrapped');
+				source.volatiles['partiallytrapped'].duration = 1;
 				return false;
 			}
 		},
@@ -190,7 +192,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onTryHit(target, source, move) {
 			if (move.category === 'Status' && target !== source && move.type !== 'Flying') {
 				this.add('-immune', target, '[from] ability: Magic Absorb');	
-				this.heal(target.baseMaxhp);
+				this.heal(target.baseMaxhp / 4);
 				return null;
 			}
 		},
@@ -262,12 +264,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	respawnpunisher: {
 		onAnyFaintPriority: 1,
-		onAnyFaint() {
-			delete this.effectData.target.volatiles['respawnpunisher'];
-			this.effectData.target.addVolatile('respawnpunisher');
+		onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (!target || target.fainted || target.hp <= 0) {pokemon.addVolatile('respawnpunisher');}
 		},
 		onBeforeSwitchOut(pokemon) {
-			delete pokemon.volatiles['respawnpunisher'];
 			pokemon.addVolatile('respawnpunisher');
 		},
 		onEnd(pokemon) {
