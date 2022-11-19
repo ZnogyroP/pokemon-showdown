@@ -200,7 +200,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (source.species.id === 'impsaustor') {return;}
+			if (pokemon.species.id === 'impsaustor') {return;}
 			if (!target || target.fainted || target.hp <= 0) {
 				this.add('-message', "I dunno... ", pokemon.name, "'s been acting pretty sus lately...");
 				pokemon.formeChange('Impsaustor', this.effect, true);
