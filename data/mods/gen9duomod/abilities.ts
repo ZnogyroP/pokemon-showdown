@@ -108,10 +108,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-activate', pokemon, 'ability: Update', this.dex.getItem(pokemon.item).name, '[silent]');
 		},
 		onTryHit(target, source, move) {
-			if (target.getMoveHitData(move).typeMod > 0) {
-				
-			this.add('-message', source.name + " copied its victim's moves!");
-				return;}
+			if (target.getMoveHitData(move).typeMod > 0) {return;}
 			if (target !== source && move.type === 'Water' && target.hasItem('splashplate')) {
 				this.add('-immune', target, '[from] ability: Update');
 				return null;
@@ -234,8 +231,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
 					}
 				}
-			}
 			this.add('-message', source.name + " copied its victim's moves!");
+			}
 		},
 		name: "Draw Four",
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
@@ -245,14 +242,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	
 	conduction: {
 		onAfterMoveSecondary(target, source, move) {
-			if (source.species.id === 'gelsius' && source.hp && !source.transformed && source.side.foe.pokemonLeft && move.type === 'Ice') {
+			if ((source.species.id === 'gelsius' || source.species.id === 'Gelsius') && source.hp && !source.transformed && move.type === 'Ice') {
 				this.add('-message', source.name + " is beginning to rapidly cool!");
 				source.formeChange('Gelsius-Subzero', this.effect, true);
 				this.add('-message', source.name + " transformed!");
 			}
-			else if (source.species.id === 'gelsius' && source.hp && !source.transformed && source.side.foe.pokemonLeft && move.type === 'Fire') {
+			else if ((source.species.id === 'gelsius' || source.species.id === 'Gelsius') && source.hp && !source.transformed && move.type === 'Fire') {
 				this.add('-message', source.name + " is beginning to rapidly heat up!");
-				source.formeChange('Gelsius-Thousand', this.effect, true);
+				source.formeChange('Gelsius-Hundred', this.effect, true);
 				this.add('-message', source.name + " transformed!");
 			}
 		},
@@ -261,6 +258,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		rating: 2,
 		num: 9010,
 	},	
+	//  && source.side.foe.pokemonLeft
 
 	respawnpunisher: {
 		onAnyFaintPriority: 1,
