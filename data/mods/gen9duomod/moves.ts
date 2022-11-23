@@ -298,7 +298,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onTryHit(target, source, move) {
 				move.ignoreImmunity = true;
-				return;
 			},
 			onEnd(pokemon) {
 				delete pokemon.volatiles['arrowed'];
