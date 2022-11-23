@@ -285,9 +285,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onEffectiveness(typeMod, target, type, move) {
-			target.addVolatile('arrowed');
 			move.ignoreImmunity = true;
 			return;
+		},
+		onAfterHit(target, source, move) {
+			target.addVolatile('arrowed');
 		},
 		volatileStatus: 'arrowed',
 		condition: {
@@ -297,7 +299,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onTryHit(target, source, move) {
 				move.ignoreImmunity = true;
-				return 0;
+				return;
 			},
 		},
 		ignoreImmunity: {'Ground': true},
