@@ -287,7 +287,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onEffectiveness(typeMod, target, type, move) {
 			target.addVolatile('arrowed');
 			move.ignoreImmunity = true;
-			return 0; // literally all three of these lines should do the same thing but i am NOT taking my chances
+			return;
 		},
 		volatileStatus: 'arrowed',
 		condition: {
