@@ -288,18 +288,21 @@ export const Moves: {[moveid: string]: MoveData} = {
 			move.ignoreImmunity = true;
 			return;
 		},
-		onAfterHit(target, source, move) {
+		onHit(target) {
 			target.addVolatile('arrowed');
 		},
 		volatileStatus: 'arrowed',
 		condition: {
-			onEnd(pokemon) {
-				delete pokemon.volatiles['arrowed'];
-				this.add('-end', pokemon, 'arrowed');
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'move: One Trillion Arrows');
 			},
 			onTryHit(target, source, move) {
 				move.ignoreImmunity = true;
 				return;
+			},
+			onEnd(pokemon) {
+				delete pokemon.volatiles['arrowed'];
+				this.add('-end', pokemon, 'arrowed');
 			},
 		},
 		ignoreImmunity: {'Ground': true},
