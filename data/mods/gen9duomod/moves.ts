@@ -763,7 +763,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return !!this.canSwitch(source.side);
 		},
 		selfSwitch: true,
-		weather: 'snow',
+		weather: 'hail',
 		secondary: null,
 		target: "all",
 		type: "Ice",
@@ -954,7 +954,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Cool",
 	}, 
 	
-	// haha i have stolen hematite's code AND HE MAY NEVER KNOW!!
 	direclaw: {
 		shortDesc: "50% to paralyze, poison, or sleep target. High crit ratio.",
 		num: 10011,
@@ -992,42 +991,49 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	
 	shedtail: {
-		num: 880,
+		num: 10111,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		name: "Shed Tail",
+		shortDesc: "In exchange for half of its HP, switches out and creates a Substitute for the switch-in.",
 		pp: 10,
 		priority: 0,
-		flags: {},
-		volatileStatus: 'substitute',
-		onTryHit(source) {
-			if (!this.canSwitch(source.side)) {
-				this.add('-fail', source);
-				return this.NOT_FAIL;
-			}
-			if (source.volatiles['substitute']) {
-				this.add('-fail', source, 'move: Shed Tail');
-				return this.NOT_FAIL;
-			}
-			if (source.hp <= source.maxhp / 2 || source.maxhp === 1) { // Shedinja clause
-				this.add('-fail', source, 'move: Shed Tail', '[weak]');
-				return this.NOT_FAIL;
+		flags: {snatch: 1},
+		selfSwitch: true,
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Substitute", target);
+		},
+		onTryHit(target) {
+			if (target.hp <= target.maxhp / 2 || target.maxhp === 1) { // Shedinja clause
+				this.add('-fail', target, 'move: Substitute', '[weak]');
+				return null;
 			}
 		},
 		onHit(target) {
 			this.directDamage(target.maxhp / 2);
 		},
-		self: {
-			onHit(source) {
-				source.skipBeforeSwitchOutEventFlag = true;
+		slotCondition: 'shedtail',
+		condition: {
+			onStart(pokemon, source) {
+				this.effectData.hp = Math.floor(source.maxhp / 4);
+			},
+			onSwap(target) {
+				target.side.removeSlotCondition(target, 'shedtail');
+				if (!target.fainted) {
+					if (target.addVolatile('substitute')) {
+						target.volatiles['substitute'].hp = this.effectData.hp;
+						this.add('-anim', target, "Substitute", target);
+					}
+				}
 			},
 		},
-		selfSwitch: 'shedtail',
 		secondary: null,
 		target: "self",
 		type: "Normal",
-		zMove: {effect: 'clearnegativeboost'},
+		zMove: {effect: 'heal'},
+		contestType: "Cute",
 	},
 	
 	infernalparade: {
@@ -1038,15 +1044,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (target.status || target.hasAbility('comatose')) return move.basePower * 2;
 			return move.basePower;
 		},
+		onHit(target, source) {
+			const result = this.random(10);
+			if (result <= 2) {target.trySetStatus('brn', source);}
+		},
 		category: "Special",
 		name: "Infernal Parade",
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		secondary: {
-			chance: 30,
-			status: 'brn',
-		},
+		secondary: null,
 		target: "normal",
 		type: "Ghost",
 	},
