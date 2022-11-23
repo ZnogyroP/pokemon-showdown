@@ -279,13 +279,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({atk: 1}, pokemon);
 				this.add('-start', pokemon, 'Respawn Punisher');
 			},
-			onAfterMoveSecondarySelf(pokemon, target, move) {
-				if (!target || target.fainted || target.hp <= 0) {this.effectState.duration++;}
-			},
-			onPrepareHit(source, target, move) {
-				for (const targ of source.side.foe.active) {
-					if (!targ.activeTurns) {this.effectState.duration++;}
-				}
+			onRestart(pokemon) {
+				this.effectState.duration = 2;
 			},
 			onEnd(pokemon) {
 				this.boost({atk: -1}, pokemon);
@@ -344,7 +339,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (!lastAttackedBy) return;
 			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.boost({atk: 1, spa: 1, spe: 1});
+				this.boost({atk: 1, def: -1, spa: 1, spd: -1, spe: 1});
 			}
 		},
 		name: "Anger Shell",
