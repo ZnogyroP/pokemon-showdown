@@ -289,7 +289,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		onHit(target, source) {
 			target.addVolatile('onetrillionarrows', target);
-			this.add('-message', "The attack hit the charging flame!");
+			this.add('-message', "The arrows left the target vulnerable!");
 		},
 		volatileStatus: 'onetrillionarrows',
 		condition: {
