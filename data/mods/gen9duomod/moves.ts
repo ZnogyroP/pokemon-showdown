@@ -851,7 +851,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		name: "Lunar Bessing",
+		name: "Lunar Blessing",
 		pp: 10,
 		priority: 0,
 		flags: {heal: 1, authentic: 1, mystery: 1},
