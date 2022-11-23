@@ -289,6 +289,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		onHit(target, source) {
 			target.addVolatile('onetrillionarrows', target);
+			this.add('-message', "The attack hit the charging flame!");
 		},
 		volatileStatus: 'onetrillionarrows',
 		condition: {
@@ -353,12 +354,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		beforeTurnCallback(pokemon) {
 			pokemon.addVolatile('pharaohshot');
 		},
-		beforeMoveCallback(pokemon) {
+/*		beforeMoveCallback(pokemon) {
 			if (pokemon.volatiles['pharaohshot'] && pokemon.volatiles['pharaohshot'].lostFocus) {
 				this.add('cant', pokemon, 'Pharaoh Shot', 'Pharaoh Shot');
 				return true;
 			}
-		},
+		},*/
 		condition: {
 			duration: 1,
 			onStart(pokemon) {
