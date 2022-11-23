@@ -286,12 +286,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onEffectiveness(typeMod, target, type, move) {
 			move.ignoreImmunity = true;
-			return;
 		},
 		onHit(target, source) {
-			target.addVolatile('arrowed', target);
+			target.addVolatile('onetrillionarrows', target);
 		},
-		volatileStatus: 'arrowed',
+		volatileStatus: 'onetrillionarrows',
 		condition: {
 			onStart(pokemon) {
 				this.add('-start', pokemon, 'move: One Trillion Arrows');
@@ -300,13 +299,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 				move.ignoreImmunity = true;
 			},
 			onEnd(pokemon) {
-				delete pokemon.volatiles['arrowed'];
-				this.add('-end', pokemon, 'arrowed');
+				delete pokemon.volatiles['onetrillionarrows'];
+				this.add('-end', pokemon, 'onetrillionarrows');
 			},
 		},
 		ignoreImmunity: {'Ground': true},
 		secondary: null,
-		target: "allAdjacentFoes",
+		target: "normal",
 		type: "Ground",
 		zMove: {basePower: 180},
 		contestType: "Beautiful",
