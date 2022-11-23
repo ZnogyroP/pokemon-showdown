@@ -288,8 +288,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			move.ignoreImmunity = true;
 			return;
 		},
-		onHit(target) {
-			target.addVolatile('arrowed');
+		onHit(target, source) {
+			target.addVolatile('arrowed', target);
 		},
 		volatileStatus: 'arrowed',
 		condition: {
