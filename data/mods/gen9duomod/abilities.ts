@@ -219,11 +219,11 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						this.attrLastMove('[still]');
 						if (source.moveSlots.length < 0) return false;
 						const learnedMove = {
-							move: target.moveSlots.name,
-							id: target.moveSlots.id,
-							pp: target.moveSlots.pp,
-							maxpp: target.moveSlots.pp,
-							target: target.moveSlots.target,
+							move: moveSlot.name,
+							id: moveSlot.id,
+							pp: moveSlot.pp,
+							maxpp: moveSlot.pp,
+							target: moveSlot.target,
 							disabled: false,
 							used: false,
 						};	
@@ -279,8 +279,18 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({atk: 1}, pokemon);
 				this.add('-start', pokemon, 'Respawn Punisher');
 			},
+			onAfterMoveSecondarySelf(pokemon, target, move) {
+				if (!target || target.fainted || target.hp <= 0) {this.effectState.duration++;}
+			},
+			onPrepareHit(source, target, move) {
+				for (const targ of source.side.foe.active) {
+					if (!targ.activeTurns) {this.effectState.duration++;}
+				}
+			},
 			onEnd(pokemon) {
 				this.boost({atk: -1}, pokemon);
+				delete pokemon.volatiles['respawnpunisher'];
+				this.add('-end', pokemon, 'Respawn Punisher', '[silent]');
 			},			
 		},
 		name: "Respawn Punisher",
