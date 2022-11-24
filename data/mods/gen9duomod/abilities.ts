@@ -210,6 +210,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	drawfour: {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
 		onSourceModifyDamage(damage, source, target, move) {
+			if (source.ability != 'drawfour') {return;}
 			if (target === source) {return;}
 			if (damage >= target.hp) {
 				for (const moveSlot of target.moveSlots) {
@@ -228,10 +229,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						};	
 						source.moveSlots[source.moveSlots.length] = learnedMove;
 						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
-						this.add('-start', source, 'Draw Four', moveSlot.id);
+						this.add('-message', source.name + " stole a move!");
 					}
 				}
-			this.add('-message', source.name + " copied its victim's moves!");
 			}
 		},
 		name: "Draw Four",
@@ -262,11 +262,17 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 
 	respawnpunisher: {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) {pokemon.addVolatile('respawnpunisher');}
+			if (!target || target.fainted || target.hp <= 0) {
+				if (pokemon.ability != 'respawnpunisher') {return;}
+				pokemon.addVolatile('respawnpunisher');
+			}
 		},
 		onPrepareHit(source, target, move) {
 			for (const targ of source.side.foe.active) {
-				if (!targ.activeTurns) {source.addVolatile('respawnpunisher');}
+				if (!targ.activeTurns) {
+					if (source.ability != 'respawnpunisher') {return;}
+					source.addVolatile('respawnpunisher');
+				}
 			}
 		},
 		onEnd(pokemon) {
@@ -280,7 +286,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.add('-start', pokemon, 'Respawn Punisher');
 			},
 			onRestart(target, source, effect) {
-				this.effectState.duration = 2;
+				source.volatiles['respawnpunisher'].duration = 2;
 			},
 			onEnd(pokemon) {
 				this.boost({atk: -1}, pokemon);
