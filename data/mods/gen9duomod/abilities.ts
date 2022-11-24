@@ -264,7 +264,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
 				if (pokemon.ability != 'respawnpunisher') {return;}
-				delete pokemon.volatiles['respawnpunisher']
+				delete pokemon.volatiles['respawnpunisher'];
 				pokemon.addVolatile('respawnpunisher');
 			}
 		},
@@ -272,7 +272,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const targ of source.side.foe.active) {
 				if (!targ.activeTurns) {
 					if (source.ability != 'respawnpunisher') {return;}
-					delete source.volatiles['respawnpunisher']
+					pokemon.removeVolatile['respawnpunisher'];
 					source.addVolatile('respawnpunisher');
 				}
 			}
