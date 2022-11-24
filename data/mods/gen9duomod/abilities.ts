@@ -210,7 +210,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	drawfour: {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
 		onSourceModifyDamage(damage, source, target, move) {
-			if (source.ability != 'drawfour') {return;}
+			// if (source.ability != 'drawfour') {return;}
 			if (target === source) {return;}
 			if (damage >= target.hp) {
 				for (const moveSlot of target.moveSlots) {
@@ -272,7 +272,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const targ of source.side.foe.active) {
 				if (!targ.activeTurns) {
 					if (source.ability != 'respawnpunisher') {return;}
-					pokemon.removeVolatile['respawnpunisher'];
+					source.removeVolatile['respawnpunisher'];
 					source.addVolatile('respawnpunisher');
 				}
 			}
