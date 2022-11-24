@@ -226,6 +226,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 							used: false,
 						};	
 						this.add('-message', source.name + " stole a move!");
+						this.add('-start', source, 'Mimic', learnedMove.id);
 						source.moveSlots[source.moveSlots.length] = learnedMove;
 						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
 					}
