@@ -209,27 +209,27 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	
 	drawfour: {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
-		onSourceModifyDamage(damage, source, target, move) {
-			// if (source.ability != 'drawfour') {return;}
-			if (target === source) {return;}
-			this.add('-message', source.name + " stole a move!");
-			if (damage >= target.hp) {
-				for (const moveSlot of target.moveSlots) {
-					if (moveSlot === null) return;
-					if (source.moveSlots.length < 12) {
-						this.attrLastMove('[still]');
-						if (source.moveSlots.length < 0) return false;
-						const learnedMove = {
-							move: moveSlot.name,
-							id: moveSlot.id,
-							pp: moveSlot.pp,
-							maxpp: moveSlot.pp,
-							target: moveSlot.target,
-							disabled: false,
-							used: false,
-						};	
-						source.moveSlots[source.moveSlots.length] = learnedMove;
-						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
+		onModifyMove(move, pokemon) {
+			for (const target of pokemon.side.foe.active) {
+				if (damage >= target.hp) {
+					for (const moveSlot of target.moveSlots) {
+						if (moveSlot === null) return;
+						if (pokemon.moveSlots.length < 12) {
+							this.attrLastMove('[still]');
+							if (pokemon.moveSlots.length < 0) return false;
+							const learnedMove = {
+								move: moveSlot.name,
+								id: moveSlot.id,
+								pp: moveSlot.pp,
+								maxpp: moveSlot.pp,
+								target: moveSlot.target,
+								disabled: false,
+								used: false,
+							};	
+							this.add('-message', pokemon.name + " stole a move!");
+							source.moveSlots[pokemon.moveSlots.length] = learnedMove;
+							source.baseMoveSlots[pokemon.moveSlots.length - 1] = learnedMove;
+						}
 					}
 				}
 			}
@@ -287,7 +287,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			},
 			onEnd(pokemon) {
 				this.boost({atk: -1}, pokemon);
-				delete pokemon.volatiles['respawnpunisher'];
 				this.add('-end', pokemon, 'Respawn Punisher', '[silent]');
 			},			
 		},
