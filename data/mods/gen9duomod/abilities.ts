@@ -212,6 +212,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onSourceModifyDamage(damage, source, target, move) {
 			// if (source.ability != 'drawfour') {return;}
 			if (target === source) {return;}
+			this.add('-message', source.name + " stole a move!");
 			if (damage >= target.hp) {
 				for (const moveSlot of target.moveSlots) {
 					if (moveSlot === null) return;
@@ -229,7 +230,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						};	
 						source.moveSlots[source.moveSlots.length] = learnedMove;
 						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
-						this.add('-message', source.name + " stole a move!");
 					}
 				}
 			}
@@ -264,7 +264,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
 				if (pokemon.ability != 'respawnpunisher') {return;}
-				delete pokemon.volatiles['respawnpunisher'];
 				pokemon.addVolatile('respawnpunisher');
 			}
 		},
@@ -272,7 +271,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			for (const targ of source.side.foe.active) {
 				if (!targ.activeTurns) {
 					if (source.ability != 'respawnpunisher') {return;}
-					source.removeVolatile['respawnpunisher'];
 					source.addVolatile('respawnpunisher');
 				}
 			}
