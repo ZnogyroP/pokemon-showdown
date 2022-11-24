@@ -209,27 +209,25 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	
 	drawfour: {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
-		onModifyMove(move, pokemon) {
-			for (const target of pokemon.side.foe.active) {
-				if (damage >= target.hp) {
-					for (const moveSlot of target.moveSlots) {
-						if (moveSlot === null) return;
-						if (pokemon.moveSlots.length < 12) {
-							this.attrLastMove('[still]');
-							if (pokemon.moveSlots.length < 0) return false;
-							const learnedMove = {
-								move: moveSlot.name,
-								id: moveSlot.id,
-								pp: moveSlot.pp,
-								maxpp: moveSlot.pp,
-								target: moveSlot.target,
-								disabled: false,
-								used: false,
-							};	
-							this.add('-message', pokemon.name + " stole a move!");
-							source.moveSlots[pokemon.moveSlots.length] = learnedMove;
-							source.baseMoveSlots[pokemon.moveSlots.length - 1] = learnedMove;
-						}
+		onModifyDamage(damage, source, target, move) {
+			if (damage >= target.hp) {
+				for (const moveSlot of target.moveSlots) {
+					if (moveSlot === null) return;
+					if (source.moveSlots.length < 12) {
+						this.attrLastMove('[still]');
+						if (source.moveSlots.length < 0) return false;
+						const learnedMove = {
+							move: moveSlot.name,
+							id: moveSlot.id,
+							pp: moveSlot.pp,
+							maxpp: moveSlot.pp,
+							target: moveSlot.target,
+							disabled: false,
+							used: false,
+						};	
+						this.add('-message', source.name + " stole a move!");
+						source.moveSlots[source.moveSlots.length] = learnedMove;
+						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
 					}
 				}
 			}
@@ -280,6 +278,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-end', pokemon, 'Respawn Punisher', '[silent]');
 		},
 		condition: {
+			onStart(target) {
+				this.add('-start', target, 'ability: Respawn Punisher');
+			},
 			onBasePower(basePower, attacker, defender, move) {
 				return this.chainModify(1.3);
 			},
