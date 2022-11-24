@@ -286,7 +286,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.add('-start', pokemon, 'Respawn Punisher');
 			},
 			onRestart(target, source, effect) {
-				source.volatiles['respawnpunisher'].duration = 2;
+				this.effectState.duration = 2;
+				this.add('-start', pokemon, 'ability: Respawn Punisher');
 			},
 			onEnd(pokemon) {
 				this.boost({atk: -1}, pokemon);
