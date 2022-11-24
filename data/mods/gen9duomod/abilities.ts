@@ -280,13 +280,10 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-end', pokemon, 'Respawn Punisher', '[silent]');
 		},
 		condition: {
-			duration: 2,
-			onStart(pokemon) {
-				this.boost({atk: 1}, pokemon);
-				this.add('-start', pokemon, 'Respawn Punisher');
+			onBasePower(basePower, attacker, defender, move) {
+				return this.chainModify(1.3);
 			},
 			onEnd(pokemon) {
-				this.boost({atk: -1}, pokemon);
 				this.add('-end', pokemon, 'Respawn Punisher', '[silent]');
 			},			
 		},
