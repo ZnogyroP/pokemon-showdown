@@ -207,10 +207,9 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		num: 9008,
 	},	
 	
-	// expect errors
 	drawfour: {
 		shortDesc: "After knocking out target, if user knows less than 12 moves, it learns target's moves.",
-		onAnyModifyDamage(damage, source, target, move) {
+		onSourceModifyDamage(damage, source, target, move) {
 			if (target === source) {return;}
 			if (damage >= target.hp) {
 				for (const moveSlot of target.moveSlots) {
@@ -229,6 +228,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						};	
 						source.moveSlots[source.moveSlots.length] = learnedMove;
 						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
+						this.add('-start', source, 'Draw Four', moveSlot.id);
 					}
 				}
 			this.add('-message', source.name + " copied its victim's moves!");
@@ -279,7 +279,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({atk: 1}, pokemon);
 				this.add('-start', pokemon, 'Respawn Punisher');
 			},
-			onRestart(pokemon) {
+			onRestart(target, source, effect) {
 				this.effectState.duration = 2;
 			},
 			onEnd(pokemon) {
