@@ -225,7 +225,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 							disabled: false,
 							used: false,
 						};	
-						this.add('-start', source, 'Mimic', learnedMove.name);
 						source.moveSlots[source.moveSlots.length] = learnedMove;
 						source.baseMoveSlots[source.moveSlots.length - 1] = learnedMove;
 					}
