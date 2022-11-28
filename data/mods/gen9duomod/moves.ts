@@ -1219,14 +1219,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 		
 		else if (result === 11) { 
 			this.hint("Roulette Wheel Result 12 - Everyone gets their ability replaced with Defeatist.");
-			for (const pokemon of this.getAllActive()) {
-				const oldAbility = pokemon.setAbility('Defeatist');
-				if (oldAbility) {
-					this.add('-ability', pokemon, 'Defeatist', '[from] move: Roulette Spin');
-					return;
+			for (const s1 of this.sides[0].active) {
+				for (const s2 of this.sides[1].active) {
+					const oldAbility1 = s1.setAbility('Defeatist');
+					if (oldAbility1) {
+						this.add('-ability', s1, 'Defeatist', '[from] move: Roulette Spin');
+					}
+					const oldAbility2 = s2.setAbility('Defeatist');
+					if (oldAbility2) {
+						this.add('-ability', s2, 'Defeatist', '[from] move: Roulette Spin');
+					}
 				}
 			}
-		} 		
+		} 			
 
 		else if (result === 12) {
 			this.hint("Roulette Wheel Result 13 - I felt like being mean today");
@@ -1249,7 +1254,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		else if (result === 13) { 
 			this.hint("Roulette Wheel Result 14 - Everyone gets perfect accuracy.");
 			for (const pokemon of this.getAllActive()) {
-				this.boost({acc: 12}, pokemon);
+				this.boost({accuracy: 12}, pokemon);
 			}
 		} 		
 
@@ -1297,20 +1302,34 @@ export const Moves: {[moveid: string]: MoveData} = {
 		}  	
 		
 		else if (result === 17) {
-			this.hint("Roulette Wheel Result 18 - One of you needs a hand!");
-			const s1 = this.sides[0].active;
-			const s2 = this.sides[1].active;
-			if (s1.hp >= s2.hp) {this.heal(s2.maxhp, s2);}
-			if (s1.hp <= s2.hp) {this.heal(s1.maxhp, s1);}
-		}
+			this.hint("Roulette Wheel Result 18 - i felt like it would be funny");
+			for (const s1 of this.sides[0].active) {
+				for (const s2 of this.sides[1].active) {
+					if (pickSide === 0) {
+						this.damage(s2.baseMaxhp / 4, s2);
+						this.heal(s1.baseMaxhp / 4, s1);
+						
+					}
+					else if (pickSide === 1) {
+						this.damage(s1.baseMaxhp / 4, s1);
+						this.heal(s2.baseMaxhp / 4, s2);
+					}
+				}
+			}
+		}  
 			
 		else if (result === 18) { 
 			this.hint("Roulette Wheel Result 19 - Everyone gets Beast Boost.");
-			for (const pokemon of this.getAllActive()) {
-				const oldAbility = pokemon.setAbility('Beast Boost');
-				if (oldAbility) {
-					this.add('-ability', pokemon, 'Beast Boost', '[from] move: Roulette Spin');
-					return;
+			for (const s1 of this.sides[0].active) {
+				for (const s2 of this.sides[1].active) {
+					const oldAbility1 = s1.setAbility('Beast Boost');
+					if (oldAbility1) {
+						this.add('-ability', s1, 'Beast Boost', '[from] move: Roulette Spin');
+					}
+					const oldAbility2 = s2.setAbility('Beast Boost');
+					if (oldAbility2) {
+						this.add('-ability', s2, 'Beast Boost', '[from] move: Roulette Spin');
+					}
 				}
 			}
 		} 			
@@ -1548,6 +1567,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.useMove("Ultranome", pokemon);
 			}
 		}
+			
 		},
 	},
 		
