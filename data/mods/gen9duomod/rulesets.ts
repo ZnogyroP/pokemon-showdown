@@ -249,12 +249,10 @@ export const Formats: {[k: string]: FormatData} = {
 					const oldAbility1 = s1.setAbility('Beast Boost');
 					if (oldAbility1) {
 						this.add('-ability', s1, 'Beast Boost', '[from] move: Roulette Spin');
-						return;
 					}
 					const oldAbility2 = s2.setAbility('Beast Boost');
 					if (oldAbility2) {
 						this.add('-ability', s2, 'Beast Boost', '[from] move: Roulette Spin');
-						return;
 					}
 				}
 			}
