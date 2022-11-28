@@ -218,6 +218,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 						if (source.moveSlots.length < 0) return false;
 						const learnedMove = {
 							move: moveSlot.name,
+							name: moveSlot.name,
 							id: moveSlot.id,
 							pp: moveSlot.pp,
 							maxpp: moveSlot.pp,
