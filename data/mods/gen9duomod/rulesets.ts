@@ -227,8 +227,8 @@ export const Formats: {[k: string]: FormatData} = {
 		
 		else if (result === 17) {
 			this.hint("Roulette Wheel Result 18 - i felt like it would be funny");
-			for (const s1 of this.sides[0].pokemon.active) {
-				for (const s2 of this.sides[1].pokemon.active) {
+			for (const s1 of this.sides[0].active) {
+				for (const s2 of this.sides[1].active) {
 					if (pickSide === 0) {
 						this.damage(s2.baseMaxhp / 4, s2);
 						this.heal(s1.baseMaxhp / 4, s1);
@@ -244,8 +244,8 @@ export const Formats: {[k: string]: FormatData} = {
 			
 		else if (result === 18) { 
 			this.hint("Roulette Wheel Result 19 - Everyone gets Beast Boost.");
-			for (const s1 of this.sides[0].pokemon.active) {
-				for (const s2 of this.sides[1].pokemon.active) {
+			for (const s1 of this.sides[0].active) {
+				for (const s2 of this.sides[1].active) {
 					const oldAbility1 = s1.setAbility('Beast Boost');
 					if (oldAbility1) {
 						this.add('-ability', s1, 'Beast Boost', '[from] move: Roulette Spin');
