@@ -758,7 +758,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		flareblitz: ["7L1"],
 		fling: ["7L1"],
 		fly: ["7L1"],
-		focusblast: ["7L1"],
 		focuspunch: ["7L1"],
 		frustration: ["7L1"],
 		furycutter: ["7L1"],
