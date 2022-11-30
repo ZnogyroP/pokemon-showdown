@@ -2316,7 +2316,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		wideguard: ["7L1"],
 		wonderroom: ["7L1"],
 	}},
-	solisle: {learnset: {
+	temporand: {learnset: {
 		airslash: ["7L1"],
 		allyswitch: ["7L1"],
 		ancientpower: ["7L1"],
@@ -2473,7 +2473,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		toxic: ["7L1"],
 		wingattack: ["7L1"],
 	}},
-	mantistorm: {learnset: {
+	mantelec: {learnset: {
 		bite: ["7L1"],
 		bugbite: ["7L1"],
 		charge: ["7L1"],
