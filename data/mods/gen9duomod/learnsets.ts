@@ -2204,7 +2204,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		takedown: ["7L1"],
 		taunt: ["7L1"],
 		toxic: ["7L1"],
-		tripleaxel: ["7L1"],
 		waterpulse: ["7L1"],
 		wavecrash: ["7L1"],
 		workup: ["7L1"],
