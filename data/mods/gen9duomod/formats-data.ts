@@ -76,7 +76,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
       doublesTier: "Illegal",
     },
     capsaken: {
-		randomBattleMoves: ["chillyreception", "ceaselessedge", "knockoff", "flareblitz", "willowisp", "toxic"],
+		randomBattleMoves: ["chillyreception", "ceaselessedge", "knockoff", "flareblitz", "willowisp", "toxic", "uturn"],
 		randomBattleLevel: 100,
       tier: "Duomod",
       doublesTier: "Duomod",
