@@ -268,9 +268,9 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
       abilities: {0: "Supreme Overlord"},
       weightkg: 5,
     },
-    solisle: {
+    temporand: {
       num: 27.5,
-      species: "Solisle",
+      species: "Temporand",
       types: ["Ground", "Psychic"],
       baseStats: {hp: 95, atk: 75, def: 75, spa: 95, spd: 95, spe: 95},
       abilities: {0: "Purifying Salt"},
@@ -284,9 +284,9 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
       abilities: {0: "Magic Absorb"},
       weightkg: 5,
     },
-    mantistorm: {
+    mantelec: {
       num: 29.5,
-      species: "Mantistorm",
+      species: "Mantelec",
       types: ["Bug", "Electric"],
       baseStats: {hp: 70, atk: 120, def: 30, spa: 70, spd: 170, spe: 70},
       abilities: {0: "Sword of Ruin"},
