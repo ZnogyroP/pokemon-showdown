@@ -661,7 +661,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		psywave: ["7L1"],
 		rage: ["7L1"],
 		raindance: ["7L1"],
-		recover: ["7L1"],
 		recycle: ["7L1"],
 		reflect: ["7L1"],
 		remotemine: ["7L1"],
