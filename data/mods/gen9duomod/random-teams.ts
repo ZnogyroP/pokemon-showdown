@@ -444,7 +444,7 @@ export class RandomTeams {
 		];
 		// Moves which boost Special Attack:
 		const SpecialSetup = [
-			'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow', 'dirtyscheme',
+			'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow',
 		];
 		// Moves which boost Attack AND Special Attack:
 		const MixedSetup = [
@@ -457,9 +457,9 @@ export class RandomTeams {
 		// Moves that shouldn't be the only STAB moves:
 		const NoStab = [
 			'accelerock', 'aquajet', 'bounce', 'breakingswipe', 'explosion', 'fakeout', 'firstimpression', 'flamecharge', 'flipturn',
-			'iceshard', 'machpunch', 'pluck', 'pursuit', 'quickattack', 'selfdestruct', 'skydrop', 'suckerpunch', 'watershuriken',
+			'iceshard', 'machpunch', 'pluck', 'pursuit', 'quickattack', 'selfdestruct', 'skydrop', 'suckerpunch', 'watershuriken', 'jetpunch', 
 
-			'clearsmog', 'eruption', 'icywind', 'incinerate', 'meteorbeam', 'snarl', 'vacuumwave', 'voltswitch', 'waterspout',
+			'clearsmog', 'eruption', 'icywind', 'incinerate', 'meteorbeam', 'snarl', 'vacuumwave', 'voltswitch', 'waterspout', 'gigatonhammer', 'uturn', 'onetrillionarrows',
 		];
 
 		// Iterate through all moves we've chosen so far and keep track of what they do:
