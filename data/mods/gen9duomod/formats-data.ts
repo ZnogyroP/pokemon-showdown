@@ -103,7 +103,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
       tier: "Duomod",
       doublesTier: "Duomod",
     },
-    solisle: {
+    temporand: {
       tier: "Duomod",
       doublesTier: "Duomod",
     },
@@ -111,7 +111,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
       tier: "Duomod",
       doublesTier: "Duomod",
     },
-    mantistorm: {
+    mantelec: {
       tier: "Duomod",
       doublesTier: "Duomod",
     },
