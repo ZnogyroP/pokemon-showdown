@@ -2383,7 +2383,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		extremebeam: ["7L1"],
 		facade: ["7L1"],
 		feintattack: ["7L1"],
-		fierywrath: ["7L1"],
 		fling: ["7L1"],
 		fly: ["7L1"],
 		foulplay: ["7L1"],
