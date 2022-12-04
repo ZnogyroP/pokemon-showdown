@@ -88,7 +88,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	
 	stickystarch: {
 		onAnyTryMove(target, source, effect) {
-			if (['teleport', 'chillyreception', 'voltswitch', 'uturn', 'flipturn', 'batonpass'].includes(effect.id)) {
+			if (['teleport', 'chillyreception', 'voltswitch', 'uturn', 'flipturn', 'batonpass', 'shedtail'].includes(effect.id)) {
 				this.attrLastMove('[still]');
 				this.add('cant', this.effectData.target, 'ability: Sticky Starch', effect, '[of] ' + source);
 				target.addVolatile('partiallytrapped');
