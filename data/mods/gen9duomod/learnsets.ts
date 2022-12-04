@@ -1065,7 +1065,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		torment: ["7L1"],
 		toxic: ["7L1"],
 		twister: ["7L1"],
-		uturn: ["7L1"],
 		willowisp: ["7L1"],
 		wingattack: ["7L1"],
 	}},
