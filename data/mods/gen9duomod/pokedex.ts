@@ -264,7 +264,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
       num: 26.5,
       species: "Gargitect",
       types: ["Rock", "Dragon"],
-      baseStats: {hp: 115, atk: 130, def: 115, spa: 75, spd: 75, spe: 15},
+      baseStats: {hp: 115, atk: 115, def: 115, spa: 75, spd: 75, spe: 15},
       abilities: {0: "Supreme Overlord"},
       weightkg: 115,
     },
