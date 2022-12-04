@@ -53,7 +53,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
       num: 6.5,
       species: "Bittle",
       types: ["Bug", "Steel"],
-      baseStats: {hp: 90, atk: 90, def: 90, spa: 90, spd: 90, spe: 90},
+      baseStats: {hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85},
       abilities: {0: "Update"},
       height: 5,
       weightkg: 60,
