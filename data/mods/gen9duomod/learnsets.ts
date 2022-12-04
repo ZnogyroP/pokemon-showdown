@@ -518,6 +518,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 	}},
 	fairydisc: {learnset: {
 		metronome: ["7L1"],
+		struggle: ["7L1"],
 	}},
 	shroominesce: {learnset: {
 		absorb: ["7L1"],
