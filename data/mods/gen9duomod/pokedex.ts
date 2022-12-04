@@ -152,7 +152,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
       species: "Chemiclysm",
       types: ["Steel", "Poison"],
       baseStats: {hp: 90, atk: 60, def: 70, spa: 80, spd: 120, spe: 30},
-      abilities: {0: "Earth Eater"},
+      abilities: {0: "Poison Point"},
       height: 5,
       weightkg: 42,
       eggGroups: ["Undiscovered"],
