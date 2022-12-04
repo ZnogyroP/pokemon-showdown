@@ -2515,7 +2515,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		gigaimpact: ["7L1"],
 		grassknot: ["7L1"],
 		growl: ["7L1"],
-		gunkshot: ["7L1"],
 		happyhour: ["7L1"],
 		haze: ["7L1"],
 		icepunch: ["7L1"],
