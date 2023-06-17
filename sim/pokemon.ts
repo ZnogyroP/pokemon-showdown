@@ -614,6 +614,10 @@ export class Pokemon {
 		return this.foes().filter(foe => this.battle.isAdjacent(this, foe));
 	}
 
+	isAlly(pokemon: Pokemon | null) {
+		return !!pokemon && (this.side === pokemon.side || this.side.allySide === pokemon.side);
+	}
+
 	getUndynamaxedHP(amount?: number) {
 		const hp = amount || this.hp;
 		if (this.volatiles['dynamax']) {

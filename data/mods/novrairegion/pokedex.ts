@@ -394,7 +394,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	lillipup: {
 		inherit: true,
 	},
-	herdier-novrai: {
+	herdiernovrai: {
 		num: 507,
 		species: "Herdier-Novrai",
 		baseSpecies: "Herdier",
@@ -405,7 +405,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 14.7,
 		evos: ["Stoutland-Novrai"],
 	},
-	stoutland-novrai: {
+	stoutlandnovrai: {
 		num: 508,
 		species: "Stoutland-Novrai",
 		baseSpecies: "Stoutland",
@@ -1019,7 +1019,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 10,
 		evos: ["Dubwool-Novrai"],
 	},
-	dubwool: {
+	dubwoolnovrai: {
 		num: 832,
 		species: "Dubwool-Novrai",
 		baseSpecies: "Dubwool",
@@ -2458,7 +2458,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		forme: "Omega",
 		types: ["Psychic"],
 		gender: "N",
-		baseStats: {hp: 48, atk: 122 def: 88, spa: 122, spd: 88, spe: 88},
+		baseStats: {hp: 48, atk: 122, def: 88, spa: 122, spd: 88, spe: 88},
 		abilities: {0: "Trace"},
 		weightkg: 24.9,
 		requiredItem: "Strange Runes",
@@ -3615,7 +3615,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		types: ["Normal", "Rock"],
 		gender: "N",
 		baseStats: {hp: 120, atk: 72, def: 84, spa: 96, spd: 108, spe: 72},
-		abilities: {0: "Clairvoyant", H: "Solar Power"},
+		abilities: {0: "Clairvoyance", H: "Solar Power"},
 		weightkg: 380,
 	},
 	larvitar: {

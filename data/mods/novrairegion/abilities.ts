@@ -1,11 +1,12 @@
 export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	adhesive: {
 		onDamagingHit(damage, target, source, move) {
-			if (!this.checkMoveMakesContact(move, source, target)) return;
-			if (source.volatiles['trapped']) return;
-			if (this.randomChance(3, 10)) {
-				source.addVolatile('trapped', this.effectState.target);
+			if (move.flags['contact']) {
+				if (source.volatiles['trapped']) return;
+				if (this.randomChance(3, 10)) {
+					source.addVolatile('trapped', this.effectData.target);
 				}
+			}
 		},
 		name: "Adhesive",
 		rating: 3,
@@ -15,37 +16,46 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onAfterMoveSecondary(target, source, move) {
 			if (!target.hp) return;
 			const type = move.type;
-			const bestStat = target.getBestStat(true, true);
 			if (
 				target.isActive && move.effectType === 'Move' && move.category !== 'Status' &&
 				type !== '???' && target.hasType(type)
 			) {
-			this.boost({[bestStat]: 1}, target);
+				let statName = 'atk';
+				let bestStat = 0;
+				let s: StatNameExceptHP;
+				for (s in target.storedStats) {
+					if (target.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = target.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, target);
 			}
-		}
+		},
 		name: "Arcane Overload",
 		rating: 3.5,
 		shortDesc: "Boosts most proficient stat when hit with a move that matches its type.",
 	},
 	avarice: {
 		onSetStatus(status, target, source, effect) {
-			if ((effect as Move)?.status && target.item === 'Big Nugget') {
+			if (target.item !== 'Big Nugget') return;
+			if ((effect as Move)?.status) {
 				this.add('-immune', target, '[from] ability: Avarice');
 			}
 			return false;
 		},
 		onTryAddVolatile(status, target) {
-			if (status.id === 'yawn' && target.item === 'Big Nugget') {
+			if (target.item !== 'Big Nugget') return;
+			if (status.id === 'yawn') {
 				this.add('-immune', target, '[from] ability: Avarice');
 				return null;
 			}
 		},
 		onAfterUseItem(item, pokemon) {
-			if (pokemon !== this.effectData.target || pokemon.item !== 'Big Nugget') return;
+			if (pokemon !== this.effectData.target) return;
 			pokemon.addVolatile('avariceboost');
 		},
 		onTakeItem(item, pokemon) {
-			if (pokemon.item !== 'Big Nugget') return;
 			pokemon.addVolatile('avariceboost');
 		},
 		onEnd(pokemon) {
@@ -94,7 +104,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			return false; // skip charge turn
 		},
 		name: "Clairvoyance",
-		rating: 3,
+		rating: 4,
 		shortDesc: "Skips charge turns.",
 	},
 	courageous: {
@@ -111,32 +121,39 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	falsefire: {
 		onEffectiveness: function(typeMod, target, type, move) {
-			return this.getEffectiveness(move.type, 'Fire');
+			return this.dex.getEffectiveness(move.type, 'Fire');
 		},
-		name: "False Fire", //TEST
+		name: "False Fire",
 		rating: 2,
 		shortDesc: "Takes direct damage like a pure Fire-type.",
 	},
 	falseflier: {
-		onEffectiveness: function(typeMod, target, type, move) {
-			return this.getEffectiveness(move.type, 'Flying');
+		onTryHit(pokemon, target, move) {
+			if (move.type === 'Ground') {
+				this.add('-immune', pokemon, '[from] ability: False Flier');
+				return null;
+			}
 		},
-		name: "False Flier", //TEST
+		onEffectiveness: function(typeMod, target, type, move) {
+			return this.dex.getEffectiveness(move.type, 'Flying');
+		},
+		name: "False Flier",
 		rating: 2,
 		shortDesc: "Takes direct damage like a pure Flying-type.",
 	},
 	ferocious: {
 		onFoeBoost(boost, target, source, effect) {
+			const feroUser = this.effectData.target;
 			if (boost.atk && boost.atk > 0) {
 				delete boost.atk;
 				if (!(effect as ActiveMove).secondaries) {
-					this.add("-fail", target, "boost", "Attack", "[from] ability: Ferocious", "[of] " + source);
+					this.add("-fail", source, "boost", "Attack", "[from] ability: Ferocious", "[of] " + feroUser);
 				}
 			}
 			if (boost.spa && boost.spa > 0) {
 				delete boost.spa;
 				if (!(effect as ActiveMove).secondaries) {
-					this.add("-fail", target, "boost", "Sp. Atk", "[from] ability: Ferocious", "[of] " + source);
+					this.add("-fail", source, "boost", "Sp. Atk", "[from] ability: Ferocious", "[of] " + feroUser);
 				}
 			}
 		},
@@ -183,7 +200,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const spikes = side.sideConditions['spikes'];
-			if (this.checkMoveMakesContact(move, source, target) && (!spikes || spikes.layers < 3)) {
+			if ((move.flags['contact']) && (!spikes || spikes.layers < 3)) {
 				if (this.randomChance(3, 10)) {
 					this.add('-activate', target, 'ability: Fracture');
 					side.addSideCondition('spikes', target);
@@ -225,7 +242,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onResidual(pokemon) {
 			if (this.field.isWeather(['sunnyday', 'desolateland']) || this.randomChance(1, 2)) {
 				if (pokemon.hp && !pokemon.item) {
-					if (this.dex.items.get(pokemon.lastItem) == ['Power Herb', 'White Herb', 'Mental Herb', 'Mirror Herb']) {
+					if (this.dex.getItem(pokemon.lastItem) == ['Power Herb', 'White Herb', 'Mental Herb', 'Mirror Herb']) {
 						pokemon.setItem(pokemon.lastItem);
 						pokemon.lastItem = '';
 						this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Herbalist');
@@ -241,19 +258,19 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		onResidualOrder: 28,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
-			if (pokemon.boosts.atk <= -6 && pokemon.boosts.def <= -6 && pokemon.boosts.spa <= -6 && pokemon.boosts.spd <= -6 && pokemon.boosts.spe <= -6) return;
 			for (const target of pokemon.foes()) {
-				if (target.status === 'psn' || target.status === 'tox') {	
-					let stats: BoostID[] = [];
+				if ((target.status === 'psn' || target.status === 'tox') &&
+				(target.boosts.atk > -6 || target.boosts.def > -6 || target.boosts.spa > -6 || target.boosts.spd > -6 || target.boosts.spe > -6)) {
+					let stats: BoostName[] = [];
 					const boost: SparseBoostsTable = {};
-					let statMinus: BoostID;
-					for (statMinus in pokemon.boosts) {
-						if (statMinus === 'accuracy' || statMinus === 'evasion') continue;
-						if (pokemon.boosts[statMinus] > -6 && statMinus !== randomStat) {
+					let statMinus: BoostName;
+					for (statMinus in target.boosts) {
+						if (statPlus === 'accuracy' || statPlus === 'evasion') continue;
+						if (target.boosts[statMinus] > -6) {
 							stats.push(statMinus);
 						}
 					}
-					randomStat = stats.length ? this.sample(stats) : undefined;
+					let randomStat: BoostName | undefined = stats.length ? this.sample(stats) : undefined;
 					if (randomStat) boost[randomStat] = -1;
 
 					this.boost(boost);
@@ -265,24 +282,25 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "Lowers stats of poisoned targets each turn.",
 	},
 	jackpot: {
-		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (target.getMoveHitData(move).crit) {
+		onSourceHit(target, source, move) {
+			if (target.getMoveHitData(move).crit && (source.boosts.atk < 6 || source.boosts.def < 6 || source.boosts.spa < 6 || source.boosts.spd < 6 || source.boosts.spe <6)) {
 				let stats: BoostID[] = [];
 				const boost: SparseBoostsTable = {};
 				let statPlus: BoostID;
-				for (statPlus in pokemon.boosts) {
+				for (statPlus in source.boosts) {
 					if (statPlus === 'accuracy' || statPlus === 'evasion') continue;
-					if (pokemon.boosts[statPlus] < 6) {
+					if (source.boosts[statPlus] < 6) {
 						stats.push(statPlus);
 					}
 				}
 				let randomStat: BoostID | undefined = stats.length ? this.sample(stats) : undefined;
 				if (randomStat) boost[randomStat] = 1;
-				this.boost(boost);
+				this.add('-ability', source, 'Jackpot');
+				this.boost(boost, source, source, null, true);
 			}
 		},
 		name: "Jackpot",
-		rating: 2,
+		rating: 1.5,
 		shortDesc: "Raises a random stat after a critical hit.",
 	},
 	lunarphase: {
@@ -348,22 +366,38 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "Immune to Rock moves.",
 	},
 	nurturer: {
-		onSwap(target) {
-			if (!target.fainted && target.status) {
-				target.setStatus('');
-			}
-		},
+		onSwitchOut(pokemon) {
+            if (pokemon.side.addSlotCondition(pokemon, 'nurturer')) {
+                Object.assign(pokemon.side.slotConditions[pokemon.position]['nurturer']);
+            }
+        },
+        condition: {
+            onSwap(target) {
+                target.side.removeSlotCondition(target, 'nurturer');
+				if (!target.fainted && target.status) {
+					this.add('-ability', this.effectData.source, 'Nurturer');
+					target.setStatus('');
+				}
+            },
+        },
 		name: "Nurturer",
 		rating: 3,
 		shortDesc: "Cures an incoming ally's status.",
 	},
 	nutrientrunoff: {
-		onFoeTryHeal(relayVar, target, source, effect){
-			relayVar = (relayVar / 2);
-			source.heal(relayVar);
+		onFoeTryHeal(damage, target, source, effect) {
+			const runoffUser = this.effectData.target;
+			const canRunoff = ['drain', 'strengthsap', 'wish', 'morningsun', 'moonlight', 'synthesis', 'lifedew', 'quietrepose', 'junglehealing', 'floralhealing', 'healpulse',
+				'purify', 'pollenpuff', 'healorder', 'milkdrink', 'recover', 'roost', 'selfrepair', 'reservoir', 'shoreup', 'slackoff', 'softboiled', 'swallow', 'fruitmunch'];
+			if (canRunoff.includes(effect.id)) {
+				damage = damage / 2;
+				this.add('-activate', runoffUser, 'ability: Nutrient Runoff');
+				this.heal(damage, runoffUser);
+				return damage;
+			}
 		},
 		name: "Nutrient Runoff", //NEEDS TESTING, NO WAY THIS WORKS
-		rating: 3,
+		rating: 2.5,
 		shortDesc: "Steals half of an opponent's healing.",
 	},
 	parasitic: {
@@ -381,12 +415,16 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			if (sourceAbility.isPermanent || sourceAbility.id === 'pathogenic') {
 				return;
 			}
-			if (this.checkMoveMakesContact(move, source, target, !source.isAlly(target))) {
+			if (move.flags['contact']) {
 				const oldAbility = source.setAbility('pathogenic', target);
 				if (oldAbility) {
-					this.add('-activate', target, 'ability: Pathogenic', this.dex.abilities.get(oldAbility).name, '[of] ' + source);
+					this.add('-activate', target, 'ability: Pathogenic', this.dex.getAbility(oldAbility).name, '[of] ' + source);
 				}
 			}
+		},
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
+			if (move.multihitType === 'bananasplit' && move.hit > 1) return this.chainModify(0.5);
 		},
 		onResidualOrder: 5,
 		onResidualSubOrder: 4,
@@ -401,7 +439,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	perplexing: {
 		onDamagingHit(damage, target, source, move) {
-			if (this.checkMoveMakesContact(move, source, target)) {
+			if (move.flags['contact']) {
 				if (this.randomChance(3, 10)) {
 					source.trySetStatus('confusion', target);
 				}
@@ -459,22 +497,22 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			this.add('-ability', pokemon, 'Reality Warp');
 		},
 		onEffectiveness: function(typeMod, target, type, move) {
-				if (move && !this.getImmunity(move, type)) return 1;
-				return -typeMod;
-			},
+			if (move && !this.dex.getImmunity(move, type)) return 1;
+			return -typeMod;
+		},
 		name: "Reality Warp",
 		rating: 3.5,
 		shortDesc: "Inverts incoming attack matchups.",
 	},
 	reelin: {
 		onFoeTrapPokemon(pokemon) {
-			if (pokemon.hasType('Water') && pokemon.isAdjacent(this.effectState.target)) {
+			if (pokemon.hasType('Water') && this.isAdjacent(pokemon, this.effectData.target)) {
 				pokemon.tryTrap(true);
 			}
 		},
 		onFoeMaybeTrapPokemon(pokemon, source) {
-			if (!source) source = this.effectState.target;
-			if (!source || !pokemon.isAdjacent(source)) return;
+			if (!source) source = this.effectData.target;
+			if (!source || !this.isAdjacent(pokemon, source)) return;
 			if (!pokemon.knownType || pokemon.hasType('Water')) {
 				pokemon.maybeTrapped = true;
 			}
@@ -537,38 +575,19 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 		},
 		name: "Scavenge",
-		rating: 3,
+		rating: 3.5,
 		shortDesc: "Heals 25% after a KO.",
 	},
 	secondwind: {
-		onDamage(damage, target, source, effect) {
-			if (
-				effect.effectType === "Move" &&
-				!effect.multihit &&
-				(!effect.negateSecondary && !(effect.hasSheerForce && source.hasAbility('sheerforce')))
-			) {
-				target.abilityState.checkedBerserk = false;
-			} else {
-				target.abilityState.checkedBerserk = true;
-			}
-		},
-		onTryEatItem(item, pokemon) {
-			const healingItems = [
-				'aguavberry', 'enigmaberry', 'figyberry', 'iapapaberry', 'magoberry', 'sitrusberry', 'wikiberry', 'oranberry', 'berryjuice',
-			];
-			if (healingItems.includes(item.id)) {
-				return pokemon.abilityState.checkedBerserk;
-			}
-			return true;
-		},
 		onAfterMoveSecondary(target, source, move) {
-			target.abilityState.checkedBerserk = true;
 			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			const side = source.isAlly(target) ? source.side : source.side.foe;
 			const lastAttackedBy = target.getLastAttackedBy();
 			if (!lastAttackedBy) return;
 			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.side.addSideCondition('tailwind');
+				this.add('-activate', target, 'ability: Second Wind');
+				side.addSideCondition('tailwind');
 			}
 		},
 		name: "Second Wind",
@@ -617,23 +636,23 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	supertaste: {
 		onTryHeal(damage, target, source, effect) {
 			if (!effect) return;
-			if (effect.name === 'Berry Juice') {
+			if (effect.id === 'berryjuice') {
 				this.add('-activate', target, 'ability: Super Taste');
 			}
-			if ((effect as Item).isBerry || effect.name === 'Leftovers') return this.chainModify(2);
+			if ((effect as Item).isBerry || effect.id === 'leftovers') return this.chainModify(2);
 		},
-		onChangeBoost(boost, target, source, effect) {
+		onBoost(boost, target, source, effect) {
 			if (effect && (effect as Item).isBerry) {
-				let b: BoostID;
+				let b: BoostName;
 				for (b in boost) {
 					boost[b]! *= 2;
 				}
 			}
 		},
-		onSourceModifyDamagePriority: -1,
 		onSourceModifyDamage(damage, source, target, move) {
-			if (target.abilityState.berryWeaken) {
-				target.abilityState.berryWeaken = false;
+			if (target.abilityData.berryWeaken) {
+				target.abilityData.berryWeaken = "";
+				// Not sure if this is the correct multiplier to get 3/4 total, assuming its taking 1/2 of 1/2 (3/4)
 				return this.chainModify(0.5);
 			}
 		},
@@ -643,10 +662,13 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		onEatItem(item, pokemon) {
 			const weakenBerries = [
-				'Babiri Berry', 'Charti Berry', 'Chilan Berry', 'Chople Berry', 'Coba Berry', 'Colbur Berry', 'Haban Berry', 'Kasib Berry', 'Kebia Berry', 'Occa Berry', 'Passho Berry', 'Payapa Berry', 'Rindo Berry', 'Roseli Berry', 'Shuca Berry', 'Tanga Berry', 'Wacan Berry', 'Yache Berry',
+				'Babiri Berry', 'Charti Berry', 'Chilan Berry', 'Chople Berry', 'Coba Berry', 'Colbur Berry', 'Haban Berry', 'Kasib Berry', 'Kebia Berry', 'Occa Berry', 'Passho Berry', 
+				'Payapa Berry', 'Rindo Berry', 'Roseli Berry', 'Shuca Berry', 'Tanga Berry', 'Wacan Berry', 'Yache Berry',
 			];
-			// Record if the pokemon ate a berry to resist the attack
-			pokemon.abilityState.berryWeaken = weakenBerries.includes(item.name);
+			if (weakenBerries.includes(item.name)) {
+				// Record that the pokemon ate a berry to resist an attack
+				pokemon.abilityData.berryWeaken = "true";
+			}
 		},
 		name: "Super Taste",
 		rating: 2,
@@ -670,26 +692,21 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				this.boost({spe: -1}, pokemon, source, null, true);
 				return;
 			}
-		}
+		},
 		name: "Traffic Jam",
-		rating: 3,
+		rating: 3.5,
 		shortDesc: "Incoming opponents have their Speed lowered.",
 	},
 	trample: {
-		onStart(pokemon) {
-			let activated = false;
-			for (const sideCondition of ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge']) {
-				for (const side of [pokemon.side, ...pokemon.side.foeSidesWithConditions()]) {
-					if (side.getSideCondition(sideCondition)) {
-						if (!activated) {
-							this.add('-activate', pokemon, 'ability: Trample');
-							activated = true;
-						}
-						side.removeSideCondition(sideCondition);
-					}
-				}
-			}
+		onSwitchInPriority: 6,
+		onSwitchIn(pokemon, target, source) {
 			this.field.clearTerrain();
+         const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
+         for (const condition of sideConditions) {
+            if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+               this.add('-sideend', pokemon.side, this.dex.getEffect(condition).name, '[from] ability: Trample', '[of] ' + pokemon);
+            }
+          }
 		},
 		name: "Trample",
 		rating: 4,
@@ -718,8 +735,30 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 			}
 			return accuracy;
 		},
-		rating: 2,
+		rating: 2.5,
 		shortDesc: "First move used in battle will not miss.",
+	},
+	mummy: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
+			if (move.multihitType === 'bananasplit' && move.hit > 1) return this.chainModify(0.5);
+		},
+	},
+	protean: {
+		desc: "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type.",
+		shortDesc: "This Pokemon's type changes to match the type of the move it is about to use.",
+		onPrepareHit(source, target, move) {
+			if (move.hasBounced) return;
+			const type = move.type;
+			if (type && type !== '???' && source.getTypes().join() !== type) {
+				if (!source.setType(type)) return;
+				this.add('-start', source, 'typechange', type, '[from] ability: Protean');
+			}
+		},
+		name: "Protean",
+		rating: 4.5,
+		num: 168,
 	},
 	raindish: {
 		inherit: true,

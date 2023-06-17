@@ -12,6 +12,20 @@ export const Formats: (FormatsData | {section: string, column?: number})[] = [
 	},
 	
 	{
+		name: "[Gen 8] Novrai Randbats",
+        desc: `<b>Novrai Region</b>: The Showdown mod that finally lets Novrai Pokémon be used.`,
+        threads: [
+            `&bullet; <a href="https://docs.google.com/spreadsheets/d/1AgIUTqnZhqDw63uUUPLERUevM2pVJZRbaeswVPi3XAg/edit?usp=sharing">Spreadsheet</a>`,
+        ],
+		team: 'random',
+        mod: 'novrairegion',
+		ruleset: ['Standard NatDex', 'Dynamax Clause', 'Sleep Clause Mod'],
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', pokemon.species.types.join('/'), '[silent]');
+		},
+	},
+	
+	{
         name: "[Gen 8] Novrai Region",
         desc: `<b>Novrai Region</b>: The Showdown mod that finally lets Novrai Pokémon be used.`,
         threads: [
