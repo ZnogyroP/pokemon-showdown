@@ -10,7 +10,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	lobstrike: {
 		randomBattleMoves: ["swordsdance", "woodhammer", "jumpstart", "earthquake", "knockoff"],
 		randomDoubleBattleMoves: ["woodhammer", "jumpstart", "earthquake", "superpower", "knockoff", "trailblaze"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -25,7 +25,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	nocturnace: {
 		randomBattleMoves: ["curseofash", "hurricane", "nastyplot", "focusblast", "gigadrain"],
 		randomDoubleBattleMoves: ["curseofash", "hurricane", "taunt", "uturn", "roost", "willowisp"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -40,7 +40,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	cascarapace: {
 		randomBattleMoves: ["reservoir", "calmmind", "scald", "bugbuzz", "icebeam"],
 		randomDoubleBattleMoves: ["reservoir", "scald", "defendorder", "bodypress"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -50,8 +50,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	volentine: {
 		randomBattleMoves: ["attract", "lovelariat", "thunderwave", "superfang"],
-		randomDoubleBattleMoves: ["uturn", "tidyup", "encore", "wish", "playrough", "lightscreen", "reflect"],
-		randomBattleLevel: 90,
+		randomDoubleBattleMoves: ["uturn", "tidyup", "encore", "wish", "playrough", "superfang"],
+		randomBattleLevel: 92,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -77,7 +77,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	superheron: {
 		randomBattleMoves: ["closecombat", "bravebird", "facade", "uturn", "tripleaxel", "roost"],
 		randomDoubleBattleMoves: ["closecombat", "bravebird", "tripleaxel", "throatchop", "swordsdance"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -99,7 +99,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dusturby: {
 		randomBattleMoves: ["knockoff", "pursuit", "sleeppowder", "tidyup", "uturn", "suckerpunch"],
 		randomDoubleBattleMoves: ["knockoff", "sleeppowder", "tidyup", "return", "gunkshot"],
-		randomBattleLevel: 90,
+		randomBattleLevel: 91,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -110,7 +110,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	pheromage: {
 		randomBattleMoves: ["facade", "stockpile", "bodypress", "leechlife"],
 		randomDoubleBattleMoves: ["facade", "leechlife", "stickyweb", "rapidspin", "toxic", "protect"],
-		randomBattleLevel: 88,
+		randomBattleLevel: 89,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -121,7 +121,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	expolar: {
 		randomBattleMoves: ["mountaingale", "closecombat", "throatchop", "stoneedge", "iceshard"],
 		randomDoubleBattleMoves: ["mountaingale", "closecombat", "iceshard", "bellydrum"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -132,7 +132,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	glalie: {
 		randomBattleMoves: ["taunt", "spikes", "rapidspin", "return", "earthquake", "explosion"],
 		randomDoubleBattleMoves: ["taunt", "spikes", "rapidspin", "return", "earthquake", "explosion"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -150,7 +150,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	frosmoth: {
 		randomBattleMoves: ["quiverdance", "icebeam", "sleeppowder", "bugbuzz", "hiddenpowerground"],
 		randomDoubleBattleMoves: ["quiverdance", "icebeam", "sleeppowder", "gigadrain", "hiddenpowerground"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -176,7 +176,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	phantique: {
 		randomBattleMoves: ["shellsmash", "stoneedge", "lastrespects", "earthquake"],
 		randomDoubleBattleMoves: ["stoneedge", "lastrespects", "stealthrock", "rapidspin", "willowisp", "earthquake"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -202,7 +202,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	glaborehol: {
 		randomBattleMoves: ["coil", "earthquake", "stoneedge", "suckerpunch"],
 		randomDoubleBattleMoves: ["earthquake", "rest", "sleeptalk", "stealthrock", "yawn", "suckerpunch"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -228,7 +228,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	tarantailor: {
 		randomBattleMoves: ["firstimpression", "uturn", "stickyweb", "knockoff", "headlongrush", "leechlife"],
 		randomDoubleBattleMoves: ["firstimpression", "uturn", "stickyweb", "knockoff", "headlongrush", "leechlife"],
-		randomBattleLevel: 88,
+		randomBattleLevel: 89,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -239,7 +239,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	quezabeast: {
 		randomBattleMoves: ["recover", "superpower", "extremespeed", "outrage"],
 		randomDoubleBattleMoves: ["recover", "dracometeor", "flamethrower", "hypervoice"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -275,8 +275,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	cherrimnovrai: {
 		randomBattleMoves: ["fireblast", "shadowball", "hurricane", "leafstorm", "destinybond"],
-		randomDoubleBattleMoves: ["fireblast", "shadowball", "hurricane", "leafstorm", "destinybond"],
-		randomBattleLevel: 86,
+		randomDoubleBattleMoves: ["raindance", "oilfire", "shadowball", "hurricane"],
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -335,7 +335,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	sudowoodonovrai: {
 		randomBattleMoves: ["snowballpelt", "rockblast", "iciclespear", "earthquake"],
 		randomDoubleBattleMoves: ["snowballpelt", "rockblast", "iciclespear", "earthquake"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -361,7 +361,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	mysoleum: {
 		randomBattleMoves: ["spore", "hex", "gigadrain", "strengthsap", "willowisp"],
 		randomDoubleBattleMoves: ["strengthsap", "irondefense", "bodypress", "shadowball"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -385,8 +385,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "NovraiDOU",
 	},
 	kudzusa: {
-		randomBattleMoves: ["terrainpulse", "earthpower", "thunderbolt", "hiddenpowerfire", "glare"],
-		randomDoubleBattleMoves: ["terrainpulse", "earthpower", "thunderbolt", "hiddenpowerfire", "nastyplot"],
+		randomBattleMoves: ["terrainpulse", "earthpower", "thunderbolt", "hiddenpowerfire", "glare", "nastyplot"],
+		randomDoubleBattleMoves: ["terrainpulse", "earthpower", "thunderbolt", "hiddenpowerfire", "nastyplot", "glare"],
 		randomBattleLevel: 84,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -398,7 +398,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	ribombee: {
 		randomBattleMoves: ["stickyweb", "moonblast", "stunspore", "allergypollen", "uturn"],
 		randomDoubleBattleMoves: ["moonblast", "quiverdance", "bugbuzz", "aurasphere", "psychic"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -431,7 +431,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	azumarill: {
 		randomBattleMoves: ["bellydrum", "aquajet", "liquidation", "playrough"],
 		randomDoubleBattleMoves: ["aquajet", "liquidation", "playrough", "knockoff", "icespinner"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 77,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -471,7 +471,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	blockstack: {
 		randomBattleMoves: ["cottonguard", "bodypress", "painsplit", "payback", "rapidspin"],
 		randomDoubleBattleMoves: ["bodypress", "painsplit", "payback", "rapidspin", "suckerpunch"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -486,7 +486,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	alakazam: {
 		randomBattleMoves: ["psychic", "psyshock", "shadowball", "focusblast", "dazzlinggleam", "trick"],
 		randomDoubleBattleMoves: ["psychic", "psyshock", "shadowball", "focusblast", "dazzlinggleam", "nastyplot"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -496,8 +496,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	musharna: {
 		randomBattleMoves: ["calmmind", "dreameater", "moonlight", "moonblast"],
-		randomDoubleBattleMoves: ["calmmind", "dreameater", "moonlight", "moonblast"],
-		randomBattleLevel: 86,
+		randomDoubleBattleMoves: ["dreameater", "moonblast", "reflect", "lightscreen"],
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -508,7 +508,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	magnetreme: {
 		randomBattleMoves: ["voltswitch", "thunderbolt", "hiddenpowerfire", "icebeam", "hydropump", "magnetlaunch"],
 		randomDoubleBattleMoves: ["voltswitch", "thunderbolt", "hiddenpowerfire", "icebeam", "hydropump", "magnetlaunch"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -545,7 +545,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	steelix: {
 		randomBattleMoves: ["earthquake", "irontail", "glare", "rockslide", "stealthrock", "bodypress"],
 		randomDoubleBattleMoves: ["earthquake", "irontail", "curse", "rockslide", "bodypress"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -556,7 +556,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gyarados: {
 		randomBattleMoves: ["dragondance", "waterfall", "earthquake", "stoneedge", "powerwhip"],
 		randomDoubleBattleMoves: ["waterfall", "earthquake", "stoneedge", "powerwhip", "bounce"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 77,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -567,7 +567,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	imitacean: {
 		randomBattleMoves: ["leechlife", "firstimpression", "flipturn", "wavecrash", "earthquake"],
 		randomDoubleBattleMoves: ["leechlife", "firstimpression", "flipturn", "wavecrash", "earthquake"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -626,7 +626,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gastrodon: {
 		randomBattleMoves: ["scald", "earthquake", "recover", "toxic", "stealthrock", "icebeam"],
 		randomDoubleBattleMoves: ["scald", "earthquake", "recover", "clearsmog", "stealthrock", "icebeam"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -680,14 +680,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	smeltdown: {
 		randomBattleMoves: ["oilfire", "raindance", "hydropump", "hiddenpowerice", "hiddenpowergrass"],
-		randomDoubleBattleMoves: ["fireblast", "hydropump", "hiddenpowerice", "hiddenpowergrass", "dazzlinggleam", "flipturn"],
-		randomBattleLevel: 84,
+		randomDoubleBattleMoves: ["fireblast", "hydropump", "hiddenpowerice", "hiddenpowergrass", "dazzlinggleam", "flipturn", "willowisp"],
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	exfinguish: {
-		randomBattleMoves: ["liquidation", "poltergeist", "flipturn", "shadowsneak", "aquajet"],
-		randomDoubleBattleMoves: ["liquidation", "poltergeist", "uturn", "shadowsneak", "aquajet"],
+		randomBattleMoves: ["liquidation", "poltergeist", "flipturn", "shadowsneak", "aquajet", "taunt"],
+		randomDoubleBattleMoves: ["liquidation", "poltergeist", "uturn", "shadowsneak", "aquajet", "taunt"],
 		randomBattleLevel: 84,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -703,14 +703,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	kingdra: {
 		randomBattleMoves: ["raindance", "hurricane", "hydropump", "dracometeor"],
 		randomDoubleBattleMoves: ["dragondance", "wavecrash", "ironhead", "outrage"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	marimigo: {
 		randomBattleMoves: ["leechseed", "recover", "scald", "gigadrain", "rapidspin", "icebeam", "strengthsap"],
 		randomDoubleBattleMoves: ["recover", "scald", "calmmind", "cottonguard"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -734,9 +734,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "NovraiDOU",
 	},
 	houndoom: {
-		randomBattleMoves: ["nastyplot", "darkpulse", "fireblast", "scorchingsands", "battleroar"],
-		randomDoubleBattleMoves: ["darkpulse", "fireblast", "partingshot", "scorchingsands", "suckerpunch"],
-		randomBattleLevel: 82,
+		randomBattleMoves: ["nastyplot", "darkpulse", "fireblast", "scorchingsands", "battleroar", "partingshot", "suckerpunch"],
+		randomDoubleBattleMoves: ["sunnyday", "fireblast", "darkpulse", "solarbeam"],
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -765,7 +765,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	exeggutor: {
 		randomBattleMoves: ["leechseed", "substitute", "sleeppowder", "gigadrain", "psychic"],
 		randomDoubleBattleMoves: ["gigadrain", "psychic", "sleeppowder", "earthpower", "hiddenpowerfire", "leafstorm"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -776,7 +776,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	forretress: {
 		randomBattleMoves: ["rapidspin", "spikes", "stealthrock", "voltswitch", "bodypress"],
 		randomDoubleBattleMoves: ["rapidspin", "spikes", "stealthrock", "voltswitch", "ironhead"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -787,7 +787,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gorilloquy: {
 		randomBattleMoves: ["bellydrum", "closecombat", "acrobatics", "machpunch"],
 		randomDoubleBattleMoves: ["closecombat", "knockoff", "taunt", "encore", "uturn", "thunderwave", "return", "switcheroo"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -820,7 +820,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	stormendous: {
 		randomBattleMoves: ["return", "stormthrow", "thunderbolt", "icebeam", "heatwave", "defog", "hydropump"],
 		randomDoubleBattleMoves: ["hurricane", "cloudcrash", "earthquake", "thunderbolt", "icebeam", "uturn"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -864,7 +864,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	impawzible: {
 		randomBattleMoves: ["stridentecho", "disarmingvoice", "moonblast", "mysticalfire", "trick", "uturn"],
 		randomDoubleBattleMoves: ["nastyplot", "stridentecho", "disarmingvoice", "moonblast", "mysticalfire"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -893,7 +893,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	smashkebab: {
 		randomBattleMoves: ["flareblitz", "woodhammer", "closecombat", "wardance", "sleeppowder"],
 		randomDoubleBattleMoves: ["firelash", "woodhammer", "closecombat", "wardance", "sleeppowder"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 84,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -903,8 +903,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	pembrook: {
 		randomBattleMoves: ["liquidation", "closecombat", "flipturn", "extremespeed", "playrough"],
-		randomDoubleBattleMoves: ["closecombat", "flipturn", "hydropump", "extremespeed", "playrough"],
-		randomBattleLevel: 82,
+		randomDoubleBattleMoves: ["closecombat", "flipturn", "hydropump", "extremespeed"],
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -963,7 +963,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	coboom: {
 		randomBattleMoves: ["flareblitz", "woodhammer", "stompingtantrum", "suckerpunch", "wildcharge", "explosion"],
 		randomDoubleBattleMoves: ["powerwhip", "inferno", "focusblast", "explosion"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1030,7 +1030,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	raptorado: {
 		randomBattleMoves: ["earthquake", "bravebird", "stoneedge", "roost", "uturn", "suckerpunch"],
 		randomDoubleBattleMoves: ["earthquake", "bravebird", "focusenergy", "rockblast"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1085,7 +1085,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	rasgold: {
 		randomBattleMoves: ["voltswitch", "taunt", "thunderwave", "stealthrock", "painsplit"],
 		randomDoubleBattleMoves: ["voltswitch", "thunderwave", "stealthrock", "encore", "painsplit"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1096,7 +1096,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	glimmora: {
 		randomBattleMoves: ["stealthrock", "spikes", "sludgewave", "earthpower", "powergem", "mortalspin", "energyball", "toxic"],
 		randomDoubleBattleMoves: ["meteorbeam", "sludgewave", "earthpower", "energyball"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1129,7 +1129,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	malloon: {
 		randomBattleMoves: ["scald", "windblast", "defog", "icebeam", "roost", "grassknot"],
 		randomDoubleBattleMoves: ["scald", "windblast", "defog", "icebeam", "roost", "grassknot"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1184,7 +1184,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	athcleat: {
 		randomBattleMoves: ["headlongrush", "closecombat", "tripleaxel", "uturn", "courtchange", "suckerpunch"],
 		randomDoubleBattleMoves: ["headlongrush", "closecombat", "stoneedge", "uturn", "courtchange", "suckerpunch"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1199,7 +1199,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	togekiss: {
 		randomBattleMoves: ["airslash", "aurasphere", "flamethrower", "nastyplot", "roost"],
 		randomDoubleBattleMoves: ["airslash", "defog", "flamethrower", "thunderwave", "wish", "protect"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1243,7 +1243,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	yanmega: {
 		randomBattleMoves: ["bugbuzz", "airslash", "gigadrain", "boomburst", "uturn"],
 		randomDoubleBattleMoves: ["bugbuzz", "airslash", "gigadrain", "protect"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1265,7 +1265,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	maliscuit: {
 		randomBattleMoves: ["milkdrink", "scorchingsands", "lovelykiss", "toxic", "stealthrock", "nightshade"],
 		randomDoubleBattleMoves: ["milkdrink", "scorchingsands", "lovelykiss", "toxic", "stealthrock", "nightshade"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1293,7 +1293,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	morosquatch: {
 		randomBattleMoves: ["knockoff", "earthquake", "uturn", "pursuit", "stealthrock", "partingshot", "suckerpunch"],
 		randomDoubleBattleMoves: ["knockoff", "headlongrush", "uturn", "pursuit", "suckerpunch"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1366,7 +1366,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	pourasoul: {
 		randomBattleMoves: ["weatherball", "scald", "hydropump", "bittermalice", "hurricane", "icebeam", "defog"],
 		randomDoubleBattleMoves: ["weatherball", "scald", "hydropump", "bittermalice", "hurricane", "icebeam", "calmmind"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1384,7 +1384,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	spookebal: {
 		randomBattleMoves: ["shadowball", "aurasphere", "thunderbolt", "nastyplot"],
 		randomDoubleBattleMoves: ["willowisp", "hex", "rapidspin", "thunderwave", "uturn"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1431,7 +1431,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	wrassassin: {
 		randomBattleMoves: ["liquidation", "knockoff", "uturn", "aquajet", "gunkshot"],
 		randomDoubleBattleMoves: ["liquidation", "crunch", "uturn", "aquajet", "gunkshot"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1442,7 +1442,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	starmie: {
 		randomBattleMoves: ["scald", "thunderbolt", "icebeam", "psyshock", "watershuriken", "recover", "rapidspin"],
 		randomDoubleBattleMoves: ["hydropump", "lightup", "thunder", "blizzard"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1464,7 +1464,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dragalgenovrai: {
 		randomBattleMoves: ["gigadrain", "dracometeor", "leechseed", "scald", "toxic"],
 		randomDoubleBattleMoves: ["dracometeor", "hiddenpowerfire", "thunderbolt", "focusblast", "leafstorm", "gigadrain"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1475,7 +1475,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	clawitzer: {
 		randomBattleMoves: ["waterpulse", "darkpulse", "aurasphere", "boomburst"],
 		randomDoubleBattleMoves: ["waterpulse", "darkpulse", "aurasphere", "uturn"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1486,7 +1486,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	anembidex: {
 		randomBattleMoves: ["hydropump", "voltswitch", "return", "fakeout", "icebeam", "knockoff", "switcheroo"],
 		randomDoubleBattleMoves: ["wavecrash", "voltswitch", "return", "fakeout", "icebeam", "knockoff", "switcheroo"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1497,7 +1497,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	bogglwoggl: {
 		randomBattleMoves: ["spore", "toxic", "recover", "sweetdecay", "clearsmog"],
 		randomDoubleBattleMoves: ["spore", "toxic", "recover", "sweetdecay", "clearsmog"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1511,7 +1511,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	spectracle: {
 		randomBattleMoves: ["icebeam", "voltswitch", "thunderbolt", "earthpower", "fireblast", "hydropump", "trick", "nastyplot"],
 		randomDoubleBattleMoves: ["swordsdance", "firelash", "knockoff", "gunkshot", "earthquake", "powerwhip", "uturn", "trick"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1555,7 +1555,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	galvantula: {
 		randomBattleMoves: ["stickyweb", "thunder", "voltswitch", "bugbuzz"],
 		randomDoubleBattleMoves: ["stickyweb", "thunder", "bugbuzz", "energyball"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1612,14 +1612,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	rotomwash: {
 		randomBattleMoves: ["nastyplot", "thunderbolt", "hydropump", "willowisp", "hiddenpowerice"],
 		randomDoubleBattleMoves: ["thunderbolt", "hydropump", "trick", "willowisp", "voltswitch", "defog"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	rotomfrost: {
 		randomBattleMoves: ["nastyplot", "thunderbolt", "blizzard", "willowisp"],
 		randomDoubleBattleMoves: ["thunderbolt", "blizzard", "willowisp", "voltswitch"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1633,7 +1633,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	rotommow: {
 		randomBattleMoves: ["nastyplot", "thunderbolt", "leafstorm", "willowisp", "hiddenpowerice"],
 		randomDoubleBattleMoves: ["thunderbolt", "leafstorm", "trick", "willowisp", "voltswitch", "defog"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1658,7 +1658,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	rhyperior: {
 		randomBattleMoves: ["rockpolish", "rockblast", "earthquake", "megahorn", "heatcrash"],
 		randomDoubleBattleMoves: ["rockblast", "earthquake", "megahorn", "swordsdance", "stealthrock"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1706,7 +1706,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	hatterenenovrai: {
 		randomBattleMoves: ["leafstorm", "gigadrain", "earthpower", "dazzlinggleam", "strengthsap", "grassyglide"],
 		randomDoubleBattleMoves: ["strengthsap", "calmmind", "drainingkiss", "earthpower"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1761,7 +1761,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	brambleghast: {
 		randomBattleMoves: ["powerwhip", "poltergeist", "rapidspin", "spikes", "strengthsap", "shadowsneak"],
 		randomDoubleBattleMoves: ["powerwhip", "phantomforce", "substitute", "leechseed"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1794,7 +1794,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	ferrothorn: {
 		randomBattleMoves: ["powerwhip", "gyroball", "spikes", "stealthrock", "leechseed", "knockoff", "rapidspin"],
 		randomDoubleBattleMoves: ["powerwhip", "gyroball", "spikes", "stealthrock", "leechseed", "knockoff", "rapidspin"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1805,7 +1805,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	cacturne: {
 		randomBattleMoves: ["suckerpunch", "woodhammer", "sandshot", "closecombat", "spikes"],
 		randomDoubleBattleMoves: ["suckerpunch", "woodhammer", "closecombat", "swordsdance"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1859,7 +1859,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	rampardosnovrai: {
 		randomBattleMoves: ["headsmash", "flareblitz", "headlongrush", "dragondance"],
 		randomDoubleBattleMoves: ["headsmash", "flareblitz", "headlongrush", "accelerock", "flamecharge"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1874,14 +1874,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
-	cambyro: {
+	cambryo: {
 		tier: "NovraiNFE",
 		doublesTier: "NovraiDOU",
 	},
 	palaeodox: {
 		randomBattleMoves: ["expandingforce", "meteorshower", "earthpower", "mysticalfire", "trickroom", "trick"],
 		randomDoubleBattleMoves: ["psychic", "meteorshower", "earthpower", "mysticalfire", "trickroom", "trick"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1892,7 +1892,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	mezosaic: {
 		randomBattleMoves: ["accelerock", "rockblast", "bulldoze", "uturn", "fireblast", "selfrepair"],
 		randomDoubleBattleMoves: ["nastyplot", "ancientpower", "earthpower", "aircutter", "hiddenpowerfighting", "icebeam", "fireblast"],
-		randomBattleLevel: 88,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1954,7 +1954,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	vanilluxenovrai: {
 		randomBattleMoves: ["appleacid", "trailblaze", "icebeam", "earthpower"],
 		randomDoubleBattleMoves: ["appleacid", "trailblaze", "icebeam", "hiddenpowerfire"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -1987,7 +1987,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	rorschade: {
 		randomBattleMoves: ["nastyplot", "darkpulse", "mysticalfire", "psychic", "psyshock", "recover"],
 		randomDoubleBattleMoves: ["darkpulse", "mysticalfire", "psychic", "psyshock", "recover", "futuresight", "willowisp", "trick"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2009,7 +2009,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	unownomega: {
 		randomBattleMoves: ["quiverdance", "shellsmash", "storedpower", "hiddenpowerfire", "hiddenpowerfighting", "recover"],
 		randomDoubleBattleMoves: ["cosmicpower", "storedpower", "recover", "bodypress"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2042,7 +2042,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	eruptide: {
 		randomBattleMoves: ["magmastorm", "toxic", "recover", "sludgebomb", "lavaplume", "earthpower", "toxicspikes"],
 		randomDoubleBattleMoves: ["magmastorm", "recover", "sludgebomb", "lavaplume", "earthpower", "toxicspikes", "mortalspin"],
-		randomBattleLevel: 88,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2053,7 +2053,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	sharcastric: {
 		randomBattleMoves: ["wildcharge", "knockoff", "suckerpunch", "gunkshot", "wavecrash", "superpower"],
 		randomDoubleBattleMoves: ["wildcharge", "knockoff", "dragondance", "gunkshot", "wavecrash", "superpower"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 80,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2064,13 +2064,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	salmurai: {
 		randomBattleMoves: ["swordsdance", "wardance", "sacredsword", "aquacutter", "nightslash", "aquajet"],
 		randomDoubleBattleMoves: ["sacredsword", "aquacutter", "nightslash", "flipturn", "aquajet"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	harminth: {
 		randomBattleMoves: ["stickyweb", "stealthrock", "toxicspikes", "recover", "sludgebomb"],
-		randomDoubleBattleMoves: ["stickyweb", "stealthrock", "spikes", "recover", "sludgebomb"],
+		randomDoubleBattleMoves: ["stickyweb", "stealthrock", "toxicspikes", "recover", "sludgebomb"],
 		randomBattleLevel: 92,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2091,8 +2091,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "NovraiDOU",
 	},
 	toxicroak: {
-		randomBattleMoves: ["closecombat", "gunkshot", "swordsdance", "icepunch", "suckerpunch"],
-		randomDoubleBattleMoves: ["nastyplot", "sludgebomb", "focusblast", "vacuumwave", "darkpulse"],
+		randomBattleMoves: ["closecombat", "gunkshot", "swordsdance", "suckerpunch"],
+		randomDoubleBattleMoves: ["closecombat", "gunkshot", "swordsdance", "icepunch"],
 		randomBattleLevel: 86,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2108,7 +2108,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dragapult: {
 		randomBattleMoves: ["shadowball", "dracometeor", "thunderbolt", "fireblast", "uturn"],
 		randomDoubleBattleMoves: ["dracometeor", "uturn", "hex", "willowisp", "thunderwave"],
-		randomBattleLevel: 74,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2118,7 +2118,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	dustrega: {
 		randomBattleMoves: ["esperwing", "hurricane", "sleeppowder", "nastyplot", "heatwave"],
-		randomDoubleBattleMoves: ["hurricane", "defog", "roost", "uturn"],
+		randomDoubleBattleMoves: ["esperwing", "hurricane", "sleeppowder", "nastyplot", "heatwave"],
 		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2134,7 +2134,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	authorror: {
 		randomBattleMoves: ["lastrespects", "knockoff", "suckerpunch", "earthquake", "hypnosis"],
 		randomDoubleBattleMoves: ["lastrespects", "knockoff", "suckerpunch", "earthquake", "willowisp"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2167,7 +2167,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	mimikyu: {
 		randomBattleMoves: ["playrough", "poltergeist", "shadowsneak", "swordsdance"],
 		randomDoubleBattleMoves: ["playrough", "poltergeist", "shadowsneak", "swordsdance"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2189,14 +2189,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gorgowatt: {
 		randomBattleMoves: ["glare", "stealthrock", "earthpower", "voltswitch", "powergem"],
 		randomDoubleBattleMoves: ["trickroom", "thunderbolt", "meteorbeam", "earthpower"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	skarmory: {
 		randomBattleMoves: ["stealthrock", "spikes", "bravebird", "roost", "bodypress"],
 		randomDoubleBattleMoves: ["bravebird", "roost", "bodypress", "defog"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2284,7 +2284,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	underhandit: {
 		randomBattleMoves: ["knockoff", "suckerpunch", "flareblitz", "pursuit", "stompingtantrum", "thunderpunch"],
 		randomDoubleBattleMoves: ["knockoff", "suckerpunch", "flareblitz", "pursuit", "stompingtantrum", "thunderpunch"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2295,7 +2295,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	ornamelt: {
 		randomBattleMoves: ["bodypress", "irondefense", "softboiled", "toxic"],
 		randomDoubleBattleMoves: ["bodypress", "irondefense", "softboiled", "sludgebomb"],
-		randomBattleLevel: 86,
+		randomBattleLevel: 87,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2321,7 +2321,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	forgenie: {
 		randomBattleMoves: ["warmembrace", "futuresight", "selfrepair", "flamethrower", "heavyslam"],
 		randomDoubleBattleMoves: ["fireblast", "psychic", "focusblast", "thunderbolt", "selfrepair"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 84,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2336,7 +2336,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	tinkaton: {
 		randomBattleMoves: ["gigatonhammer", "playrough", "knockoff", "stealthrock", "thunderwave", "encore", "healbell"],
 		randomDoubleBattleMoves: ["gigatonhammer", "playrough", "knockoff", "swordsdance"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2395,7 +2395,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	metagross: {
 		randomBattleMoves: ["meteormash", "psychicfangs", "earthquake", "pursuit", "icepunch", "stealthrock"],
 		randomDoubleBattleMoves: ["meteormash", "earthquake", "icepunch", "agility"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 80,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2406,13 +2406,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	cetitan: {
 		randomBattleMoves: ["bellydrum", "iceshard", "icespinner", "earthquake"],
 		randomDoubleBattleMoves: ["iceshard", "iciclecrash", "earthquake", "liquidation", "rollingpress"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 81,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	druddigonnovrai: {
-		randomBattleMoves: ["dragonhammer", "mountaingale", "glare", "morningsun", "earthquake", "suckerpunch"],
-		randomDoubleBattleMoves: ["curse", "mountaingale", "morningsun", "earthquake"],
+		randomBattleMoves: ["dragonhammer", "icehammer", "glare", "morningsun", "earthquake", "suckerpunch"],
+		randomDoubleBattleMoves: ["curse", "icehammer", "morningsun", "earthquake"],
 		randomBattleLevel: 86,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2435,7 +2435,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dumpback: {
 		randomBattleMoves: ["flipturn", "gunkshot", "scald", "haze", "toxicspikes"],
 		randomDoubleBattleMoves: ["wavecrash", "gunkshot", "curse", "earthquake", "avalanche"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2457,7 +2457,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dondozo: {
 		randomBattleMoves: ["curse", "wavecrash", "rest", "sleeptalk"],
 		randomDoubleBattleMoves: ["curse", "liquidation", "rest", "sleeptalk"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2493,7 +2493,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	magmortar: {
 		randomBattleMoves: ["fireblast", "thunderbolt", "scorchingsands", "focusblast", "nastyplot"],
-		randomDoubleBattleMoves: ["fireblast", "thunderbolt", "scorchingsands", "focusblast", "nastyplot"],
+		randomDoubleBattleMoves: ["sunnyday", "fireblast", "solarbeam", "focusblast"],
 		randomBattleLevel: 84,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2523,7 +2523,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gliscor: {
 		randomBattleMoves: ["earthquake", "knockoff", "stealthrock", "roost", "facade", "uturn", "skydive"],
 		randomDoubleBattleMoves: ["earthquake", "knockoff", "stealthrock", "roost", "facade", "uturn", "skydive"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 80,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2567,7 +2567,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	mandibuzz: {
 		randomBattleMoves: ["toxic", "defog", "roost", "uturn", "foulplay"],
 		randomDoubleBattleMoves: ["toxic", "knockoff", "defog", "roost", "uturn"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2588,7 +2588,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	foolmingo: {
 		randomBattleMoves: ["return", "drillpeck", "knockoff", "uturn", "roost", "defog"],
-		randomDoubleBattleMoves: ["return", "drillpeck", "knockoff", "uturn", "roost", "defog"],
+		randomDoubleBattleMoves: ["reflect", "lightscreen", "uturn", "roost", "knockoff"],
 		randomBattleLevel: 88,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2607,7 +2607,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	conflagrace: {
 		randomBattleMoves: ["fierydance", "mysticsong", "roost", "scorchingsands"],
 		randomDoubleBattleMoves: ["fierydance", "dracometeor", "roost", "uturn", "scorchingsands"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2663,7 +2663,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gnotorious: {
 		randomBattleMoves: ["earthpower", "moonblast", "calmmind", "synthesis", "healbell"],
 		randomDoubleBattleMoves: ["earthpower", "moonblast", "stealthrock", "synthesis", "healbell"],
-		randomBattleLevel: 74,
+		randomBattleLevel: 77,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2699,14 +2699,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	scizor: {
 		randomBattleMoves: ["closecombat", "bulletpunch", "uturn", "roost", "defog"],
 		randomDoubleBattleMoves: ["pounce", "swordsdance", "closecombat", "bulletpunch", "dualwingbeat"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 80,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	kleavor: {
 		randomBattleMoves: ["xscissor", "stoneaxe", "closecombat", "swordsdance"],
 		randomDoubleBattleMoves: ["xscissor", "stoneaxe", "closecombat", "uturn", "defog"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2762,7 +2762,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	amygdalanche: {
 		randomBattleMoves: ["nastyplot", "rockpolish", "freezedry", "psychic", "focusblast"],
 		randomDoubleBattleMoves: ["nastyplot", "freezedry", "psychic", "focusblast", "trickroom"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2772,7 +2772,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	wyrdeer: {
 		randomBattleMoves: ["return", "psychic", "earthquake", "thunderbolt", "thunderwave", "megahorn", "tripleaxel"],
-		randomDoubleBattleMoves: ["psychic", "earthpower", "thunderbolt", "shadowball", "aurasphere", "trick"],
+		randomDoubleBattleMoves: ["futuresight", "return", "reflect", "lightscreen"],
 		randomBattleLevel: 86,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2821,7 +2821,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	psyphemus: {
 		randomBattleMoves: ["hypnosis", "vacuumwave", "focusblast", "thunder", "psychic", "stoneedge", "fireblast"],
 		randomDoubleBattleMoves: ["vacuumwave", "nastyplot", "focusblast", "thunder"],
-		randomBattleLevel: 82,
+		randomBattleLevel: 83,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2835,7 +2835,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	salamence: {
 		randomBattleMoves: ["dracometeor", "fly", "flamethrower", "roost", "defog"],
-		randomDoubleBattleMoves: ["dragondance", "outrage", "fly", "earthquake", "roost"],
+		randomDoubleBattleMoves: ["dragondance", "outrage", "fly", "earthquake"],
 		randomBattleLevel: 74,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2847,7 +2847,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	celestorch: {
 		randomBattleMoves: ["icebeam", "fireblast", "energyball", "meteorshower", "uturn"],
 		randomDoubleBattleMoves: ["icebeam", "fireblast", "energyball", "meteorshower", "uturn"],
-		randomBattleLevel: 80,
+		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2879,8 +2879,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	sirenaut: {
 		randomBattleMoves: ["nastyplot", "boomburst", "bittermalice", "flashcannon", "focusblast"],
-		randomDoubleBattleMoves: ["nastyplot", "boomburst", "bittermalice", "flashcannon", "focusblast"],
-		randomBattleLevel: 78,
+		randomDoubleBattleMoves: ["perishsong", "boomburst", "bittermalice", "flashcannon", "focusblast"],
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2916,7 +2916,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	gorebyssnovrai: {
 		randomBattleMoves: ["shellsmash", "hydropump", "moonblast", "drainingkiss", "icebeam"],
 		randomDoubleBattleMoves: ["drainingkiss", "strengthsap", "scald", "calmmind"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 80,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2927,7 +2927,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	avalugg: {
 		randomBattleMoves: ["mountaingale", "recover", "spikes", "rapidspin", "bodypress"],
 		randomDoubleBattleMoves: ["recover", "avalanche", "bodypress", "curse"],
-		randomBattleLevel: 84,
+		randomBattleLevel: 85,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2936,8 +2936,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "NovraiDOU",
 	},
 	weavile: {
-		randomBattleMoves: ["knockoff", "tripleaxel", "pursuit", "lowkick", "swordsdance", "iceshard"],
-		randomDoubleBattleMoves: ["knockoff", "tripleaxel", "pursuit", "lowkick", "swordsdance", "iceshard"],
+		randomBattleMoves: ["knockoff", "tripleaxel", "pursuit", "lowkick", "swordsdance"],
+		randomDoubleBattleMoves: ["knockoff", "tripleaxel", "lowkick", "swordsdance", "iceshard"],
 		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2959,7 +2959,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	duraludon: {
 		randomBattleMoves: ["flashcannon", "dracometeor", "stealthrock", "thunderbolt", "battleroar"],
-		randomDoubleBattleMoves: ["flashcannon", "dracometeor", "stealthrock", "thunderbolt", "battleroar"],
+		randomDoubleBattleMoves: ["dracometeor", "flashcannon", "lightscreen", "reflect"],
 		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
@@ -2967,7 +2967,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	kerohelion: {
 		randomBattleMoves: ["meteorbeam", "solarflare", "earthpower", "stealthrock", "morningsun"],
 		randomDoubleBattleMoves: ["meteorbeam", "solarflare", "earthpower", "trickroom"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2982,7 +2982,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	tyranitar: {
 		randomBattleMoves: ["stoneedge", "dragondance", "crunch", "earthquake", "firepunch"],
 		randomDoubleBattleMoves: ["stoneedge", "crunch", "pursuit", "fireblast", "stealthrock", "earthquake", "thunderwave", "icebeam"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 79,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -2997,7 +2997,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	hydreigon: {
 		randomBattleMoves: ["nastyplot", "darkpulse", "dracometeor", "fireblast", "flashcannon", "roost", "uturn"],
 		randomDoubleBattleMoves: ["nastyplot", "darkpulse", "dracometeor", "fireblast", "flashcannon", "roost", "uturn"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -3008,7 +3008,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	volcarona: {
 		randomBattleMoves: ["quiverdance", "fierydance", "bugbuzz", "gigadrain", "roost"],
 		randomDoubleBattleMoves: ["quiverdance", "fierydance", "bugbuzz", "roost", "hiddenpowerground"],
-		randomBattleLevel: 74,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
@@ -3019,112 +3019,112 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	entomortis: {
 		randomBattleMoves: ["shadowdance", "lastrespects", "lunge", "earthquake"],
 		randomDoubleBattleMoves: ["roost", "lastrespects", "willowisp", "uturn", "defog"],
-		randomBattleLevel: 74,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	xlixir: {
 		randomBattleMoves: ["nastyplot", "sludgewave", "darkpulse", "icebeam", "hydropump", "overheat", "trick"],
 		randomDoubleBattleMoves: ["nastyplot", "sludgewave", "darkpulse", "icebeam", "hydropump", "overheat", "trick"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 77,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	relmirror: {
 		randomBattleMoves: ["wish", "protect", "thunderwave", "spiritbreak", "stealthrock", "rapidspin"],
 		randomDoubleBattleMoves: ["wish", "calmmind", "irondefense", "dazzlinggleam"],
-		randomBattleLevel: 74,
+		randomBattleLevel: 76,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	gronegardian: {
 		randomBattleMoves: ["glare", "strengthsap", "leechseed", "knockoff", "powerwhip"],
 		randomDoubleBattleMoves: ["strengthsap", "leechseed", "toxic", "knockoff", "powerwhip"],
-		randomBattleLevel: 78,
+		randomBattleLevel: 82,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	magemeltre: {
 		randomBattleMoves: ["fireblast", "psychic", "psyshock", "thunderbolt", "icebeam", "aurasphere", "energyball", "dazzlinggleam", "taunt"],
 		randomDoubleBattleMoves: ["fireblast", "psychic", "psyshock", "thunder", "lightup"],
-		randomBattleLevel: 74,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	krailstorm: {
 		randomBattleMoves: ["calmmind", "freezedry", "hydropump", "selfrepair"],
 		randomDoubleBattleMoves: ["freezedry", "hydropump", "waterspout", "icebeam"],
-		randomBattleLevel: 76,
+		randomBattleLevel: 77,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	surusen: {
 		randomBattleMoves: ["stealthrock", "quietrepose", "lastrespects", "willowisp", "bodypress", "stoneedge"],
 		randomDoubleBattleMoves: ["amnesia", "quietrepose", "bodypress", "lastrespects"],
-		randomBattleLevel: 70,
-		tier: "Uber",
+		randomBattleLevel: 75,
+		tier: "NovraiUber",
 		doublesTier: "NovraiDOU",
 	},
 	ikarma: {
 		randomBattleMoves: ["lastrespects", "closecombat", "shadowsneak", "flareblitz", "pursuit", "quietrepose"],
 		randomDoubleBattleMoves: ["lastrespects", "closecombat", "shadowsneak", "swordsdance"],
-		randomBattleLevel: 68,
-		tier: "Uber",
+		randomBattleLevel: 74,
+		tier: "NovraiUber",
 		doublesTier: "NovraiDOU",
 	},
 	nedareap: {
 		randomBattleMoves: ["nastyplot", "shadowball", "eeriespell", "focusblast"],
 		randomDoubleBattleMoves: ["nastyplot", "shadowball", "eeriespell", "focusblast"],
-		randomBattleLevel: 68,
-		tier: "Uber",
+		randomBattleLevel: 73,
+		tier: "NovraiUber",
 		doublesTier: "NovraiDOU",
 	},
 	utsoul: {
 		randomBattleMoves: ["scald", "quietrepose", "shadowball", "defog", "taunt"],
 		randomDoubleBattleMoves: ["scald", "quietrepose", "hex", "icebeam"],
-		randomBattleLevel: 68,
-		tier: "Uber",
+		randomBattleLevel: 74,
+		tier: "NovraiUber",
 		doublesTier: "NovraiDOU",
 	},
 	anaither: {
 		randomBattleMoves: ["wish", "teleport", "shadowball", "protect", "willowisp", "healbell"],
 		randomDoubleBattleMoves: ["shadowball", "calmmind", "quietrepose", "dazzlinggleam"],
-		randomBattleLevel: 66,
-		tier: "Uber",
+		randomBattleLevel: 74,
+		tier: "NovraiUber",
 		doublesTier: "NovraiDOU",
 	},
 	mizevaris: {
 		randomBattleMoves: ["dragondance", "nuggetfling", "outrage", "heatcrash"],
 		randomDoubleBattleMoves: ["nuggetfling", "stealthrock", "roar", "bodypress", "thunderwave"],
-		randomBattleLevel: 68,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	chondrius: {
 		randomBattleMoves: ["nastyplot", "psychic", "psyshock", "sludgebomb", "toxic", "trick", "hiddenpowerfire"],
 		randomDoubleBattleMoves: ["toxicspikes", "psychic", "psyshock", "sludgebomb", "toxic", "taunt", "uturn", "roost"],
-		randomBattleLevel: 70,
+		randomBattleLevel: 77,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	astroyatlas: {
 		randomBattleMoves: ["quiverdance", "moonblast", "earthpower", "roost"],
 		randomDoubleBattleMoves: ["moonblast", "earthpower", "roost", "heatwave", "bugbuzz", "healingwish"],
-		randomBattleLevel: 68,
+		randomBattleLevel: 75,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	migreat: {
 		randomBattleMoves: ["weatherball", "cyclone", "uturn", "roost", "solarbeam", "earthpower"],
 		randomDoubleBattleMoves: ["cyclone", "roost", "earthpower", "fireblast", "calmmind"],
-		randomBattleLevel: 72,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},
 	migreatokeno: {
 		randomBattleMoves: ["auroraveil", "freezedry", "cyclone", "roost", "fireblast", "uturn"],
 		randomDoubleBattleMoves: ["freezedry", "cyclone", "roost", "fireblast", "calmmind"],
-		randomBattleLevel: 72,
+		randomBattleLevel: 78,
 		tier: "NovraiRegion",
 		doublesTier: "NovraiDOU",
 	},

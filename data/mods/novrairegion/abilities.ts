@@ -51,19 +51,14 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 				return null;
 			}
 		},
-		onAfterUseItem(item, pokemon) {
-			if (pokemon !== this.effectData.target) return;
-			pokemon.addVolatile('avariceboost');
-		},
 		onTakeItem(item, pokemon) {
 			pokemon.addVolatile('avariceboost');
 		},
-		onEnd(pokemon) {
-			pokemon.removeVolatile('avariceboost');
-		},
 		condition: {
-			onModifyAtk(atk, pokemon) {
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, attacker, defender, move) {
 				if (!pokemon.item) {
+					this.debug('Avarice boost');
 					return this.chainModify(1.5);
 				}
 			},
@@ -304,33 +299,37 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		shortDesc: "Raises a random stat after a critical hit.",
 	},
 	lunarphase: {
-		onResidualOrder: 29,
-		onResidual(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies !== 'Astroyatlas' || pokemon.transformed) {
-				return;
-			}
-			if (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hp > pokemon.maxhp / 4 && !['Cocoon'].includes(pokemon.species.forme)) {
-				pokemon.addVolatile('lunarphaselarva');
-				pokemon.removeVolatile('lunarphaselarva');
-				pokemon.addVolatile('lunarphasecocoon');
-			} else if (pokemon.hp <= pokemon.maxhp / 4 && !['Larva'].includes(pokemon.species.forme)) {
-				pokemon.addVolatile('lunarphasecocoon');
-				pokemon.removeVolatile('lunarphasecocoon');
-				pokemon.addVolatile('lunarphaselarva');
-			} else if (pokemon.hp > pokemon.maxhp / 2 && ['Cocoon', 'Larva'].includes(pokemon.species.forme)) {
-				pokemon.addVolatile('lunarphasecocoon'); // in case of base Astroyatlas-Cocoon
-				pokemon.removeVolatile('lunarphasecocoon');
-				pokemon.addVolatile('lunarphaselarva'); // in case of base Astroyatlas-Larva
-				pokemon.removeVolatile('lunarphaselarva');
+		onStart(pokemon) {
+			if ((pokemon.baseSpecies.baseSpecies !== 'Astroyatlas' && pokemon.baseSpecies.baseSpecies !== 'astroyatlas') || pokemon.transformed) return;
+			if (pokemon.hp < pokemon.maxhp / 4) {
+				if (pokemon.species.forme !== 'Larval') {
+					pokemon.formeChange('Astroyatlas-Larval');
+				}
+			} else if (pokemon.hp >= pokemon.maxhp / 4 && pokemon.hp < pokemon.maxhp / 2) {
+				if (pokemon.species.forme !== 'Cocoon') {
+					pokemon.formeChange('Astroyatlas-Cocoon');
+				}
+			} else {
+				if (pokemon.species.forme === 'Cocoon' || pokemon.species.forme === 'Larval') {
+					pokemon.formeChange('Astroyatlas');
+				}
 			}
 		},
-		onEnd(pokemon) {
-			if (!pokemon.volatiles['lunarphasecocoon'] || !pokemon.volatiles['lunarphaselarva'] || !pokemon.hp) return;
-			pokemon.transformed = false;
-			delete pokemon.volatiles['lunarphasecocoon'];
-			delete pokemon.volatiles['lunarphaselarva'];
-			if (pokemon.species.baseSpecies === 'Astroyatlas' && pokemon.species.battleOnly) {
-				pokemon.formeChange(pokemon.species.battleOnly as string, this.effect, false, '[silent]');
+		onResidualOrder: 27,
+		onResidual(pokemon) {
+			if ((pokemon.baseSpecies.baseSpecies !== 'Astroyatlas' && pokemon.baseSpecies.baseSpecies !== 'astroyatlas') || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.hp < pokemon.maxhp / 4) {
+				if (pokemon.species.forme !== 'Larval') {
+					pokemon.formeChange('Astroyatlas-Larval');
+				}
+			} else if (pokemon.hp >= pokemon.maxhp / 4 && pokemon.hp < pokemon.maxhp / 2) {
+				if (pokemon.species.forme !== 'Cocoon') {
+					pokemon.formeChange('Astroyatlas-Cocoon');
+				}
+			} else {
+				if (pokemon.species.forme === 'Cocoon' || pokemon.species.forme === 'Larval') {
+					pokemon.formeChange('Astroyatlas');
+				}
 			}
 		},
 		isPermanent: true,
@@ -411,11 +410,7 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	},
 	pathogenic: {
 		onDamagingHit(damage, target, source, move) {
-			const sourceAbility = source.getAbility();
-			if (sourceAbility.isPermanent || sourceAbility.id === 'pathogenic') {
-				return;
-			}
-			if (move.flags['contact']) {
+			if (move.flags['contact'] && source.ability !== 'pathogenic') {
 				const oldAbility = source.setAbility('pathogenic', target);
 				if (oldAbility) {
 					this.add('-activate', target, 'ability: Pathogenic', this.dex.getAbility(oldAbility).name, '[of] ' + source);
@@ -571,7 +566,8 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 	scavenge: {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.heal(source.baseMaxhp / 4);
+				this.add('-activate', source, 'ability: Scavenge'); 
+				this.heal(source.baseMaxhp / 4, source, source, effect);
 			}
 		},
 		name: "Scavenge",
@@ -844,6 +840,6 @@ export const Abilities: {[abilityid: string]: ModdedAbilityData} = {
 		},
 		name: "Wind Power",
 		shortDesc: "Sp. Atk raised by 1 if hit by a wind move or Tailwind begins. Wind move immunity.",
-		rating: 3,
+		rating: 2,
 	},
 };

@@ -24393,7 +24393,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		waterpulse: ["7L1, 8L1, 9L1"],
 		withdraw: ["7L1, 8L1, 9L1"],
 	}},
-	cambyro: {learnset: {
+	cambryo: {learnset: {
 		ancientpower: ["7L1, 8L1, 9L1"],
 		attract: ["7L1, 8L1, 9L1"],
 		blizzard: ["7L1, 8L1, 9L1"],

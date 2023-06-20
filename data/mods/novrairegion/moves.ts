@@ -124,14 +124,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Surf', target);
 		},
-		onModifyMove(move, pokemon) {
-			switch (pokemon.effectiveWeather()) {
-			case 'sunnyday':
-			case 'desolateland':
-				move.basePower *= 3;
-				break;
-			}
-		},
 		secondary: null,
 		target: "allAdjacentFoes",
 		type: "Water",
@@ -723,14 +715,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Incinerate', target);
-		},
-		onModifyMove(move, pokemon) {
-			switch (pokemon.effectiveWeather()) {
-			case 'raindance':
-			case 'primordialsea':
-				move.basePower *= 3;
-				break;
-			}
 		},
 		secondary: null,
 		target: "normal",
@@ -1375,7 +1359,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onModifyMove(move, pokemon, target) {
 			if (!this.field.isTerrain('filthyterrain')) return;
 			if (!move.secondaries) move.secondaries = [];
-			move.secondaries = move.secondaries.filter(s => s.chance !== 30 && s.status !== 'psn');
+			move.secondaries = move.secondaries.filter(s => s.chance !== 20 && s.status !== 'psn');
 			move.secondaries.push({
 				chance: 100,
 				status: 'psn',
@@ -1383,7 +1367,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		secondary:
 		{
-			chance: 30,
+			chance: 20,
 			status: 'psn',
 		},
 		target: "normal",
@@ -1615,6 +1599,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 	},
 	hammerarm: {
+		inherit: true,
+		accuracy: 100,
+	},
+	icehammer: {
 		inherit: true,
 		accuracy: 100,
 	},
@@ -2208,10 +2196,47 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	perishsong: {
 		inherit: true,
-		onModifyMove(move, pokemon) {
-			if (pokemon.species.name === 'Sirenaut' || pokemon.species.name === 'sirenaut') {
-				move.condition.duration = 3;
+		onHitField(target, source, move) {
+			let result = false;
+			let message = false;
+			for (const pokemon of this.getAllActive()) {
+				if (this.runEvent('Invulnerability', pokemon, source, move) === false) {
+					this.add('-miss', source, pokemon);
+					result = true;
+				} else if (this.runEvent('TryHit', pokemon, source, move) === null) {
+					result = true;
+				} else if (!pokemon.volatiles['perishsong'] && (source.species.name === 'Sirenaut' || source.species.name === 'sirenaut')) {
+					pokemon.addVolatile('perishsong');
+					this.add('-start', pokemon, 'perish2', '[silent]');
+					result = true;
+					message = true;
+				} else if (!pokemon.volatiles['perishsong']) {
+					pokemon.addVolatile('perishsong');
+					this.add('-start', pokemon, 'perish3', '[silent]');
+					result = true;
+					message = true;
+				}
 			}
+			if (!result) return false;
+			if (message) this.add('-fieldactivate', 'move: Perish Song');
+		},
+		condition: {
+			duration: 4,
+			durationCallback(target, source, effect) {
+				if (source.species.name === 'Sirenaut' || source.species.name === 'sirenaut') {
+					return 3;
+				}
+				return 4;
+			},
+			onEnd(target) {
+				this.add('-start', target, 'perish0');
+				target.faint();
+			},
+			onResidualOrder: 20,
+			onResidual(pokemon) {
+				const duration = pokemon.volatiles['perishsong'].duration;
+				this.add('-start', pokemon, 'perish' + duration);
+			},
 		},
 		shortDesc: "Affected targets faint in three turns. Sirenaut: faint in two turns.",
 	},
